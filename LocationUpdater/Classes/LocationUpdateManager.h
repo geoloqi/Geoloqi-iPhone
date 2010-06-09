@@ -15,6 +15,7 @@
 	BOOL significantUpdatesOnly;
 	BOOL locationUpdatesOn;
 	double distanceFilterDistance;
+    CLLocation *lastKnownLocation;
 }
 
 @property (nonatomic, assign) double distanceFilterDistance;
@@ -24,5 +25,6 @@
 
 @property (nonatomic, assign) BOOL significantUpdatesOnly;
 @property (nonatomic, assign) BOOL locationUpdatesOn;
+@property (nonatomic, retain) CLLocation *lastKnownLocation;
 
 @end

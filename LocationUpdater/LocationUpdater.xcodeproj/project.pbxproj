@@ -50,6 +50,7 @@
 		DD91DF9811BF3F460097F6F5 /* DataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9611BF3F460097F6F5 /* DataViewController.xib */; };
 		DD91DF9C11BF3F4D0097F6F5 /* GeonoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9A11BF3F4D0097F6F5 /* GeonoteViewController.m */; };
 		DD91DF9D11BF3F4D0097F6F5 /* GeonoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9B11BF3F4D0097F6F5 /* GeonoteViewController.xib */; };
+		DD91E15E11BF4C1F0097F6F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +126,7 @@
 		DD91DF9911BF3F4D0097F6F5 /* GeonoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteViewController.h; sourceTree = "<group>"; };
 		DD91DF9A11BF3F4D0097F6F5 /* GeonoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteViewController.m; sourceTree = "<group>"; };
 		DD91DF9B11BF3F4D0097F6F5 /* GeonoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteViewController.xib; sourceTree = "<group>"; };
+		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				49B68E2111B316FC001CB3FA /* SystemConfiguration.framework in Frameworks */,
 				49B68E2311B316FC001CB3FA /* libz.1.2.3.dylib in Frameworks */,
 				49B68E6011B3174F001CB3FA /* CoreLocation.framework in Frameworks */,
+				DD91E15E11BF4C1F0097F6F5 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +214,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

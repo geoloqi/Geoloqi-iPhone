@@ -11,6 +11,12 @@
 
 @implementation GeonoteViewController
 
+@synthesize mapView;
+@synthesize queryField;
+@synthesize findMeButton;
+@synthesize radiusLabel;
+@synthesize radiusSlider;
+
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -21,12 +27,23 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CLLocation *location = gAppDelegate.locationUpdateManager.lastKnownLocation;
+    
+    NSLog(@"last location: %@", [location description]);
+    
+    if (location)
+    {
+        [self.mapView setCenterCoordinate:location.coordinate];
+        
+        MKCoordinateRegion mapRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 1000, 1000);
+        
+        [self.mapView setRegion:mapRegion animated:YES];
+    }
 }
-*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -51,7 +68,24 @@
 
 
 - (void)dealloc {
+    [mapView release];
+    [queryField release];
+    [findMeButton release];
+    [radiusLabel release];
+    [radiusSlider release];
+    
     [super dealloc];
+}
+
+
+- (IBAction)tappedFindMe:(id)sender
+{
+    NSLog(@"find me");
+}
+
+- (IBAction)adjustedRadius:(id)sender
+{
+    NSLog(@"radius changed");
 }
 
 

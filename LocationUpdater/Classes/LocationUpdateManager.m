@@ -21,6 +21,7 @@ NSString *LocationUpdateManagerDistanceFilterDistanceDefaultsKey = @"DistanceFil
 @synthesize deviceKey;
 @synthesize significantUpdatesOnly;
 @synthesize locationUpdatesOn;
+@synthesize lastKnownLocation;
 
 + (void)initialize;
 {
@@ -75,6 +76,8 @@ NSString *LocationUpdateManagerDistanceFilterDistanceDefaultsKey = @"DistanceFil
 	didUpdateToLocation:(CLLocation *)newLocation
 		   fromLocation:(CLLocation *)oldLocation;
 {	
+    self.lastKnownLocation = newLocation;
+    
 	NSString *urlString = [NSString stringWithFormat:@"http://app.geoloqi.com/api/location/key/%@", self.deviceKey];
 	
 	LocationUpdateRequest *req = [LocationUpdateRequest requestWithURL:[NSURL URLWithString:urlString]];
@@ -125,7 +128,8 @@ NSString *LocationUpdateManagerDistanceFilterDistanceDefaultsKey = @"DistanceFil
 {
 	[deviceKey release];
 	deviceKey = nil;
-
+    
+    [lastKnownLocation release];
 
 	[super dealloc];
 }
