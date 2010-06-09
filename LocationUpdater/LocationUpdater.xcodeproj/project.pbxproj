@@ -51,6 +51,8 @@
 		DD91DF9C11BF3F4D0097F6F5 /* GeonoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9A11BF3F4D0097F6F5 /* GeonoteViewController.m */; };
 		DD91DF9D11BF3F4D0097F6F5 /* GeonoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9B11BF3F4D0097F6F5 /* GeonoteViewController.xib */; };
 		DD91E15E11BF4C1F0097F6F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */; };
+		DD91E23B11BF522E0097F6F5 /* radius.png in Resources */ = {isa = PBXBuildFile; fileRef = DD91E23A11BF522E0097F6F5 /* radius.png */; };
+		DD91E23E11BF532D0097F6F5 /* RadiusAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91E23D11BF532D0097F6F5 /* RadiusAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +129,9 @@
 		DD91DF9A11BF3F4D0097F6F5 /* GeonoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteViewController.m; sourceTree = "<group>"; };
 		DD91DF9B11BF3F4D0097F6F5 /* GeonoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteViewController.xib; sourceTree = "<group>"; };
 		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DD91E23A11BF522E0097F6F5 /* radius.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radius.png; sourceTree = "<group>"; };
+		DD91E23C11BF532D0097F6F5 /* RadiusAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadiusAnnotation.h; sourceTree = "<group>"; };
+		DD91E23D11BF532D0097F6F5 /* RadiusAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadiusAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +163,8 @@
 				49B68F2411B3222E001CB3FA /* LocationUpdateManager.m */,
 				49B68E5011B31720001CB3FA /* LocationUpdateRequest.h */,
 				49B68E5111B31720001CB3FA /* LocationUpdateRequest.m */,
+				DD91E23C11BF532D0097F6F5 /* RadiusAnnotation.h */,
+				DD91E23D11BF532D0097F6F5 /* RadiusAnnotation.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -199,6 +206,7 @@
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* LocationUpdater-Info.plist */,
 				DD91DF6911BF3D610097F6F5 /* Tab Images */,
+				DD91E23A11BF522E0097F6F5 /* radius.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -392,6 +400,7 @@
 				DD91DF9311BF3F400097F6F5 /* MapViewController.xib in Resources */,
 				DD91DF9811BF3F460097F6F5 /* DataViewController.xib in Resources */,
 				DD91DF9D11BF3F4D0097F6F5 /* GeonoteViewController.xib in Resources */,
+				DD91E23B11BF522E0097F6F5 /* radius.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +437,7 @@
 				DD91DF9211BF3F400097F6F5 /* MapViewController.m in Sources */,
 				DD91DF9711BF3F460097F6F5 /* DataViewController.m in Sources */,
 				DD91DF9C11BF3F4D0097F6F5 /* GeonoteViewController.m in Sources */,
+				DD91E23E11BF532D0097F6F5 /* RadiusAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 //
 
 #import "GeonoteViewController.h"
-
+#import "RadiusAnnotation.h"
 
 @implementation GeonoteViewController
 
@@ -42,6 +42,11 @@
         MKCoordinateRegion mapRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 1000, 1000);
         
         [self.mapView setRegion:mapRegion animated:YES];
+        
+        RadiusAnnotation *annotation = [[[RadiusAnnotation alloc] init] autorelease];
+        annotation.coordinate = location.coordinate;
+        
+        [self.mapView addAnnotation:annotation];
     }
 }
 
@@ -88,5 +93,19 @@
     NSLog(@"radius changed");
 }
 
+
+#pragma mark -
+
+/*
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    MKPinAnnotationView *view = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil] autorelease];
+    
+    view.animatesDrop = YES;
+    view.pinColor = MKPinAnnotationColorGreen;
+    
+    return view;
+}
+*/
 
 @end
