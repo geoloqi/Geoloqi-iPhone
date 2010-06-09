@@ -16,6 +16,7 @@
 @synthesize distanceFilterSlider;
 @synthesize significantUpdateToggle;
 @synthesize locationUpdateToggle;
+@synthesize distanceFilterLabel;
 
 - (void)viewDidLoad;
 {
@@ -57,9 +58,13 @@
 
 - (void)dealloc {
 	
+    [distanceFilterLabel release];
+    distanceFilterLabel = nil;
+    
 	[significantUpdateToggle release];
 	significantUpdateToggle = nil;
-	[locationUpdateToggle release];
+	
+    [locationUpdateToggle release];
 	locationUpdateToggle = nil;
 
 	[distanceFilterSlider release];

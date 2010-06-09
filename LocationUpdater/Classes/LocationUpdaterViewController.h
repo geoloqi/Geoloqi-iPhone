@@ -11,22 +11,21 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface LocationUpdaterViewController : UIViewController {
-	IBOutlet UIButton *significantUpdateToggle;
-	IBOutlet UIButton *locationUpdateToggle;
 	IBOutlet UITextField *deviceKeyField;
-	
-	IBOutlet UILabel *distanceFilterLabel;
 	IBOutlet UISlider *distanceFilterSlider;
+	IBOutlet UIButton *significantUpdateToggle;
+	IBOutlet UIButton *locationUpdateToggle;	
+	IBOutlet UILabel *distanceFilterLabel;
 }
 
-@property (nonatomic, retain) UITextField *deviceKeyField;
-@property (nonatomic, retain) UISlider *distanceFilterSlider;
-@property (nonatomic, retain) UIButton *significantUpdateToggle;
-@property (nonatomic, retain) UIButton *locationUpdateToggle;
+@property (nonatomic, retain) IBOutlet UITextField *deviceKeyField;
+@property (nonatomic, retain) IBOutlet UISlider *distanceFilterSlider;
+@property (nonatomic, retain) IBOutlet UIButton *significantUpdateToggle;
+@property (nonatomic, retain) IBOutlet UIButton *locationUpdateToggle;
+@property (nonatomic, retain) IBOutlet UILabel *distanceFilterLabel;
 
 - (IBAction)toggleSignificantUpdate;
 - (IBAction)toggleLocationUpdate;
-
 - (IBAction)distanceFilterChanged:(UISlider *)sender;
 
 @end

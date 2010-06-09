@@ -10,18 +10,17 @@
 
 #import "LocationUpdateManager.h"
 
-@class LocationUpdaterViewController;
 
 
 @interface LocationUpdaterAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-    LocationUpdaterViewController *viewController;
+    UITabBarController *tabBarController;
 	LocationUpdateManager *locationUpdateManager;
 }
 
 @property (nonatomic, retain) LocationUpdateManager *locationUpdateManager;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet LocationUpdaterViewController *viewController;
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
 @end
 

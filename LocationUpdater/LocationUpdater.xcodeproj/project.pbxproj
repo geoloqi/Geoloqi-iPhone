@@ -40,6 +40,16 @@
 		49B68E9911B31874001CB3FA /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B68E8F11B31874001CB3FA /* CSerializedJSONData.m */; };
 		49B68EC711B31B4E001CB3FA /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B68EB311B31B4E001CB3FA /* ISO8601DateFormatter.m */; };
 		49B68F2511B3222E001CB3FA /* LocationUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B68F2411B3222E001CB3FA /* LocationUpdateManager.m */; };
+		DD91DF6511BF3D5D0097F6F5 /* 106-sliders.png in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF6111BF3D5D0097F6F5 /* 106-sliders.png */; };
+		DD91DF6611BF3D5D0097F6F5 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF6211BF3D5D0097F6F5 /* 103-map.png */; };
+		DD91DF6711BF3D5D0097F6F5 /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF6311BF3D5D0097F6F5 /* 20-gear2.png */; };
+		DD91DF6811BF3D5D0097F6F5 /* 07-map-marker.png in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF6411BF3D5D0097F6F5 /* 07-map-marker.png */; };
+		DD91DF9211BF3F400097F6F5 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9011BF3F400097F6F5 /* MapViewController.m */; };
+		DD91DF9311BF3F400097F6F5 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9111BF3F400097F6F5 /* MapViewController.xib */; };
+		DD91DF9711BF3F460097F6F5 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9511BF3F460097F6F5 /* DataViewController.m */; };
+		DD91DF9811BF3F460097F6F5 /* DataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9611BF3F460097F6F5 /* DataViewController.xib */; };
+		DD91DF9C11BF3F4D0097F6F5 /* GeonoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9A11BF3F4D0097F6F5 /* GeonoteViewController.m */; };
+		DD91DF9D11BF3F4D0097F6F5 /* GeonoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9B11BF3F4D0097F6F5 /* GeonoteViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,8 +61,8 @@
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* LocationUpdaterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationUpdaterViewController.xib; sourceTree = "<group>"; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		28D7ACF60DDB3853001CB0EB /* LocationUpdaterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUpdaterViewController.h; sourceTree = "<group>"; };
-		28D7ACF70DDB3853001CB0EB /* LocationUpdaterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUpdaterViewController.m; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* LocationUpdaterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationUpdaterViewController.h; path = Classes/LocationUpdaterViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* LocationUpdaterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationUpdaterViewController.m; path = Classes/LocationUpdaterViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* LocationUpdater_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUpdater_Prefix.pch; sourceTree = "<group>"; };
 		49B68DB411B31641001CB3FA /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -102,6 +112,19 @@
 		49B68F2311B3222E001CB3FA /* LocationUpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUpdateManager.h; sourceTree = "<group>"; };
 		49B68F2411B3222E001CB3FA /* LocationUpdateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUpdateManager.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* LocationUpdater-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "LocationUpdater-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DD91DF6111BF3D5D0097F6F5 /* 106-sliders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "106-sliders.png"; path = "Resources/106-sliders.png"; sourceTree = "<group>"; };
+		DD91DF6211BF3D5D0097F6F5 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "103-map.png"; path = "Resources/103-map.png"; sourceTree = "<group>"; };
+		DD91DF6311BF3D5D0097F6F5 /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "20-gear2.png"; path = "Resources/20-gear2.png"; sourceTree = "<group>"; };
+		DD91DF6411BF3D5D0097F6F5 /* 07-map-marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "07-map-marker.png"; path = "Resources/07-map-marker.png"; sourceTree = "<group>"; };
+		DD91DF8F11BF3F400097F6F5 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		DD91DF9011BF3F400097F6F5 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		DD91DF9111BF3F400097F6F5 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		DD91DF9411BF3F460097F6F5 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		DD91DF9511BF3F460097F6F5 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+		DD91DF9611BF3F460097F6F5 /* DataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataViewController.xib; sourceTree = "<group>"; };
+		DD91DF9911BF3F4D0097F6F5 /* GeonoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteViewController.h; sourceTree = "<group>"; };
+		DD91DF9A11BF3F4D0097F6F5 /* GeonoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteViewController.m; sourceTree = "<group>"; };
+		DD91DF9B11BF3F4D0097F6F5 /* GeonoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +151,6 @@
 			children = (
 				1D3623240D0F684500981E51 /* LocationUpdaterAppDelegate.h */,
 				1D3623250D0F684500981E51 /* LocationUpdaterAppDelegate.m */,
-				28D7ACF60DDB3853001CB0EB /* LocationUpdaterViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* LocationUpdaterViewController.m */,
 				49B68F2311B3222E001CB3FA /* LocationUpdateManager.h */,
 				49B68F2411B3222E001CB3FA /* LocationUpdateManager.m */,
 				49B68E5011B31720001CB3FA /* LocationUpdateRequest.h */,
@@ -150,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
+				DD91DF8C11BF3F1F0097F6F5 /* View Controllers */,
 				49B68DB211B31641001CB3FA /* Externals */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -171,9 +193,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2899E5210DE3E06400AC0155 /* LocationUpdaterViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* LocationUpdater-Info.plist */,
+				DD91DF6911BF3D610097F6F5 /* Tab Images */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -285,6 +307,36 @@
 			path = "ISO-8601-parser-0.5";
 			sourceTree = "<group>";
 		};
+		DD91DF6911BF3D610097F6F5 /* Tab Images */ = {
+			isa = PBXGroup;
+			children = (
+				DD91DF6111BF3D5D0097F6F5 /* 106-sliders.png */,
+				DD91DF6211BF3D5D0097F6F5 /* 103-map.png */,
+				DD91DF6311BF3D5D0097F6F5 /* 20-gear2.png */,
+				DD91DF6411BF3D5D0097F6F5 /* 07-map-marker.png */,
+			);
+			name = "Tab Images";
+			sourceTree = "<group>";
+		};
+		DD91DF8C11BF3F1F0097F6F5 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD91DF8F11BF3F400097F6F5 /* MapViewController.h */,
+				DD91DF9011BF3F400097F6F5 /* MapViewController.m */,
+				DD91DF9111BF3F400097F6F5 /* MapViewController.xib */,
+				DD91DF9411BF3F460097F6F5 /* DataViewController.h */,
+				DD91DF9511BF3F460097F6F5 /* DataViewController.m */,
+				DD91DF9611BF3F460097F6F5 /* DataViewController.xib */,
+				DD91DF9911BF3F4D0097F6F5 /* GeonoteViewController.h */,
+				DD91DF9A11BF3F4D0097F6F5 /* GeonoteViewController.m */,
+				DD91DF9B11BF3F4D0097F6F5 /* GeonoteViewController.xib */,
+				28D7ACF60DDB3853001CB0EB /* LocationUpdaterViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* LocationUpdaterViewController.m */,
+				2899E5210DE3E06400AC0155 /* LocationUpdaterViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -329,6 +381,13 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* LocationUpdaterViewController.xib in Resources */,
+				DD91DF6511BF3D5D0097F6F5 /* 106-sliders.png in Resources */,
+				DD91DF6611BF3D5D0097F6F5 /* 103-map.png in Resources */,
+				DD91DF6711BF3D5D0097F6F5 /* 20-gear2.png in Resources */,
+				DD91DF6811BF3D5D0097F6F5 /* 07-map-marker.png in Resources */,
+				DD91DF9311BF3F400097F6F5 /* MapViewController.xib in Resources */,
+				DD91DF9811BF3F460097F6F5 /* DataViewController.xib in Resources */,
+				DD91DF9D11BF3F4D0097F6F5 /* GeonoteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +421,9 @@
 				49B68E9911B31874001CB3FA /* CSerializedJSONData.m in Sources */,
 				49B68EC711B31B4E001CB3FA /* ISO8601DateFormatter.m in Sources */,
 				49B68F2511B3222E001CB3FA /* LocationUpdateManager.m in Sources */,
+				DD91DF9211BF3F400097F6F5 /* MapViewController.m in Sources */,
+				DD91DF9711BF3F460097F6F5 /* DataViewController.m in Sources */,
+				DD91DF9C11BF3F4D0097F6F5 /* GeonoteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
