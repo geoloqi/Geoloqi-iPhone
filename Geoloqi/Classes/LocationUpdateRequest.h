@@ -15,6 +15,6 @@
 @interface LocationUpdateRequest : ASIHTTPRequest {
 }
 
-- (void)setLocationDataFromLocation:(CLLocation *)inLocation;
+- (void)setLocationDataFromLocations:(NSArray *)locations;
 
 @end

@@ -30,7 +30,7 @@
     self.navigationItem.title = @"Choose a location";
     
     if ( ! self.geonote.location)
-        self.geonote.location = gAppDelegate.locationUpdateManager.lastKnownLocation;
+        self.geonote.location = gAppDelegate.locationUpdateManager.currentLocation;
 }
 
 - (void)viewWillDisappear:(BOOL)animated

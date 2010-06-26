@@ -12,24 +12,21 @@
 
 @implementation LocationUpdaterViewController
 
-@synthesize deviceKeyField;
-@synthesize distanceFilterSlider;
+@synthesize deviceKeyField, serverURLField;
 @synthesize significantUpdateToggle;
 @synthesize locationUpdateToggle;
-@synthesize distanceFilterLabel;
 
 - (void)viewDidLoad;
 {
 	[super viewDidLoad];
 	
-	LocationUpdateManager *locationUpdateManager = gAppDelegate.locationUpdateManager;
+	GLLocationUpdateManager *locationUpdateManager = gAppDelegate.locationUpdateManager;
 	
-	locationUpdateToggle.selected = locationUpdateManager.locationUpdatesOn;
 	significantUpdateToggle.selected = locationUpdateManager.significantUpdatesOnly;
-	significantUpdateToggle.enabled = locationUpdateToggle.selected;
+	significantUpdateToggle.enabled = locationUpdateManager.locationUpdatesOn;
 	
 	deviceKeyField.text = locationUpdateManager.deviceKey;
-	distanceFilterSlider.value = locationUpdateManager.distanceFilterDistance;
+	serverURLField.text = locationUpdateManager.serverURL;
 }
 
 - (IBAction)toggleSignificantUpdate;
@@ -37,38 +34,23 @@
 	significantUpdateToggle.selected = !significantUpdateToggle.selected;
 	gAppDelegate.locationUpdateManager.significantUpdatesOnly = significantUpdateToggle.selected;
 }
-- (IBAction)toggleLocationUpdate;
-{
-	locationUpdateToggle.selected = !locationUpdateToggle.selected;
-	gAppDelegate.locationUpdateManager.locationUpdatesOn = locationUpdateToggle.selected;
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 {
-	gAppDelegate.locationUpdateManager.deviceKey = textField.text;
+	if (textField == deviceKeyField) {
+		gAppDelegate.locationUpdateManager.deviceKey = textField.text;
+	} else if (textField == serverURLField) {
+		gAppDelegate.locationUpdateManager.serverURL = textField.text;
+	}
 	[textField resignFirstResponder];
-
-}
-
-- (IBAction)distanceFilterChanged:(UISlider *)sender;
-{
-	gAppDelegate.locationUpdateManager.distanceFilterDistance = sender.value;
-	distanceFilterLabel.text = [NSString stringWithFormat:@"%.1f", sender.value];
+	
+	return NO;
 }
 
 - (void)dealloc {
-	
-    [distanceFilterLabel release];
-    distanceFilterLabel = nil;
     
 	[significantUpdateToggle release];
 	significantUpdateToggle = nil;
-	
-    [locationUpdateToggle release];
-	locationUpdateToggle = nil;
-
-	[distanceFilterSlider release];
-	distanceFilterSlider = nil;
 
 	[deviceKeyField release];
 	deviceKeyField = nil;

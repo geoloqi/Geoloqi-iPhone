@@ -12,21 +12,17 @@
 
 @interface LocationUpdaterViewController : UIViewController {
 	IBOutlet UITextField *deviceKeyField;
-	IBOutlet UISlider *distanceFilterSlider;
+	IBOutlet UITextField *serverURLField;
 	IBOutlet UIButton *significantUpdateToggle;
-	IBOutlet UIButton *locationUpdateToggle;	
-	IBOutlet UILabel *distanceFilterLabel;
+	IBOutlet UIButton *locationUpdateToggle;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *deviceKeyField;
-@property (nonatomic, retain) IBOutlet UISlider *distanceFilterSlider;
+@property (nonatomic, retain) IBOutlet UITextField *serverURLField;
 @property (nonatomic, retain) IBOutlet UIButton *significantUpdateToggle;
 @property (nonatomic, retain) IBOutlet UIButton *locationUpdateToggle;
-@property (nonatomic, retain) IBOutlet UILabel *distanceFilterLabel;
 
 - (IBAction)toggleSignificantUpdate;
-- (IBAction)toggleLocationUpdate;
-- (IBAction)distanceFilterChanged:(UISlider *)sender;
 
 @end
 

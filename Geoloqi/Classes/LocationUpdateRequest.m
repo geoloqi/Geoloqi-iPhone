@@ -14,26 +14,33 @@
 @implementation LocationUpdateRequest
 
 
-- (void)setLocationDataFromLocation:(CLLocation *)inLocation;
-{
-	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-
-	NSMutableDictionary *positionDictionary = [NSMutableDictionary dictionary];
-	[positionDictionary setObject:[NSNumber numberWithDouble:inLocation.coordinate.latitude] forKey:@"latitude"];
-	[positionDictionary setObject:[NSNumber numberWithDouble:inLocation.coordinate.longitude] forKey:@"longitude"];
-	[positionDictionary setObject:[NSNumber numberWithDouble:inLocation.verticalAccuracy] forKey:@"vertical_accuracy"];
-	[positionDictionary setObject:[NSNumber numberWithDouble:inLocation.horizontalAccuracy] forKey:@"horizontal_accuracy"];
+- (void)setLocationDataFromLocations:(NSArray *)locations {
 	
-	NSDictionary *locationDictionary = [NSDictionary dictionaryWithObject:positionDictionary forKey:@"position"];;
-	[dictionary setObject:locationDictionary forKey:@"location"];
+	NSMutableArray *locationArray = [NSMutableArray arrayWithCapacity:[locations count]];
 	
 	ISO8601DateFormatter *dateFormatter = [[ISO8601DateFormatter alloc] init];
 	dateFormatter.includeTime = YES;
 	
-	[dictionary setObject:[dateFormatter stringFromDate:inLocation.timestamp] forKey:@"date"];
-	[dateFormatter release];
+	for (CLLocation *loc in locations) {
+		NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+		
+		NSDictionary *pos = [NSDictionary dictionaryWithObjectsAndKeys:
+							 [NSNumber numberWithDouble:loc.coordinate.latitude], @"latitude",
+							 [NSNumber numberWithDouble:loc.coordinate.longitude], @"longitude",
+							 [NSNumber numberWithDouble:loc.verticalAccuracy], @"vertical_accuracy",
+							 [NSNumber numberWithDouble:loc.horizontalAccuracy], @"horizontal_accuracy",
+							 nil];
+		
+		[dictionary setObject:[NSDictionary dictionaryWithObject:pos
+														  forKey:@"position"]
+					   forKey:@"location"];
+		
+		[dictionary setObject:[dateFormatter stringFromDate:loc.timestamp] forKey:@"date"];
+		
+		[locationArray addObject:dictionary];
+	}
 	
-	NSArray *locationArray = [NSArray arrayWithObject:dictionary];
+	[dateFormatter release];
 	
 	[self appendPostData:[[CJSONDataSerializer serializer] serializeArray:locationArray]];
 }

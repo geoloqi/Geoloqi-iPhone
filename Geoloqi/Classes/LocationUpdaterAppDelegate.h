@@ -8,19 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-#import "LocationUpdateManager.h"
+#import "GLLocationUpdateManager.h"
 
+@class LocationUpdaterViewController;
 
 
 @interface LocationUpdaterAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-    UITabBarController *tabBarController;
-	LocationUpdateManager *locationUpdateManager;
+	UITabBarController *tabBarController;
+    LocationUpdaterViewController *viewController;
+	GLLocationUpdateManager *locationUpdateManager;
 }
 
-@property (nonatomic, retain) LocationUpdateManager *locationUpdateManager;
-@property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, retain) GLLocationUpdateManager *locationUpdateManager;
+@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet LocationUpdaterViewController *viewController;
 
 @end
 

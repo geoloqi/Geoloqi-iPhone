@@ -7,14 +7,15 @@
 //
 
 #import "LocationUpdaterAppDelegate.h"
+#import "LocationUpdaterViewController.h"
 
 LocationUpdaterAppDelegate *gAppDelegate;
 
 @implementation LocationUpdaterAppDelegate
 
 @synthesize locationUpdateManager;
-@synthesize window;
-@synthesize tabBarController;
+@synthesize window, tabBarController;
+@synthesize viewController;
 
 
 #pragma mark -
@@ -24,16 +25,17 @@ LocationUpdaterAppDelegate *gAppDelegate;
     
 	gAppDelegate = self;
 	
-	self.locationUpdateManager = [[[LocationUpdateManager alloc] init] autorelease];
-	[self.locationUpdateManager startOrStopMonitoringLocationIfNecessary];
+	self.locationUpdateManager = [[[GLLocationUpdateManager alloc] init] autorelease];
+	[locationUpdateManager startOrStopMonitoringLocationIfNecessary];
 	
     // Override point for customization after application launch.
 	if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
 		NSLog(@"Launched in response to location change update.");
 	}
-    
-    // Add the view controller's view to the window and display.
-    [self.window addSubview:self.tabBarController.view];
+	
+	// Display the tab bar controller
+    [window addSubview:tabBarController.view];
+    [window makeKeyAndVisible];
 
     return YES;
 }
@@ -88,7 +90,7 @@ LocationUpdaterAppDelegate *gAppDelegate;
 
 
 - (void)dealloc {
-    [tabBarController release];
+    [viewController release];
     [window release];
 	[locationUpdateManager release];
 	locationUpdateManager = nil;
