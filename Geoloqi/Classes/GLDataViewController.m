@@ -257,15 +257,22 @@ enum {
 			return nil;
 		case kSectionTrackingToggle:
 		{
+			NSMutableString *header = [NSMutableString string];
 			
 			NSTimeInterval ago = -[gAppDelegate.locationUpdateManager.currentLocation.timestamp
 								   timeIntervalSinceNow];
 			if (ago > 60) {
-				return [NSString stringWithFormat:
-						@"Last point: %.0f min. %.0f sec. ago", floor(ago/60), fmod(ago, 60)];
+				[header appendFormat:
+						@"Last point: %.0f min. %.0f sec. ago",
+						floor(ago/60), fmod(ago, 60)];
 			} else {
-				return [NSString stringWithFormat:@"Last point: %.0f seconds ago", ago];
+				[header appendFormat:@"Last point: %.0f seconds ago", ago];
 			}
+			
+			NSUInteger pts = [gAppDelegate.locationUpdateManager.locationQueue count];
+			[header appendFormat:@"\nQueue: %d unsent point%@", pts, (pts == 1) ? @"" : @"s"];
+			
+			return header;
 		}
 //		case kSectionDistanceFilter:
 //			return @"Minimum position change";

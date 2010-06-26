@@ -29,7 +29,7 @@ NSString *const GLLocationUpdateManagerDidUpdateLocationNotification = @"GLLocat
 
 @implementation GLLocationUpdateManager
 
-@synthesize currentLocation, lastSendDate;
+@synthesize currentLocation, lastSendDate, locationQueue;
 @synthesize distanceFilterDistance, trackingFrequency, sendingFrequency;
 @synthesize deviceKey, serverURL;
 @synthesize significantUpdatesOnly;
@@ -122,12 +122,13 @@ NSString *const GLLocationUpdateManagerDidUpdateLocationNotification = @"GLLocat
 	didUpdateToLocation:(CLLocation *)newLocation
 		   fromLocation:(CLLocation *)oldLocation {
 	
-	
 	// Only capture points as frequently as the min. tracking interval
+	// These checks are done against the last saved location (currentLocation)
 	if (!oldLocation || // first update
-		([newLocation distanceFromLocation:oldLocation] > distanceFilterDistance && // check min. distance
-		 [newLocation.timestamp timeIntervalSinceDate:oldLocation.timestamp] > trackingFrequency)) {
+		([newLocation distanceFromLocation:self.currentLocation] > distanceFilterDistance && // check min. distance
+		 [newLocation.timestamp timeIntervalSinceDate:self.currentLocation.timestamp] > trackingFrequency)) {
 		
+		// currentLocation is always the point that was last accepted into the queue.
 		self.currentLocation = newLocation;
 		
 		NSLog(@"Updated to location %@ from %@", newLocation, oldLocation);

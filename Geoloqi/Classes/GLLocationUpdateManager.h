@@ -31,6 +31,7 @@ NSString *const GLLocationUpdateManagerDidUpdateLocationNotification;
 	
 }
 
+@property (readonly) NSArray *locationQueue;
 @property (nonatomic, copy) NSDate *lastSendDate;
 @property (nonatomic) NSTimeInterval trackingFrequency;
 @property (nonatomic) NSTimeInterval sendingFrequency;

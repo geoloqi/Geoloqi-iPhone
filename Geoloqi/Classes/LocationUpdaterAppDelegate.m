@@ -36,6 +36,11 @@ LocationUpdaterAppDelegate *gAppDelegate;
 	// Display the tab bar controller
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
+	
+	UIDevice *d = [UIDevice currentDevice];
+	d.batteryMonitoringEnabled = YES;
+//	NSLog(@"Name %@, Sys name %@, Sys version %@, Model %@, Idiom %d, Battery %f",
+//		  d.name, d.systemName, d.systemVersion, d.model, d.userInterfaceIdiom, d.batteryLevel);
 
     return YES;
 }

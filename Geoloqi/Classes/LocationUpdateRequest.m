@@ -13,7 +13,6 @@
 
 @implementation LocationUpdateRequest
 
-
 - (void)setLocationDataFromLocations:(NSArray *)locations {
 	
 	NSMutableArray *locationArray = [NSMutableArray arrayWithCapacity:[locations count]];
@@ -36,6 +35,27 @@
 					   forKey:@"location"];
 		
 		[dictionary setObject:[dateFormatter stringFromDate:loc.timestamp] forKey:@"date"];
+		
+		UIDevice *d = [UIDevice currentDevice];
+		GLLocationUpdateManager *man = gAppDelegate.locationUpdateManager;
+		
+		// Raw information
+		[dictionary setObject:[NSDictionary dictionaryWithObjectsAndKeys:
+							   [NSNumber numberWithInt:round(man.distanceFilterDistance)], @"distance_filter",
+							   [NSNumber numberWithInt:round(man.trackingFrequency)], @"tracking_limit",
+							   [NSNumber numberWithInt:round(man.sendingFrequency)], @"rate_limit",
+							   [NSNumber numberWithInt:round(d.batteryLevel*100)], @"battery",
+							   nil]
+					   forKey:@"raw"];
+		
+		// Client device information
+		NSDictionary *bundleInfo = [[NSBundle mainBundle] infoDictionary];
+		[dictionary setObject:[NSDictionary dictionaryWithObjectsAndKeys:
+							   [bundleInfo objectForKey:@"CFBundleDisplayName"], @"name",
+							   [bundleInfo objectForKey:@"CFBundleVersion"], @"version",
+							   [NSString stringWithFormat:@"%@ %@", d.systemName, d.systemVersion], @"platform",
+								nil]
+					   forKey:@"client"];
 		
 		[locationArray addObject:dictionary];
 	}
