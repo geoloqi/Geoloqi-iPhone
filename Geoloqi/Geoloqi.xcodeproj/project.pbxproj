@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16E4B0C011D69563009D6B43 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E4B0BE11D69563009D6B43 /* Icon.png */; };
+		16E4B0C111D69563009D6B43 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E4B0BF11D69563009D6B43 /* Icon@2x.png */; };
+		16E4B0C311D69569009D6B43 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E4B0C211D69569009D6B43 /* Default.png */; };
+		16E4B0D811D6965C009D6B43 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E4B0D711D6965C009D6B43 /* Default@2x.png */; };
 		1D3623260D0F684500981E51 /* LocationUpdaterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* LocationUpdaterAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -65,10 +69,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16E4B0BE11D69563009D6B43 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		16E4B0BF11D69563009D6B43 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		16E4B0C211D69569009D6B43 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		16E4B0D711D6965C009D6B43 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* LocationUpdaterAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUpdaterAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* LocationUpdaterAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUpdaterAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* LocationUpdater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationUpdater.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Geoloqi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geoloqi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* LocationUpdaterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationUpdaterViewController.xib; sourceTree = "<group>"; };
@@ -76,7 +84,7 @@
 		28D7ACF60DDB3853001CB0EB /* LocationUpdaterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationUpdaterViewController.h; path = Classes/LocationUpdaterViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* LocationUpdaterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationUpdaterViewController.m; path = Classes/LocationUpdaterViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* LocationUpdater_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUpdater_Prefix.pch; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Geoloqi_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geoloqi_Prefix.pch; sourceTree = "<group>"; };
 		49B68DB411B31641001CB3FA /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		49B68DB511B31641001CB3FA /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		49B68DB611B31641001CB3FA /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
@@ -123,7 +131,7 @@
 		49B68EB311B31B4E001CB3FA /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 		49B68F2311B3222E001CB3FA /* LocationUpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUpdateManager.h; sourceTree = "<group>"; };
 		49B68F2411B3222E001CB3FA /* LocationUpdateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUpdateManager.m; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* LocationUpdater-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "LocationUpdater-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Geoloqi-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Geoloqi-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		DD354F7311D666BA00EEF7BC /* GeonoteFriendPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteFriendPickerController.h; sourceTree = "<group>"; };
 		DD354F7411D666BA00EEF7BC /* GeonoteFriendPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteFriendPickerController.m; sourceTree = "<group>"; };
 		DD354F7511D666BA00EEF7BC /* GeonoteFriendPickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteFriendPickerController.xib; sourceTree = "<group>"; };
@@ -194,7 +202,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* LocationUpdater.app */,
+				1D6058910D05DD3D006BFB54 /* Geoloqi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,7 +224,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* LocationUpdater_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* Geoloqi_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -226,7 +234,11 @@
 			isa = PBXGroup;
 			children = (
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* LocationUpdater-Info.plist */,
+				8D1107310486CEB800E47090 /* Geoloqi-Info.plist */,
+				16E4B0BE11D69563009D6B43 /* Icon.png */,
+				16E4B0BF11D69563009D6B43 /* Icon@2x.png */,
+				16E4B0C211D69569009D6B43 /* Default.png */,
+				16E4B0D711D6965C009D6B43 /* Default@2x.png */,
 				DD91DF6911BF3D610097F6F5 /* Tab Images */,
 			);
 			name = Resources;
@@ -430,9 +442,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* LocationUpdater */ = {
+		1D6058900D05DD3D006BFB54 /* Geoloqi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "LocationUpdater" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Geoloqi" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -442,9 +454,9 @@
 			);
 			dependencies = (
 			);
-			name = LocationUpdater;
+			name = Geoloqi;
 			productName = LocationUpdater;
-			productReference = 1D6058910D05DD3D006BFB54 /* LocationUpdater.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Geoloqi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -452,14 +464,14 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "LocationUpdater" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Geoloqi" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* LocationUpdater */,
+				1D6058900D05DD3D006BFB54 /* Geoloqi */,
 			);
 		};
 /* End PBXProject section */
@@ -483,6 +495,10 @@
 				DD354FE111D66DCF00EEF7BC /* GeonoteRadiusViewController.xib in Resources */,
 				DD35503E11D6736200EEF7BC /* GeonoteMessageViewController.xib in Resources */,
 				DD3550B711D6794200EEF7BC /* GeonoteConfirmationViewController.xib in Resources */,
+				16E4B0C011D69563009D6B43 /* Icon.png in Resources */,
+				16E4B0C111D69563009D6B43 /* Icon@2x.png in Resources */,
+				16E4B0C311D69569009D6B43 /* Default.png in Resources */,
+				16E4B0D811D6965C009D6B43 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,9 +555,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = LocationUpdater_Prefix.pch;
-				INFOPLIST_FILE = "LocationUpdater-Info.plist";
-				PRODUCT_NAME = LocationUpdater;
+				GCC_PREFIX_HEADER = Geoloqi_Prefix.pch;
+				INFOPLIST_FILE = "Geoloqi-Info.plist";
+				PRODUCT_NAME = Geoloqi;
 			};
 			name = Debug;
 		};
@@ -551,9 +567,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = LocationUpdater_Prefix.pch;
-				INFOPLIST_FILE = "LocationUpdater-Info.plist";
-				PRODUCT_NAME = LocationUpdater;
+				GCC_PREFIX_HEADER = Geoloqi_Prefix.pch;
+				INFOPLIST_FILE = "Geoloqi-Info.plist";
+				PRODUCT_NAME = Geoloqi;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -588,7 +604,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "LocationUpdater" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Geoloqi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -597,7 +613,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "LocationUpdater" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Geoloqi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
