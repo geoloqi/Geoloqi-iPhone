@@ -130,8 +130,8 @@
 		DD91DF9B11BF3F4D0097F6F5 /* GeonoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteViewController.xib; sourceTree = "<group>"; };
 		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DD91E23A11BF522E0097F6F5 /* radius.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radius.png; sourceTree = "<group>"; };
-		DD91E23C11BF532D0097F6F5 /* RadiusAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadiusAnnotation.h; sourceTree = "<group>"; };
-		DD91E23D11BF532D0097F6F5 /* RadiusAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadiusAnnotation.m; sourceTree = "<group>"; };
+		DD91E23C11BF532D0097F6F5 /* RadiusAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadiusAnnotation.h; path = Classes/RadiusAnnotation.h; sourceTree = "<group>"; };
+		DD91E23D11BF532D0097F6F5 /* RadiusAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadiusAnnotation.m; path = Classes/RadiusAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +154,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		080E96DDFE201D6D7F000001 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				1D3623240D0F684500981E51 /* LocationUpdaterAppDelegate.h */,
@@ -163,9 +163,8 @@
 				49B68F2411B3222E001CB3FA /* LocationUpdateManager.m */,
 				49B68E5011B31720001CB3FA /* LocationUpdateRequest.h */,
 				49B68E5111B31720001CB3FA /* LocationUpdateRequest.m */,
-				DD91E23C11BF532D0097F6F5 /* RadiusAnnotation.h */,
-				DD91E23D11BF532D0097F6F5 /* RadiusAnnotation.m */,
 			);
+			name = Main;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -180,8 +179,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				080E96DDFE201D6D7F000001 /* Classes */,
-				DD91DF8C11BF3F1F0097F6F5 /* View Controllers */,
+				080E96DDFE201D6D7F000001 /* Main */,
+				DD91DF8C11BF3F1F0097F6F5 /* Tabs */,
 				49B68DB211B31641001CB3FA /* Externals */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -206,7 +205,6 @@
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* LocationUpdater-Info.plist */,
 				DD91DF6911BF3D610097F6F5 /* Tab Images */,
-				DD91E23A11BF522E0097F6F5 /* radius.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -230,10 +228,10 @@
 		49B68DB211B31641001CB3FA /* Externals */ = {
 			isa = PBXGroup;
 			children = (
-				49B68EB111B31B4E001CB3FA /* ISO-8601-parser-0.5 */,
-				49B68E7911B31874001CB3FA /* TouchJSON */,
-				49B68E1011B31672001CB3FA /* Reachability2.0 */,
 				49B68DB311B31641001CB3FA /* ASIHTTPRequest */,
+				49B68EB111B31B4E001CB3FA /* ISO-8601-parser-0.5 */,
+				49B68E1011B31672001CB3FA /* Reachability2.0 */,
+				49B68E7911B31874001CB3FA /* TouchJSON */,
 			);
 			path = Externals;
 			sourceTree = "<group>";
@@ -319,34 +317,69 @@
 			path = "ISO-8601-parser-0.5";
 			sourceTree = "<group>";
 		};
-		DD91DF6911BF3D610097F6F5 /* Tab Images */ = {
-			isa = PBXGroup;
-			children = (
-				DD91DF6111BF3D5D0097F6F5 /* 106-sliders.png */,
-				DD91DF6211BF3D5D0097F6F5 /* 103-map.png */,
-				DD91DF6311BF3D5D0097F6F5 /* 20-gear2.png */,
-				DD91DF6411BF3D5D0097F6F5 /* 07-map-marker.png */,
-			);
-			name = "Tab Images";
-			sourceTree = "<group>";
-		};
-		DD91DF8C11BF3F1F0097F6F5 /* View Controllers */ = {
+		DD354F6C11D665B500EEF7BC /* Map */ = {
 			isa = PBXGroup;
 			children = (
 				DD91DF8F11BF3F400097F6F5 /* MapViewController.h */,
 				DD91DF9011BF3F400097F6F5 /* MapViewController.m */,
 				DD91DF9111BF3F400097F6F5 /* MapViewController.xib */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		DD354F6D11D665BA00EEF7BC /* Data */ = {
+			isa = PBXGroup;
+			children = (
 				DD91DF9411BF3F460097F6F5 /* DataViewController.h */,
 				DD91DF9511BF3F460097F6F5 /* DataViewController.m */,
 				DD91DF9611BF3F460097F6F5 /* DataViewController.xib */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		DD354F6E11D665C000EEF7BC /* Geonote */ = {
+			isa = PBXGroup;
+			children = (
 				DD91DF9911BF3F4D0097F6F5 /* GeonoteViewController.h */,
 				DD91DF9A11BF3F4D0097F6F5 /* GeonoteViewController.m */,
 				DD91DF9B11BF3F4D0097F6F5 /* GeonoteViewController.xib */,
+				DD91E23C11BF532D0097F6F5 /* RadiusAnnotation.h */,
+				DD91E23D11BF532D0097F6F5 /* RadiusAnnotation.m */,
+				DD91E23A11BF522E0097F6F5 /* radius.png */,
+			);
+			name = Geonote;
+			sourceTree = "<group>";
+		};
+		DD354F6F11D665CB00EEF7BC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
 				28D7ACF60DDB3853001CB0EB /* LocationUpdaterViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* LocationUpdaterViewController.m */,
 				2899E5210DE3E06400AC0155 /* LocationUpdaterViewController.xib */,
 			);
-			name = "View Controllers";
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		DD91DF6911BF3D610097F6F5 /* Tab Images */ = {
+			isa = PBXGroup;
+			children = (
+				DD91DF6211BF3D5D0097F6F5 /* 103-map.png */,
+				DD91DF6111BF3D5D0097F6F5 /* 106-sliders.png */,
+				DD91DF6411BF3D5D0097F6F5 /* 07-map-marker.png */,
+				DD91DF6311BF3D5D0097F6F5 /* 20-gear2.png */,
+			);
+			name = "Tab Images";
+			sourceTree = "<group>";
+		};
+		DD91DF8C11BF3F1F0097F6F5 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				DD354F6C11D665B500EEF7BC /* Map */,
+				DD354F6D11D665BA00EEF7BC /* Data */,
+				DD354F6E11D665C000EEF7BC /* Geonote */,
+				DD354F6F11D665CB00EEF7BC /* Settings */,
+			);
+			name = Tabs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
