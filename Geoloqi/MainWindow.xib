@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="20"/>
+			<integer value="27"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -64,7 +64,7 @@
 				<bool key="IBUIHorizontal">NO</bool>
 				<object class="IBUIViewController" key="IBUISelectedViewController" id="965108239">
 					<object class="IBUITabBarItem" key="IBUITabBarItem" id="808848699">
-						<string key="IBUITitle">Data</string>
+						<string key="IBUITitle">Controls</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">106-sliders.png</string>
@@ -103,7 +103,7 @@
 					<reference ref="965108239"/>
 					<object class="IBUINavigationController" id="116261290">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="164163614">
-							<string key="IBUITitle">Geonote</string>
+							<string key="IBUITitle">Geonotes</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">07-map-marker.png</string>
@@ -661,42 +661,14 @@
 					<string key="className">LocationUpdaterViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>distanceFilterChanged:</string>
-							<string>toggleLocationUpdate</string>
-							<string>toggleSignificantUpdate</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UISlider</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
+						<string key="NS.key.0">toggleSignificantUpdate</string>
+						<string key="NS.object.0">id</string>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>distanceFilterChanged:</string>
-							<string>toggleLocationUpdate</string>
-							<string>toggleSignificantUpdate</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">distanceFilterChanged:</string>
-								<string key="candidateClassName">UISlider</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">toggleLocationUpdate</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">toggleSignificantUpdate</string>
-								<string key="candidateClassName">id</string>
-							</object>
+						<string key="NS.key.0">toggleSignificantUpdate</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">toggleSignificantUpdate</string>
+							<string key="candidateClassName">id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
@@ -704,17 +676,15 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>deviceKeyField</string>
-							<string>distanceFilterLabel</string>
-							<string>distanceFilterSlider</string>
 							<string>locationUpdateToggle</string>
+							<string>serverURLField</string>
 							<string>significantUpdateToggle</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UITextField</string>
-							<string>UILabel</string>
-							<string>UISlider</string>
 							<string>UIButton</string>
+							<string>UITextField</string>
 							<string>UIButton</string>
 						</object>
 					</object>
@@ -723,9 +693,8 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>deviceKeyField</string>
-							<string>distanceFilterLabel</string>
-							<string>distanceFilterSlider</string>
 							<string>locationUpdateToggle</string>
+							<string>serverURLField</string>
 							<string>significantUpdateToggle</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -735,16 +704,12 @@
 								<string key="candidateClassName">UITextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">distanceFilterLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">distanceFilterSlider</string>
-								<string key="candidateClassName">UISlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">locationUpdateToggle</string>
 								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">serverURLField</string>
+								<string key="candidateClassName">UITextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">significantUpdateToggle</string>
