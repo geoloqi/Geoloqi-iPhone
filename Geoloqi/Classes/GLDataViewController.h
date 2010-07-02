@@ -10,6 +10,8 @@
 
 NSString *const GLTrackingOnUserInfoKey;
 
+@class GLMappedSlider;
+
 @interface GLDataViewController : UITableViewController {
 	UITableViewCell *coordsCell;
 	UILabel *latLabel;
@@ -20,15 +22,15 @@ NSString *const GLTrackingOnUserInfoKey;
 	
 	UITableViewCell *trackingFrequencyCell;
 	UILabel *trackingFrequencyLabel;
-	UISlider *trackingFrequencySlider;
+	GLMappedSlider *trackingFrequencySlider;
 	
 	UITableViewCell *distanceFilterCell;
-	UISlider *distanceFilterSlider;
 	UILabel *distanceFilterLabel;
+	GLMappedSlider *distanceFilterSlider;
 	
 	UITableViewCell *sendingFrequencyCell;
 	UILabel *sendingFrequencyLabel;
-	UISlider *sendingFrequencySlider;
+	GLMappedSlider *sendingFrequencySlider;
 }
 @property (nonatomic, retain) IBOutlet UITableViewCell *coordsCell;
 @property (nonatomic, retain) IBOutlet UILabel *latLabel;
@@ -40,18 +42,18 @@ NSString *const GLTrackingOnUserInfoKey;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *distanceFilterCell;
 @property (nonatomic, retain) IBOutlet UILabel *distanceFilterLabel;
-@property (nonatomic, retain) IBOutlet UISlider *distanceFilterSlider;
-- (void)changeDistanceFilter:(UISlider *)sender;
+@property (nonatomic, retain) IBOutlet GLMappedSlider *distanceFilterSlider;
+- (void)changeDistanceFilter:(GLMappedSlider *)sender;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *trackingFrequencyCell;
 @property (nonatomic, retain) IBOutlet UILabel *trackingFrequencyLabel;
-@property (nonatomic, retain) IBOutlet UISlider *trackingFrequencySlider;
-- (void)changeTrackingFrequency:(UISlider *)sender;
+@property (nonatomic, retain) IBOutlet GLMappedSlider *trackingFrequencySlider;
+- (void)changeTrackingFrequency:(GLMappedSlider *)sender;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *sendingFrequencyCell;
 @property (nonatomic, retain) IBOutlet UILabel *sendingFrequencyLabel;
-@property (nonatomic, retain) IBOutlet UISlider *sendingFrequencySlider;
-- (void)changeSendingFrequency:(UISlider *)sender;
+@property (nonatomic, retain) IBOutlet GLMappedSlider *sendingFrequencySlider;
+- (void)changeSendingFrequency:(GLMappedSlider *)sender;
 
 
 @end

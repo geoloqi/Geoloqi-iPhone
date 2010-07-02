@@ -9,6 +9,7 @@
 #import "GLDataViewController.h"
 #import "GLLocationUpdateManager.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GLMappedSlider.h"
 
 NSString *const GLTrackingOnUserInfoKey = @"GLTrackingOnUserInfoKey";
 
@@ -24,7 +25,6 @@ enum {
 
 @interface GLDataViewController () // Private methods
 - (void)updateLabels;
-- (float)sliderValue;
 - (NSString *)formatSeconds:(NSTimeInterval)s;
 @end
 
@@ -43,9 +43,26 @@ enum {
 	// Load from defaults
 	trackingToggleSwitch.on = gAppDelegate.locationUpdateManager.locationUpdatesOn;
 	//trackingFrequencySlider.enabled = sender.on;
-	distanceFilterSlider.value = gAppDelegate.locationUpdateManager.distanceFilterDistance;
-	trackingFrequencySlider.value = gAppDelegate.locationUpdateManager.trackingFrequency;
-	sendingFrequencySlider.value = gAppDelegate.locationUpdateManager.sendingFrequency;
+	
+	NSDictionary *sliderMappings = [NSDictionary dictionaryWithContentsOfFile:
+									[[NSBundle mainBundle] pathForResource:@"SliderMappings"
+																	ofType:@"plist"]];
+	
+	distanceFilterSlider.mapping = [sliderMappings objectForKey:@"distance_filter"];
+	distanceFilterSlider.target = self;
+	distanceFilterSlider.action = @selector(changeDistanceFilter:);
+	distanceFilterSlider.mappedValue = gAppDelegate.locationUpdateManager.distanceFilterDistance;
+	
+	trackingFrequencySlider.mapping = [sliderMappings objectForKey:@"tracking_limit"];
+	trackingFrequencySlider.target = self;
+	trackingFrequencySlider.action = @selector(changeTrackingFrequency:);
+	trackingFrequencySlider.mappedValue = gAppDelegate.locationUpdateManager.trackingFrequency;
+	
+	sendingFrequencySlider.mapping = [sliderMappings objectForKey:@"rate_limit"];
+	sendingFrequencySlider.target = self;
+	sendingFrequencySlider.action = @selector(changeSendingFrequency:);
+	sendingFrequencySlider.mappedValue = gAppDelegate.locationUpdateManager.sendingFrequency;
+	
 	[self updateLabels];
 	
 	// Set up cells
@@ -144,27 +161,24 @@ enum {
 											   coord.latitude, coord.longitude];
 }
 
+#pragma mark -
+#pragma mark Sliders
+
 - (void)toggleTracking:(UISwitch *)sender {
 	gAppDelegate.locationUpdateManager.locationUpdatesOn = sender.on;
 	//trackingFrequencySlider.enabled = sender.on;
 }
-- (void)changeDistanceFilter:(UISlider *)sender {
-	sender.value = round(sender.value / 50) * 50;
+- (void)changeDistanceFilter:(GLMappedSlider *)sender {
 	//TODO: use kCLDistanceFilterNone?
-	gAppDelegate.locationUpdateManager.distanceFilterDistance = sender.value;
+	gAppDelegate.locationUpdateManager.distanceFilterDistance = sender.mappedValue;
 	[self updateLabels];
 }
-- (void)changeTrackingFrequency:(UISlider *)sender {
-	//float val = log2(sender.value) / log2(5);
-	float div = (sender.value < 60) ? 10.0 : 60.0;
-	sender.value = round(sender.value / div) * div;
-	gAppDelegate.locationUpdateManager.trackingFrequency = sender.value;
+- (void)changeTrackingFrequency:(GLMappedSlider *)sender {
+	gAppDelegate.locationUpdateManager.trackingFrequency = sender.mappedValue;
 	[self updateLabels];
 }
-- (void)changeSendingFrequency:(UISlider *)sender {
-	float div = (sender.value < 60) ? 5.0 : 60.0;
-	sender.value = round(sender.value / div) * div;
-	gAppDelegate.locationUpdateManager.sendingFrequency = sender.value;
+- (void)changeSendingFrequency:(GLMappedSlider *)sender {
+	gAppDelegate.locationUpdateManager.sendingFrequency = sender.mappedValue;
 	[self updateLabels];
 }
 - (void)updateLabels {
@@ -177,16 +191,9 @@ enum {
 	}
 	
 	distanceFilterLabel.text = [NSString stringWithFormat:@"%.0fm",
-								distanceFilterSlider.value];
-	trackingFrequencyLabel.text = [self formatSeconds:trackingFrequencySlider.value];
-	sendingFrequencyLabel.text = [self formatSeconds:sendingFrequencySlider.value];
-}
-- (float)sliderValue {
-	// Transform the slider's value (1.0-4.0) to a frequency (40-10)
-	// This should probably be done differently for a larger range (logarithmic?)
-	return roundf(trackingFrequencySlider.maximumValue +
-				  trackingFrequencySlider.minimumValue -
-				  trackingFrequencySlider.value) * 10;
+								distanceFilterSlider.mappedValue];
+	trackingFrequencyLabel.text = [self formatSeconds:trackingFrequencySlider.mappedValue];
+	sendingFrequencyLabel.text = [self formatSeconds:sendingFrequencySlider.mappedValue];
 }
 - (NSString *)formatSeconds:(NSTimeInterval)s {
 	if (s < 60) {
@@ -266,7 +273,7 @@ enum {
 						@"Last point: %.0f min. %.0f sec. ago",
 						floor(ago/60), fmod(ago, 60)];
 			} else {
-				[header appendFormat:@"Last point: %.0f seconds ago", ago];
+				[header appendFormat:@"Last point: %.0f second%@ ago", ago, (ago == 1.0) ? @"" : @"s"];
 			}
 			
 			NSUInteger pts = [gAppDelegate.locationUpdateManager.locationQueue count];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* GLMappedSlider.m */; };
 		16E4B0C011D69563009D6B43 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E4B0BE11D69563009D6B43 /* Icon.png */; };
 		16E4B0C111D69563009D6B43 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E4B0BF11D69563009D6B43 /* Icon@2x.png */; };
 		16E4B0C311D69569009D6B43 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E4B0C211D69569009D6B43 /* Default.png */; };
@@ -16,6 +17,7 @@
 		16EE823F11D6A09A0026503D /* LocationUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE823E11D6A09A0026503D /* LocationUpdateRequest.m */; };
 		16EE824911D6A1760026503D /* LocationUpdaterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE824811D6A1760026503D /* LocationUpdaterAppDelegate.m */; };
 		16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EE827611D6A1FA0026503D /* GLDataViewController.xib */; };
+		16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16EE832911D6C96C0026503D /* SliderMappings.plist */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -69,6 +71,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		166BE45F11DDDC9000F41B0B /* GLMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMappedSlider.h; sourceTree = "<group>"; };
+		166BE46011DDDC9000F41B0B /* GLMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMappedSlider.m; sourceTree = "<group>"; };
 		16E4B0BE11D69563009D6B43 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		16E4B0BF11D69563009D6B43 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		16E4B0C211D69569009D6B43 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 		16EE824711D6A1760026503D /* LocationUpdaterAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUpdaterAppDelegate.h; sourceTree = "<group>"; };
 		16EE824811D6A1760026503D /* LocationUpdaterAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUpdaterAppDelegate.m; sourceTree = "<group>"; };
 		16EE827611D6A1FA0026503D /* GLDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLDataViewController.xib; sourceTree = "<group>"; };
+		16EE832911D6C96C0026503D /* SliderMappings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SliderMappings.plist; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Geoloqi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geoloqi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -188,6 +193,7 @@
 		080E96DDFE201D6D7F000001 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				16EE832911D6C96C0026503D /* SliderMappings.plist */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				16EE824711D6A1760026503D /* LocationUpdaterAppDelegate.h */,
 				16EE824811D6A1760026503D /* LocationUpdaterAppDelegate.m */,
@@ -368,6 +374,8 @@
 				16EE827611D6A1FA0026503D /* GLDataViewController.xib */,
 				16EE822911D69FD70026503D /* GLDataViewController.h */,
 				16EE822A11D69FD70026503D /* GLDataViewController.m */,
+				166BE45F11DDDC9000F41B0B /* GLMappedSlider.h */,
+				166BE46011DDDC9000F41B0B /* GLMappedSlider.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -499,6 +507,7 @@
 				16E4B0C311D69569009D6B43 /* Default.png in Resources */,
 				16E4B0D811D6965C009D6B43 /* Default@2x.png in Resources */,
 				16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */,
+				16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +550,7 @@
 				16EE822B11D69FD70026503D /* GLDataViewController.m in Sources */,
 				16EE823F11D6A09A0026503D /* LocationUpdateRequest.m in Sources */,
 				16EE824911D6A1760026503D /* LocationUpdaterAppDelegate.m in Sources */,
+				166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
