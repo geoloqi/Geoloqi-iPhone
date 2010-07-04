@@ -18,6 +18,8 @@
 		16EE824911D6A1760026503D /* LocationUpdaterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE824811D6A1760026503D /* LocationUpdaterAppDelegate.m */; };
 		16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EE827611D6A1FA0026503D /* GLDataViewController.xib */; };
 		16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16EE832911D6C96C0026503D /* SliderMappings.plist */; };
+		16EE842A11D72C450026503D /* GLMutablePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE842911D72C450026503D /* GLMutablePolyline.m */; };
+		16EE843511D72CE00026503D /* GLMutablePolylineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE843411D72CE00026503D /* GLMutablePolylineView.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -65,8 +67,8 @@
 		DD91DF6611BF3D5D0097F6F5 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF6211BF3D5D0097F6F5 /* 103-map.png */; };
 		DD91DF6711BF3D5D0097F6F5 /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF6311BF3D5D0097F6F5 /* 20-gear2.png */; };
 		DD91DF6811BF3D5D0097F6F5 /* 07-map-marker.png in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF6411BF3D5D0097F6F5 /* 07-map-marker.png */; };
-		DD91DF9211BF3F400097F6F5 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9011BF3F400097F6F5 /* MapViewController.m */; };
-		DD91DF9311BF3F400097F6F5 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9111BF3F400097F6F5 /* MapViewController.xib */; };
+		DD91DF9211BF3F400097F6F5 /* GLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9011BF3F400097F6F5 /* GLMapViewController.m */; };
+		DD91DF9311BF3F400097F6F5 /* GLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */; };
 		DD91E15E11BF4C1F0097F6F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,10 @@
 		16EE824811D6A1760026503D /* LocationUpdaterAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUpdaterAppDelegate.m; sourceTree = "<group>"; };
 		16EE827611D6A1FA0026503D /* GLDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLDataViewController.xib; sourceTree = "<group>"; };
 		16EE832911D6C96C0026503D /* SliderMappings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SliderMappings.plist; sourceTree = "<group>"; };
+		16EE842811D72C450026503D /* GLMutablePolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMutablePolyline.h; sourceTree = "<group>"; };
+		16EE842911D72C450026503D /* GLMutablePolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMutablePolyline.m; sourceTree = "<group>"; };
+		16EE843311D72CE00026503D /* GLMutablePolylineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMutablePolylineView.h; sourceTree = "<group>"; };
+		16EE843411D72CE00026503D /* GLMutablePolylineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMutablePolylineView.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Geoloqi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geoloqi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -164,9 +170,9 @@
 		DD91DF6211BF3D5D0097F6F5 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "103-map.png"; path = "Resources/103-map.png"; sourceTree = "<group>"; };
 		DD91DF6311BF3D5D0097F6F5 /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "20-gear2.png"; path = "Resources/20-gear2.png"; sourceTree = "<group>"; };
 		DD91DF6411BF3D5D0097F6F5 /* 07-map-marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "07-map-marker.png"; path = "Resources/07-map-marker.png"; sourceTree = "<group>"; };
-		DD91DF8F11BF3F400097F6F5 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		DD91DF9011BF3F400097F6F5 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		DD91DF9111BF3F400097F6F5 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		DD91DF8F11BF3F400097F6F5 /* GLMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMapViewController.h; sourceTree = "<group>"; };
+		DD91DF9011BF3F400097F6F5 /* GLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMapViewController.m; sourceTree = "<group>"; };
+		DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLMapViewController.xib; sourceTree = "<group>"; };
 		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -204,6 +210,17 @@
 			);
 			name = Main;
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		16EE842711D72C290026503D /* Mutable polyline */ = {
+			isa = PBXGroup;
+			children = (
+				16EE842811D72C450026503D /* GLMutablePolyline.h */,
+				16EE842911D72C450026503D /* GLMutablePolyline.m */,
+				16EE843311D72CE00026503D /* GLMutablePolylineView.h */,
+				16EE843411D72CE00026503D /* GLMutablePolylineView.m */,
+			);
+			name = "Mutable polyline";
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -361,9 +378,10 @@
 		DD354F6C11D665B500EEF7BC /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				DD91DF8F11BF3F400097F6F5 /* MapViewController.h */,
-				DD91DF9011BF3F400097F6F5 /* MapViewController.m */,
-				DD91DF9111BF3F400097F6F5 /* MapViewController.xib */,
+				DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */,
+				DD91DF8F11BF3F400097F6F5 /* GLMapViewController.h */,
+				DD91DF9011BF3F400097F6F5 /* GLMapViewController.m */,
+				16EE842711D72C290026503D /* Mutable polyline */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -495,7 +513,7 @@
 				DD91DF6611BF3D5D0097F6F5 /* 103-map.png in Resources */,
 				DD91DF6711BF3D5D0097F6F5 /* 20-gear2.png in Resources */,
 				DD91DF6811BF3D5D0097F6F5 /* 07-map-marker.png in Resources */,
-				DD91DF9311BF3F400097F6F5 /* MapViewController.xib in Resources */,
+				DD91DF9311BF3F400097F6F5 /* GLMapViewController.xib in Resources */,
 				DD354F7711D666BA00EEF7BC /* GeonoteFriendPickerController.xib in Resources */,
 				DD354F7D11D6683800EEF7BC /* addresses.png in Resources */,
 				DD354FB711D66BB500EEF7BC /* GeonoteMapViewController.xib in Resources */,
@@ -538,7 +556,7 @@
 				49B68E9811B31874001CB3FA /* CJSONSerializer.m in Sources */,
 				49B68E9911B31874001CB3FA /* CSerializedJSONData.m in Sources */,
 				49B68EC711B31B4E001CB3FA /* ISO8601DateFormatter.m in Sources */,
-				DD91DF9211BF3F400097F6F5 /* MapViewController.m in Sources */,
+				DD91DF9211BF3F400097F6F5 /* GLMapViewController.m in Sources */,
 				DD354F7611D666BA00EEF7BC /* GeonoteFriendPickerController.m in Sources */,
 				DD354F9111D669C300EEF7BC /* GeonoteNavigationController.m in Sources */,
 				DD354FB611D66BB500EEF7BC /* GeonoteMapViewController.m in Sources */,
@@ -550,6 +568,8 @@
 				16EE822B11D69FD70026503D /* GLDataViewController.m in Sources */,
 				16EE823F11D6A09A0026503D /* LocationUpdateRequest.m in Sources */,
 				16EE824911D6A1760026503D /* LocationUpdaterAppDelegate.m in Sources */,
+				16EE842A11D72C450026503D /* GLMutablePolyline.m in Sources */,
+				16EE843511D72CE00026503D /* GLMutablePolylineView.m in Sources */,
 				166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

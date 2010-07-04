@@ -47,6 +47,7 @@
 							   [NSNumber numberWithInt:round(d.batteryLevel*100)], @"battery",
 							   nil]
 					   forKey:@"raw"];
+		// NB: it appears iOS rounds the reported battery level to increments of 5%
 		
 		// Client device information
 		NSDictionary *bundleInfo = [[NSBundle mainBundle] infoDictionary];
@@ -54,7 +55,7 @@
 							   [bundleInfo objectForKey:@"CFBundleDisplayName"], @"name",
 							   [bundleInfo objectForKey:@"CFBundleVersion"], @"version",
 							   [NSString stringWithFormat:@"%@ %@", d.systemName, d.systemVersion], @"platform",
-								nil]
+							   nil]
 					   forKey:@"client"];
 		
 		[locationArray addObject:dictionary];

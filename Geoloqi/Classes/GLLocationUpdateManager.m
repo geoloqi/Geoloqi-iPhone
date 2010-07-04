@@ -38,7 +38,7 @@ NSString *const GLLocationUpdateManagerDidUpdateLocationNotification = @"GLLocat
 + (void)initialize {
 	[[NSUserDefaults standardUserDefaults] registerDefaults:
 	 [NSDictionary dictionaryWithObjectsAndKeys:
-	  @"1234567890", LocationUpdateManagerDeviceKeyUserDefaultsKey,
+	  @"1234567890", LocationUpdateManagerDeviceKeyUserDefaultsKey, //TODO: should this be removed? (jtbandes 7/3)
 	  @"http://api.geoloqi.com/api/location/key/%@", LocationUpdateManagerServerURLKey,
 	  nil]];
 }
@@ -131,7 +131,9 @@ NSString *const GLLocationUpdateManagerDidUpdateLocationNotification = @"GLLocat
 		// currentLocation is always the point that was last accepted into the queue.
 		self.currentLocation = newLocation;
 		
+#if GL_LOCMAN_DEBUG
 		NSLog(@"Updated to location %@ from %@", newLocation, oldLocation);
+#endif
 		
 		// Notify observers about the location change
 		[[NSNotificationCenter defaultCenter]
@@ -144,12 +146,16 @@ NSString *const GLLocationUpdateManagerDidUpdateLocationNotification = @"GLLocat
 		// Send the points if possible
 		[self scheduleSending];
 	} else {
+#if GL_LOCMAN_DEBUG
 		NSLog(@"Location update (to %@; from %@) rejected", newLocation, oldLocation);
+#endif
 	}
 }
 
 - (void)scheduleSending {
+#if GL_LOCMAN_DEBUG
 	NSLog(@"Checking queue");
+#endif
 	
 	// Don't send if there aren't any points
 	if ([locationQueue count] <= 0) return;
@@ -168,11 +174,15 @@ NSString *const GLLocationUpdateManagerDidUpdateLocationNotification = @"GLLocat
 			[[NSRunLoop mainRunLoop] addTimer:sendingTimer
 									  forMode:NSDefaultRunLoopMode];
 			
+#if GL_LOCMAN_DEBUG
 			NSLog(@"Scheduling queue processing for %@ (now %@)",
 				  [sendingTimer fireDate], [NSDate date]);
+#endif
 		}
 	} else {
+#if GL_LOCMAN_DEBUG
 		NSLog(@"Processing queue immediately");
+#endif
 		[self processQueue:nil];
 	}
 }
@@ -184,11 +194,15 @@ NSString *const GLLocationUpdateManagerDidUpdateLocationNotification = @"GLLocat
 	
 	// Don't send 2 requests at once
 	if (currentRequest.inProgress) {
+#if GL_LOCMAN_DEBUG
 		NSLog(@"Processing queue aborted: request in progress");
+#endif
 		return;
 	}
 	
+#if GL_LOCMAN_DEBUG
 	NSLog(@"Processing queue %@", locationQueue);
+#endif
 	
 	NSString *urlString = [NSString stringWithFormat:
 						   self.serverURL, self.deviceKey];
@@ -204,7 +218,9 @@ NSString *const GLLocationUpdateManagerDidUpdateLocationNotification = @"GLLocat
 }
 
 - (void)requestFinished:(LocationUpdateRequest *)inRequest {
+#if GL_LOCMAN_DEBUG
 	NSLog(@"Location update succeeded.");
+#endif
 	self.lastSendDate = [NSDate date];
 	[currentRequest release];
 	currentRequest = nil;
@@ -216,7 +232,9 @@ NSString *const GLLocationUpdateManagerDidUpdateLocationNotification = @"GLLocat
 }
 
 - (void)requestFailed:(LocationUpdateRequest *)inRequest {
+#if GL_LOCMAN_DEBUG
 	NSLog(@"Location update failed.");
+#endif
 	[currentRequest release];
 	currentRequest = nil;
 	
