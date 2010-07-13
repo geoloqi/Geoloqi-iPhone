@@ -70,6 +70,7 @@
 		DD91DF9211BF3F400097F6F5 /* GLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9011BF3F400097F6F5 /* GLMapViewController.m */; };
 		DD91DF9311BF3F400097F6F5 /* GLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */; };
 		DD91E15E11BF4C1F0097F6F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */; };
+		DD97008811EBFB3D00C91472 /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97008711EBFB3D00C91472 /* ToolbarLocate.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +175,7 @@
 		DD91DF9011BF3F400097F6F5 /* GLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMapViewController.m; sourceTree = "<group>"; };
 		DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLMapViewController.xib; sourceTree = "<group>"; };
 		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DD97008711EBFB3D00C91472 /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				DD354F7C11D6683800EEF7BC /* addresses.png */,
+				DD97008711EBFB3D00C91472 /* ToolbarLocate.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				16E4B0D811D6965C009D6B43 /* Default@2x.png in Resources */,
 				16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */,
 				16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */,
+				DD97008811EBFB3D00C91472 /* ToolbarLocate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

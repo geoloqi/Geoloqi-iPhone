@@ -21,6 +21,8 @@
 
 @property (nonatomic, retain) Geonote *geonote;
 
+- (void)tappedLocate:(id)sender;
 - (IBAction)tappedNext:(id)sender;
+- (void)zoomMapToLocation:(CLLocation *)location;
 
 @end
