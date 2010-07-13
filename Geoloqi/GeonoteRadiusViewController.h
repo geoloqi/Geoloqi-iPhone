@@ -11,16 +11,16 @@
 
 @class Geonote;
 
-@interface GeonoteRadiusViewController : UIViewController
+@interface GeonoteRadiusViewController : UIViewController <MKMapViewDelegate>
 {
     IBOutlet MKMapView *mapView;
+    IBOutlet UISegmentedControl *radiusPicker;
     Geonote *geonote;
 }
 
 @property (nonatomic, retain) Geonote *geonote;
-@property (nonatomic, assign) MKCoordinateRegion startingRegion;
-@property (nonatomic, assign) CLLocationCoordinate2D startingCenterCoordinate;
 
+- (IBAction)radiusPickerChanged:(UISegmentedControl *)picker;
 - (IBAction)tappedNext:(id)sender;
 
 @end

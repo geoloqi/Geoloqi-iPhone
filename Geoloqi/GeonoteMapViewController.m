@@ -18,6 +18,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        
+    if ( ! self.geonote.location)
+        self.geonote.location = gAppDelegate.locationUpdateManager.currentLocation;
     
     self.navigationItem.titleView = searchBar;
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolbarLocate.png"]
@@ -33,9 +36,6 @@
     [super viewWillAppear:animated];
     
     self.navigationItem.title = @"Choose a location";
-    
-    if ( ! self.geonote.location)
-        self.geonote.location = gAppDelegate.locationUpdateManager.currentLocation;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -63,24 +63,23 @@
     if (gAppDelegate.locationUpdateManager.currentLocation)
     {
         location = gAppDelegate.locationUpdateManager.currentLocation;
-        self.geonote.location = location;
         [self zoomMapToLocation:location];
     }
     else if (mapView.userLocationVisible)
     {
         location = mapView.userLocation.location;
-        self.geonote.location = location;
         [self zoomMapToLocation:location];
     }
 }
 
 - (IBAction)tappedNext:(id)sender
 {
+    self.geonote.location = [[[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude 
+                                                        longitude:mapView.centerCoordinate.longitude] autorelease];
+
     GeonoteRadiusViewController *radiusViewController = [[[GeonoteRadiusViewController alloc] initWithNibName:nil bundle:nil] autorelease];
     
     radiusViewController.geonote = self.geonote;
-    radiusViewController.startingRegion = mapView.region;
-    radiusViewController.startingCenterCoordinate = mapView.centerCoordinate;
     
     [self.navigationController pushViewController:radiusViewController animated:YES];
 }
@@ -130,16 +129,11 @@
         {
             if ([[json objectForKey:@"results"] count])
             {
-                // TODO: drop a pin with this label
-                //
-                NSString *name = [[[json objectForKey:@"results"] objectAtIndex:0] objectForKey:@"formatted_address"];
-                
                 NSDictionary *locationInfo = [[[[json objectForKey:@"results"] objectAtIndex:0] objectForKey:@"geometry"] objectForKey:@"location"];
                 
                 CLLocation *resultLocation = [[[CLLocation alloc] initWithLatitude:[[locationInfo objectForKey:@"lat"] floatValue] 
                                                                          longitude:[[locationInfo objectForKey:@"lng"] floatValue]] autorelease];
                 
-                self.geonote.location = resultLocation;
                 [self zoomMapToLocation:resultLocation];
                 
                 nextButton.enabled = YES;
