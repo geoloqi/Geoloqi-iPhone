@@ -70,7 +70,7 @@
 					<object class="IBUIButton" id="417910615">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{19, 282}, {280, 37}}</string>
+						<string key="NSFrame">{{19, 310}, {280, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -99,7 +99,7 @@
 					<object class="IBUIImageView" id="320218948">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{72, 99}, {175, 175}}</string>
+						<string key="NSFrame">{{71, 108}, {175, 175}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -163,8 +163,8 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="570813907"/>
-							<reference ref="320218948"/>
 							<reference ref="417910615"/>
+							<reference ref="320218948"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
