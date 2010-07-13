@@ -18,6 +18,8 @@
 }
 
 @property (nonatomic, retain) Geonote *geonote;
+@property (nonatomic, assign) MKCoordinateRegion startingRegion;
+@property (nonatomic, assign) CLLocationCoordinate2D startingCenterCoordinate;
 
 - (IBAction)tappedNext:(id)sender;
 

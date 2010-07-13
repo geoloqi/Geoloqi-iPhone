@@ -13,6 +13,16 @@
 @implementation GeonoteRadiusViewController
 
 @synthesize geonote;
+@synthesize startingRegion;
+@synthesize startingCenterCoordinate;
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    mapView.region = self.startingRegion;
+    mapView.centerCoordinate = self.startingCenterCoordinate;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {

@@ -79,6 +79,8 @@
     GeonoteRadiusViewController *radiusViewController = [[[GeonoteRadiusViewController alloc] initWithNibName:nil bundle:nil] autorelease];
     
     radiusViewController.geonote = self.geonote;
+    radiusViewController.startingRegion = mapView.region;
+    radiusViewController.startingCenterCoordinate = mapView.centerCoordinate;
     
     [self.navigationController pushViewController:radiusViewController animated:YES];
 }
