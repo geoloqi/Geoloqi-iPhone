@@ -53,7 +53,8 @@
 																				   error:&err];
 		if (points) {
 			for (NSDictionary *point in [points objectForKey:@"points"]) {
-				if ([[point valueForKeyPath:@"location.position.horizontal_accuracy"] doubleValue] < 100) {
+				if ( ! [[point valueForKeyPath:@"location.position.horizontal_accuracy"] isEqual:[NSNull null]] &&
+                    [[point valueForKeyPath:@"location.position.horizontal_accuracy"] doubleValue] < 100) {
 					CLLocationCoordinate2D coord;
 					coord.latitude = [[point valueForKeyPath:@"location.position.latitude"] doubleValue];
 					coord.longitude = [[point valueForKeyPath:@"location.position.longitude"] doubleValue];
@@ -64,8 +65,9 @@
 		}
 	}
 	
-	[map setRegion:MKCoordinateRegionForMapRect(line.boundingMapRect)
-		  animated:YES];
+    if ( ! MKMapRectIsNull(line.boundingMapRect))
+        [map setRegion:MKCoordinateRegionForMapRect(line.boundingMapRect)
+              animated:YES];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request {
