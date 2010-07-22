@@ -7,9 +7,18 @@
 //
 
 #import "GeonoteMapViewController.h"
-#import "GeonoteRadiusViewController.h"
+#import "GeonoteMessageViewController.h"
 #import "Geonote.h"
 #import "CJSONDeserializer.h"
+
+@interface GeonoteMapViewController (GeonoteMapViewControllerPrivate)
+
+- (void)hideRadiusOverlay;
+- (void)showRadiusOverlay;
+
+@end
+
+#pragma mark -
 
 @implementation GeonoteMapViewController
 
@@ -77,11 +86,11 @@
     self.geonote.location = [[[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude 
                                                         longitude:mapView.centerCoordinate.longitude] autorelease];
 
-    GeonoteRadiusViewController *radiusViewController = [[[GeonoteRadiusViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+    GeonoteMessageViewController *messageViewController = [[[GeonoteMessageViewController alloc] initWithNibName:nil bundle:nil] autorelease];
     
-    radiusViewController.geonote = self.geonote;
+    messageViewController.geonote = self.geonote;
     
-    [self.navigationController pushViewController:radiusViewController animated:YES];
+    [self.navigationController pushViewController:messageViewController animated:YES];
 }
 
 - (void)zoomMapToLocation:(CLLocation *)location
@@ -98,6 +107,33 @@
     region.span   = span;
     
     [mapView setRegion:region animated:YES];
+    
+    [self hideRadiusOverlay];
+    [self showRadiusOverlay];
+}
+
+- (void)hideRadiusOverlay
+{
+    [mapView removeOverlays:mapView.overlays];
+}
+
+- (void)showRadiusOverlay
+{
+    if ( ! [mapView.overlays count])
+    {
+        MKCoordinateSpan currentSpan = mapView.region.span;
+
+        // 111.0 km/degree of latitude * 1000 m/km * current delta * 40% of the half-screen width
+        //
+        CGFloat desiredRadius = 111.0 * 1000 * currentSpan.latitudeDelta * 0.4;
+        
+        MKCircle *circle = [MKCircle circleWithCenterCoordinate:mapView.centerCoordinate radius:desiredRadius];
+        
+        [mapView addOverlay:circle];
+        [mapView setVisibleMapRect:circle.boundingMapRect animated:NO];
+        
+        self.geonote.radius = desiredRadius;
+    }
 }
 
 #pragma mark -
@@ -140,6 +176,29 @@
             }
         }
     }
+}
+
+#pragma mark -
+
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+{
+    [self hideRadiusOverlay];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    [self showRadiusOverlay];
+}
+
+- (MKOverlayView *)mapView:(MKMapView *)inMapView viewForOverlay:(id <MKOverlay>)overlay
+{
+    MKCircleView *circleView = [[[MKCircleView alloc] initWithCircle:(MKCircle *)overlay] autorelease];
+    
+    circleView.fillColor   = [UIColor colorWithRed:0.214 green:0.585 blue:0.807 alpha:0.4];
+    circleView.strokeColor = [UIColor colorWithRed:0.214 green:0.585 blue:0.807 alpha:1.0];
+    circleView.lineWidth   = 2.0;
+    
+    return circleView;
 }
 
 @end

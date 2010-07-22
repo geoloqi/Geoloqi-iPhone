@@ -11,7 +11,7 @@
 
 @class Geonote;
 
-@interface GeonoteMapViewController : UIViewController <UISearchBarDelegate>
+@interface GeonoteMapViewController : UIViewController <UISearchBarDelegate, MKMapViewDelegate>
 {
     IBOutlet UISearchBar *searchBar;
     IBOutlet MKMapView *mapView;

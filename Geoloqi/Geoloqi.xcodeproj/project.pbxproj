@@ -56,8 +56,6 @@
 		DD354F9111D669C300EEF7BC /* GeonoteNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354F8F11D669C300EEF7BC /* GeonoteNavigationController.m */; };
 		DD354FB611D66BB500EEF7BC /* GeonoteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354FB411D66BB500EEF7BC /* GeonoteMapViewController.m */; };
 		DD354FB711D66BB500EEF7BC /* GeonoteMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD354FB511D66BB500EEF7BC /* GeonoteMapViewController.xib */; };
-		DD354FE011D66DCF00EEF7BC /* GeonoteRadiusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354FDE11D66DCF00EEF7BC /* GeonoteRadiusViewController.m */; };
-		DD354FE111D66DCF00EEF7BC /* GeonoteRadiusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD354FDF11D66DCF00EEF7BC /* GeonoteRadiusViewController.xib */; };
 		DD35501211D6709D00EEF7BC /* Geonote.m in Sources */ = {isa = PBXBuildFile; fileRef = DD35501111D6709D00EEF7BC /* Geonote.m */; };
 		DD35503D11D6736200EEF7BC /* GeonoteMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD35503B11D6736200EEF7BC /* GeonoteMessageViewController.m */; };
 		DD35503E11D6736200EEF7BC /* GeonoteMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD35503C11D6736200EEF7BC /* GeonoteMessageViewController.xib */; };
@@ -156,9 +154,6 @@
 		DD354FB311D66BB500EEF7BC /* GeonoteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteMapViewController.h; sourceTree = "<group>"; };
 		DD354FB411D66BB500EEF7BC /* GeonoteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteMapViewController.m; sourceTree = "<group>"; };
 		DD354FB511D66BB500EEF7BC /* GeonoteMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteMapViewController.xib; sourceTree = "<group>"; };
-		DD354FDD11D66DCF00EEF7BC /* GeonoteRadiusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteRadiusViewController.h; sourceTree = "<group>"; };
-		DD354FDE11D66DCF00EEF7BC /* GeonoteRadiusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteRadiusViewController.m; sourceTree = "<group>"; };
-		DD354FDF11D66DCF00EEF7BC /* GeonoteRadiusViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteRadiusViewController.xib; sourceTree = "<group>"; };
 		DD35501011D6709D00EEF7BC /* Geonote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geonote.h; sourceTree = "<group>"; };
 		DD35501111D6709D00EEF7BC /* Geonote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Geonote.m; sourceTree = "<group>"; };
 		DD35503A11D6736200EEF7BC /* GeonoteMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteMessageViewController.h; sourceTree = "<group>"; };
@@ -413,9 +408,6 @@
 				DD354FB311D66BB500EEF7BC /* GeonoteMapViewController.h */,
 				DD354FB411D66BB500EEF7BC /* GeonoteMapViewController.m */,
 				DD354FB511D66BB500EEF7BC /* GeonoteMapViewController.xib */,
-				DD354FDD11D66DCF00EEF7BC /* GeonoteRadiusViewController.h */,
-				DD354FDE11D66DCF00EEF7BC /* GeonoteRadiusViewController.m */,
-				DD354FDF11D66DCF00EEF7BC /* GeonoteRadiusViewController.xib */,
 				DD35503A11D6736200EEF7BC /* GeonoteMessageViewController.h */,
 				DD35503B11D6736200EEF7BC /* GeonoteMessageViewController.m */,
 				DD35503C11D6736200EEF7BC /* GeonoteMessageViewController.xib */,
@@ -520,7 +512,6 @@
 				DD354F7711D666BA00EEF7BC /* GeonoteFriendPickerController.xib in Resources */,
 				DD354F7D11D6683800EEF7BC /* addresses.png in Resources */,
 				DD354FB711D66BB500EEF7BC /* GeonoteMapViewController.xib in Resources */,
-				DD354FE111D66DCF00EEF7BC /* GeonoteRadiusViewController.xib in Resources */,
 				DD35503E11D6736200EEF7BC /* GeonoteMessageViewController.xib in Resources */,
 				DD3550B711D6794200EEF7BC /* GeonoteConfirmationViewController.xib in Resources */,
 				16E4B0C011D69563009D6B43 /* Icon.png in Resources */,
@@ -564,7 +555,6 @@
 				DD354F7611D666BA00EEF7BC /* GeonoteFriendPickerController.m in Sources */,
 				DD354F9111D669C300EEF7BC /* GeonoteNavigationController.m in Sources */,
 				DD354FB611D66BB500EEF7BC /* GeonoteMapViewController.m in Sources */,
-				DD354FE011D66DCF00EEF7BC /* GeonoteRadiusViewController.m in Sources */,
 				DD35501211D6709D00EEF7BC /* Geonote.m in Sources */,
 				DD35503D11D6736200EEF7BC /* GeonoteMessageViewController.m in Sources */,
 				DD3550B611D6794200EEF7BC /* GeonoteConfirmationViewController.m in Sources */,
