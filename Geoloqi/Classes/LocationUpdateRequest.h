@@ -16,5 +16,6 @@
 }
 
 - (void)setLocationDataFromLocations:(NSArray *)locations;
+- (NSString *)hardware;
 
 @end
