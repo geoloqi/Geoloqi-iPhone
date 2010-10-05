@@ -6,16 +6,15 @@
 //  Copyright Darknoon 2010. All rights reserved.
 //
 
-#import "LocationUpdaterAppDelegate.h"
+#import "GeoloqiAppDelegate.h"
 #import "LocationUpdaterViewController.h"
 
-LocationUpdaterAppDelegate *gAppDelegate;
+GeoloqiAppDelegate *gAppDelegate;
 
-@implementation LocationUpdaterAppDelegate
+@implementation GeoloqiAppDelegate
 
 @synthesize locationUpdateManager;
-@synthesize window, tabBarController;
-@synthesize viewController;
+@synthesize window, welcomeViewController;
 
 
 #pragma mark -
@@ -34,7 +33,7 @@ LocationUpdaterAppDelegate *gAppDelegate;
 	}
 	
 	// Display the tab bar controller
-    [window addSubview:tabBarController.view];
+    [window addSubview:welcomeViewController.view];
     [window makeKeyAndVisible];
 	
 	UIDevice *d = [UIDevice currentDevice];
@@ -95,11 +94,9 @@ LocationUpdaterAppDelegate *gAppDelegate;
 
 
 - (void)dealloc {
-    [viewController release];
+    [welcomeViewController release];
     [window release];
 	[locationUpdateManager release];
-	locationUpdateManager = nil;
-
     [super dealloc];
 }
 

@@ -10,21 +10,18 @@
 
 #import "GLLocationUpdateManager.h"
 
-@class LocationUpdaterViewController;
-
-
-@interface LocationUpdaterAppDelegate : NSObject <UIApplicationDelegate> {
+@interface GeoloqiAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	UITabBarController *tabBarController;
-    LocationUpdaterViewController *viewController;
 	GLLocationUpdateManager *locationUpdateManager;
+	
+	
 }
 
-@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, retain) IBOutlet UIViewController *welcomeViewController;
 @property (nonatomic, retain) GLLocationUpdateManager *locationUpdateManager;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet LocationUpdaterViewController *viewController;
 
 @end
 
-extern LocationUpdaterAppDelegate *gAppDelegate;
+extern GeoloqiAppDelegate *gAppDelegate;

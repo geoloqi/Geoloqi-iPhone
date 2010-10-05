@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* GLMappedSlider.m */; };
+		16DA0BB6122390F600382D1F /* GLWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */; };
+		16DA0BB7122390F600382D1F /* GLWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */; };
+		16DA0BD21223973500382D1F /* GLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BD01223973500382D1F /* GLSignUpViewController.m */; };
+		16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BD11223973500382D1F /* GLSignUpViewController.xib */; };
+		16DA0BFB12239BBC00382D1F /* GLLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BF912239BBC00382D1F /* GLLogInViewController.m */; };
+		16DA0BFC12239BBC00382D1F /* GLLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BFA12239BBC00382D1F /* GLLogInViewController.xib */; };
+		16DA0D0B1224DD4900382D1F /* GLAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */; };
+		16DA0D761224E8FD00382D1F /* GLHTTPRequestLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0D751224E8FD00382D1F /* GLHTTPRequestLoader.m */; };
 		16E4B0C011D69563009D6B43 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E4B0BE11D69563009D6B43 /* Icon.png */; };
 		16E4B0C111D69563009D6B43 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E4B0BF11D69563009D6B43 /* Icon@2x.png */; };
 		16E4B0C311D69569009D6B43 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E4B0C211D69569009D6B43 /* Default.png */; };
@@ -15,7 +23,7 @@
 		16EE822811D69FB20026503D /* GLLocationUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822711D69FB20026503D /* GLLocationUpdateManager.m */; };
 		16EE822B11D69FD70026503D /* GLDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822A11D69FD70026503D /* GLDataViewController.m */; };
 		16EE823F11D6A09A0026503D /* LocationUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE823E11D6A09A0026503D /* LocationUpdateRequest.m */; };
-		16EE824911D6A1760026503D /* LocationUpdaterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE824811D6A1760026503D /* LocationUpdaterAppDelegate.m */; };
+		16EE824911D6A1760026503D /* GeoloqiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */; };
 		16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EE827611D6A1FA0026503D /* GLDataViewController.xib */; };
 		16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16EE832911D6C96C0026503D /* SliderMappings.plist */; };
 		16EE842A11D72C450026503D /* GLMutablePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE842911D72C450026503D /* GLMutablePolyline.m */; };
@@ -74,6 +82,19 @@
 /* Begin PBXFileReference section */
 		166BE45F11DDDC9000F41B0B /* GLMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* GLMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMappedSlider.m; sourceTree = "<group>"; };
+		16DA0BB3122390F600382D1F /* GLWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLWelcomeViewController.h; path = ../GLWelcomeViewController.h; sourceTree = "<group>"; };
+		16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLWelcomeViewController.m; path = ../GLWelcomeViewController.m; sourceTree = "<group>"; };
+		16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GLWelcomeViewController.xib; path = ../GLWelcomeViewController.xib; sourceTree = "<group>"; };
+		16DA0BCF1223973500382D1F /* GLSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSignUpViewController.h; sourceTree = "<group>"; };
+		16DA0BD01223973500382D1F /* GLSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSignUpViewController.m; sourceTree = "<group>"; };
+		16DA0BD11223973500382D1F /* GLSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLSignUpViewController.xib; sourceTree = "<group>"; };
+		16DA0BF812239BBC00382D1F /* GLLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLogInViewController.h; sourceTree = "<group>"; };
+		16DA0BF912239BBC00382D1F /* GLLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLogInViewController.m; sourceTree = "<group>"; };
+		16DA0BFA12239BBC00382D1F /* GLLogInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLLogInViewController.xib; sourceTree = "<group>"; };
+		16DA0D091224DD4900382D1F /* GLAuthenticationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAuthenticationManager.h; sourceTree = "<group>"; };
+		16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAuthenticationManager.m; sourceTree = "<group>"; };
+		16DA0D741224E8FD00382D1F /* GLHTTPRequestLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHTTPRequestLoader.h; sourceTree = "<group>"; };
+		16DA0D751224E8FD00382D1F /* GLHTTPRequestLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHTTPRequestLoader.m; sourceTree = "<group>"; };
 		16E4B0BE11D69563009D6B43 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		16E4B0BF11D69563009D6B43 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		16E4B0C211D69569009D6B43 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -84,8 +105,8 @@
 		16EE822A11D69FD70026503D /* GLDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLDataViewController.m; path = Classes/GLDataViewController.m; sourceTree = "<group>"; };
 		16EE823D11D6A09A0026503D /* LocationUpdateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUpdateRequest.h; sourceTree = "<group>"; };
 		16EE823E11D6A09A0026503D /* LocationUpdateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUpdateRequest.m; sourceTree = "<group>"; };
-		16EE824711D6A1760026503D /* LocationUpdaterAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUpdaterAppDelegate.h; sourceTree = "<group>"; };
-		16EE824811D6A1760026503D /* LocationUpdaterAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUpdaterAppDelegate.m; sourceTree = "<group>"; };
+		16EE824711D6A1760026503D /* GeoloqiAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoloqiAppDelegate.h; sourceTree = "<group>"; };
+		16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoloqiAppDelegate.m; sourceTree = "<group>"; };
 		16EE827611D6A1FA0026503D /* GLDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLDataViewController.xib; sourceTree = "<group>"; };
 		16EE832911D6C96C0026503D /* SliderMappings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SliderMappings.plist; sourceTree = "<group>"; };
 		16EE842811D72C450026503D /* GLMutablePolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMutablePolyline.h; sourceTree = "<group>"; };
@@ -198,15 +219,36 @@
 			children = (
 				16EE832911D6C96C0026503D /* SliderMappings.plist */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				16EE824711D6A1760026503D /* LocationUpdaterAppDelegate.h */,
-				16EE824811D6A1760026503D /* LocationUpdaterAppDelegate.m */,
+				16EE824711D6A1760026503D /* GeoloqiAppDelegate.h */,
+				16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */,
 				16EE823D11D6A09A0026503D /* LocationUpdateRequest.h */,
 				16EE823E11D6A09A0026503D /* LocationUpdateRequest.m */,
 				16EE822611D69FB20026503D /* GLLocationUpdateManager.h */,
 				16EE822711D69FB20026503D /* GLLocationUpdateManager.m */,
+				16DA0D091224DD4900382D1F /* GLAuthenticationManager.h */,
+				16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */,
+				16DA0D741224E8FD00382D1F /* GLHTTPRequestLoader.h */,
+				16DA0D751224E8FD00382D1F /* GLHTTPRequestLoader.m */,
+				16DA0BB91223910100382D1F /* Welcome-Login-Signup */,
 			);
 			name = Main;
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		16DA0BB91223910100382D1F /* Welcome-Login-Signup */ = {
+			isa = PBXGroup;
+			children = (
+				16DA0BB3122390F600382D1F /* GLWelcomeViewController.h */,
+				16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */,
+				16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */,
+				16DA0BCF1223973500382D1F /* GLSignUpViewController.h */,
+				16DA0BD01223973500382D1F /* GLSignUpViewController.m */,
+				16DA0BD11223973500382D1F /* GLSignUpViewController.xib */,
+				16DA0BF812239BBC00382D1F /* GLLogInViewController.h */,
+				16DA0BF912239BBC00382D1F /* GLLogInViewController.m */,
+				16DA0BFA12239BBC00382D1F /* GLLogInViewController.xib */,
+			);
+			name = "Welcome-Login-Signup";
 			sourceTree = "<group>";
 		};
 		16EE842711D72C290026503D /* Mutable polyline */ = {
@@ -487,7 +529,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Geoloqi" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -521,6 +570,9 @@
 				16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */,
 				16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */,
 				DD97008811EBFB3D00C91472 /* ToolbarLocate.png in Resources */,
+				16DA0BB7122390F600382D1F /* GLWelcomeViewController.xib in Resources */,
+				16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */,
+				16DA0BFC12239BBC00382D1F /* GLLogInViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,10 +613,15 @@
 				16EE822811D69FB20026503D /* GLLocationUpdateManager.m in Sources */,
 				16EE822B11D69FD70026503D /* GLDataViewController.m in Sources */,
 				16EE823F11D6A09A0026503D /* LocationUpdateRequest.m in Sources */,
-				16EE824911D6A1760026503D /* LocationUpdaterAppDelegate.m in Sources */,
+				16EE824911D6A1760026503D /* GeoloqiAppDelegate.m in Sources */,
 				16EE842A11D72C450026503D /* GLMutablePolyline.m in Sources */,
 				16EE843511D72CE00026503D /* GLMutablePolylineView.m in Sources */,
 				166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */,
+				16DA0BB6122390F600382D1F /* GLWelcomeViewController.m in Sources */,
+				16DA0BD21223973500382D1F /* GLSignUpViewController.m in Sources */,
+				16DA0BFB12239BBC00382D1F /* GLLogInViewController.m in Sources */,
+				16DA0D0B1224DD4900382D1F /* GLAuthenticationManager.m in Sources */,
+				16DA0D761224E8FD00382D1F /* GLHTTPRequestLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,7 +664,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
 		};
@@ -621,7 +678,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
 		};
