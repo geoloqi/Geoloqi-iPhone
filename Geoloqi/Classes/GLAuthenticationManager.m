@@ -49,7 +49,7 @@ static GLAuthenticationManager *sharedManager = nil;
 
 - (void)authenticateWithUsername:(NSString *)username
 						password:(NSString *)password {
-	[self callAPIPath:@"oauth/token.json"
+	[self callAPIPath:@"oauth/token"
 			   method:@"POST"
 		 authenticate:NO
 		   parameters:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -77,7 +77,7 @@ static GLAuthenticationManager *sharedManager = nil;
 		// Token is already valid!
 		callback();
 	} else {
-		[self callAPIPath:@"oauth/token.json"
+		[self callAPIPath:@"oauth/token"
 				   method:@"POST"
 			 authenticate:NO
 			   parameters:[NSDictionary dictionaryWithObjectsAndKeys:
