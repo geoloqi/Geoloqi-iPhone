@@ -192,6 +192,7 @@
 		DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLMapViewController.xib; sourceTree = "<group>"; };
 		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DD97008711EBFB3D00C91472 /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
+		DDACF629125C24B7000511E5 /* GLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLConstants.h; path = Classes/GLConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,19 +226,18 @@
 				16EE823E11D6A09A0026503D /* LocationUpdateRequest.m */,
 				16EE822611D69FB20026503D /* GLLocationUpdateManager.h */,
 				16EE822711D69FB20026503D /* GLLocationUpdateManager.m */,
-				16DA0D091224DD4900382D1F /* GLAuthenticationManager.h */,
-				16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */,
-				16DA0D741224E8FD00382D1F /* GLHTTPRequestLoader.h */,
-				16DA0D751224E8FD00382D1F /* GLHTTPRequestLoader.m */,
-				16DA0BB91223910100382D1F /* Welcome-Login-Signup */,
 			);
 			name = Main;
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		16DA0BB91223910100382D1F /* Welcome-Login-Signup */ = {
+		16DA0BB91223910100382D1F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				16DA0D091224DD4900382D1F /* GLAuthenticationManager.h */,
+				16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */,
+				16DA0D741224E8FD00382D1F /* GLHTTPRequestLoader.h */,
+				16DA0D751224E8FD00382D1F /* GLHTTPRequestLoader.m */,
 				16DA0BB3122390F600382D1F /* GLWelcomeViewController.h */,
 				16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */,
 				16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */,
@@ -248,7 +248,8 @@
 				16DA0BF912239BBC00382D1F /* GLLogInViewController.m */,
 				16DA0BFA12239BBC00382D1F /* GLLogInViewController.xib */,
 			);
-			name = "Welcome-Login-Signup";
+			name = Auth;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		16EE842711D72C290026503D /* Mutable polyline */ = {
@@ -273,7 +274,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				DDACF629125C24B7000511E5 /* GLConstants.h */,
 				080E96DDFE201D6D7F000001 /* Main */,
+				16DA0BB91223910100382D1F /* Auth */,
 				DD91DF8C11BF3F1F0097F6F5 /* Tabs */,
 				49B68DB211B31641001CB3FA /* Externals */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,

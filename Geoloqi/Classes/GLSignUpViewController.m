@@ -7,16 +7,20 @@
 //
 
 #import "GLSignUpViewController.h"
-
+#import "GLAuthenticationManager.h"
 
 @implementation GLSignUpViewController
+
+@synthesize usernameField;
+@synthesize emailAddressField;
 
 - (IBAction)cancel {
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)done {
-	
+    [[GLAuthenticationManager sharedManager] createAccountWithUsername:usernameField.text 
+                                                          emailAddress:emailAddressField.text];
 }
 
 /*
@@ -59,6 +63,8 @@
 
 
 - (void)dealloc {
+    [usernameField release];
+    [emailAddressField release];
     [super dealloc];
 }
 

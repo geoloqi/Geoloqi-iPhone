@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "GLHTTPRequestLoader.h"
 
+static NSString *const GLAuthenticationSucceededNotification = @"GLAuthenticationSucceededNotification";
+
 @interface GLAuthenticationManager : NSObject {
 	NSString *accessToken;
 	NSDate *tokenExpiryDate;
-	NSString *refreshToken;
 	GLHTTPRequestCallback tokenResponseBlock;
 }
 
@@ -20,5 +21,8 @@
 
 - (void)authenticateWithUsername:(NSString *)username
 						password:(NSString *)password;
+- (void)createAccountWithUsername:(NSString *)username
+                     emailAddress:(NSString *)emailAddress;
+- (BOOL)hasRefreshToken;
 
 @end

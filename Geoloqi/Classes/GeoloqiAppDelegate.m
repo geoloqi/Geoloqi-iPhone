@@ -8,6 +8,7 @@
 
 #import "GeoloqiAppDelegate.h"
 #import "LocationUpdaterViewController.h"
+#import "GLAuthenticationManager.h"
 
 GeoloqiAppDelegate *gAppDelegate;
 
@@ -32,10 +33,19 @@ GeoloqiAppDelegate *gAppDelegate;
 		NSLog(@"Launched in response to location change update.");
 	}
 	
-	// Display the tab bar controller
-    [window addSubview:welcomeViewController.view];
+    [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
-	
+
+    if ( ! [[GLAuthenticationManager sharedManager] hasRefreshToken]) // we haven't logged in before
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(authenticationDidSucceed:) 
+                                                     name:GLAuthenticationSucceededNotification 
+                                                   object:nil];
+
+        [tabBarController presentModalViewController:welcomeViewController animated:YES];
+    }
+
 	UIDevice *d = [UIDevice currentDevice];
 	d.batteryMonitoringEnabled = YES;
 //	NSLog(@"Name %@, Sys name %@, Sys version %@, Model %@, Idiom %d, Battery %f",
@@ -100,5 +110,16 @@ GeoloqiAppDelegate *gAppDelegate;
     [super dealloc];
 }
 
+#pragma mark -
+
+- (void)authenticationDidSucceed:(NSNotificationCenter *)notification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self 
+                                                    name:GLAuthenticationSucceededNotification 
+                                                  object:nil];
+    
+    if (tabBarController.modalViewController && [tabBarController.modalViewController isKindOfClass:[welcomeViewController class]])
+        [tabBarController dismissModalViewControllerAnimated:YES];
+}
 
 @end

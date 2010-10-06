@@ -13,6 +13,9 @@
 
 }
 
+@property (nonatomic, retain) IBOutlet UITextField *usernameField;
+@property (nonatomic, retain) IBOutlet UITextField *emailAddressField;
+
 - (IBAction)cancel;
 - (IBAction)done;
 

@@ -9,6 +9,7 @@
 #import "GLAuthenticationManager.h"
 #import "GLHTTPRequestLoader.h"
 #import "CJSONDeserializer.h"
+#import "GLConstants.h"
 
 static GLAuthenticationManager *sharedManager = nil;
 
@@ -20,6 +21,7 @@ static GLAuthenticationManager *sharedManager = nil;
 		 parameters:(NSDictionary *)params
 		   callback:(GLHTTPRequestCallback)callback;
 - (GLHTTPRequestCallback)tokenResponseBlock;
+- (NSString *)refreshToken;
 @end
 
 
@@ -59,13 +61,26 @@ static GLAuthenticationManager *sharedManager = nil;
 			 callback:[self tokenResponseBlock]];
 }
 
+- (void)createAccountWithUsername:(NSString *)username
+                     emailAddress:(NSString *)emailAddress
+{
+    [self callAPIPath:@"user/create"
+               method:@"POST"
+         authenticate:NO
+           parameters:[NSDictionary dictionaryWithObjectsAndKeys:username,    @"username",
+                                                                emailAddress, @"email",
+                                                                nil]
+             callback:[self tokenResponseBlock]];
+}
+
 - (void)deauthenticate {
 	[accessToken release];
 	[tokenExpiryDate release];
-	[refreshToken release];
 	accessToken = nil;
 	tokenExpiryDate = nil;
-	refreshToken = nil;
+
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"refreshToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)refreshAccessTokenWithCallback:(void (^)())callback {
@@ -82,7 +97,7 @@ static GLAuthenticationManager *sharedManager = nil;
 			 authenticate:NO
 			   parameters:[NSDictionary dictionaryWithObjectsAndKeys:
 						   @"refresh", @"grant_type",
-						   refreshToken, @"refresh_token", nil]
+						   [self refreshToken], @"refresh_token", nil]
 				 callback:^(NSError *error, NSString *responseBody) {
 					 [self tokenResponseBlock](error, responseBody);
 					 if (!error) callback();
@@ -105,15 +120,34 @@ static GLAuthenticationManager *sharedManager = nil;
 		
 		[accessToken release];
 		[tokenExpiryDate release];
-		[refreshToken release];
 		
 		accessToken = [[res objectForKey:@"access_token"] copy];
 		tokenExpiryDate = [[[NSDate date] dateByAddingTimeInterval:
 							[[res objectForKey:@"expires_in"] doubleValue]] retain];
-		refreshToken = [[res objectForKey:@"refresh_token"] copy];
+        
+        if ([[res objectForKey:@"refresh_token"] isKindOfClass:[NSString class]] && [[res objectForKey:@"refresh_token"] length])
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:[res objectForKey:@"refresh_token"] forKey:@"refreshToken"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:GLAuthenticationSucceededNotification object:self];
+        }
 		
-		NSLog(@"Got access token %@, expires %@, refresh %@", accessToken, tokenExpiryDate, refreshToken);
+		NSLog(@"Got access token %@, expires %@, refresh %@", accessToken, tokenExpiryDate, [self refreshToken]);
 	} copy];
+}
+
+- (BOOL)hasRefreshToken
+{
+    return ([[NSUserDefaults standardUserDefaults] objectForKey:@"refreshToken"] != nil);
+}
+
+- (NSString *)refreshToken
+{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"refreshToken"])
+        return [[NSUserDefaults standardUserDefaults] stringForKey:@"refreshToken"];
+    
+    return nil;
 }
 
 - (void)callAPIPath:(NSString *)path
@@ -122,14 +156,14 @@ static GLAuthenticationManager *sharedManager = nil;
 		 parameters:(NSDictionary *)params
 		   callback:(GLHTTPRequestCallback)callback {
 	NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:
-								[[NSURL URLWithString:@"https://api.geoloqi.com/1/"]
+								[[NSURL URLWithString:GL_API_URL]
 								 URLByAppendingPathComponent:path]];
 	[req setHTTPMethod:httpMethod];
 	
 	// Add the client id/secret for API authorization
 	NSMutableDictionary *fullParams = [NSMutableDictionary dictionaryWithDictionary:params];
-	[fullParams setObject:@"jtbandes_iphone" forKey:@"client_id"];
-	[fullParams setObject:@"bdbe49daf6784457938671116426124R" forKey:@"client_secret"];
+	[fullParams setObject:GL_OAUTH_CLIENT_ID forKey:@"client_id"];
+	[fullParams setObject:GL_OAUTH_SECRET    forKey:@"client_secret"];
 	
 	[req setHTTPBody:[[self encodeParameters:fullParams]
 					  dataUsingEncoding:NSUTF8StringEncoding]];
@@ -150,7 +184,6 @@ static GLAuthenticationManager *sharedManager = nil;
 - (void)dealloc {
 	[accessToken release];
 	[tokenExpiryDate release];
-	[refreshToken release];
 	[tokenResponseBlock release];
 	[super dealloc];
 }

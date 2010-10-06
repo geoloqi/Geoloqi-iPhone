@@ -12,7 +12,7 @@
 
 @interface GeoloqiAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-	UITabBarController *tabBarController;
+	IBOutlet UITabBarController *tabBarController;
 	GLLocationUpdateManager *locationUpdateManager;
 	
 	
