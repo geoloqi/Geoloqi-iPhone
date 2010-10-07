@@ -15,6 +15,11 @@
 @property (nonatomic, retain) IBOutlet UIViewController *signUpViewController;
 @property (nonatomic, retain) IBOutlet UIViewController *logInViewController;
 
+@property (nonatomic, retain) IBOutlet UIButton *signUpButton;
+@property (nonatomic, retain) IBOutlet UIButton *signInButton;
+@property (nonatomic, retain) IBOutlet UIButton *useAnonymouslyButton;
+
+
 - (IBAction)signUp;
 - (IBAction)useAnonymously;
 - (IBAction)logIn;

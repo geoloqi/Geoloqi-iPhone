@@ -12,6 +12,9 @@
 @implementation GLWelcomeViewController
 
 @synthesize signUpViewController, logInViewController;
+@synthesize signUpButton;
+@synthesize signInButton;
+@synthesize useAnonymouslyButton;
 
 - (IBAction)signUp {
 	[self presentModalViewController:signUpViewController
@@ -22,6 +25,16 @@
 							animated:YES];
 }
 - (IBAction)useAnonymously {
+	
+}
+
+- (void)viewDidLoad;
+{
+	UIImage *stretImg = [[UIImage imageNamed:@"signin-btn.png"] stretchableImageWithLeftCapWidth:18.f topCapHeight:0.f];
+	UIImage *stretImgSm = [[UIImage imageNamed:@"small-btn.png"] stretchableImageWithLeftCapWidth:16.f topCapHeight:0.f];
+	[self.signUpButton setBackgroundImage:stretImg forState:UIControlStateNormal];
+	[self.useAnonymouslyButton setBackgroundImage:stretImg forState:UIControlStateNormal];
+	[self.signInButton setBackgroundImage:stretImgSm forState:UIControlStateNormal];
 	
 }
 
@@ -44,6 +57,9 @@
 - (void)dealloc {
 	[signUpViewController release];
 	[logInViewController release];
+	[signUpButton release];
+	[signInButton release];
+	[useAnonymouslyButton release];
     [super dealloc];
 }
 
