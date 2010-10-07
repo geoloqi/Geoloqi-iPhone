@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CTableViewController.h"
 
-@interface GLSignUpViewController : UIViewController {
+@interface GLSignUpViewController : CTableViewController {
 
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *usernameField;
 @property (nonatomic, retain) IBOutlet UITextField *emailAddressField;
+@property (nonatomic, retain) IBOutlet UIView *activityIndicator;
 
 - (IBAction)cancel;
-- (IBAction)done;
+- (IBAction)signUpAction;
 
 @end
