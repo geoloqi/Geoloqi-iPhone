@@ -3,7 +3,7 @@
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 7/2/10.
-//  Copyright 2010 Harvey Mudd College. All rights reserved.
+//  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
 #import "GLMappedSlider.h"

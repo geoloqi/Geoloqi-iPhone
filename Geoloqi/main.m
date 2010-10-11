@@ -1,9 +1,9 @@
 //
 //  main.m
-//  LocationUpdater
+//  Geoloqi
 //
 //  Created by Andrew Pouliot on 5/30/10.
-//  Copyright Darknoon 2010. All rights reserved.
+//  Copyright Geoloqi.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

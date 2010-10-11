@@ -1,9 +1,9 @@
 //
 //  LocationUpdateManager.h
-//  LocationUpdater
+//  Geoloqi
 //
 //  Created by Andrew Pouliot on 5/30/10.
-//  Copyright 2010 Darknoon. All rights reserved.
+//  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
