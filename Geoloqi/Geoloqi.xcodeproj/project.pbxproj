@@ -81,6 +81,10 @@
 		DD91DF9211BF3F400097F6F5 /* GLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9011BF3F400097F6F5 /* GLMapViewController.m */; };
 		DD91DF9311BF3F400097F6F5 /* GLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */; };
 		DD91E15E11BF4C1F0097F6F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */; };
+		DDBDE699126E7AB200B1FB60 /* welcome-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */; };
+		DDBDE69A126E7AB200B1FB60 /* welcome-top.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE696126E7AB200B1FB60 /* welcome-top.png */; };
+		DDBDE69B126E7AB200B1FB60 /* welcome-bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE697126E7AB200B1FB60 /* welcome-bottom@2x.png */; };
+		DDBDE69C126E7AB200B1FB60 /* welcome-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE698126E7AB200B1FB60 /* welcome-bottom.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +205,10 @@
 		DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLMapViewController.xib; sourceTree = "<group>"; };
 		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DDACF629125C24B7000511E5 /* GLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLConstants.h; path = Classes/GLConstants.h; sourceTree = "<group>"; };
+		DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-top@2x.png"; sourceTree = "<group>"; };
+		DDBDE696126E7AB200B1FB60 /* welcome-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-top.png"; sourceTree = "<group>"; };
+		DDBDE697126E7AB200B1FB60 /* welcome-bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-bottom@2x.png"; sourceTree = "<group>"; };
+		DDBDE698126E7AB200B1FB60 /* welcome-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-bottom.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +324,10 @@
 				49EB224A125D7F7100EDFAB1 /* signin-btn.png */,
 				49EB224B125D7F7100EDFAB1 /* small-btn@2x.png */,
 				49EB224C125D7F7100EDFAB1 /* small-btn.png */,
+				DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */,
+				DDBDE696126E7AB200B1FB60 /* welcome-top.png */,
+				DDBDE697126E7AB200B1FB60 /* welcome-bottom@2x.png */,
+				DDBDE698126E7AB200B1FB60 /* welcome-bottom.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -555,6 +567,7 @@
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Geoloqi" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -601,6 +614,10 @@
 				49EB2256125D7F7100EDFAB1 /* signin-btn.png in Resources */,
 				49EB2257125D7F7100EDFAB1 /* small-btn@2x.png in Resources */,
 				49EB2258125D7F7100EDFAB1 /* small-btn.png in Resources */,
+				DDBDE699126E7AB200B1FB60 /* welcome-top@2x.png in Resources */,
+				DDBDE69A126E7AB200B1FB60 /* welcome-top.png in Resources */,
+				DDBDE69B126E7AB200B1FB60 /* welcome-bottom@2x.png in Resources */,
+				DDBDE69C126E7AB200B1FB60 /* welcome-bottom.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
