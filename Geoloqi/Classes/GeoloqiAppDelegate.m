@@ -6,6 +6,7 @@
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
+#import "GLConstants.h"
 #import "GeoloqiAppDelegate.h"
 #import "LocationUpdaterViewController.h"
 #import "GLAuthenticationManager.h"
@@ -15,6 +16,7 @@ GeoloqiAppDelegate *gAppDelegate;
 @implementation GeoloqiAppDelegate
 
 @synthesize locationUpdateManager;
+@synthesize deviceToken;
 @synthesize window, welcomeViewController;
 
 
@@ -51,9 +53,59 @@ GeoloqiAppDelegate *gAppDelegate;
 //	NSLog(@"Name %@, Sys name %@, Sys version %@, Model %@, Idiom %d, Battery %f",
 //		  d.name, d.systemName, d.systemVersion, d.model, d.userInterfaceIdiom, d.batteryLevel);
 
+	NSLog(@"Registering for push notifications");
+	[[UIApplication sharedApplication]
+	 registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+										 UIRemoteNotificationTypeSound |
+										 UIRemoteNotificationTypeAlert)];
+	
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:[launchOptions description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+	[alert show];
+
     return YES;
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:[userInfo description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+	[alert show];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)_deviceToken {
+    // Get a hex string from the device token with no spaces or < >
+    self.deviceToken = [[[[_deviceToken description]
+						  stringByReplacingOccurrencesOfString: @"<" withString: @""] 
+						 stringByReplacingOccurrencesOfString: @">" withString: @""] 
+						stringByReplacingOccurrencesOfString: @" " withString: @""];
+	
+	NSLog(@"Device Token: %@", self.deviceToken);
+	
+//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Token" message:deviceToken delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+//	[alert show];
+	
+	if ([application enabledRemoteNotificationTypes] == UIRemoteNotificationTypeNone) {
+		NSLog(@"Notifications are disabled for this application. Not registering with Urban Airship");
+		return;
+	}
+	
+	// Put the token in someone's server log
+	[NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pin13.net?token=%@", deviceToken]] encoding:NSUTF8StringEncoding error:nil];
+	
+    NSString *UAServer = @"https://go.urbanairship.com";
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@/", UAServer, @"/api/device_tokens/", self.deviceToken];
+    NSURL *url = [NSURL URLWithString:urlString];
+	
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"PUT"];
+    
+    // Authenticate to the server
+    [request addValue:[NSString stringWithFormat:@"Basic %@",
+                       [GeoloqiAppDelegate base64forData:[[NSString stringWithFormat:@"%@:%@",
+                                                        kApplicationKey,
+                                                        kApplicationSecret] dataUsingEncoding: NSUTF8StringEncoding]]] forHTTPHeaderField:@"Authorization"];
+    
+    [[NSURLConnection connectionWithRequest:request delegate:self] start];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
@@ -120,6 +172,38 @@ GeoloqiAppDelegate *gAppDelegate;
     
     if (tabBarController.modalViewController && [tabBarController.modalViewController isKindOfClass:[welcomeViewController class]])
         [tabBarController dismissModalViewControllerAnimated:YES];
+}
+
+// From: http://www.cocoadev.com/index.pl?BaseSixtyFour
++ (NSString*)base64forData:(NSData*)theData {
+    const uint8_t* input = (const uint8_t*)[theData bytes];
+    NSInteger length = [theData length];
+    
+    static char table[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    
+    NSMutableData* data = [NSMutableData dataWithLength:((length + 2) / 3) * 4];
+    uint8_t* output = (uint8_t*)data.mutableBytes;
+    
+    NSInteger i;
+    for (i=0; i < length; i += 3) {
+        NSInteger value = 0;
+        NSInteger j;
+        for (j = i; j < (i + 3); j++) {
+            value <<= 8;
+            
+            if (j < length) {
+                value |= (0xFF & input[j]);
+            }
+        }
+        
+        NSInteger theIndex = (i / 3) * 4;
+        output[theIndex + 0] =                    table[(value >> 18) & 0x3F];
+        output[theIndex + 1] =                    table[(value >> 12) & 0x3F];
+        output[theIndex + 2] = (i + 1) < length ? table[(value >> 6)  & 0x3F] : '=';
+        output[theIndex + 3] = (i + 2) < length ? table[(value >> 0)  & 0x3F] : '=';
+    }
+    
+    return [[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding] autorelease];
 }
 
 @end
