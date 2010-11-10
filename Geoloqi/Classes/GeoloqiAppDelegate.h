@@ -1,9 +1,9 @@
 //
-//  LocationUpdaterAppDelegate.h
-//  LocationUpdater
+//  GeoloqiAppDelegate.h
+//  Geoloqi
 //
 //  Created by Andrew Pouliot on 5/30/10.
-//  Copyright Darknoon 2010. All rights reserved.
+//  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

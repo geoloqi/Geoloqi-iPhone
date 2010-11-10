@@ -31,7 +31,7 @@
 	ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:
 						   [NSURL URLWithString:
 							[NSString stringWithFormat:
-							 @"http://test.geoloqi.com/api/location_history/key/%@/points/200",
+							 @"http://api.geoloqi.com/1/location/history?count=200&thinning=3&oauth_token=%@",
 							 gAppDelegate.locationUpdateManager.deviceKey]]];
 	req.delegate = self;
 	[req startAsynchronous];
