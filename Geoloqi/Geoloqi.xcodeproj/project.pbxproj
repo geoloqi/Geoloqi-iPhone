@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
 		166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* GLMappedSlider.m */; };
 		16DA0BB6122390F600382D1F /* GLWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */; };
 		16DA0BB7122390F600382D1F /* GLWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */; };
@@ -69,7 +70,6 @@
 		49EB2258125D7F7100EDFAB1 /* small-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EB224C125D7F7100EDFAB1 /* small-btn.png */; };
 		DD354F7611D666BA00EEF7BC /* GeonoteFriendPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354F7411D666BA00EEF7BC /* GeonoteFriendPickerController.m */; };
 		DD354F7711D666BA00EEF7BC /* GeonoteFriendPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD354F7511D666BA00EEF7BC /* GeonoteFriendPickerController.xib */; };
-		DD354F7D11D6683800EEF7BC /* addresses.png in Resources */ = {isa = PBXBuildFile; fileRef = DD354F7C11D6683800EEF7BC /* addresses.png */; };
 		DD354F9111D669C300EEF7BC /* GeonoteNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354F8F11D669C300EEF7BC /* GeonoteNavigationController.m */; };
 		DD354FB611D66BB500EEF7BC /* GeonoteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354FB411D66BB500EEF7BC /* GeonoteMapViewController.m */; };
 		DD354FB711D66BB500EEF7BC /* GeonoteMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD354FB511D66BB500EEF7BC /* GeonoteMapViewController.xib */; };
@@ -88,6 +88,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 		166BE45F11DDDC9000F41B0B /* GLMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* GLMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMappedSlider.m; sourceTree = "<group>"; };
 		16DA0BB3122390F600382D1F /* GLWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLWelcomeViewController.h; path = ../GLWelcomeViewController.h; sourceTree = "<group>"; };
@@ -186,7 +187,6 @@
 		DD354F7311D666BA00EEF7BC /* GeonoteFriendPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteFriendPickerController.h; sourceTree = "<group>"; };
 		DD354F7411D666BA00EEF7BC /* GeonoteFriendPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteFriendPickerController.m; sourceTree = "<group>"; };
 		DD354F7511D666BA00EEF7BC /* GeonoteFriendPickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteFriendPickerController.xib; sourceTree = "<group>"; };
-		DD354F7C11D6683800EEF7BC /* addresses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addresses.png; sourceTree = "<group>"; };
 		DD354F8E11D669C300EEF7BC /* GeonoteNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteNavigationController.h; sourceTree = "<group>"; };
 		DD354F8F11D669C300EEF7BC /* GeonoteNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteNavigationController.m; sourceTree = "<group>"; };
 		DD354FB311D66BB500EEF7BC /* GeonoteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteMapViewController.h; sourceTree = "<group>"; };
@@ -320,6 +320,7 @@
 				49EB2246125D7F7100EDFAB1 /* Default@2x.png */,
 				49EB2247125D7F7100EDFAB1 /* Icon.png */,
 				49EB2248125D7F7100EDFAB1 /* Icon@2x.png */,
+				0FF3B50E128E375100958BCA /* ToolbarLocate.png */,
 				49EB2249125D7F7100EDFAB1 /* signin-btn@2x.png */,
 				49EB224A125D7F7100EDFAB1 /* signin-btn.png */,
 				49EB224B125D7F7100EDFAB1 /* small-btn@2x.png */,
@@ -521,7 +522,6 @@
 		DD35511E11D681BB00EEF7BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DD354F7C11D6683800EEF7BC /* addresses.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -593,7 +593,6 @@
 				2899E5220DE3E06400AC0155 /* LocationUpdaterViewController.xib in Resources */,
 				DD91DF9311BF3F400097F6F5 /* GLMapViewController.xib in Resources */,
 				DD354F7711D666BA00EEF7BC /* GeonoteFriendPickerController.xib in Resources */,
-				DD354F7D11D6683800EEF7BC /* addresses.png in Resources */,
 				DD354FB711D66BB500EEF7BC /* GeonoteMapViewController.xib in Resources */,
 				DD35503E11D6736200EEF7BC /* GeonoteMessageViewController.xib in Resources */,
 				DD3550B711D6794200EEF7BC /* GeonoteConfirmationViewController.xib in Resources */,
@@ -618,6 +617,7 @@
 				DDBDE69A126E7AB200B1FB60 /* welcome-top.png in Resources */,
 				DDBDE69B126E7AB200B1FB60 /* welcome-bottom@2x.png in Resources */,
 				DDBDE69C126E7AB200B1FB60 /* welcome-bottom.png in Resources */,
+				0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

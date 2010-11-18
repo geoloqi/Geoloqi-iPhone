@@ -27,7 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+
+	firstLoad = YES;
+	
     if ( ! self.geonote.location)
         self.geonote.location = gAppDelegate.locationUpdateManager.currentLocation;
     
@@ -36,7 +38,13 @@
                                                                                style:UIBarButtonItemStylePlain
                                                                               target:self
                                                                               action:@selector(tappedLocate:)] autorelease];
-    
+
+	// Observe the map for location updates
+	[mapView.userLocation addObserver:self  
+					   forKeyPath:@"location"  
+						  options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)  
+						  context:NULL];
+	
     nextButton.enabled = NO;
 }
 
@@ -45,6 +53,10 @@
     [super viewWillAppear:animated];
     
     self.navigationItem.title = @"Choose a location";
+	
+	// When the Geonote screen first appears, start by zooming in on the current location
+	// "tap" the locate button in the top right corner to do this
+	[self tappedLocate:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -93,6 +105,18 @@
     [self.navigationController pushViewController:messageViewController animated:YES];
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+					  ofObject:(id)object 
+						change:(NSDictionary *)change 
+					   context:(void *)context {
+	
+	if(firstLoad && mapView.userLocation)
+    {
+        [self zoomMapToLocation:mapView.userLocation.location];
+		firstLoad = NO;
+    }
+}
+
 - (void)zoomMapToLocation:(CLLocation *)location
 {
     MKCoordinateSpan span;
@@ -133,6 +157,7 @@
         [mapView setVisibleMapRect:circle.boundingMapRect animated:NO];
         
         self.geonote.radius = desiredRadius;
+		nextButton.enabled = YES;
     }
 }
 

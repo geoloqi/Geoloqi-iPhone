@@ -27,6 +27,10 @@
 */
 - (void)viewDidLoad {
 	[super viewDidLoad];
+
+	// Set when the view loads, this is the first time the map has been viewed.
+	// The map will center on the user's location as soon as it's received
+	firstLoad = YES;
 	
 	ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:
 						   [NSURL URLWithString:
@@ -36,11 +40,21 @@
 	req.delegate = self;
 	[req startAsynchronous];
 	
+	NSLog(@"MapDidLoad");
+	
+	// Observe our own location manager for updates
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(locationUpdated:)
 												 name:GLLocationUpdateManagerDidUpdateLocationNotification
 											   object:nil];
+	
+	// Observe the map for location updates
+	[map.userLocation addObserver:self  
+					   forKeyPath:@"location"  
+						  options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)  
+						  context:NULL];
 }
+
 - (void)requestFinished:(ASIHTTPRequest *)request {
 	
 	line = [[GLMutablePolyline alloc] init];
@@ -74,14 +88,30 @@
 	NSLog(@"Failed to get most recent 200 points: %@", [request error]);
 }
 
+// This method is called when our internal location manager receives a new point
 - (void)locationUpdated:(NSNotification *)theNotification {
 	CLLocation *newLoc = gAppDelegate.locationUpdateManager.currentLocation;
+
 	// add new location to polyline
 	MKMapRect updateRect = [line addCoordinate:newLoc.coordinate];
 	if (!MKMapRectIsNull(updateRect)) {
 		//NSLog(@"Setting needs display in %@ on %@", MKStringFromMapRect(updateRect), lineView);
 		[lineView setNeedsDisplayInMapRect:updateRect];
 	}
+}
+
+// When the map view receives its location, this method is called
+// This is separate from our internal location manager with the on/off switch
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+					  ofObject:(id)object 
+						change:(NSDictionary *)change 
+					   context:(void *)context {
+
+	if(firstLoad && map.userLocation)
+    {
+        [self zoomMapToLocation:map.userLocation.location];
+		firstLoad = NO;
+    }
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView
@@ -109,6 +139,22 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)zoomMapToLocation:(CLLocation *)location
+{
+    MKCoordinateSpan span;
+    span.latitudeDelta  = 0.03;
+    span.longitudeDelta = 0.03;
+    
+    MKCoordinateRegion region;
+    
+    [map setCenterCoordinate:location.coordinate animated:YES];
+    
+    region.center = location.coordinate;
+    region.span   = span;
+    
+    [map setRegion:region animated:YES];
 }
 
 

@@ -25,7 +25,7 @@
 {
     [super viewWillDisappear:animated];
     
-    self.navigationItem.title = @"Friend";
+    self.navigationItem.title = @"Friend!";
 }
 
 - (void)dealloc

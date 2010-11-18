@@ -37,7 +37,7 @@ GeoloqiAppDelegate *gAppDelegate;
 	
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
-
+/*
     if ( ! [[GLAuthenticationManager sharedManager] hasRefreshToken]) // we haven't logged in before
     {
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -47,7 +47,7 @@ GeoloqiAppDelegate *gAppDelegate;
 
         [tabBarController presentModalViewController:welcomeViewController animated:YES];
     }
-
+*/
 	UIDevice *d = [UIDevice currentDevice];
 	d.batteryMonitoringEnabled = YES;
 //	NSLog(@"Name %@, Sys name %@, Sys version %@, Model %@, Idiom %d, Battery %f",
@@ -60,8 +60,8 @@ GeoloqiAppDelegate *gAppDelegate;
 										 UIRemoteNotificationTypeAlert)];
 	
 	
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:[launchOptions description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-	[alert show];
+	//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:[launchOptions description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+	//[alert show];
 
     return YES;
 }
@@ -80,8 +80,8 @@ GeoloqiAppDelegate *gAppDelegate;
 	
 	NSLog(@"Device Token: %@", self.deviceToken);
 	
-//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Token" message:deviceToken delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-//	[alert show];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Token" message:deviceToken delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+	[alert show];
 	
 	if ([application enabledRemoteNotificationTypes] == UIRemoteNotificationTypeNone) {
 		NSLog(@"Notifications are disabled for this application. Not registering with Urban Airship");

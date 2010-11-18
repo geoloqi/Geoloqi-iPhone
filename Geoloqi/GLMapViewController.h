@@ -15,8 +15,11 @@
 	MKMapView *map;
 	GLMutablePolyline *line;
 	GLMutablePolylineView *lineView;
+	bool firstLoad;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *map;
+
+- (void)zoomMapToLocation:(CLLocation *)location;
 
 @end

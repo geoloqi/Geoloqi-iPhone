@@ -17,6 +17,7 @@
     IBOutlet MKMapView *mapView;
     IBOutlet UIButton *nextButton;
     Geonote *geonote;
+	bool firstLoad;
 }
 
 @property (nonatomic, retain) Geonote *geonote;
