@@ -23,8 +23,8 @@ static GLAuthenticationManager *sharedManager = nil;
 		 parameters:(NSDictionary *)params
 		   callback:(GLHTTPRequestCallback)callback;
 - (GLHTTPRequestCallback)tokenResponseBlock;
-- (GLHTTPRequestCallback)sharedLinkResponseBlock;
-- (NSString *)refreshToken;
+//- (GLHTTPRequestCallback)sharedLinkResponseBlock;
+//- (NSString *)refreshToken;
 @end
 
 
@@ -135,6 +135,8 @@ static GLAuthenticationManager *sharedManager = nil;
 	}
 }
 
+/*
+ * Not using this right now, see LQShareViewController
 - (GLHTTPRequestCallback)sharedLinkResponseBlock {
 	if (sharedLinkResponseBlock) return sharedLinkResponseBlock;
 	return sharedLinkResponseBlock = [^(NSError *error, NSString *responseBody) {
@@ -154,6 +156,7 @@ static GLAuthenticationManager *sharedManager = nil;
 		}
 	} copy];
 }
+ */
 
 - (GLHTTPRequestCallback)tokenResponseBlock {
 	// The same method is used to respond to all oauth/token requests.
@@ -178,7 +181,7 @@ static GLAuthenticationManager *sharedManager = nil;
         if ([[res objectForKey:@"refresh_token"] isKindOfClass:[NSString class]] && [[res objectForKey:@"refresh_token"] length])
         {
             [[NSUserDefaults standardUserDefaults] setObject:[res objectForKey:@"refresh_token"] forKey:@"refreshToken"];
-            [[NSUserDefaults standardUserDefaults] setObject:[res objectForKey:@"access_token"] forKey:@"accessToken"];
+            //[[NSUserDefaults standardUserDefaults] setObject:[res objectForKey:@"access_token"] forKey:@"accessToken"];
             [[NSUserDefaults standardUserDefaults] synchronize];
 
             [[NSNotificationCenter defaultCenter] postNotificationName:GLAuthenticationSucceededNotification object:self];
@@ -206,12 +209,24 @@ static GLAuthenticationManager *sharedManager = nil;
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"])
         return [[NSUserDefaults standardUserDefaults] stringForKey:@"accessToken"];
     
-    return @"1111";
+    return nil;
+}
+
+- (NSString *)serverURL
+{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"serverURL"])
+        return [[NSUserDefaults standardUserDefaults] stringForKey:@"serverURL"];
+    
+	// If they erased the server URL, recreate it from the default value
+	[[NSUserDefaults standardUserDefaults] setObject:GL_API_URL forKey:@"serverURL"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	
+    return GL_API_URL;
 }
 
 - (void)callAPIPath:(NSString *)path
 			 method:(NSString *)httpMethod
-	   authenticate:(BOOL)needsAuth
+	   authenticate:(BOOL)includeAccessToken
 		 parameters:(NSDictionary *)params
 		   callback:(GLHTTPRequestCallback)callback {
 	
@@ -222,24 +237,28 @@ static GLAuthenticationManager *sharedManager = nil;
 	
 	NSLog([NSString stringWithFormat:@"Calling API Method %@", path]);
 	
-	// Add the client id/secret for API authorization
 	NSMutableDictionary *fullParams = [NSMutableDictionary dictionaryWithDictionary:params];
-	[fullParams setObject:GL_OAUTH_CLIENT_ID forKey:@"client_id"];
-	[fullParams setObject:GL_OAUTH_SECRET    forKey:@"client_secret"];
 	
-	[req setHTTPBody:[[self encodeParameters:fullParams]
-					  dataUsingEncoding:NSUTF8StringEncoding]];
-	
-	if (needsAuth) {
+	if (includeAccessToken) {
+		[req setHTTPBody:[[self encodeParameters:fullParams]
+						  dataUsingEncoding:NSUTF8StringEncoding]];
+		
 		[self refreshAccessTokenWithCallback:^{
 					[req setValue:[NSString stringWithFormat:@"OAuth %@", accessToken]
 			   forHTTPHeaderField:@"Authorization"];
-			NSLog(@"About to run the HTTP request with OAuth header!");
+			NSLog(@"About to run the HTTP request with OAuth %@! Params: %@", accessToken, [self encodeParameters:fullParams]);
 			[GLHTTPRequestLoader loadRequest:req
 									callback:callback];
 		}];
 	} else {
-		NSLog(@"About to run the HTTP request with no OAuth header.");
+		// Add the client id/secret for API authorization
+		[fullParams setObject:GL_OAUTH_CLIENT_ID forKey:@"client_id"];
+		[fullParams setObject:GL_OAUTH_SECRET    forKey:@"client_secret"];
+		
+		[req setHTTPBody:[[self encodeParameters:fullParams]
+						  dataUsingEncoding:NSUTF8StringEncoding]];
+
+		NSLog(@"About to run the HTTP request with no OAuth header. Params: %@", [self encodeParameters:fullParams]);
 		[GLHTTPRequestLoader loadRequest:req
 								callback:callback];
 	}

@@ -12,8 +12,6 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
-			<integer value="5"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -48,6 +46,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 311}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -58,6 +57,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 320}, {280, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MSAwAA</bytes>
@@ -93,6 +93,7 @@
 				</object>
 				<string key="NSFrameSize">{320, 416}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">10</int>
 					<object class="NSImage" key="NSImage">
@@ -134,8 +135,9 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 			<object class="IBUISearchBar" id="322858614">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">290</int>
-				<string key="NSFrameSize">{320, 44}</string>
+				<string key="NSFrameSize">{273, 53}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<int key="IBUIContentMode">3</int>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<object class="IBUITextInputTraits" key="IBTextInputTraits">
@@ -269,10 +271,10 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>GeonoteMapViewController</string>
 					<string>UIResponder</string>
-					<string>{{329, 244}, {320, 480}}</string>
+					<string>{{659, 244}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{734, 680}, {320, 44}}</string>
+					<string>{{311, 468}, {273, 53}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">

@@ -38,7 +38,7 @@ GeoloqiAppDelegate *gAppDelegate;
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
 
-	if (![[GLAuthenticationManager sharedManager] hasRefreshToken]) // we haven't logged in before
+	if(![[GLAuthenticationManager sharedManager] hasRefreshToken]) // we haven't logged in before
     {
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(authenticationDidSucceed:) 

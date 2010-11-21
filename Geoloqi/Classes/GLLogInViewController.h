@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CTableViewController.h"
 
-@interface GLLogInViewController : UIViewController {
+@interface GLLogInViewController : CTableViewController {
 
 }
 @property (nonatomic, retain) IBOutlet UITextField *usernameField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
+@property (nonatomic, retain) IBOutlet UIView *activityIndicator;
 
 - (IBAction)cancel;
-- (IBAction)done;
+- (IBAction)logInAction;
 
 @end

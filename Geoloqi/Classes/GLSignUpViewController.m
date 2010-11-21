@@ -33,12 +33,12 @@
 
 - (NSString *)tableView:(UITableView *)inTableView titleForHeaderInSection:(NSInteger)section;
 {
-	return NSLocalizedString(@"SIGN IN EXPLANTION TEXT HERER", nil);
+	return NSLocalizedString(@"Create your Geoloqi account", nil);
 }
 
 - (NSString *)tableView:(UITableView *)inTableView titleForFooterInSection:(NSInteger)section;
 {
-	return NSLocalizedString(@"SIGN IN EXPLANTION TEXT FOOTER", nil);
+	return NSLocalizedString(@"You'll get an email to complete the setup", nil);
 }
 
 

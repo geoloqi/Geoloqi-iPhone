@@ -18,6 +18,7 @@
 @implementation LQShareViewController
 
 @synthesize durations, durationMinutes;
+@synthesize shareDescriptionField;
 
 /*
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -54,9 +55,11 @@
 	[durationMinutes addObject:@"480"];
 	[durations addObject:@"24 hours"];
 	[durationMinutes addObject:@"1440"];
+	[durations addObject:@"4 days"];
+	[durationMinutes addObject:@"5760"];
 	[durations addObject:@"7 days"];
 	[durationMinutes addObject:@"10080"];
-	[durations addObject:@"never"];
+	[durations addObject:@"no time limit"];
 	[durationMinutes addObject:@"0"];
 	
     [super viewDidLoad];
@@ -94,6 +97,23 @@
 	return [durations objectAtIndex:row];
 }
 
+/*
+ * Hide the keyboard when the user presses "done". I can't believe this isn't built into the OS...
+ */
+-(IBAction)textFieldReturn:(id)sender
+{
+	[sender resignFirstResponder];
+}
+
+/*
+ * Hide the keyboard when the user taps the background
+ */
+-(IBAction)backgroundTouched:(id)sender
+{
+	NSLog(@"Background tapped");
+	[[self shareDescriptionField] resignFirstResponder];
+}
+
 - (IBAction)tappedShare:(id)sender
 {
 	/*
@@ -105,14 +125,14 @@
 }
 
 - (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes {
-	//NSURL *url = [NSURL URLWithString:@"https://api.geoloqi.com/1/link/create"];
-	NSURL *url = [NSURL URLWithString:@"http://cpwebtool.org/test.php"];
+	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@link/create", [[GLAuthenticationManager sharedManager] serverURL]]];
 	
-	NSLog(@"About to make the link/create HTTP request!");
+	NSLog(@"About to make the link/create HTTP request! %@", [NSString stringWithFormat:@"%@link/create", [[GLAuthenticationManager sharedManager] serverURL]]);
 	
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	
 	[request setPostValue:minutes forKey:@"minutes"];
+	[request setPostValue:[shareDescriptionField text] forKey:@"description"];
 	[request setPostValue:[[GLAuthenticationManager sharedManager] accessToken] forKey:@"oauth_token"];
 	[request setDelegate:self];
 	[request startAsynchronous];

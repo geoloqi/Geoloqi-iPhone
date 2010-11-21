@@ -78,6 +78,7 @@
 		0F01850F1296FE0B001508D9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F01850E1296FE0B001508D9 /* MessageUI.framework */; };
 		0F0185111296FE0B001508D9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0185101296FE0B001508D9 /* Security.framework */; };
 		0F01853D12989664001508D9 /* 56-cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F01853C12989664001508D9 /* 56-cloud.png */; };
+		0F0189441299CD7B001508D9 /* GLLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0189431299CD7B001508D9 /* GLLogInViewController.xib */; };
 		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
 		166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* GLMappedSlider.m */; };
 		16DA0BB6122390F600382D1F /* GLWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */; };
@@ -85,7 +86,7 @@
 		16DA0BD21223973500382D1F /* GLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BD01223973500382D1F /* GLSignUpViewController.m */; };
 		16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BD11223973500382D1F /* GLSignUpViewController.xib */; };
 		16DA0BFB12239BBC00382D1F /* GLLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BF912239BBC00382D1F /* GLLogInViewController.m */; };
-		16DA0BFC12239BBC00382D1F /* GLLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BFA12239BBC00382D1F /* GLLogInViewController.xib */; };
+		16DA0BFC12239BBC00382D1F /* GLLogInViewController-old.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BFA12239BBC00382D1F /* GLLogInViewController-old.xib */; };
 		16DA0D0B1224DD4900382D1F /* GLAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */; };
 		16DA0D761224E8FD00382D1F /* GLHTTPRequestLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0D751224E8FD00382D1F /* GLHTTPRequestLoader.m */; };
 		16EE822811D69FB20026503D /* GLLocationUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822711D69FB20026503D /* GLLocationUpdateManager.m */; };
@@ -295,6 +296,7 @@
 		0F01850E1296FE0B001508D9 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		0F0185101296FE0B001508D9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0F01853C12989664001508D9 /* 56-cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-cloud.png"; sourceTree = "<group>"; };
+		0F0189431299CD7B001508D9 /* GLLogInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLLogInViewController.xib; sourceTree = "<group>"; };
 		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 		166BE45F11DDDC9000F41B0B /* GLMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* GLMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMappedSlider.m; sourceTree = "<group>"; };
@@ -306,7 +308,7 @@
 		16DA0BD11223973500382D1F /* GLSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLSignUpViewController.xib; sourceTree = "<group>"; };
 		16DA0BF812239BBC00382D1F /* GLLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLogInViewController.h; sourceTree = "<group>"; };
 		16DA0BF912239BBC00382D1F /* GLLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLogInViewController.m; sourceTree = "<group>"; };
-		16DA0BFA12239BBC00382D1F /* GLLogInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLLogInViewController.xib; sourceTree = "<group>"; };
+		16DA0BFA12239BBC00382D1F /* GLLogInViewController-old.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "GLLogInViewController-old.xib"; sourceTree = "<group>"; };
 		16DA0D091224DD4900382D1F /* GLAuthenticationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAuthenticationManager.h; sourceTree = "<group>"; };
 		16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAuthenticationManager.m; sourceTree = "<group>"; };
 		16DA0D741224E8FD00382D1F /* GLHTTPRequestLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHTTPRequestLoader.h; sourceTree = "<group>"; };
@@ -862,7 +864,8 @@
 				16DA0BD11223973500382D1F /* GLSignUpViewController.xib */,
 				16DA0BF812239BBC00382D1F /* GLLogInViewController.h */,
 				16DA0BF912239BBC00382D1F /* GLLogInViewController.m */,
-				16DA0BFA12239BBC00382D1F /* GLLogInViewController.xib */,
+				0F0189431299CD7B001508D9 /* GLLogInViewController.xib */,
+				16DA0BFA12239BBC00382D1F /* GLLogInViewController-old.xib */,
 			);
 			name = Auth;
 			path = Classes;
@@ -1198,7 +1201,7 @@
 				16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */,
 				16DA0BB7122390F600382D1F /* GLWelcomeViewController.xib in Resources */,
 				16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */,
-				16DA0BFC12239BBC00382D1F /* GLLogInViewController.xib in Resources */,
+				16DA0BFC12239BBC00382D1F /* GLLogInViewController-old.xib in Resources */,
 				49EB224D125D7F7100EDFAB1 /* 07-map-marker.png in Resources */,
 				49EB224E125D7F7100EDFAB1 /* 20-gear2.png in Resources */,
 				49EB224F125D7F7100EDFAB1 /* 103-map.png in Resources */,
@@ -1223,6 +1226,7 @@
 				0F0184C21296FDDF001508D9 /* SHKSharers.plist in Resources */,
 				0F0184DF1296FDDF001508D9 /* FBConnect.bundle in Resources */,
 				0F01853D12989664001508D9 /* 56-cloud.png in Resources */,
+				0F0189441299CD7B001508D9 /* GLLogInViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

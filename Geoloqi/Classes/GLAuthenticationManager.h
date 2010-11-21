@@ -17,7 +17,7 @@ static NSString *const GLAuthenticationSucceededNotification = @"GLAuthenticatio
 	NSString *accessToken;
 	NSDate *tokenExpiryDate;
 	GLHTTPRequestCallback tokenResponseBlock;
-	GLHTTPRequestCallback sharedLinkResponseBlock;
+	//GLHTTPRequestCallback sharedLinkResponseBlock;
 }
 
 + (GLAuthenticationManager *)sharedManager;
@@ -30,6 +30,9 @@ static NSString *const GLAuthenticationSucceededNotification = @"GLAuthenticatio
 //								   withDelegate:(LQShareViewController *)delegate;
 
 - (NSString *)accessToken;
+- (NSString *)refreshToken;
+- (NSString *)serverURL;
 - (BOOL)hasRefreshToken;
 
 @end
+

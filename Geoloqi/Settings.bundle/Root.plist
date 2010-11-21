@@ -14,7 +14,7 @@
 			<key>Key</key>
 			<string>serverURL</string>
 			<key>DefaultValue</key>
-			<string>http://api.geoloqi.com/1/</string>
+			<string>https://api.geoloqi.com/1/</string>
 		</dict>
 		<dict>
 			<key>Title</key>
