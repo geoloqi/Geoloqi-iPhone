@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "GLHTTPRequestLoader.h"
 
+#import "LQShareViewController.h"
+
 static NSString *const GLAuthenticationSucceededNotification = @"GLAuthenticationSucceededNotification";
 
 @interface GLAuthenticationManager : NSObject {
 	NSString *accessToken;
 	NSDate *tokenExpiryDate;
 	GLHTTPRequestCallback tokenResponseBlock;
+	GLHTTPRequestCallback sharedLinkResponseBlock;
 }
 
 + (GLAuthenticationManager *)sharedManager;
@@ -23,6 +26,10 @@ static NSString *const GLAuthenticationSucceededNotification = @"GLAuthenticatio
 						password:(NSString *)password;
 - (void)createAccountWithUsername:(NSString *)username
                      emailAddress:(NSString *)emailAddress;
+//- (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes
+//								   withDelegate:(LQShareViewController *)delegate;
+
+- (NSString *)accessToken;
 - (BOOL)hasRefreshToken;
 
 @end

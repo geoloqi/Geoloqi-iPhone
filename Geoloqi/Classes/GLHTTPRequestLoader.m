@@ -16,7 +16,7 @@
 
 @implementation GLHTTPRequestLoader
 
-+ (void)loadRequest:(NSURLRequest *)request
++ (void)c:(NSURLRequest *)request
 		   callback:(GLHTTPRequestCallback)block {
 	GLHTTPRequestLoader *loader = [[self alloc] init];
 	[loader loadRequest:request

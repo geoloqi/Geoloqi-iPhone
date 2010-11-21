@@ -6,11 +6,21 @@
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
-#define GL_API_URL         @"https://api.geoloqi.com/1/"
+#define GL_API_URL					@"https://api.geoloqi.com/1/"
 
-#define GL_OAUTH_CLIENT_ID @"geoloqi_iphone"
-#define GL_OAUTH_SECRET    @"61e75dc0ab9d849b4de4c4736ce45ed1"
+#define GL_OAUTH_CLIENT_ID			@""
+#define GL_OAUTH_SECRET				@""
 
-#define kApplicationKey @"wX-Mvr-ZQYe95ldJoCanYw "
-#define kApplicationSecret @"jg_cLt6OR_SW2G0gFwkEhA"
+#define kApplicationKey				@""
+#define kApplicationSecret			@""
 
+#define SHKFacebookUseSessionProxy  NO 
+#define SHKFacebookKey				@""
+#define SHKFacebookSecret			@""
+#define SHKFacebookSessionProxyURL  @""
+
+#define SHKTwitterConsumerKey		@""
+#define SHKTwitterSecret			@""
+#define SHKTwitterCallbackUrl		@"http://geoloqi.com/blog/" // You need to set this if using OAuth, see note above (xAuth users can skip it)
+#define SHKTwitterUseXAuth			0 // To use xAuth, set to 1
+#define SHKTwitterUsername			@"geoloqi" // Enter your app's twitter account if you'd like to ask the user to follow it when logging in. (Only for xAuth)

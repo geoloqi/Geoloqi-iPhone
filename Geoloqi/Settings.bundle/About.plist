@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<string>About</string>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Website</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>Website</string>
+			<key>DefaultValue</key>
+			<string>http://geoloqi.com</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Support</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>Version</string>
+			<key>DefaultValue</key>
+			<string>support@geoloqi.com</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Version</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>Version</string>
+			<key>DefaultValue</key>
+			<string>1.0.0</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Chat</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>Chat</string>
+			<key>DefaultValue</key>
+			<string>#geoloqi on Freenode</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Credits</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Aaron Parecki</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>AaronParecki</string>
+			<key>DefaultValue</key>
+			<string>http://aaron.pk</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Amber Case</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>AmberCase</string>
+			<key>DefaultValue</key>
+			<string>http://caseorganic.com</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Justin Miller</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>JustinMiller</string>
+			<key>DefaultValue</key>
+			<string>http://codesorcery.net</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Jacob Bandes</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>JacobBandes</string>
+			<key>DefaultValue</key>
+			<string>twitter.com/jtbandes</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Andrew Pouliot</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>AndrewPouliot</string>
+			<key>DefaultValue</key>
+			<string>http://darknoon.com</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Thanks</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Glyphish Icons</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>GlyphishIcons</string>
+			<key>DefaultValue</key>
+			<string>http://glyphish.com</string>
+		</dict>
+	</array>
+</dict>
+</plist>

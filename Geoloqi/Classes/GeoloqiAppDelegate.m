@@ -18,7 +18,7 @@ GeoloqiAppDelegate *gAppDelegate;
 @synthesize locationUpdateManager;
 @synthesize deviceToken;
 @synthesize window, welcomeViewController;
-
+@synthesize tabBarController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -37,8 +37,8 @@ GeoloqiAppDelegate *gAppDelegate;
 	
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
-/*
-    if ( ! [[GLAuthenticationManager sharedManager] hasRefreshToken]) // we haven't logged in before
+
+	if (![[GLAuthenticationManager sharedManager] hasRefreshToken]) // we haven't logged in before
     {
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(authenticationDidSucceed:) 
@@ -47,7 +47,7 @@ GeoloqiAppDelegate *gAppDelegate;
 
         [tabBarController presentModalViewController:welcomeViewController animated:YES];
     }
-*/
+
 	UIDevice *d = [UIDevice currentDevice];
 	d.batteryMonitoringEnabled = YES;
 //	NSLog(@"Name %@, Sys name %@, Sys version %@, Model %@, Idiom %d, Battery %f",

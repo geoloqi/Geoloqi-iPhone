@@ -15,14 +15,13 @@
 	IBOutlet UITabBarController *tabBarController;
 	GLLocationUpdateManager *locationUpdateManager;
 	NSString *deviceToken;
-	
-	
 }
 
 @property (nonatomic, retain) IBOutlet UIViewController *welcomeViewController;
 @property (nonatomic, retain) GLLocationUpdateManager *locationUpdateManager;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) NSString *deviceToken;
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
 + (NSString*)base64forData:(NSData*)theData;
 

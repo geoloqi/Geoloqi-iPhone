@@ -11,6 +11,8 @@
 #import "CJSONDeserializer.h"
 #import "GLConstants.h"
 
+#import "ASIFormDataRequest.h"
+
 static GLAuthenticationManager *sharedManager = nil;
 
 @interface GLAuthenticationManager ()
@@ -21,6 +23,7 @@ static GLAuthenticationManager *sharedManager = nil;
 		 parameters:(NSDictionary *)params
 		   callback:(GLHTTPRequestCallback)callback;
 - (GLHTTPRequestCallback)tokenResponseBlock;
+- (GLHTTPRequestCallback)sharedLinkResponseBlock;
 - (NSString *)refreshToken;
 @end
 
@@ -73,6 +76,31 @@ static GLAuthenticationManager *sharedManager = nil;
              callback:[self tokenResponseBlock]];
 }
 
+/*
+- (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes
+								   withDelegate:(LQShareViewController *)delegate
+{
+	NSURL *url = [NSURL URLWithString:@"https://api.geoloqi.com/1/link/create"];
+	
+	NSLog(@"About to make the link/create HTTP request!");
+
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+
+	[request setPostValue:minutes forKey:@"minutes"];
+	[request setPostValue:accessToken forKey:@"access_token"];
+	[request setDelegate:delegate];
+	[request startAsynchronous];
+
+	/*
+	[self callAPIPath:@"link/create"
+			   method:@"POST"
+		 authenticate:YES
+		   parameters:[NSDictionary dictionaryWithObjectsAndKeys:minutes, @"minutes", nil]
+			 callback:callback];
+	* /
+}
+*/
+
 - (void)deauthenticate {
 	[accessToken release];
 	[tokenExpiryDate release];
@@ -84,14 +112,16 @@ static GLAuthenticationManager *sharedManager = nil;
 }
 
 - (void)refreshAccessTokenWithCallback:(void (^)())callback {
-	if (!accessToken) {
-		NSLog(@"No access token loaded, can't refresh authorization! :(");
+	if (![self refreshToken]) {
+		NSLog(@"No refresh token present, can't refresh authorization! :(");
 		return;
 	}
 	if ([tokenExpiryDate timeIntervalSinceNow] > 0) {
 		// Token is already valid!
+		NSLog(@"Access token is still valid");
 		callback();
 	} else {
+		NSLog(@"Access token expired, refresh the token");
 		[self callAPIPath:@"oauth/token"
 				   method:@"POST"
 			 authenticate:NO
@@ -103,6 +133,26 @@ static GLAuthenticationManager *sharedManager = nil;
 					 if (!error) callback();
 				 }];
 	}
+}
+
+- (GLHTTPRequestCallback)sharedLinkResponseBlock {
+	if (sharedLinkResponseBlock) return sharedLinkResponseBlock;
+	return sharedLinkResponseBlock = [^(NSError *error, NSString *responseBody) {
+		NSError *err = nil;
+		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
+																					   NSUTF8StringEncoding]
+																				error:&err];
+		if (!res) {
+			NSLog(@"Error deserializing response (for link/create) \"%@\": %@", responseBody, err);
+			return;
+		}
+		
+		if ([[res objectForKey:@"shortlink"] isKindOfClass:[NSString class]] && [[res objectForKey:@"shortlink"] length])
+		{
+			NSLog(@"Shared link created %@", [res objectForKey:@"shortlink"]);
+			return;
+		}
+	} copy];
 }
 
 - (GLHTTPRequestCallback)tokenResponseBlock {
@@ -128,6 +178,7 @@ static GLAuthenticationManager *sharedManager = nil;
         if ([[res objectForKey:@"refresh_token"] isKindOfClass:[NSString class]] && [[res objectForKey:@"refresh_token"] length])
         {
             [[NSUserDefaults standardUserDefaults] setObject:[res objectForKey:@"refresh_token"] forKey:@"refreshToken"];
+            [[NSUserDefaults standardUserDefaults] setObject:[res objectForKey:@"access_token"] forKey:@"accessToken"];
             [[NSUserDefaults standardUserDefaults] synchronize];
 
             [[NSNotificationCenter defaultCenter] postNotificationName:GLAuthenticationSucceededNotification object:self];
@@ -150,15 +201,26 @@ static GLAuthenticationManager *sharedManager = nil;
     return nil;
 }
 
+- (NSString *)accessToken
+{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"])
+        return [[NSUserDefaults standardUserDefaults] stringForKey:@"accessToken"];
+    
+    return @"1111";
+}
+
 - (void)callAPIPath:(NSString *)path
 			 method:(NSString *)httpMethod
 	   authenticate:(BOOL)needsAuth
 		 parameters:(NSDictionary *)params
 		   callback:(GLHTTPRequestCallback)callback {
+	
 	NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:
 								[[NSURL URLWithString:GL_API_URL]
 								 URLByAppendingPathComponent:path]];
 	[req setHTTPMethod:httpMethod];
+	
+	NSLog([NSString stringWithFormat:@"Calling API Method %@", path]);
 	
 	// Add the client id/secret for API authorization
 	NSMutableDictionary *fullParams = [NSMutableDictionary dictionaryWithDictionary:params];
@@ -170,12 +232,14 @@ static GLAuthenticationManager *sharedManager = nil;
 	
 	if (needsAuth) {
 		[self refreshAccessTokenWithCallback:^{
-			[req setValue:[NSString stringWithFormat:@"OAuth %@", accessToken]
-	   forHTTPHeaderField:@"Authorization"];
+					[req setValue:[NSString stringWithFormat:@"OAuth %@", accessToken]
+			   forHTTPHeaderField:@"Authorization"];
+			NSLog(@"About to run the HTTP request with OAuth header!");
 			[GLHTTPRequestLoader loadRequest:req
 									callback:callback];
 		}];
 	} else {
+		NSLog(@"About to run the HTTP request with no OAuth header.");
 		[GLHTTPRequestLoader loadRequest:req
 								callback:callback];
 	}
