@@ -18,7 +18,7 @@
 @implementation LQShareViewController
 
 @synthesize durations, durationMinutes;
-@synthesize shareDescriptionField;
+@synthesize shareDescriptionField, pickerView;
 
 /*
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -36,6 +36,7 @@
 	
 	durations = [[NSMutableArray alloc] init];
 	durationMinutes = [[NSMutableArray alloc] init];
+	selectedMinutes = @"30";
 
 	[durations addObject:@"10 minutes"];
 	[durationMinutes addObject:@"10"];
@@ -61,6 +62,9 @@
 	[durationMinutes addObject:@"10080"];
 	[durations addObject:@"no time limit"];
 	[durationMinutes addObject:@"0"];
+	
+	[pickerView reloadAllComponents];
+	[pickerView selectRow:2 inComponent:0 animated:NO];
 	
     [super viewDidLoad];
 }

@@ -20,6 +20,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *shareDescriptionField;
+@property (nonatomic, retain) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, retain) NSMutableArray *durations;
 @property (nonatomic, retain) NSMutableArray *durationMinutes;
 

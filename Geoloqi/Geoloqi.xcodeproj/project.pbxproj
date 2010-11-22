@@ -86,7 +86,6 @@
 		16DA0BD21223973500382D1F /* GLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BD01223973500382D1F /* GLSignUpViewController.m */; };
 		16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BD11223973500382D1F /* GLSignUpViewController.xib */; };
 		16DA0BFB12239BBC00382D1F /* GLLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BF912239BBC00382D1F /* GLLogInViewController.m */; };
-		16DA0BFC12239BBC00382D1F /* GLLogInViewController-old.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BFA12239BBC00382D1F /* GLLogInViewController-old.xib */; };
 		16DA0D0B1224DD4900382D1F /* GLAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */; };
 		16DA0D761224E8FD00382D1F /* GLHTTPRequestLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0D751224E8FD00382D1F /* GLHTTPRequestLoader.m */; };
 		16EE822811D69FB20026503D /* GLLocationUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822711D69FB20026503D /* GLLocationUpdateManager.m */; };
@@ -308,7 +307,6 @@
 		16DA0BD11223973500382D1F /* GLSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLSignUpViewController.xib; sourceTree = "<group>"; };
 		16DA0BF812239BBC00382D1F /* GLLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLogInViewController.h; sourceTree = "<group>"; };
 		16DA0BF912239BBC00382D1F /* GLLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLogInViewController.m; sourceTree = "<group>"; };
-		16DA0BFA12239BBC00382D1F /* GLLogInViewController-old.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "GLLogInViewController-old.xib"; sourceTree = "<group>"; };
 		16DA0D091224DD4900382D1F /* GLAuthenticationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAuthenticationManager.h; sourceTree = "<group>"; };
 		16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAuthenticationManager.m; sourceTree = "<group>"; };
 		16DA0D741224E8FD00382D1F /* GLHTTPRequestLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHTTPRequestLoader.h; sourceTree = "<group>"; };
@@ -865,7 +863,6 @@
 				16DA0BF812239BBC00382D1F /* GLLogInViewController.h */,
 				16DA0BF912239BBC00382D1F /* GLLogInViewController.m */,
 				0F0189431299CD7B001508D9 /* GLLogInViewController.xib */,
-				16DA0BFA12239BBC00382D1F /* GLLogInViewController-old.xib */,
 			);
 			name = Auth;
 			path = Classes;
@@ -1201,7 +1198,6 @@
 				16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */,
 				16DA0BB7122390F600382D1F /* GLWelcomeViewController.xib in Resources */,
 				16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */,
-				16DA0BFC12239BBC00382D1F /* GLLogInViewController-old.xib in Resources */,
 				49EB224D125D7F7100EDFAB1 /* 07-map-marker.png in Resources */,
 				49EB224E125D7F7100EDFAB1 /* 20-gear2.png in Resources */,
 				49EB224F125D7F7100EDFAB1 /* 103-map.png in Resources */,

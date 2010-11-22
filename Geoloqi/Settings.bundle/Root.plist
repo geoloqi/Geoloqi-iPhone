@@ -18,6 +18,22 @@
 		</dict>
 		<dict>
 			<key>Title</key>
+			<string>Account</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Username</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>username</string>
+			<key>DefaultValue</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>Title</key>
 			<string>Refresh Token</string>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>

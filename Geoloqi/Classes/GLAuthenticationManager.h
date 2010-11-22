@@ -14,11 +14,13 @@
 static NSString *const GLAuthenticationSucceededNotification = @"GLAuthenticationSucceededNotification";
 
 @interface GLAuthenticationManager : NSObject {
-	NSString *accessToken;
 	NSDate *tokenExpiryDate;
 	GLHTTPRequestCallback tokenResponseBlock;
+	GLHTTPRequestCallback initUsernameBlock;
 	//GLHTTPRequestCallback sharedLinkResponseBlock;
 }
+
+@property (nonatomic, retain) NSString *accessToken;
 
 + (GLAuthenticationManager *)sharedManager;
 
@@ -26,10 +28,12 @@ static NSString *const GLAuthenticationSucceededNotification = @"GLAuthenticatio
 						password:(NSString *)password;
 - (void)createAccountWithUsername:(NSString *)username
                      emailAddress:(NSString *)emailAddress;
+
+- (void)initTokenAndGetUsername;
+
 //- (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes
 //								   withDelegate:(LQShareViewController *)delegate;
 
-- (NSString *)accessToken;
 - (NSString *)refreshToken;
 - (NSString *)serverURL;
 - (BOOL)hasRefreshToken;

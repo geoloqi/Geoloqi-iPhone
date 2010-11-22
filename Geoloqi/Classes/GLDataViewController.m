@@ -10,6 +10,7 @@
 #import "GLLocationUpdateManager.h"
 #import <QuartzCore/QuartzCore.h>
 #import "GLMappedSlider.h"
+#import "GLAuthenticationManager.h"
 
 NSString *const GLTrackingOnUserInfoKey = @"GLTrackingOnUserInfoKey";
 

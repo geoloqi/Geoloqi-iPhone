@@ -19,16 +19,19 @@ static GLAuthenticationManager *sharedManager = nil;
 - (NSString *)encodeParameters:(NSDictionary *)params;
 - (void)callAPIPath:(NSString *)path
 			 method:(NSString *)httpMethod
-	   authenticate:(BOOL)needsAuth
+ includeAccessToken:(BOOL)includeAccessToken
+  includeClientCred:(BOOL)includeClientCred
 		 parameters:(NSDictionary *)params
 		   callback:(GLHTTPRequestCallback)callback;
 - (GLHTTPRequestCallback)tokenResponseBlock;
+- (GLHTTPRequestCallback)initUsernameBlock;
 //- (GLHTTPRequestCallback)sharedLinkResponseBlock;
 //- (NSString *)refreshToken;
 @end
 
-
 @implementation GLAuthenticationManager
+
+@synthesize accessToken;
 
 + (GLAuthenticationManager *)sharedManager {
 	if (!sharedManager) {
@@ -56,7 +59,8 @@ static GLAuthenticationManager *sharedManager = nil;
 						password:(NSString *)password {
 	[self callAPIPath:@"oauth/token"
 			   method:@"POST"
-		 authenticate:NO
+   includeAccessToken:NO
+	includeClientCred:YES
 		   parameters:[NSDictionary dictionaryWithObjectsAndKeys:
 					   @"password", @"grant_type",
 					   username, @"username",
@@ -69,11 +73,23 @@ static GLAuthenticationManager *sharedManager = nil;
 {
     [self callAPIPath:@"user/create"
                method:@"POST"
-         authenticate:NO
+   includeAccessToken:NO
+	includeClientCred:YES
            parameters:[NSDictionary dictionaryWithObjectsAndKeys:username,    @"username",
                                                                 emailAddress, @"email",
                                                                 nil]
              callback:[self tokenResponseBlock]];
+}
+
+// Called when the app first loads if a refresh token is present. Request the user's username
+// which will cause a new access token to be fetched as well
+- (void)initTokenAndGetUsername {
+	[self callAPIPath:@"account/username"
+			   method:@"POST"
+   includeAccessToken:YES
+	includeClientCred:NO
+		   parameters:nil
+			 callback:[self initUsernameBlock]];
 }
 
 /*
@@ -124,9 +140,10 @@ static GLAuthenticationManager *sharedManager = nil;
 		NSLog(@"Access token expired, refresh the token");
 		[self callAPIPath:@"oauth/token"
 				   method:@"POST"
-			 authenticate:NO
+	   includeAccessToken:NO
+		includeClientCred:YES
 			   parameters:[NSDictionary dictionaryWithObjectsAndKeys:
-						   @"refresh", @"grant_type",
+						   @"refresh_token", @"grant_type",
 						   [self refreshToken], @"refresh_token", nil]
 				 callback:^(NSError *error, NSString *responseBody) {
 					 [self tokenResponseBlock](error, responseBody);
@@ -191,6 +208,29 @@ static GLAuthenticationManager *sharedManager = nil;
 	} copy];
 }
 
+- (GLHTTPRequestCallback)initUsernameBlock {
+	if (initUsernameBlock) return initUsernameBlock;
+	return initUsernameBlock = [^(NSError *error, NSString *responseBody) {
+		NSError *err = nil;
+		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
+																					   NSUTF8StringEncoding]
+																				error:&err];
+		if (!res) {
+			NSLog(@"Error deserializing response (for account/username) \"%@\": %@", responseBody, err);
+			return;
+		}
+		
+        if ([[res objectForKey:@"username"] isKindOfClass:[NSString class]] && [[res objectForKey:@"username"] length])
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:[res objectForKey:@"username"] forKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+		
+		NSLog(@"Got username %@", [res objectForKey:@"username"]);
+	} copy];
+}
+
+
 - (BOOL)hasRefreshToken
 {
     return ([[NSUserDefaults standardUserDefaults] objectForKey:@"refreshToken"] != nil);
@@ -200,14 +240,6 @@ static GLAuthenticationManager *sharedManager = nil;
 {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"refreshToken"])
         return [[NSUserDefaults standardUserDefaults] stringForKey:@"refreshToken"];
-    
-    return nil;
-}
-
-- (NSString *)accessToken
-{
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"])
-        return [[NSUserDefaults standardUserDefaults] stringForKey:@"accessToken"];
     
     return nil;
 }
@@ -226,7 +258,8 @@ static GLAuthenticationManager *sharedManager = nil;
 
 - (void)callAPIPath:(NSString *)path
 			 method:(NSString *)httpMethod
-	   authenticate:(BOOL)includeAccessToken
+ includeAccessToken:(BOOL)includeAccessToken
+  includeClientCred:(BOOL)includeClientCred
 		 parameters:(NSDictionary *)params
 		   callback:(GLHTTPRequestCallback)callback {
 	
@@ -238,11 +271,18 @@ static GLAuthenticationManager *sharedManager = nil;
 	NSLog([NSString stringWithFormat:@"Calling API Method %@", path]);
 	
 	NSMutableDictionary *fullParams = [NSMutableDictionary dictionaryWithDictionary:params];
+
+	if (includeClientCred) {
+		NSLog(@"Adding client credentials to request");
+		// Add the client id/secret for API authorization
+		[fullParams setObject:GL_OAUTH_CLIENT_ID forKey:@"client_id"];
+		[fullParams setObject:GL_OAUTH_SECRET    forKey:@"client_secret"];
+	}
 	
+	[req setHTTPBody:[[self encodeParameters:fullParams]
+					  dataUsingEncoding:NSUTF8StringEncoding]];
+
 	if (includeAccessToken) {
-		[req setHTTPBody:[[self encodeParameters:fullParams]
-						  dataUsingEncoding:NSUTF8StringEncoding]];
-		
 		[self refreshAccessTokenWithCallback:^{
 					[req setValue:[NSString stringWithFormat:@"OAuth %@", accessToken]
 			   forHTTPHeaderField:@"Authorization"];
@@ -251,13 +291,6 @@ static GLAuthenticationManager *sharedManager = nil;
 									callback:callback];
 		}];
 	} else {
-		// Add the client id/secret for API authorization
-		[fullParams setObject:GL_OAUTH_CLIENT_ID forKey:@"client_id"];
-		[fullParams setObject:GL_OAUTH_SECRET    forKey:@"client_secret"];
-		
-		[req setHTTPBody:[[self encodeParameters:fullParams]
-						  dataUsingEncoding:NSUTF8StringEncoding]];
-
 		NSLog(@"About to run the HTTP request with no OAuth header. Params: %@", [self encodeParameters:fullParams]);
 		[GLHTTPRequestLoader loadRequest:req
 								callback:callback];

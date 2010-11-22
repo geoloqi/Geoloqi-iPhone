@@ -118,6 +118,16 @@
 			<key>DefaultValue</key>
 			<string>http://glyphish.com</string>
 		</dict>
+		<dict>
+			<key>Title</key>
+			<string>ShareKit</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>ShareKit</string>
+			<key>DefaultValue</key>
+			<string>http://sharekit.com</string>
+		</dict>
 	</array>
 </dict>
 </plist>

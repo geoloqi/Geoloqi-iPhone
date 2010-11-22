@@ -38,7 +38,8 @@ GeoloqiAppDelegate *gAppDelegate;
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
 
-	if(![[GLAuthenticationManager sharedManager] hasRefreshToken]) // we haven't logged in before
+	// If there is no refresh token present, show the login/signup screen
+	if(![[GLAuthenticationManager sharedManager] hasRefreshToken])
     {
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(authenticationDidSucceed:) 
@@ -47,6 +48,11 @@ GeoloqiAppDelegate *gAppDelegate;
 
         [tabBarController presentModalViewController:welcomeViewController animated:YES];
     }
+	// else, use the refresh token to get a new access token right now
+	else {
+		[[GLAuthenticationManager sharedManager] initTokenAndGetUsername];
+	}
+
 
 	UIDevice *d = [UIDevice currentDevice];
 	d.batteryMonitoringEnabled = YES;
