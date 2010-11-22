@@ -44,16 +44,6 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Access Token</string>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
-			<key>Key</key>
-			<string>accessToken</string>
-			<key>DefaultValue</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>Title</key>
 			<string></string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>

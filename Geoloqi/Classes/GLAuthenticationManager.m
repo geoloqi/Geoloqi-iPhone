@@ -124,6 +124,7 @@ static GLAuthenticationManager *sharedManager = nil;
 	tokenExpiryDate = nil;
 
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"refreshToken"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -183,8 +184,24 @@ static GLAuthenticationManager *sharedManager = nil;
 		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
 																					   NSUTF8StringEncoding]
 																				error:&err];
-		if (!res) {
+		if (!res || [res objectForKey:@"error"] != nil) {
+			// There was a problem with the response. Bail out!
 			NSLog(@"Error deserializing response (for oauth/token) \"%@\": %@", responseBody, err);
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
+															message:@"There was a problem! Try logging in again."
+														   delegate:gAppDelegate
+												  cancelButtonTitle:@"Quit" 
+												  otherButtonTitles:nil];
+			[alert show];
+
+			// Wipe out the stored refresh token since it won't be any good anymore
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"refreshToken"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+			[accessToken release];
+			[tokenExpiryDate release];
+			[alert release];
+			
 			return;
 		}
 		
@@ -198,7 +215,6 @@ static GLAuthenticationManager *sharedManager = nil;
         if ([[res objectForKey:@"refresh_token"] isKindOfClass:[NSString class]] && [[res objectForKey:@"refresh_token"] length])
         {
             [[NSUserDefaults standardUserDefaults] setObject:[res objectForKey:@"refresh_token"] forKey:@"refreshToken"];
-            //[[NSUserDefaults standardUserDefaults] setObject:[res objectForKey:@"access_token"] forKey:@"accessToken"];
             [[NSUserDefaults standardUserDefaults] synchronize];
 
             [[NSNotificationCenter defaultCenter] postNotificationName:GLAuthenticationSucceededNotification object:self];
@@ -233,7 +249,8 @@ static GLAuthenticationManager *sharedManager = nil;
 
 - (BOOL)hasRefreshToken
 {
-    return ([[NSUserDefaults standardUserDefaults] objectForKey:@"refreshToken"] != nil);
+    return ([[NSUserDefaults standardUserDefaults] objectForKey:@"refreshToken"] != nil
+			&& [[[NSUserDefaults standardUserDefaults] objectForKey:@"refreshToken"] length]);
 }
 
 - (NSString *)refreshToken

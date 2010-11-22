@@ -10,7 +10,7 @@
 
 #import "GLLocationUpdateManager.h"
 
-@interface GeoloqiAppDelegate : NSObject <UIApplicationDelegate> {
+@interface GeoloqiAppDelegate : NSObject <UIApplicationDelegate, UIAlertViewDelegate> {
     UIWindow *window;
 	IBOutlet UITabBarController *tabBarController;
 	GLLocationUpdateManager *locationUpdateManager;

@@ -38,7 +38,7 @@
 
 - (NSString *)tableView:(UITableView *)inTableView titleForFooterInSection:(NSInteger)section;
 {
-	return NSLocalizedString(@"You'll get an email to complete the setup", nil);
+	return NSLocalizedString(@"You'll get an email to complete the setup, but you can start using the app right away!", nil);
 }
 
 

@@ -72,6 +72,13 @@ GeoloqiAppDelegate *gAppDelegate;
     return YES;
 }
 
+// A cheap way to quit the program after the "error" alert from an HTTP request pops up.
+// This will have been called after the user hits "quit" and after the refresh token has already been wiped out.
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex
+{
+	exit(9);
+}
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:[userInfo description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
 	[alert show];
