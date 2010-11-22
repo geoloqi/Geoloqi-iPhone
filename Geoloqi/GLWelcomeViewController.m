@@ -7,6 +7,7 @@
 //
 
 #import "GLWelcomeViewController.h"
+#import "GLAuthenticationManager.h"s
 
 
 @implementation GLWelcomeViewController
@@ -25,7 +26,7 @@
 							animated:YES];
 }
 - (IBAction)useAnonymously {
-	
+	[[GLAuthenticationManager sharedManager] createAnonymousAccount];
 }
 
 - (void)viewDidLoad;

@@ -28,8 +28,11 @@ static NSString *const GLAuthenticationSucceededNotification = @"GLAuthenticatio
 						password:(NSString *)password;
 - (void)createAccountWithUsername:(NSString *)username
                      emailAddress:(NSString *)emailAddress;
+- (void)createAnonymousAccount;
 
 - (void)initTokenAndGetUsername;
+
+- (void)errorProcessingAPIRequest;
 
 //- (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes
 //								   withDelegate:(LQShareViewController *)delegate;

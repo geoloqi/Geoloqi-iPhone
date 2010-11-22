@@ -81,6 +81,15 @@ static GLAuthenticationManager *sharedManager = nil;
              callback:[self tokenResponseBlock]];
 }
 
+- (void)createAnonymousAccount {
+    [self callAPIPath:@"user/create_anon"
+               method:@"POST"
+   includeAccessToken:NO
+	includeClientCred:YES
+           parameters:nil
+             callback:[self tokenResponseBlock]];
+}
+
 // Called when the app first loads if a refresh token is present. Request the user's username
 // which will cause a new access token to be fetched as well
 - (void)initTokenAndGetUsername {
@@ -185,23 +194,8 @@ static GLAuthenticationManager *sharedManager = nil;
 																					   NSUTF8StringEncoding]
 																				error:&err];
 		if (!res || [res objectForKey:@"error"] != nil) {
-			// There was a problem with the response. Bail out!
-			NSLog(@"Error deserializing response (for oauth/token) \"%@\": %@", responseBody, err);
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
-															message:@"There was a problem! Try logging in again."
-														   delegate:gAppDelegate
-												  cancelButtonTitle:@"Quit" 
-												  otherButtonTitles:nil];
-			[alert show];
-
-			// Wipe out the stored refresh token since it won't be any good anymore
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"refreshToken"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-			[accessToken release];
-			[tokenExpiryDate release];
-			[alert release];
-			
+			NSLog(@"Error deserializing response (for tokenResponseBlock) \"%@\": %@", responseBody, err);
+			[self errorProcessingAPIRequest];
 			return;
 		}
 		
@@ -231,8 +225,9 @@ static GLAuthenticationManager *sharedManager = nil;
 		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
 																					   NSUTF8StringEncoding]
 																				error:&err];
-		if (!res) {
+		if (!res || [res objectForKey:@"error"] != nil) {
 			NSLog(@"Error deserializing response (for account/username) \"%@\": %@", responseBody, err);
+			[self errorProcessingAPIRequest];
 			return;
 		}
 		
@@ -312,6 +307,25 @@ static GLAuthenticationManager *sharedManager = nil;
 		[GLHTTPRequestLoader loadRequest:req
 								callback:callback];
 	}
+}
+
+- (void)errorProcessingAPIRequest {
+	// There was a problem with the response from the API. Bail out!
+	// This is totally not an ideal solution, but it's better than the app looking like nothing went wrong or also hanging.
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
+													message:@"There was a problem! Try logging in again."
+												   delegate:gAppDelegate
+										  cancelButtonTitle:@"Quit" 
+										  otherButtonTitles:nil];
+	[alert show];
+	
+	// Wipe out the stored refresh token since it won't be any good anymore
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"refreshToken"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	[accessToken release];
+	[tokenExpiryDate release];
+	[alert release];
 }
 
 - (void)dealloc {
