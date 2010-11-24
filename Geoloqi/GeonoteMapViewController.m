@@ -30,9 +30,12 @@
 
 	firstLoad = YES;
 	
+	/*
+	 * The geonote object doesn't exist at this point
     if ( ! self.geonote.location)
         self.geonote.location = gAppDelegate.locationUpdateManager.currentLocation;
-    
+    */
+	
     self.navigationItem.titleView = searchBar;
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolbarLocate.png"]
                                                                                style:UIBarButtonItemStylePlain
@@ -95,9 +98,17 @@
 
 - (IBAction)tappedNext:(id)sender
 {
+	// Create the Geonote object
+	self.geonote = [[[Geonote alloc] init] autorelease];
+	
     self.geonote.location = [[[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude 
                                                         longitude:mapView.centerCoordinate.longitude] autorelease];
 
+	self.geonote.latitude = mapView.centerCoordinate.latitude;
+	self.geonote.longitude = mapView.centerCoordinate.longitude;
+	
+	NSLog(@"Selected location and radius of geonote. %@", [self.geonote description]);
+	
     GeonoteMessageViewController *messageViewController = [[[GeonoteMessageViewController alloc] initWithNibName:nil bundle:nil] autorelease];
     
     messageViewController.geonote = self.geonote;

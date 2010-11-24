@@ -18,11 +18,15 @@
     id friend;
     CLLocation *location;
     CGFloat radius;
+	CGFloat latitude;
+	CGFloat longitude;
     NSString *text;
 }
 
 @property (nonatomic, retain) id friend;
 @property (nonatomic, retain) CLLocation *location;
+@property (nonatomic, assign) CGFloat latitude;
+@property (nonatomic, assign) CGFloat longitude;
 @property (nonatomic, assign) CGFloat radius;
 @property (nonatomic, retain) NSString *text;
 

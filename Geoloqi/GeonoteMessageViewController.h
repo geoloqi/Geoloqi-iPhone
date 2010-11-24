@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLHTTPRequestLoader.h"
 
 @class Geonote;
 
@@ -14,9 +15,12 @@
 {
     IBOutlet UITextView *textView;
     Geonote *geonote;
+	GLHTTPRequestCallback geonoteSentCallback;
 }
 
 @property (nonatomic, retain) Geonote *geonote;
+
+- (GLHTTPRequestCallback)geonoteSentCallback;
 
 - (IBAction)tappedFinish:(id)sender;
 

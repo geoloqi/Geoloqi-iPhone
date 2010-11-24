@@ -7,8 +7,10 @@
 //
 
 #import "GeonoteMessageViewController.h"
-#import "GeonoteConfirmationViewController.h"
 #import "Geonote.h"
+#import "GLAuthenticationManager.h"
+#import "CJSONDeserializer.h"
+#import "SHKActivityIndicator.h"
 
 @implementation GeonoteMessageViewController
 
@@ -27,7 +29,7 @@
 - (void)dealloc
 {
     [geonote release];
-    
+    [geonoteSentCallback release];
     [super dealloc];
 }
 
@@ -35,21 +37,68 @@
 
 - (IBAction)tappedFinish:(id)sender
 {
-    [textView resignFirstResponder];
-    
-    GeonoteConfirmationViewController *confirmationViewController = [[[GeonoteConfirmationViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-    
-    confirmationViewController.geonote = self.geonote;
-    
-    UINavigationController *wrapper = [[[UINavigationController alloc] initWithRootViewController:confirmationViewController] autorelease];
-
-    confirmationViewController.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Done" 
-                                                                                                     style:UIBarButtonItemStyleDone 
-                                                                                                    target:confirmationViewController
-                                                                                                    action:@selector(dismiss:)] autorelease];
-    
-    [self.navigationController presentModalViewController:wrapper animated:YES];
+	self.geonote.text = [NSString stringWithString:textView.text];
+	NSLog(@"Geonote: %@", [self.geonote description]);
+	
+	[[GLAuthenticationManager sharedManager] callAPIPath:@"geonote/create" 
+												  method:@"POST" 
+									  includeAccessToken:YES
+									   includeClientCred:NO 
+											  parameters:[NSDictionary dictionaryWithObjectsAndKeys:
+														  textView.text, @"text",
+														  [NSString stringWithFormat:@"%f", self.geonote.latitude], @"latitude",
+														  [NSString stringWithFormat:@"%f", self.geonote.longitude], @"longitude",
+														  [NSString stringWithFormat:@"%f", self.geonote.radius], @"radius",
+														  nil]
+												callback:[self geonoteSentCallback]];
 }
+
+- (GLHTTPRequestCallback)geonoteSentCallback {
+	if (geonoteSentCallback) return geonoteSentCallback;
+	NSLog(@"Making a new geonoteSentCallback block");
+	return geonoteSentCallback = [^(NSError *error, NSString *responseBody) {
+		NSLog(@"Geonote sent!");
+
+		NSError *err = nil;
+		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
+																					   NSUTF8StringEncoding]
+																				error:&err];
+		if (!res || [res objectForKey:@"error"] != nil) {
+			NSLog(@"Error deserializing response (for geonote/create) \"%@\": %@", responseBody, err);
+			//[[GLAuthenticationManager sharedManager] errorProcessingAPIRequest];
+			return;
+		}
+		
+		[textView resignFirstResponder];
+		
+		/*
+		GeonoteConfirmationViewController *confirmationViewController = [[[GeonoteConfirmationViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+		
+		confirmationViewController.geonote = self.geonote;
+		
+		UINavigationController *wrapper = [[[UINavigationController alloc] initWithRootViewController:confirmationViewController] autorelease];
+		
+		confirmationViewController.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Done" 
+																										 style:UIBarButtonItemStyleDone 
+																										target:confirmationViewController
+																										action:@selector(dismiss:)] autorelease];
+		
+		[self.navigationController presentModalViewController:wrapper animated:YES];
+		*/
+		
+		[[SHKActivityIndicator currentIndicator] displayCompleted:@"Geonote created!"];
+	
+		// Restore the Geonote tabe to its original state showing the map
+		
+		UITabBarController *appTabBarController = ((UITabBarController *)self.parentViewController.parentViewController);
+		UINavigationController *geonoteNavigationController = ((UINavigationController *)appTabBarController.selectedViewController);
+		
+		[geonoteNavigationController popToRootViewControllerAnimated:YES];
+		[appTabBarController dismissModalViewControllerAnimated:YES];
+		
+	} copy];
+}
+
 
 #pragma mark -
 
@@ -66,6 +115,7 @@
         [aTextView resignFirstResponder];
         
         self.geonote.text = aTextView.text;
+		NSLog(@"Geonote text changed: %@", aTextView.text);
         
         return NO;
     }

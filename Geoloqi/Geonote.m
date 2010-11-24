@@ -12,16 +12,18 @@
 
 @synthesize friend;
 @synthesize location;
+@synthesize latitude;
+@synthesize longitude;
 @synthesize radius;
 @synthesize text;
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Geonote to \"%@\" at %f, %f with radius %f: \"%@\"", self.friend, 
-                                                                                             self.location.coordinate.latitude, 
-                                                                                             self.location.coordinate.longitude, 
-                                                                                             self.radius, 
-                                                                                             self.text];
+    return [NSString stringWithFormat:@"Geonote at %f, %f with radius %f: \"%@\"", 
+																				 self.latitude, 
+																				 self.longitude, 
+																				 self.radius, 
+																				 self.text];
 }
 
 @end
