@@ -65,7 +65,7 @@
 																				error:&err];
 		if (!res || [res objectForKey:@"error"] != nil) {
 			NSLog(@"Error deserializing response (for geonote/create) \"%@\": %@", responseBody, err);
-			//[[GLAuthenticationManager sharedManager] errorProcessingAPIRequest];
+			[[GLAuthenticationManager sharedManager] errorProcessingAPIRequest];
 			return;
 		}
 		

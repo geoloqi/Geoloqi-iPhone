@@ -32,10 +32,12 @@
 	// The map will center on the user's location as soon as it's received
 	firstLoad = YES;
 	
+	// TODO: Make this use [GLAuthenticationManager callAPIPath] instead
+	
 	ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:
 						   [NSURL URLWithString:
 							[NSString stringWithFormat:
-							 @"http://api.geoloqi.com/1/location/history?count=200&thinning=3&oauth_token=%@",
+							 @"http://fakeapi.local/1/location/history?count=200&thinning=3&oauth_token=%@",
 							 gAppDelegate.locationUpdateManager.deviceKey]]];
 	req.delegate = self;
 	[req startAsynchronous];

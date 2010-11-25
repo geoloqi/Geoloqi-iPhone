@@ -276,7 +276,7 @@ static GLAuthenticationManager *sharedManager = nil;
 		   callback:(GLHTTPRequestCallback)callback {
 	
 	NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:
-								[[NSURL URLWithString:GL_API_URL]
+								[[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"serverURL"]]
 								 URLByAppendingPathComponent:path]];
 	[req setHTTPMethod:httpMethod];
 	

@@ -60,7 +60,7 @@
 	[durationMinutes addObject:@"5760"];
 	[durations addObject:@"7 days"];
 	[durationMinutes addObject:@"10080"];
-	[durations addObject:@"no time limit"];
+	[durations addObject:@"No time limit"];
 	[durationMinutes addObject:@"0"];
 	
 	[pickerView reloadAllComponents];
@@ -129,48 +129,53 @@
 }
 
 - (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes {
-	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@link/create", [[GLAuthenticationManager sharedManager] serverURL]]];
+
+	[[GLAuthenticationManager sharedManager] callAPIPath:@"link/create" 
+												  method:@"POST" 
+									  includeAccessToken:YES
+									   includeClientCred:NO 
+											  parameters:[NSDictionary dictionaryWithObjectsAndKeys:
+														  minutes, @"minutes",
+														  [shareDescriptionField text], @"description",
+														  nil]
+												callback:[self linkCreatedCallback]];
 	
-	NSLog(@"About to make the link/create HTTP request! %@", [NSString stringWithFormat:@"%@link/create", [[GLAuthenticationManager sharedManager] serverURL]]);
-	
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	
-	[request setPostValue:minutes forKey:@"minutes"];
-	[request setPostValue:[shareDescriptionField text] forKey:@"description"];
-	[request setPostValue:[[GLAuthenticationManager sharedManager] accessToken] forKey:@"oauth_token"];
-	[request setDelegate:self];
-	[request startAsynchronous];
 }
 
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
-	NSString *responseString = [request responseString];
-
-	NSError *err = nil;
-	NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseString dataUsingEncoding:
-																				   NSUTF8StringEncoding]
-																			error:&err];
-	if (!res) {
-		NSLog(@"Error deserializing response (for link/create) \"%@\": %@", responseString, err);
-		return;
-	}
-
-	if ([[res objectForKey:@"shortlink"] isKindOfClass:[NSString class]] && [[res objectForKey:@"shortlink"] length])
-	{
-		NSLog(@"Shared link created %@", [res objectForKey:@"shortlink"]);
-
-		// Create the item to share (in this example, a url)
-		NSURL *url = [NSURL URLWithString:[res objectForKey:@"shortlink"]];
-		SHKItem *item = [SHKItem URL:url title:@"Heading out! Track me on Geoloqi!"];
+- (GLHTTPRequestCallback)linkCreatedCallback {
+	if (linkCreatedCallback) return linkCreatedCallback;
+	NSLog(@"Making a new linkCreatedCallback block");
+	return linkCreatedCallback = [^(NSError *error, NSString *responseBody) {
+		NSLog(@"Link Created!");
 		
-		// Get the ShareKit action sheet
-		SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
+		NSError *err = nil;
+		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
+																					   NSUTF8StringEncoding]
+																				error:&err];
+		if (!res || [res objectForKey:@"error"] != nil) {
+			NSLog(@"Error deserializing response (for link/create) \"%@\": %@", responseBody, err);
+			[[GLAuthenticationManager sharedManager] errorProcessingAPIRequest];
+			return;
+		}
 		
-		// Display the action sheet
-		[actionSheet showFromTabBar:gAppDelegate.tabBarController.tabBar];
+		if ([[res objectForKey:@"shortlink"] isKindOfClass:[NSString class]] && [[res objectForKey:@"shortlink"] length])
+		{
+			NSLog(@"Shared link created %@", [res objectForKey:@"shortlink"]);
+			
+			// Create the item to share (in this example, a url)
+			NSURL *url = [NSURL URLWithString:[res objectForKey:@"shortlink"]];
+			SHKItem *item = [SHKItem URL:url title:@"Heading out! Track me on Geoloqi!"];
+			
+			// Get the ShareKit action sheet
+			SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
+			
+			// Display the action sheet
+			[actionSheet showFromTabBar:gAppDelegate.tabBarController.tabBar];
+			
+			return;
+		}
 		
-		return;
-	}
+	} copy];
 }
 
 
@@ -199,6 +204,7 @@
 	[durations release];
 	[durationMinutes release];
 	[selectedMinutes release];
+	[linkCreatedCallback release];
     [super dealloc];
 }
 

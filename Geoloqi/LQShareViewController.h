@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLHTTPRequestLoader.h"
 
 
 @interface LQShareViewController : UIViewController
@@ -17,6 +18,7 @@
 	IBOutlet UIButton *shareButton;
 	UITextField *shareDescriptionField;
 	NSString *sharedLinkCreated;
+	GLHTTPRequestCallback linkCreatedCallback;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *shareDescriptionField;
@@ -24,6 +26,7 @@
 @property (nonatomic, retain) NSMutableArray *durations;
 @property (nonatomic, retain) NSMutableArray *durationMinutes;
 
+- (GLHTTPRequestCallback)linkCreatedCallback;
 - (IBAction)tappedShare:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 - (IBAction)backgroundTouched:(id)sender;
