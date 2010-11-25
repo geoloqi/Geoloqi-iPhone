@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0F01830E1294E105001508D9 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F01830D1294E105001508D9 /* Settings.bundle */; };
-		0F01837B1294FF1C001508D9 /* GLLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F01837A1294FF1C001508D9 /* GLLayerViewController.xib */; };
-		0F01838C1294FFC0001508D9 /* GLLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F01838B1294FFC0001508D9 /* GLLayerViewController.m */; };
 		0F0183B21296ED3D001508D9 /* layers-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0183B11296ED3D001508D9 /* layers-icon.png */; };
 		0F0183C21296F4B3001508D9 /* LQShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0183C01296F4B3001508D9 /* LQShareViewController.m */; };
 		0F0183C31296F4B3001508D9 /* LQShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0183C11296F4B3001508D9 /* LQShareViewController.xib */; };
@@ -80,6 +78,9 @@
 		0F01853D12989664001508D9 /* 56-cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F01853C12989664001508D9 /* 56-cloud.png */; };
 		0F0189441299CD7B001508D9 /* GLLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0189431299CD7B001508D9 /* GLLogInViewController.xib */; };
 		0F018E93129CBE2F001508D9 /* LQLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F018E92129CBE2F001508D9 /* LQLayerViewController.xib */; };
+		0F018E97129CBF47001508D9 /* LQLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F018E96129CBF47001508D9 /* LQLayerViewController.m */; };
+		0F018F4D129EC430001508D9 /* LQLayerCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F018F4C129EC430001508D9 /* LQLayerCellView.m */; };
+		0F018F8A129EC9AB001508D9 /* LQLayerCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F018F89129EC9AB001508D9 /* LQLayerCellView.xib */; };
 		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
 		166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* GLMappedSlider.m */; };
 		16DA0BB6122390F600382D1F /* GLWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */; };
@@ -160,9 +161,6 @@
 
 /* Begin PBXFileReference section */
 		0F01830D1294E105001508D9 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = SOURCE_ROOT; };
-		0F01837A1294FF1C001508D9 /* GLLayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLLayerViewController.xib; sourceTree = "<group>"; };
-		0F01838A1294FFC0001508D9 /* GLLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLayerViewController.h; sourceTree = "<group>"; };
-		0F01838B1294FFC0001508D9 /* GLLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLayerViewController.m; sourceTree = "<group>"; };
 		0F0183B11296ED3D001508D9 /* layers-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layers-icon.png"; sourceTree = "<group>"; };
 		0F0183BF1296F4B3001508D9 /* LQShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareViewController.h; sourceTree = "<group>"; };
 		0F0183C01296F4B3001508D9 /* LQShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareViewController.m; sourceTree = "<group>"; };
@@ -298,6 +296,11 @@
 		0F01853C12989664001508D9 /* 56-cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-cloud.png"; sourceTree = "<group>"; };
 		0F0189431299CD7B001508D9 /* GLLogInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLLogInViewController.xib; sourceTree = "<group>"; };
 		0F018E92129CBE2F001508D9 /* LQLayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQLayerViewController.xib; sourceTree = "<group>"; };
+		0F018E95129CBF47001508D9 /* LQLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLayerViewController.h; sourceTree = "<group>"; };
+		0F018E96129CBF47001508D9 /* LQLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLayerViewController.m; sourceTree = "<group>"; };
+		0F018F4B129EC430001508D9 /* LQLayerCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQLayerCellView.h; path = Classes/LQLayerCellView.h; sourceTree = "<group>"; };
+		0F018F4C129EC430001508D9 /* LQLayerCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LQLayerCellView.m; path = Classes/LQLayerCellView.m; sourceTree = "<group>"; };
+		0F018F89129EC9AB001508D9 /* LQLayerCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQLayerCellView.xib; sourceTree = "<group>"; };
 		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 		166BE45F11DDDC9000F41B0B /* GLMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* GLMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMappedSlider.m; sourceTree = "<group>"; };
@@ -459,10 +462,12 @@
 		0F0183791294FEF6001508D9 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				0F01838A1294FFC0001508D9 /* GLLayerViewController.h */,
-				0F01838B1294FFC0001508D9 /* GLLayerViewController.m */,
-				0F01837A1294FF1C001508D9 /* GLLayerViewController.xib */,
 				0F018E92129CBE2F001508D9 /* LQLayerViewController.xib */,
+				0F018E95129CBF47001508D9 /* LQLayerViewController.h */,
+				0F018E96129CBF47001508D9 /* LQLayerViewController.m */,
+				0F018F4B129EC430001508D9 /* LQLayerCellView.h */,
+				0F018F4C129EC430001508D9 /* LQLayerCellView.m */,
+				0F018F89129EC9AB001508D9 /* LQLayerCellView.xib */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -1219,7 +1224,6 @@
 				DDBDE69C126E7AB200B1FB60 /* welcome-bottom.png in Resources */,
 				0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */,
 				0F01830E1294E105001508D9 /* Settings.bundle in Resources */,
-				0F01837B1294FF1C001508D9 /* GLLayerViewController.xib in Resources */,
 				0F0183B21296ED3D001508D9 /* layers-icon.png in Resources */,
 				0F0183C31296F4B3001508D9 /* LQShareViewController.xib in Resources */,
 				0F0184C21296FDDF001508D9 /* SHKSharers.plist in Resources */,
@@ -1227,6 +1231,7 @@
 				0F01853D12989664001508D9 /* 56-cloud.png in Resources */,
 				0F0189441299CD7B001508D9 /* GLLogInViewController.xib in Resources */,
 				0F018E93129CBE2F001508D9 /* LQLayerViewController.xib in Resources */,
+				0F018F8A129EC9AB001508D9 /* LQLayerCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1276,7 +1281,6 @@
 				16DA0D0B1224DD4900382D1F /* GLAuthenticationManager.m in Sources */,
 				16DA0D761224E8FD00382D1F /* GLHTTPRequestLoader.m in Sources */,
 				49EB2203125D7D8C00EDFAB1 /* CTableViewController.m in Sources */,
-				0F01838C1294FFC0001508D9 /* GLLayerViewController.m in Sources */,
 				0F0183C21296F4B3001508D9 /* LQShareViewController.m in Sources */,
 				0F0184BE1296FDDF001508D9 /* SHKCustomFormController.m in Sources */,
 				0F0184BF1296FDDF001508D9 /* SHKCustomFormFieldCell.m in Sources */,
@@ -1338,6 +1342,8 @@
 				0F0184F91296FDDF001508D9 /* SHKOAuthView.m in Sources */,
 				0F0184FA1296FDDF001508D9 /* SHKViewControllerWrapper.m in Sources */,
 				0F0184FB1296FDDF001508D9 /* Reachability.m in Sources */,
+				0F018E97129CBF47001508D9 /* LQLayerViewController.m in Sources */,
+				0F018F4D129EC430001508D9 /* LQLayerCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
