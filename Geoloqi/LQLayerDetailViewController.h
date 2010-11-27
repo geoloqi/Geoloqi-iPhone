@@ -11,7 +11,7 @@
 
 
 @interface LQLayerDetailViewController : UIViewController {
-	NSString *layerID;
+	NSDictionary *layer;
 	IBOutlet UILabel *layerName;
 	IBOutlet UIImageView *layerImg;
 	IBOutlet UILabel *layerDescription;	
@@ -20,13 +20,8 @@
 	GLHTTPRequestCallback layerActivatedCallback;
 }
 
-@property (nonatomic, retain) NSString *layerID;
+@property (nonatomic, retain) NSDictionary *layer;
 
-- (void)setLayerName:(NSString *)_text;
-- (void)setLayerDescription:(NSString *)_text;
-- (void)setLayerImage:(NSString *)_url;
-- (void)setLayerHTMLView:(NSString *)_url;
-- (void)setButtonText:(NSString *)_text;
 - (IBAction)tappedActivate:(id)sender;
 - (GLHTTPRequestCallback)layerActivatedCallback;
 

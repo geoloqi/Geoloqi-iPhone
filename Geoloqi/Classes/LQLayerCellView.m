@@ -28,6 +28,12 @@
 
 
 - (void)dealloc {
+	[cellText release];
+	cellText = nil;
+	[descriptionText release];
+	descriptionText = nil;
+	[layerImg release];
+	layerImg = nil;
     [super dealloc];
 }
 
@@ -39,7 +45,8 @@
 	descriptionText.text = _text;
 }
 
-- (void)setProductImage:(NSString *)_text;{
-	productImg.image = [UIImage imageNamed:_text];
+- (void)setLayerImage:(NSString *)_url;{
+	layerImg.image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: _url]]];
+//	layerImg.image = [UIImage imageNamed:_text];
 }
 @end

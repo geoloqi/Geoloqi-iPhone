@@ -13,24 +13,26 @@
 
 @implementation LQLayerDetailViewController
 
-@synthesize layerID;
-
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
+@synthesize layer;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+	layerName.text = [layer objectForKey:@"name"];
+	layerDescription.text = [layer objectForKey:@"description"];
+	layerImg.image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: [layer objectForKey:@"icon"]]]];
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[layer objectForKey:@"url"]]];
+	[webView loadRequest:request];
+	[activateButton setTitle:@"Subscribe" forState:UIControlStateNormal];
 }
 
+- (id)initWithLayer:(NSDictionary *)_layer {
+	if (self = [self initWithNibName:@"LQLayerDetailViewController" bundle:nil]) {
+		self.layer = _layer;
+	}
+	return self;
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -40,32 +42,10 @@
 }
 */
 
-- (void)setLayerName:(NSString *)_text {
-	NSLog(@"Setting layer name %@", _text);
-	layerName.text = _text;
-}
-
-- (void)setLayerDescription:(NSString *)_text {
-	layerDescription.text = _text;
-}
-
-- (void)setLayerImage:(NSString *)_url {
-	layerImg.image = [[UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: _url]]] retain];
-}
-
-- (void)setLayerHTMLView:(NSString *)_url {
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:_url]];
-	[webView loadRequest:request];
-}
-
-- (void)setButtonText:(NSString *)_text {
-	[activateButton setTitle:_text forState:UIControlStateNormal];
-}
-
 - (IBAction)tappedActivate:(id)sender
 {
-	NSLog(@"User tapped activate on layer ID %@!", layerID);
-	[[GLAuthenticationManager sharedManager] callAPIPath:[NSString stringWithFormat:@"layer/subscribe/%@", layerID]
+	NSLog(@"User tapped activate on layer ID %@!", [layer objectForKey:@"layer_id"]);
+	[[GLAuthenticationManager sharedManager] callAPIPath:[NSString stringWithFormat:@"layer/subscribe/%@", [layer objectForKey:@"layer_id"]]
 												  method:@"GET"
 									  includeAccessToken:YES
 									   includeClientCred:NO
@@ -113,6 +93,7 @@
 
 
 - (void)dealloc {
+	[layer release];
 	[layerImg release];
 	[layerName release];
 	[layerDescription release];

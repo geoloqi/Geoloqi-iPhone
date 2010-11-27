@@ -38,7 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-	
+
 	[[GLAuthenticationManager sharedManager] callAPIPath:@"layer/app_list" 
 												  method:@"GET" 
 									  includeAccessToken:YES
@@ -67,8 +67,9 @@
 		{
 			NSLog(@"Found your layers: %@", [res objectForKey:@"your_layers"]);
 
-
-			
+			self.yourLayers = [res objectForKey:@"your_layers"];
+			self.featuredLayers	= [res objectForKey:@"featured_layers"];
+			[layerTable reloadData];
 			
 			return;
 		}
@@ -111,9 +112,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case 0:
-			return 3; //[featuredLayers count];
+			return [featuredLayers count];
 		case 1:
-			return 2; //[yourLayers count];
+			return [yourLayers count];
 		default:
 			return 0;
 	}
@@ -138,39 +139,57 @@
 		[[NSBundle mainBundle] loadNibNamed:@"LQLayerCellView" owner:self options:nil];
 		cell = layerCell;
 	}
+
+	NSDictionary *layer = [self getLayerAtIndexPath:indexPath];
 	
-	switch(indexPath.section) {
-		case 0:
-			[cell setLabelText:@"USGS Earthquakes"];
-			[cell setProductImage:@"Icon.png"];
-			[cell setDescpText:@"Get alerts of earthquakes near you"];
-			return cell;
-		case 1:
-			[cell setLabelText:@"Cities"];
-			[cell setProductImage:@"Icon.png"];
-			[cell setDescpText:@"My Cities"];
-			return cell;
-		default:
-			return nil;
-	}
+	[cell setLabelText:[layer objectForKey:@"name"]];
+	[cell setLayerImage:[layer objectForKey:@"icon"]];
+	[cell setDescpText:[layer objectForKey:@"description"]];
+	 
+	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSLog(@"Selected a layer");
-	LQLayerDetailViewController *detailController = [[LQLayerDetailViewController alloc] initWithNibName:@"LQLayerDetailViewController" bundle:nil];
+	
+	//LQLayerDetailViewController *detailController = [[LQLayerDetailViewController alloc] initWithNibName:@"LQLayerDetailViewController" bundle:nil];
+
+	NSDictionary *layer = [self getLayerAtIndexPath:indexPath];
+	LQLayerDetailViewController *detailController = [[LQLayerDetailViewController alloc] initWithLayer:layer];
+	
 	[self.navigationController pushViewController:detailController animated:YES];
-	
-	
+
+	[detailController release];
+
+	/*
 	[detailController setTitle:@"USGS Earthquakes"];
 	[detailController setLayerName:@"USGS Earthquakes"];
 	[detailController setLayerDescription:@"By Geoloqi.com"];
 	[detailController setLayerImage:@"http://geoloqi.local/icon.png"];
 	[detailController setLayerHTMLView:@"http://fakeapi.local/layer/11111"];
 	detailController.layerID = @"11111";
+	*/
 	
-	//[tableView deselectRowAtIndexPath: indexPath animated:YES];
+	[tableView deselectRowAtIndexPath: indexPath animated:YES];
 }
 
+- (NSDictionary *) getLayerAtIndexPath:(NSIndexPath *)indexPath {
+	 NSDictionary *layer;
+	 
+	 switch(indexPath.section) {
+		 case 0:
+			 layer = [featuredLayers objectAtIndex:indexPath.row];
+			 break;
+		 case 1:
+			 layer = [yourLayers objectAtIndex:indexPath.row];
+			 break;
+		 default:
+			 layer = [NSDictionary dictionary];
+			 break;
+	 }
+	 return layer;
+}
+	 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];

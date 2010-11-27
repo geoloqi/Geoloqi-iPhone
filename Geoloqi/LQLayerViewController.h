@@ -14,11 +14,13 @@
 @interface LQLayerViewController : UIViewController {
 	IBOutlet UITableView *layerTable;
 	IBOutlet LQLayerCellView *layerCell;
-	NSMutableArray *featuredLayers, *yourLayers;
+	NSArray *featuredLayers, *yourLayers;
 	GLHTTPRequestCallback loadLayersCallback;
 }
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *layerCell;
-@property (nonatomic, retain) NSMutableArray *featuredLayers, *yourLayers;
+@property (nonatomic, retain) NSArray *featuredLayers, *yourLayers;
+
+- (NSDictionary *) getLayerAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

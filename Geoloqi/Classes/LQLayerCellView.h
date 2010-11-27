@@ -11,12 +11,12 @@
 
 @interface LQLayerCellView : UITableViewCell {
 	IBOutlet UILabel *cellText;
-	IBOutlet UIImageView *productImg;
+	IBOutlet UIImageView *layerImg;
 	IBOutlet UILabel *descriptionText;
 }
 
 - (void)setLabelText:(NSString *)_text;
 - (void)setDescpText:(NSString *)_text;
-- (void)setProductImage:(NSString *)_text;
+- (void)setLayerImage:(NSString *)_text;
 
 @end

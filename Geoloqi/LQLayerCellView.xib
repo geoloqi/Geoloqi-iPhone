@@ -127,14 +127,6 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">productImg</string>
-						<reference key="source" ref="935155554"/>
-						<reference key="destination" ref="984638303"/>
-					</object>
-					<int key="connectionID">6</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">descriptionText</string>
 						<reference key="source" ref="935155554"/>
 						<reference key="destination" ref="449541356"/>
@@ -156,6 +148,14 @@
 						<reference key="destination" ref="935155554"/>
 					</object>
 					<int key="connectionID">9</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">layerImg</string>
+						<reference key="source" ref="935155554"/>
+						<reference key="destination" ref="984638303"/>
+					</object>
+					<int key="connectionID">10</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -224,7 +224,7 @@
 					<string>LQLayerViewController</string>
 					<string>UIResponder</string>
 					<string>LQLayerCellView</string>
-					<string>{{326, 510}, {320, 65}}</string>
+					<string>{{706, 538}, {320, 65}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -247,7 +247,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">9</int>
+			<int key="maxID">10</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -261,7 +261,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>cellText</string>
 							<string>descriptionText</string>
-							<string>productImg</string>
+							<string>layerImg</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -276,7 +276,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>cellText</string>
 							<string>descriptionText</string>
-							<string>productImg</string>
+							<string>layerImg</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -289,7 +289,7 @@
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">productImg</string>
+								<string key="name">layerImg</string>
 								<string key="candidateClassName">UIImageView</string>
 							</object>
 						</object>
