@@ -120,26 +120,15 @@
 
 - (IBAction)tappedShare:(id)sender
 {
-	/*
-	 * TODO: This should use the GLAuthenticationManager, not be handled in this class
-	[[GLAuthenticationManager sharedManager] createSharedLinkWithExpirationInMinutes:selectedMinutes
-																		withDelegate:self];
-	 */
-	[self createSharedLinkWithExpirationInMinutes:selectedMinutes];
-}
-
-- (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes {
-
 	[[GLAuthenticationManager sharedManager] callAPIPath:@"link/create" 
 												  method:@"POST" 
 									  includeAccessToken:YES
 									   includeClientCred:NO 
 											  parameters:[NSDictionary dictionaryWithObjectsAndKeys:
-														  minutes, @"minutes",
+														  selectedMinutes, @"minutes",
 														  [shareDescriptionField text], @"description",
 														  nil]
 												callback:[self linkCreatedCallback]];
-	
 }
 
 - (GLHTTPRequestCallback)linkCreatedCallback {

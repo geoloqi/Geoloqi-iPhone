@@ -81,6 +81,10 @@
 		0F018E97129CBF47001508D9 /* LQLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F018E96129CBF47001508D9 /* LQLayerViewController.m */; };
 		0F018F4D129EC430001508D9 /* LQLayerCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F018F4C129EC430001508D9 /* LQLayerCellView.m */; };
 		0F018F8A129EC9AB001508D9 /* LQLayerCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F018F89129EC9AB001508D9 /* LQLayerCellView.xib */; };
+		0F019029129F423D001508D9 /* LQLayerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F019027129F423D001508D9 /* LQLayerDetailViewController.m */; };
+		0F01902A129F423D001508D9 /* LQLayerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F019028129F423D001508D9 /* LQLayerDetailViewController.xib */; };
+		0F0190D712A0762C001508D9 /* LQLayerTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0190D612A0762C001508D9 /* LQLayerTableView.xib */; };
+		0F0190F112A07A9E001508D9 /* LQLayerNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */; };
 		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
 		166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* GLMappedSlider.m */; };
 		16DA0BB6122390F600382D1F /* GLWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */; };
@@ -301,6 +305,12 @@
 		0F018F4B129EC430001508D9 /* LQLayerCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQLayerCellView.h; path = Classes/LQLayerCellView.h; sourceTree = "<group>"; };
 		0F018F4C129EC430001508D9 /* LQLayerCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LQLayerCellView.m; path = Classes/LQLayerCellView.m; sourceTree = "<group>"; };
 		0F018F89129EC9AB001508D9 /* LQLayerCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQLayerCellView.xib; sourceTree = "<group>"; };
+		0F019026129F423D001508D9 /* LQLayerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLayerDetailViewController.h; sourceTree = "<group>"; };
+		0F019027129F423D001508D9 /* LQLayerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLayerDetailViewController.m; sourceTree = "<group>"; };
+		0F019028129F423D001508D9 /* LQLayerDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQLayerDetailViewController.xib; sourceTree = "<group>"; };
+		0F0190D612A0762C001508D9 /* LQLayerTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQLayerTableView.xib; sourceTree = "<group>"; };
+		0F0190EF12A07A9E001508D9 /* LQLayerNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLayerNavigationController.h; sourceTree = "<group>"; };
+		0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLayerNavigationController.m; sourceTree = "<group>"; };
 		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 		166BE45F11DDDC9000F41B0B /* GLMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* GLMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMappedSlider.m; sourceTree = "<group>"; };
@@ -468,6 +478,12 @@
 				0F018F4B129EC430001508D9 /* LQLayerCellView.h */,
 				0F018F4C129EC430001508D9 /* LQLayerCellView.m */,
 				0F018F89129EC9AB001508D9 /* LQLayerCellView.xib */,
+				0F019026129F423D001508D9 /* LQLayerDetailViewController.h */,
+				0F019027129F423D001508D9 /* LQLayerDetailViewController.m */,
+				0F019028129F423D001508D9 /* LQLayerDetailViewController.xib */,
+				0F0190D612A0762C001508D9 /* LQLayerTableView.xib */,
+				0F0190EF12A07A9E001508D9 /* LQLayerNavigationController.h */,
+				0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -1232,6 +1248,8 @@
 				0F0189441299CD7B001508D9 /* GLLogInViewController.xib in Resources */,
 				0F018E93129CBE2F001508D9 /* LQLayerViewController.xib in Resources */,
 				0F018F8A129EC9AB001508D9 /* LQLayerCellView.xib in Resources */,
+				0F01902A129F423D001508D9 /* LQLayerDetailViewController.xib in Resources */,
+				0F0190D712A0762C001508D9 /* LQLayerTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1344,6 +1362,8 @@
 				0F0184FB1296FDDF001508D9 /* Reachability.m in Sources */,
 				0F018E97129CBF47001508D9 /* LQLayerViewController.m in Sources */,
 				0F018F4D129EC430001508D9 /* LQLayerCellView.m in Sources */,
+				0F019029129F423D001508D9 /* LQLayerDetailViewController.m in Sources */,
+				0F0190F112A07A9E001508D9 /* LQLayerNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

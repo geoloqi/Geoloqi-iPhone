@@ -28,6 +28,8 @@
 {
     [super viewDidLoad];
 
+	self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+
 	firstLoad = YES;
 	
 	/*

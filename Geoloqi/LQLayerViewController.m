@@ -7,6 +7,7 @@
 //
 
 #import "LQLayerViewController.h"
+#import "LQLayerDetailViewController.h"
 #import "LQLayerCellView.h"
 
 @implementation LQLayerViewController
@@ -33,9 +34,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-	//layerCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-	//layerCell.selectionStyle = UITableViewCellSelectionStyleNone;
+	self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 }
 
 
@@ -106,6 +105,13 @@
 	return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSLog(@"Selected a layer");
+	LQLayerDetailViewController *detailController = [[LQLayerDetailViewController alloc] initWithNibName:@"LQLayerDetailViewController" bundle:nil];
+	[self.navigationController pushViewController:detailController animated:YES];
+	[detailController setTitle:@"The Title"];
+	//[tableView deselectRowAtIndexPath: indexPath animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
