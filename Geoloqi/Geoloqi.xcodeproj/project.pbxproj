@@ -1377,7 +1377,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../Geoloqi-iPhone-Library/build/Debug-iphonesimulator\"",
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Geoloqi;
@@ -1395,7 +1394,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../Geoloqi-iPhone-Library/build/Debug-iphonesimulator\"",
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Geoloqi;
