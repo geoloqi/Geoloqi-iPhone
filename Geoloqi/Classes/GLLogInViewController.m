@@ -6,8 +6,8 @@
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
+#import "Geoloqi.h"
 #import "GLLogInViewController.h"
-#import "GLAuthenticationManager.h"
 
 @implementation GLLogInViewController
 
@@ -17,7 +17,7 @@
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 - (IBAction)logInAction {
-	[[GLAuthenticationManager sharedManager] authenticateWithUsername:usernameField.text
+	[[Geoloqi sharedInstance] authenticateWithUsername:usernameField.text
 															 password:passwordField.text];
 
 	self.navigationItem.rightBarButtonItem.enabled = NO;

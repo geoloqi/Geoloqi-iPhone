@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GLHTTPRequestLoader.h"
 
 
 @interface LQShareViewController : UIViewController
@@ -30,6 +29,6 @@
 - (IBAction)tappedShare:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 - (IBAction)backgroundTouched:(id)sender;
-- (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes;
+//- (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes;
 
 @end

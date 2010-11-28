@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LQLayerCellView.h"
-#import "GLHTTPRequestLoader.h"
+#import "Geoloqi.h"
 
 
 @interface LQLayerViewController : UIViewController {

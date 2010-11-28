@@ -6,7 +6,6 @@
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
-#import "GLAuthenticationManager.h"
 #import "CJSONDeserializer.h"
 #import "LQLayerDetailViewController.h"
 #import "SHK.h"
@@ -15,7 +14,13 @@
 
 @synthesize layer;
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (id)initWithLayer:(NSDictionary *)_layer {
+	if (self = [self initWithNibName:@"LQLayerDetailViewController" bundle:nil]) {
+		self.layer = _layer;
+	}
+	return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -25,13 +30,6 @@
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[layer objectForKey:@"url"]]];
 	[webView loadRequest:request];
 	[activateButton setTitle:@"Subscribe" forState:UIControlStateNormal];
-}
-
-- (id)initWithLayer:(NSDictionary *)_layer {
-	if (self = [self initWithNibName:@"LQLayerDetailViewController" bundle:nil]) {
-		self.layer = _layer;
-	}
-	return self;
 }
 
 /*
@@ -44,13 +42,8 @@
 
 - (IBAction)tappedActivate:(id)sender
 {
-	NSLog(@"User tapped activate on layer ID %@!", [layer objectForKey:@"layer_id"]);
-	[[GLAuthenticationManager sharedManager] callAPIPath:[NSString stringWithFormat:@"layer/subscribe/%@", [layer objectForKey:@"layer_id"]]
-												  method:@"GET"
-									  includeAccessToken:YES
-									   includeClientCred:NO
-											  parameters:nil
-												callback:[self layerActivatedCallback]];
+	NSLog(@"User tapped activate on layer ID %@!", layerID);
+    [[Geoloqi sharedInstance] subscribeToLayer:layerID callback:[self layerActivatedCallback]];
 }
 
 - (GLHTTPRequestCallback)layerActivatedCallback {
@@ -64,13 +57,13 @@
 																				error:&err];
 		if (!res || [res objectForKey:@"error"] != nil) {
 			NSLog(@"Error deserializing response (for layer/subscribe) \"%@\": %@", responseBody, err);
-			[[GLAuthenticationManager sharedManager] errorProcessingAPIRequest];
+			[[Geoloqi sharedInstance] errorProcessingAPIRequest];
 			return;
 		}
 		
 		[[SHKActivityIndicator currentIndicator] displayCompleted:@"Subscribed!"];
 
-		[self setButtonText:@"Subscribed"];
+		activateButton.titleLabel.text = @"Subscribed";
 		
 	} copy];
 }

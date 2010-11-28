@@ -3588,11 +3588,7 @@ static BOOL isiPhoneOS2;
 			// Yes, put this request to sleep until a second is up, with extra added punishment sleeping time for being very naughty (we have used more bandwidth than we were allowed)
 			double extraSleepyTime = (-bytesRemaining/(maxBandwidthPerSecond*1.0));
 			[throttleWakeUpTime release];
-			#if TARGET_OS_IPHONE || !defined(MAC_OS_X_VERSION_10_6) || MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6
-			throttleWakeUpTime = [[bandwidthMeasurementDate addTimeInterval:extraSleepyTime] retain];
-			#else
 			throttleWakeUpTime = [[bandwidthMeasurementDate dateByAddingTimeInterval:extraSleepyTime] retain];
-			#endif
 		}
 	}
 	[bandwidthThrottlingLock unlock];
@@ -3651,7 +3647,7 @@ static BOOL isiPhoneOS2;
 + (void)registerForNetworkReachabilityNotifications
 {
 #if REACHABILITY_20_API
-	[[Reachability reachabilityForInternetConnection] startNotifer];
+	[[Reachability reachabilityForInternetConnection] performSelector:@selector(startNotifer)];
 #else
 	[[Reachability sharedReachability] setNetworkStatusNotificationsEnabled:YES];
 #endif

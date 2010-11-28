@@ -6,10 +6,10 @@
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
+#import "Geoloqi.h"
 #import "GLConstants.h"
 #import "GeoloqiAppDelegate.h"
 #import "LocationUpdaterViewController.h"
-#import "GLAuthenticationManager.h"
 
 GeoloqiAppDelegate *gAppDelegate;
 
@@ -38,8 +38,14 @@ GeoloqiAppDelegate *gAppDelegate;
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
 
+    
+    // IMPORTANT: Set up OAuth prior to making network calls to the geoloqi server.
+    // The default API server is https://api.geoloqi.com/1/
+    [[Geoloqi sharedInstance] setOauthClientID:GL_OAUTH_CLIENT_ID secret:GL_OAUTH_SECRET];
+    
+
 	// If there is no refresh token present, show the login/signup screen
-	if(![[GLAuthenticationManager sharedManager] hasRefreshToken])
+	if(![[Geoloqi sharedInstance] hasRefreshToken])
     {
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(authenticationDidSucceed:) 
@@ -50,7 +56,7 @@ GeoloqiAppDelegate *gAppDelegate;
     }
 	// else, use the refresh token to get a new access token right now
 	else {
-		[[GLAuthenticationManager sharedManager] initTokenAndGetUsername];
+		[[Geoloqi sharedInstance] initTokenAndGetUsername];
 	}
 
 
