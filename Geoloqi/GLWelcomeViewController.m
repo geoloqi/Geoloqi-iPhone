@@ -6,8 +6,8 @@
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
+#import "Geoloqi.h"
 #import "GLWelcomeViewController.h"
-#import "GLAuthenticationManager.h"s
 
 
 @implementation GLWelcomeViewController
@@ -26,7 +26,7 @@
 							animated:YES];
 }
 - (IBAction)useAnonymously {
-	[[GLAuthenticationManager sharedManager] createAnonymousAccount];
+	[[Geoloqi sharedInstance] createAnonymousAccount];
 }
 
 - (void)viewDidLoad;

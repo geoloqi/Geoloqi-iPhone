@@ -6,7 +6,7 @@
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
-#import "GLAuthenticationManager.h"
+#import "Geoloqi.h"
 #import "CJSONDeserializer.h"
 #import "LQShareViewController.h"
 #import "SHK.h"
@@ -119,15 +119,10 @@
 
 - (IBAction)tappedShare:(id)sender
 {
-	[[GLAuthenticationManager sharedManager] callAPIPath:@"link/create" 
-												  method:@"POST" 
-									  includeAccessToken:YES
-									   includeClientCred:NO 
-											  parameters:[NSDictionary dictionaryWithObjectsAndKeys:
-														  selectedMinutes, @"minutes",
-														  [shareDescriptionField text], @"description",
-														  nil]
-												callback:[self linkCreatedCallback]];
+    [[Geoloqi sharedInstance] createLink:[shareDescriptionField text] 
+                                 minutes:[selectedMinutes intValue]
+                                callback:[self linkCreatedCallback]];
+    
 }
 
 - (GLHTTPRequestCallback)linkCreatedCallback {
@@ -142,7 +137,7 @@
 																				error:&err];
 		if (!res || [res objectForKey:@"error"] != nil) {
 			NSLog(@"Error deserializing response (for link/create) \"%@\": %@", responseBody, err);
-			[[GLAuthenticationManager sharedManager] errorProcessingAPIRequest];
+			[[Geoloqi sharedInstance] errorProcessingAPIRequest];
 			return;
 		}
 		

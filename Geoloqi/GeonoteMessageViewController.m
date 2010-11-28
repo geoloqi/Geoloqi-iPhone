@@ -8,7 +8,6 @@
 
 #import "GeonoteMessageViewController.h"
 #import "Geonote.h"
-#import "GLAuthenticationManager.h"
 #import "CJSONDeserializer.h"
 #import "SHKActivityIndicator.h"
 
@@ -39,18 +38,13 @@
 {
 	self.geonote.text = [NSString stringWithString:textView.text];
 	NSLog(@"Geonote: %@", [self.geonote description]);
-	
-	[[GLAuthenticationManager sharedManager] callAPIPath:@"geonote/create" 
-												  method:@"POST" 
-									  includeAccessToken:YES
-									   includeClientCred:NO 
-											  parameters:[NSDictionary dictionaryWithObjectsAndKeys:
-														  textView.text, @"text",
-														  [NSString stringWithFormat:@"%f", self.geonote.latitude], @"latitude",
-														  [NSString stringWithFormat:@"%f", self.geonote.longitude], @"longitude",
-														  [NSString stringWithFormat:@"%f", self.geonote.radius], @"radius",
-														  nil]
-												callback:[self geonoteSentCallback]];
+	 
+    [[Geoloqi sharedInstance] createGeonote:textView.text 
+                                   latitude:self.geonote.latitude 
+                                  longitude:self.geonote.longitude 
+                                     radius:self.geonote.radius
+                                   callback:[self geonoteSentCallback]];
+    
 }
 
 - (GLHTTPRequestCallback)geonoteSentCallback {
@@ -65,7 +59,7 @@
 																				error:&err];
 		if (!res || [res objectForKey:@"error"] != nil) {
 			NSLog(@"Error deserializing response (for geonote/create) \"%@\": %@", responseBody, err);
-			[[GLAuthenticationManager sharedManager] errorProcessingAPIRequest];
+			[[Geoloqi sharedInstance] errorProcessingAPIRequest];
 			return;
 		}
 		

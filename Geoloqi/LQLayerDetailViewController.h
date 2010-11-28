@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GLAuthenticationManager.h"
+#import "Geoloqi.h"
+
 
 
 @interface LQLayerDetailViewController : UIViewController {
-	NSDictionary *layer;
+    NSDictionary *layer;
+	NSString *layerID;
 	IBOutlet UILabel *layerName;
 	IBOutlet UIImageView *layerImg;
 	IBOutlet UILabel *layerDescription;	
@@ -22,6 +24,7 @@
 
 @property (nonatomic, retain) NSDictionary *layer;
 
+- (id)initWithLayer:(NSDictionary *)_layer;
 - (IBAction)tappedActivate:(id)sender;
 - (GLHTTPRequestCallback)layerActivatedCallback;
 

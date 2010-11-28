@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GLHTTPRequestLoader.h"
+#import "Geoloqi.h"
+
 
 @class Geonote;
 

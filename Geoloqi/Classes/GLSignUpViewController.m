@@ -6,8 +6,8 @@
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
+#import "Geoloqi.h"
 #import "GLSignUpViewController.h"
-#import "GLAuthenticationManager.h"
 
 @implementation GLSignUpViewController
 
@@ -20,7 +20,7 @@
 }
 
 - (IBAction)signUpAction {
-    [[GLAuthenticationManager sharedManager] createAccountWithUsername:usernameField.text 
+    [[Geoloqi sharedInstance] createAccountWithUsername:usernameField.text 
                                                           emailAddress:emailAddressField.text];
 	
 	self.navigationItem.rightBarButtonItem.enabled = NO;

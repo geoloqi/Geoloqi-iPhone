@@ -92,8 +92,6 @@
 		16DA0BD21223973500382D1F /* GLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BD01223973500382D1F /* GLSignUpViewController.m */; };
 		16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BD11223973500382D1F /* GLSignUpViewController.xib */; };
 		16DA0BFB12239BBC00382D1F /* GLLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BF912239BBC00382D1F /* GLLogInViewController.m */; };
-		16DA0D0B1224DD4900382D1F /* GLAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */; };
-		16DA0D761224E8FD00382D1F /* GLHTTPRequestLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0D751224E8FD00382D1F /* GLHTTPRequestLoader.m */; };
 		16EE822811D69FB20026503D /* GLLocationUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822711D69FB20026503D /* GLLocationUpdateManager.m */; };
 		16EE822B11D69FD70026503D /* GLDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822A11D69FD70026503D /* GLDataViewController.m */; };
 		16EE823F11D6A09A0026503D /* LocationUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE823E11D6A09A0026503D /* LocationUpdateRequest.m */; };
@@ -144,6 +142,7 @@
 		49EB2256125D7F7100EDFAB1 /* signin-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EB224A125D7F7100EDFAB1 /* signin-btn.png */; };
 		49EB2257125D7F7100EDFAB1 /* small-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EB224B125D7F7100EDFAB1 /* small-btn@2x.png */; };
 		49EB2258125D7F7100EDFAB1 /* small-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EB224C125D7F7100EDFAB1 /* small-btn.png */; };
+		A645401712A204240014F23C /* libGeoloqi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A645401612A204240014F23C /* libGeoloqi.a */; };
 		DD354F7611D666BA00EEF7BC /* GeonoteFriendPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354F7411D666BA00EEF7BC /* GeonoteFriendPickerController.m */; };
 		DD354F7711D666BA00EEF7BC /* GeonoteFriendPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD354F7511D666BA00EEF7BC /* GeonoteFriendPickerController.xib */; };
 		DD354F9111D669C300EEF7BC /* GeonoteNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354F8F11D669C300EEF7BC /* GeonoteNavigationController.m */; };
@@ -322,10 +321,6 @@
 		16DA0BD11223973500382D1F /* GLSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLSignUpViewController.xib; sourceTree = "<group>"; };
 		16DA0BF812239BBC00382D1F /* GLLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLogInViewController.h; sourceTree = "<group>"; };
 		16DA0BF912239BBC00382D1F /* GLLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLogInViewController.m; sourceTree = "<group>"; };
-		16DA0D091224DD4900382D1F /* GLAuthenticationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAuthenticationManager.h; sourceTree = "<group>"; };
-		16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAuthenticationManager.m; sourceTree = "<group>"; };
-		16DA0D741224E8FD00382D1F /* GLHTTPRequestLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHTTPRequestLoader.h; sourceTree = "<group>"; };
-		16DA0D751224E8FD00382D1F /* GLHTTPRequestLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHTTPRequestLoader.m; sourceTree = "<group>"; };
 		16EE822611D69FB20026503D /* GLLocationUpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLocationUpdateManager.h; sourceTree = "<group>"; };
 		16EE822711D69FB20026503D /* GLLocationUpdateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLocationUpdateManager.m; sourceTree = "<group>"; };
 		16EE822911D69FD70026503D /* GLDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLDataViewController.h; path = Classes/GLDataViewController.h; sourceTree = "<group>"; };
@@ -404,6 +399,8 @@
 		49EB224A125D7F7100EDFAB1 /* signin-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin-btn.png"; sourceTree = "<group>"; };
 		49EB224B125D7F7100EDFAB1 /* small-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-btn@2x.png"; sourceTree = "<group>"; };
 		49EB224C125D7F7100EDFAB1 /* small-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-btn.png"; sourceTree = "<group>"; };
+		A61096CB12A1D2C600A92CA6 /* Geoloqi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geoloqi.h; sourceTree = "<group>"; };
+		A645401612A204240014F23C /* libGeoloqi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGeoloqi.a; sourceTree = "<group>"; };
 		DD354F7311D666BA00EEF7BC /* GeonoteFriendPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteFriendPickerController.h; sourceTree = "<group>"; };
 		DD354F7411D666BA00EEF7BC /* GeonoteFriendPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteFriendPickerController.m; sourceTree = "<group>"; };
 		DD354F7511D666BA00EEF7BC /* GeonoteFriendPickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteFriendPickerController.xib; sourceTree = "<group>"; };
@@ -447,6 +444,7 @@
 				DD91E15E11BF4C1F0097F6F5 /* MapKit.framework in Frameworks */,
 				0F01850F1296FE0B001508D9 /* MessageUI.framework in Frameworks */,
 				0F0185111296FE0B001508D9 /* Security.framework in Frameworks */,
+				A645401712A204240014F23C /* libGeoloqi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,10 +872,6 @@
 		16DA0BB91223910100382D1F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				16DA0D091224DD4900382D1F /* GLAuthenticationManager.h */,
-				16DA0D0A1224DD4900382D1F /* GLAuthenticationManager.m */,
-				16DA0D741224E8FD00382D1F /* GLHTTPRequestLoader.h */,
-				16DA0D751224E8FD00382D1F /* GLHTTPRequestLoader.m */,
 				16DA0BB3122390F600382D1F /* GLWelcomeViewController.h */,
 				16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */,
 				16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */,
@@ -914,6 +908,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A645401612A204240014F23C /* libGeoloqi.a */,
+				A61096CB12A1D2C600A92CA6 /* Geoloqi.h */,
 				DDACF629125C24B7000511E5 /* GLConstants.h */,
 				0F0184211296FDDF001508D9 /* ShareKit */,
 				080E96DDFE201D6D7F000001 /* Main */,
@@ -1296,8 +1292,6 @@
 				16DA0BB6122390F600382D1F /* GLWelcomeViewController.m in Sources */,
 				16DA0BD21223973500382D1F /* GLSignUpViewController.m in Sources */,
 				16DA0BFB12239BBC00382D1F /* GLLogInViewController.m in Sources */,
-				16DA0D0B1224DD4900382D1F /* GLAuthenticationManager.m in Sources */,
-				16DA0D761224E8FD00382D1F /* GLHTTPRequestLoader.m in Sources */,
 				49EB2203125D7D8C00EDFAB1 /* CTableViewController.m in Sources */,
 				0F0183C21296F4B3001508D9 /* LQShareViewController.m in Sources */,
 				0F0184BE1296FDDF001508D9 /* SHKCustomFormController.m in Sources */,
@@ -1381,6 +1375,10 @@
 				GCC_PREFIX_HEADER = Geoloqi_Prefix.pch;
 				INFOPLIST_FILE = "Geoloqi-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = Geoloqi;
 			};
 			name = Debug;
@@ -1394,6 +1392,10 @@
 				GCC_PREFIX_HEADER = Geoloqi_Prefix.pch;
 				INFOPLIST_FILE = "Geoloqi-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = Geoloqi;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1405,6 +1407,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
@@ -1418,6 +1421,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

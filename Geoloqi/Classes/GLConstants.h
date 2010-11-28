@@ -6,11 +6,6 @@
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
-#define GL_API_URL					@"https://api.geoloqi.com/1/"
-
-#define GL_OAUTH_CLIENT_ID			@""
-#define GL_OAUTH_SECRET				@""
-
 #define kApplicationKey				@""
 #define kApplicationSecret			@""
 

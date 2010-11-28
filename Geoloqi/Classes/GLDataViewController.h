@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Geoloqi.h"
 
 NSString *const GLTrackingOnUserInfoKey;
 
