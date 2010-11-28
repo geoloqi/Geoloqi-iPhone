@@ -70,7 +70,7 @@
 		
 		[[SHKActivityIndicator currentIndicator] displayCompleted:@"Subscribed!"];
 
-		[self setButtonText:@"Subscribed"];
+		[activateButton setTitle:@"Subscribed" forState:UIControlStateNormal];
 		
 	} copy];
 }

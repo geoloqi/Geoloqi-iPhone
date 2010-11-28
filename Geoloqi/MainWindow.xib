@@ -12,7 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="100"/>
+			<integer value="66"/>
+			<integer value="20"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -41,9 +42,11 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIWindow" id="117978783">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{320, 480}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -88,7 +91,7 @@
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="NSArray" key="IBUIViewControllers">
+					<object class="NSMutableArray" key="IBUIViewControllers">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="IBUIViewController" id="1066321130">
 							<reference key="IBUIToolbarItems" ref="0"/>
@@ -176,6 +179,10 @@
 							<bool key="IBUIClipsSubviews">YES</bool>
 							<bool key="IBUIMultipleTouchEnabled">YES</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<object class="NSColor" key="IBUITintColor">
+								<int key="NSColorSpace">3</int>
+								<bytes key="NSWhite">MAA</bytes>
+							</object>
 						</object>
 						<object class="IBUIToolbar" key="IBUIToolbar" id="319581789">
 							<nil key="NSNextResponder"/>
@@ -298,7 +305,8 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIViewController" id="941281276">
 						<object class="IBUINavigationItem" key="IBUINavigationItem" id="124725556">
-							<string key="IBUITitle">Log In!</string>
+							<reference key="IBUINavigationBar"/>
+							<string key="IBUITitle">Log In</string>
 							<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="597618527">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIStyle">1</int>
@@ -368,14 +376,6 @@
 					<int key="connectionID">69</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">done</string>
-						<reference key="source" ref="572432156"/>
-						<reference key="destination" ref="941281276"/>
-					</object>
-					<int key="connectionID">70</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">logInViewController</string>
 						<reference key="source" ref="435996850"/>
@@ -390,6 +390,14 @@
 						<reference key="destination" ref="376017519"/>
 					</object>
 					<int key="connectionID">72</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">logInAction</string>
+						<reference key="source" ref="572432156"/>
+						<reference key="destination" ref="427554174"/>
+					</object>
+					<int key="connectionID">103</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -430,9 +438,9 @@
 							<reference ref="610627293"/>
 							<reference ref="389931932"/>
 							<reference ref="965108239"/>
-							<reference ref="116261290"/>
 							<reference ref="462766613"/>
 							<reference ref="979925177"/>
+							<reference ref="116261290"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -704,7 +712,7 @@
 					<string>UIResponder</string>
 					<string>{{321, 209}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{665, 244}, {320, 480}}</string>
+					<string>{{332, 244}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>GLMapViewController</string>
@@ -729,7 +737,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{21, 492}, {320, 480}}</string>
+					<string>{{362, 100}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>GLLogInViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -758,7 +766,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">102</int>
+			<int key="maxID">103</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
