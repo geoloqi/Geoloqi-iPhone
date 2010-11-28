@@ -42,8 +42,8 @@
 
 - (IBAction)tappedActivate:(id)sender
 {
-	NSLog(@"User tapped activate on layer ID %@!", layerID);
-    [[Geoloqi sharedInstance] subscribeToLayer:layerID callback:[self layerActivatedCallback]];
+	NSLog(@"User tapped activate on layer ID %@!", [layer objectForKey:@"layer_id"]);
+    [[Geoloqi sharedInstance] subscribeToLayer:[layer objectForKey:@"layer_id"] callback:[self layerActivatedCallback]];
 }
 
 - (GLHTTPRequestCallback)layerActivatedCallback {
