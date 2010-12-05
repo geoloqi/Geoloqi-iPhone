@@ -7,7 +7,6 @@
 //
 
 #import "GLDataViewController.h"
-#import "GLLocationUpdateManager.h"
 #import <QuartzCore/QuartzCore.h>
 #import "GLMappedSlider.h"
 
@@ -41,7 +40,7 @@ enum {
 	[super viewDidLoad];
 	
 	// Load from defaults
-	trackingToggleSwitch.on = gAppDelegate.locationUpdateManager.locationUpdatesOn;
+	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState];
 	//trackingFrequencySlider.enabled = sender.on;
 	
 	NSDictionary *sliderMappings = [NSDictionary dictionaryWithContentsOfFile:
@@ -51,17 +50,17 @@ enum {
 	distanceFilterSlider.mapping = [sliderMappings objectForKey:@"distance_filter"];
 	distanceFilterSlider.target = self;
 	distanceFilterSlider.action = @selector(changeDistanceFilter:);
-	distanceFilterSlider.mappedValue = gAppDelegate.locationUpdateManager.distanceFilterDistance;
+	distanceFilterSlider.mappedValue = [[Geoloqi sharedInstance] distanceFilterDistance];
 	
 	trackingFrequencySlider.mapping = [sliderMappings objectForKey:@"tracking_limit"];
 	trackingFrequencySlider.target = self;
 	trackingFrequencySlider.action = @selector(changeTrackingFrequency:);
-	trackingFrequencySlider.mappedValue = gAppDelegate.locationUpdateManager.trackingFrequency;
+	trackingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] trackingFrequency];
 	
 	sendingFrequencySlider.mapping = [sliderMappings objectForKey:@"rate_limit"];
 	sendingFrequencySlider.target = self;
 	sendingFrequencySlider.action = @selector(changeSendingFrequency:);
-	sendingFrequencySlider.mappedValue = gAppDelegate.locationUpdateManager.sendingFrequency;
+	sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
 	
 	[self updateLabels];
 	
@@ -102,7 +101,7 @@ enum {
 //				  withRowAnimation:UITableViewRowAnimationNone];
 }
 - (void)coordLongPressDetected {
-	if (!gAppDelegate.locationUpdateManager.currentLocation) return;
+	if (![[Geoloqi sharedInstance] currentLocation]) return;
 	
 	// Highlight the appropriate labels
 	NSArray *subviews = coordsCell.contentView.subviews;
@@ -156,7 +155,7 @@ enum {
 }
 - (void)copy:(id)sender {
 	// Copy "lat, long" to the clipboard
-	CLLocationCoordinate2D coord = gAppDelegate.locationUpdateManager.currentLocation.coordinate;
+	CLLocationCoordinate2D coord = [[Geoloqi sharedInstance] currentLocation].coordinate;
 	[UIPasteboard generalPasteboard].string = [NSString stringWithFormat:@"%f, %f",
 											   coord.latitude, coord.longitude];
 }
@@ -165,25 +164,25 @@ enum {
 #pragma mark Sliders
 
 - (void)toggleTracking:(UISwitch *)sender {
-	gAppDelegate.locationUpdateManager.locationUpdatesOn = sender.on;
+	[[Geoloqi sharedInstance] setLocationUpdatesTo:sender.on];
 	//trackingFrequencySlider.enabled = sender.on;
 }
 - (void)changeDistanceFilter:(GLMappedSlider *)sender {
 	//TODO: use kCLDistanceFilterNone?
-	gAppDelegate.locationUpdateManager.distanceFilterDistance = sender.mappedValue;
+	[[Geoloqi sharedInstance] setDistanceFilterTo:sender.mappedValue];
 	[self updateLabels];
 }
 - (void)changeTrackingFrequency:(GLMappedSlider *)sender {
-	gAppDelegate.locationUpdateManager.trackingFrequency = sender.mappedValue;
+	[[Geoloqi sharedInstance] setTrackingFrequencyTo:sender.mappedValue];
 	[self updateLabels];
 }
 - (void)changeSendingFrequency:(GLMappedSlider *)sender {
-	gAppDelegate.locationUpdateManager.sendingFrequency = sender.mappedValue;
+	[[Geoloqi sharedInstance] setSendingFrequencyTo:sender.mappedValue];
 	[self updateLabels];
 }
 - (void)updateLabels {
-	if (gAppDelegate.locationUpdateManager.currentLocation) {
-		CLLocationCoordinate2D coord = gAppDelegate.locationUpdateManager.currentLocation.coordinate;
+	if ([[Geoloqi sharedInstance] currentLocation]) {
+		CLLocationCoordinate2D coord = [[Geoloqi sharedInstance] currentLocation].coordinate;
 		latLabel.text = [NSString stringWithFormat:@"%f", coord.latitude];
 		longLabel.text = [NSString stringWithFormat:@"%f", coord.longitude];
 	} else {
@@ -267,7 +266,7 @@ enum {
 			NSMutableString *footer = [NSMutableString string];
 			
 			NSTimeInterval ago = [[NSDate date] timeIntervalSinceDate:
-								  gAppDelegate.locationUpdateManager.currentLocation.timestamp];
+								  [[Geoloqi sharedInstance] currentLocation].timestamp];
 			if (ago > 60) {
 				[footer appendFormat:
 						@"Last update: %.0f min. %.0f sec. ago",
@@ -276,7 +275,7 @@ enum {
 				[footer appendFormat:@"Last update: %.0f second%@ ago", ago, (ago == 1.0) ? @"" : @"s"];
 			}
 			
-			NSUInteger pts = [gAppDelegate.locationUpdateManager.locationQueue count];
+			NSUInteger pts = [[Geoloqi sharedInstance] locationQueueCount];
 			[footer appendFormat:@"\nQueue: %d unsent point%@", pts, (pts == 1) ? @"" : @"s"];
 			
 			return footer;

@@ -92,9 +92,7 @@
 		16DA0BD21223973500382D1F /* GLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BD01223973500382D1F /* GLSignUpViewController.m */; };
 		16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BD11223973500382D1F /* GLSignUpViewController.xib */; };
 		16DA0BFB12239BBC00382D1F /* GLLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BF912239BBC00382D1F /* GLLogInViewController.m */; };
-		16EE822811D69FB20026503D /* GLLocationUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822711D69FB20026503D /* GLLocationUpdateManager.m */; };
 		16EE822B11D69FD70026503D /* GLDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822A11D69FD70026503D /* GLDataViewController.m */; };
-		16EE823F11D6A09A0026503D /* LocationUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE823E11D6A09A0026503D /* LocationUpdateRequest.m */; };
 		16EE824911D6A1760026503D /* GeoloqiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */; };
 		16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EE827611D6A1FA0026503D /* GLDataViewController.xib */; };
 		16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16EE832911D6C96C0026503D /* SliderMappings.plist */; };
@@ -104,9 +102,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		2899E5220DE3E06400AC0155 /* LocationUpdaterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* LocationUpdaterViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		28D7ACF80DDB3853001CB0EB /* LocationUpdaterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* LocationUpdaterViewController.m */; };
 		49B68DF111B31641001CB3FA /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B68DB511B31641001CB3FA /* ASIAuthenticationDialog.m */; };
 		49B68DF211B31641001CB3FA /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B68DB711B31641001CB3FA /* ASIFormDataRequest.m */; };
 		49B68DF311B31641001CB3FA /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B68DB911B31641001CB3FA /* ASIHTTPRequest.m */; };
@@ -321,12 +317,8 @@
 		16DA0BD11223973500382D1F /* GLSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLSignUpViewController.xib; sourceTree = "<group>"; };
 		16DA0BF812239BBC00382D1F /* GLLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLogInViewController.h; sourceTree = "<group>"; };
 		16DA0BF912239BBC00382D1F /* GLLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLogInViewController.m; sourceTree = "<group>"; };
-		16EE822611D69FB20026503D /* GLLocationUpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLocationUpdateManager.h; sourceTree = "<group>"; };
-		16EE822711D69FB20026503D /* GLLocationUpdateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLocationUpdateManager.m; sourceTree = "<group>"; };
 		16EE822911D69FD70026503D /* GLDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLDataViewController.h; path = Classes/GLDataViewController.h; sourceTree = "<group>"; };
 		16EE822A11D69FD70026503D /* GLDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLDataViewController.m; path = Classes/GLDataViewController.m; sourceTree = "<group>"; };
-		16EE823D11D6A09A0026503D /* LocationUpdateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUpdateRequest.h; sourceTree = "<group>"; };
-		16EE823E11D6A09A0026503D /* LocationUpdateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUpdateRequest.m; sourceTree = "<group>"; };
 		16EE824711D6A1760026503D /* GeoloqiAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoloqiAppDelegate.h; sourceTree = "<group>"; };
 		16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoloqiAppDelegate.m; sourceTree = "<group>"; };
 		16EE827611D6A1FA0026503D /* GLDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLDataViewController.xib; sourceTree = "<group>"; };
@@ -339,10 +331,7 @@
 		1D6058910D05DD3D006BFB54 /* Geoloqi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geoloqi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2899E5210DE3E06400AC0155 /* LocationUpdaterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationUpdaterViewController.xib; sourceTree = "<group>"; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = ../MainWindow.xib; sourceTree = "<group>"; };
-		28D7ACF60DDB3853001CB0EB /* LocationUpdaterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationUpdaterViewController.h; path = Classes/LocationUpdaterViewController.h; sourceTree = "<group>"; };
-		28D7ACF70DDB3853001CB0EB /* LocationUpdaterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationUpdaterViewController.m; path = Classes/LocationUpdaterViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Geoloqi_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geoloqi_Prefix.pch; sourceTree = "<group>"; };
 		49B68DB411B31641001CB3FA /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -458,10 +447,6 @@
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				16EE824711D6A1760026503D /* GeoloqiAppDelegate.h */,
 				16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */,
-				16EE823D11D6A09A0026503D /* LocationUpdateRequest.h */,
-				16EE823E11D6A09A0026503D /* LocationUpdateRequest.m */,
-				16EE822611D69FB20026503D /* GLLocationUpdateManager.h */,
-				16EE822711D69FB20026503D /* GLLocationUpdateManager.m */,
 			);
 			name = Main;
 			path = Classes;
@@ -1125,16 +1110,6 @@
 			name = Geonote;
 			sourceTree = "<group>";
 		};
-		DD354F6F11D665CB00EEF7BC /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				28D7ACF60DDB3853001CB0EB /* LocationUpdaterViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* LocationUpdaterViewController.m */,
-				2899E5210DE3E06400AC0155 /* LocationUpdaterViewController.xib */,
-			);
-			name = Settings;
-			sourceTree = "<group>";
-		};
 		DD35511E11D681BB00EEF7BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1150,7 +1125,6 @@
 				DD354F6E11D665C000EEF7BC /* Geonote */,
 				0F0183791294FEF6001508D9 /* Layers */,
 				0F0183BE1296F48A001508D9 /* Share */,
-				DD354F6F11D665CB00EEF7BC /* Settings */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -1208,7 +1182,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* LocationUpdaterViewController.xib in Resources */,
 				DD91DF9311BF3F400097F6F5 /* GLMapViewController.xib in Resources */,
 				DD354F7711D666BA00EEF7BC /* GeonoteFriendPickerController.xib in Resources */,
 				DD354FB711D66BB500EEF7BC /* GeonoteMapViewController.xib in Resources */,
@@ -1257,7 +1230,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				28D7ACF80DDB3853001CB0EB /* LocationUpdaterViewController.m in Sources */,
 				49B68DF111B31641001CB3FA /* ASIAuthenticationDialog.m in Sources */,
 				49B68DF211B31641001CB3FA /* ASIFormDataRequest.m in Sources */,
 				49B68DF311B31641001CB3FA /* ASIHTTPRequest.m in Sources */,
@@ -1282,9 +1254,7 @@
 				DD35501211D6709D00EEF7BC /* Geonote.m in Sources */,
 				DD35503D11D6736200EEF7BC /* GeonoteMessageViewController.m in Sources */,
 				DD3550B611D6794200EEF7BC /* GeonoteConfirmationViewController.m in Sources */,
-				16EE822811D69FB20026503D /* GLLocationUpdateManager.m in Sources */,
 				16EE822B11D69FD70026503D /* GLDataViewController.m in Sources */,
-				16EE823F11D6A09A0026503D /* LocationUpdateRequest.m in Sources */,
 				16EE824911D6A1760026503D /* GeoloqiAppDelegate.m in Sources */,
 				16EE842A11D72C450026503D /* GLMutablePolyline.m in Sources */,
 				16EE843511D72CE00026503D /* GLMutablePolylineView.m in Sources */,

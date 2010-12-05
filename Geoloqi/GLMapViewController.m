@@ -6,6 +6,7 @@
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
+#import "Geoloqi.h"
 #import "GLMapViewController.h"
 #import "GLMutablePolyline.h"
 #import "GLMutablePolylineView.h"
@@ -38,7 +39,7 @@
 						   [NSURL URLWithString:
 							[NSString stringWithFormat:
 							 @"http://fakeapi.local/1/location/history?count=200&thinning=3&oauth_token=%@",
-							 gAppDelegate.locationUpdateManager.deviceKey]]];
+							 @"1234567890"]]];
 	req.delegate = self;
 	[req startAsynchronous];
 	
@@ -92,7 +93,7 @@
 
 // This method is called when our internal location manager receives a new point
 - (void)locationUpdated:(NSNotification *)theNotification {
-	CLLocation *newLoc = gAppDelegate.locationUpdateManager.currentLocation;
+	CLLocation *newLoc = [[Geoloqi sharedInstance] currentLocation];
 
 	// add new location to polyline
 	MKMapRect updateRect = [line addCoordinate:newLoc.coordinate];

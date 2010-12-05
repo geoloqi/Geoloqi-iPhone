@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 #define kGeonoteRadiusBlock         120.0f
 #define kGeonoteRadiusArea          400.0f

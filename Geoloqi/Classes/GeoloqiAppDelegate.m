@@ -9,13 +9,11 @@
 #import "Geoloqi.h"
 #import "GLConstants.h"
 #import "GeoloqiAppDelegate.h"
-#import "LocationUpdaterViewController.h"
 
 GeoloqiAppDelegate *gAppDelegate;
 
 @implementation GeoloqiAppDelegate
 
-@synthesize locationUpdateManager;
 @synthesize deviceToken;
 @synthesize window, welcomeViewController;
 @synthesize tabBarController;
@@ -27,8 +25,7 @@ GeoloqiAppDelegate *gAppDelegate;
     
 	gAppDelegate = self;
 	
-	self.locationUpdateManager = [[[GLLocationUpdateManager alloc] init] autorelease];
-	[locationUpdateManager startOrStopMonitoringLocationIfNecessary];
+	[[Geoloqi sharedInstance] startOrStopMonitoringLocationIfNecessary];
 	
     // Override point for customization after application launch.
 	if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
@@ -177,7 +174,6 @@ GeoloqiAppDelegate *gAppDelegate;
 - (void)dealloc {
     [welcomeViewController release];
     [window release];
-	[locationUpdateManager release];
     [super dealloc];
 }
 

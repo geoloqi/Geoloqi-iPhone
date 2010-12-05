@@ -10,7 +10,6 @@
 #import "Geoloqi.h"
 
 
-
 @interface LQLayerDetailViewController : UIViewController {
     NSDictionary *layer;
 	NSString *layerID;

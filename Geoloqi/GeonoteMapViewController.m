@@ -86,12 +86,11 @@
 {
     CLLocation *location;
     
-    if (gAppDelegate.locationUpdateManager.currentLocation)
+    if(location = [[Geoloqi sharedInstance] currentLocation])
     {
-        location = gAppDelegate.locationUpdateManager.currentLocation;
         [self zoomMapToLocation:location];
     }
-    else if (mapView.userLocationVisible)
+    else if(mapView.userLocationVisible)
     {
         location = mapView.userLocation.location;
         [self zoomMapToLocation:location];
