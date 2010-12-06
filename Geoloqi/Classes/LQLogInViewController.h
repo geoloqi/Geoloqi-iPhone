@@ -1,5 +1,5 @@
 //
-//  GLLogInViewController.h
+//  LQLogInViewController.h
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 8/23/10.
@@ -10,7 +10,7 @@
 
 #import "CTableViewController.h"
 
-@interface GLLogInViewController : CTableViewController {
+@interface LQLogInViewController : CTableViewController {
 
 }
 @property (nonatomic, retain) IBOutlet UITextField *usernameField;

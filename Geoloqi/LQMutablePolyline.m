@@ -1,21 +1,21 @@
 //
-//  GLMutablePolyline.m
+//  LQMutablePolyline.m
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 6/26/10.
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
-#import "GLMutablePolyline.h"
+#import "LQMutablePolyline.h"
 
-@interface GLMutablePolyline () // Private methods
+@interface LQMutablePolyline () // Private methods
 - (BOOL)lockForWriting;
 @end
 
 #define INITIAL_POINT_SPACE 100
 #define MINIMUM_DELTA_METERS 10.0
 
-@implementation GLMutablePolyline
+@implementation LQMutablePolyline
 
 @synthesize boundingMapRect, coordinate;
 @synthesize points, pointCount;

@@ -1,5 +1,5 @@
 //
-//  MapViewController.m
+//  LQMapViewController.m
 //  Geoloqi
 //
 //  Created by Justin R. Miller on 6/8/10.
@@ -7,13 +7,13 @@
 //
 
 #import "Geoloqi.h"
-#import "GLMapViewController.h"
-#import "GLMutablePolyline.h"
-#import "GLMutablePolylineView.h"
+#import "LQMapViewController.h"
+#import "LQMutablePolyline.h"
+#import "LQMutablePolylineView.h"
 #import "ASIHTTPRequest.h"
 #import "CJSONDeserializer.h"
 
-@implementation GLMapViewController
+@implementation LQMapViewController
 
 @synthesize map;
 
@@ -60,7 +60,7 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request {
 	
-	line = [[GLMutablePolyline alloc] init];
+	line = [[LQMutablePolyline alloc] init];
 	[map addOverlay:line];
 	
 	if (![request error]) {
@@ -120,9 +120,9 @@
 - (MKOverlayView *)mapView:(MKMapView *)mapView
 			viewForOverlay:(id <MKOverlay>)overlay {
 	
-	if ([overlay isKindOfClass:[GLMutablePolyline class]]) {
+	if ([overlay isKindOfClass:[LQMutablePolyline class]]) {
 		if (!lineView) {
-			lineView = [[GLMutablePolylineView alloc] initWithOverlay:overlay];
+			lineView = [[LQMutablePolylineView alloc] initWithOverlay:overlay];
 		}
 		return lineView;
 	}

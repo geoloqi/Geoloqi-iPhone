@@ -1,5 +1,5 @@
 //
-//  GLLogInViewController.m
+//  LQSignUpViewController.m
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 8/23/10.
@@ -7,22 +7,25 @@
 //
 
 #import "Geoloqi.h"
-#import "GLLogInViewController.h"
+#import "LQSignUpViewController.h"
 
-@implementation GLLogInViewController
+@implementation LQSignUpViewController
 
-@synthesize usernameField, passwordField, activityIndicator;
+@synthesize usernameField;
+@synthesize emailAddressField;
+@synthesize activityIndicator;
 
 - (IBAction)cancel {
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
-- (IBAction)logInAction {
-	[[Geoloqi sharedInstance] authenticateWithUsername:usernameField.text
-															 password:passwordField.text];
 
+- (IBAction)signUpAction {
+    [[Geoloqi sharedInstance] createAccountWithUsername:usernameField.text 
+                                                          emailAddress:emailAddressField.text];
+	
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 	self.navigationItem.leftBarButtonItem.enabled = NO;
-
+	
 	[UIView beginAnimations:nil context:NULL];
 	self.activityIndicator.alpha = 1.0f;
 	[UIView commitAnimations];
@@ -30,12 +33,12 @@
 
 - (NSString *)tableView:(UITableView *)inTableView titleForHeaderInSection:(NSInteger)section;
 {
-	return NSLocalizedString(@"Log in with your username and password", nil);
+	return NSLocalizedString(@"Create your Geoloqi account", nil);
 }
 
 - (NSString *)tableView:(UITableView *)inTableView titleForFooterInSection:(NSInteger)section;
 {
-	return NSLocalizedString(@"", nil);
+	return NSLocalizedString(@"You'll get an email to complete the setup, but you can start using the app right away!", nil);
 }
 
 
@@ -46,20 +49,20 @@
 
 - (BOOL)isComplete;
 {
-	return usernameField.text.length > 0 &&  passwordField.text.length > 0;
+	return usernameField.text.length > 0 &&  emailAddressField.text.length > 0;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
 	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil] autorelease];
-	
+
 	if (indexPath.row == 0) {
+		cell.accessoryView = emailAddressField;
+		cell.detailTextLabel.text = NSLocalizedString(@"Email", nil);
+	} else if  (indexPath.row == 1) {
 		cell.accessoryView = usernameField;
 		cell.detailTextLabel.text = NSLocalizedString(@"Username", nil);
-	} else if  (indexPath.row == 1) {
-		cell.accessoryView = passwordField;
-		cell.detailTextLabel.text = NSLocalizedString(@"Password", nil);
 	}
 	
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -67,10 +70,20 @@
 	return cell;
 }
 
-- (void)viewWillAppear:(BOOL)animated;
-{
-	[super viewWillAppear:animated];
-	[usernameField becomeFirstResponder];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	
+	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
+																							target:self 
+																							action:@selector(cancel)] autorelease];
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Sign Up", nil)
+																			  style:UIBarButtonItemStyleDone 
+																			 target:self 
+																			 action:@selector(signUpAction)] autorelease];
+	
+	self.navigationItem.rightBarButtonItem.enabled = [self isComplete];
+	
+	self.title = NSLocalizedString(@"Sign Up", nil);
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;   // return NO to not change text
@@ -81,34 +94,20 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)inTextField;
 {
-	if (inTextField == usernameField) {
-		[passwordField becomeFirstResponder];
-	} else if (inTextField == passwordField && [self isComplete]) {
-		[self logInAction];
+	if (inTextField == emailAddressField) {
+		[usernameField becomeFirstResponder];
+	} else if (inTextField == usernameField && [self isComplete]) {
+		[self signUpAction];
 	}
 	return YES;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	
-	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
-																						   target:self 
-																						   action:@selector(cancel)] autorelease];
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Log In", nil)
-																			   style:UIBarButtonItemStyleDone 
-																			  target:self 
-																			  action:@selector(logInAction)] autorelease];
-	
-	self.navigationItem.rightBarButtonItem.enabled = [self isComplete];
-	
-	self.title = NSLocalizedString(@"Log In", nil);
+- (void)viewWillAppear:(BOOL)animated;
+{
+	[super viewWillAppear:animated];
+	[emailAddressField becomeFirstResponder];
 }
 
-
-
-#pragma mark -
-#pragma mark Lifecycle
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -125,8 +124,8 @@
 
 
 - (void)dealloc {
-	[usernameField release];
-	[passwordField release];
+    [usernameField release];
+    [emailAddressField release];
     [super dealloc];
 }
 

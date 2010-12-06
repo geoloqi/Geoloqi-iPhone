@@ -1,16 +1,16 @@
 //
-//  GLDataViewController.m
+//  LQDataViewController.m
 //  Geoloqi
 //
 //  Created by caseorganic on 6/3/10.
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
-#import "GLDataViewController.h"
+#import "LQDataViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "GLMappedSlider.h"
+#import "LQMappedSlider.h"
 
-NSString *const GLTrackingOnUserInfoKey = @"GLTrackingOnUserInfoKey";
+NSString *const LQTrackingOnUserInfoKey = @"LQTrackingOnUserInfoKey";
 
 enum {
 	kSectionCoordinates = 0,
@@ -22,13 +22,13 @@ enum {
 	kNumberOfSections
 };
 
-@interface GLDataViewController () // Private methods
+@interface LQDataViewController () // Private methods
 - (void)updateLabels;
 - (NSString *)formatSeconds:(NSTimeInterval)s;
 @end
 
 
-@implementation GLDataViewController
+@implementation LQDataViewController
 
 @synthesize coordsCell, latLabel, longLabel;
 @synthesize trackingToggleCell, trackingToggleSwitch;
@@ -167,16 +167,16 @@ enum {
 	[[Geoloqi sharedInstance] setLocationUpdatesTo:sender.on];
 	//trackingFrequencySlider.enabled = sender.on;
 }
-- (void)changeDistanceFilter:(GLMappedSlider *)sender {
+- (void)changeDistanceFilter:(LQMappedSlider *)sender {
 	//TODO: use kCLDistanceFilterNone?
 	[[Geoloqi sharedInstance] setDistanceFilterTo:sender.mappedValue];
 	[self updateLabels];
 }
-- (void)changeTrackingFrequency:(GLMappedSlider *)sender {
+- (void)changeTrackingFrequency:(LQMappedSlider *)sender {
 	[[Geoloqi sharedInstance] setTrackingFrequencyTo:sender.mappedValue];
 	[self updateLabels];
 }
-- (void)changeSendingFrequency:(GLMappedSlider *)sender {
+- (void)changeSendingFrequency:(LQMappedSlider *)sender {
 	[[Geoloqi sharedInstance] setSendingFrequencyTo:sender.mappedValue];
 	[self updateLabels];
 }

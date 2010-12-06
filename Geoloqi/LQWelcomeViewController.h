@@ -1,5 +1,5 @@
 //
-//  GLWelcomeViewController.h
+//  LQWelcomeViewController.h
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 8/23/10.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface GLWelcomeViewController : UIViewController {
+@interface LQWelcomeViewController : UIViewController {
 	
 }
 @property (nonatomic, retain) IBOutlet UIViewController *signUpViewController;

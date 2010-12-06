@@ -1,5 +1,5 @@
 //
-//  GLWelcomeViewController.m
+//  LQWelcomeViewController.m
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 8/23/10.
@@ -7,10 +7,10 @@
 //
 
 #import "Geoloqi.h"
-#import "GLWelcomeViewController.h"
+#import "LQWelcomeViewController.h"
 
 
-@implementation GLWelcomeViewController
+@implementation LQWelcomeViewController
 
 @synthesize signUpViewController, logInViewController;
 @synthesize signUpButton;

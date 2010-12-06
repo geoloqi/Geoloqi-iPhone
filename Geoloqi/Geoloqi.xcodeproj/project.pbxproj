@@ -86,18 +86,18 @@
 		0F0190D712A0762C001508D9 /* LQLayerTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0190D612A0762C001508D9 /* LQLayerTableView.xib */; };
 		0F0190F112A07A9E001508D9 /* LQLayerNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */; };
 		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
-		166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* GLMappedSlider.m */; };
-		16DA0BB6122390F600382D1F /* GLWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */; };
+		166BE46111DDDC9000F41B0B /* LQMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* LQMappedSlider.m */; };
+		16DA0BB6122390F600382D1F /* LQWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */; };
 		16DA0BB7122390F600382D1F /* GLWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */; };
-		16DA0BD21223973500382D1F /* GLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BD01223973500382D1F /* GLSignUpViewController.m */; };
+		16DA0BD21223973500382D1F /* LQSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BD01223973500382D1F /* LQSignUpViewController.m */; };
 		16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BD11223973500382D1F /* GLSignUpViewController.xib */; };
-		16DA0BFB12239BBC00382D1F /* GLLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BF912239BBC00382D1F /* GLLogInViewController.m */; };
-		16EE822B11D69FD70026503D /* GLDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822A11D69FD70026503D /* GLDataViewController.m */; };
+		16DA0BFB12239BBC00382D1F /* LQLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BF912239BBC00382D1F /* LQLogInViewController.m */; };
+		16EE822B11D69FD70026503D /* LQDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822A11D69FD70026503D /* LQDataViewController.m */; };
 		16EE824911D6A1760026503D /* GeoloqiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */; };
 		16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EE827611D6A1FA0026503D /* GLDataViewController.xib */; };
 		16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16EE832911D6C96C0026503D /* SliderMappings.plist */; };
-		16EE842A11D72C450026503D /* GLMutablePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE842911D72C450026503D /* GLMutablePolyline.m */; };
-		16EE843511D72CE00026503D /* GLMutablePolylineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE843411D72CE00026503D /* GLMutablePolylineView.m */; };
+		16EE842A11D72C450026503D /* LQMutablePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE842911D72C450026503D /* LQMutablePolyline.m */; };
+		16EE843511D72CE00026503D /* LQMutablePolylineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE843411D72CE00026503D /* LQMutablePolylineView.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -149,7 +149,7 @@
 		DD35503E11D6736200EEF7BC /* GeonoteMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD35503C11D6736200EEF7BC /* GeonoteMessageViewController.xib */; };
 		DD3550B611D6794200EEF7BC /* GeonoteConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3550B411D6794200EEF7BC /* GeonoteConfirmationViewController.m */; };
 		DD3550B711D6794200EEF7BC /* GeonoteConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3550B511D6794200EEF7BC /* GeonoteConfirmationViewController.xib */; };
-		DD91DF9211BF3F400097F6F5 /* GLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9011BF3F400097F6F5 /* GLMapViewController.m */; };
+		DD91DF9211BF3F400097F6F5 /* LQMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9011BF3F400097F6F5 /* LQMapViewController.m */; };
 		DD91DF9311BF3F400097F6F5 /* GLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */; };
 		DD91E15E11BF4C1F0097F6F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */; };
 		DDBDE699126E7AB200B1FB60 /* welcome-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */; };
@@ -307,26 +307,26 @@
 		0F0190EF12A07A9E001508D9 /* LQLayerNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLayerNavigationController.h; sourceTree = "<group>"; };
 		0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLayerNavigationController.m; sourceTree = "<group>"; };
 		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
-		166BE45F11DDDC9000F41B0B /* GLMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMappedSlider.h; sourceTree = "<group>"; };
-		166BE46011DDDC9000F41B0B /* GLMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMappedSlider.m; sourceTree = "<group>"; };
-		16DA0BB3122390F600382D1F /* GLWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLWelcomeViewController.h; path = ../GLWelcomeViewController.h; sourceTree = "<group>"; };
-		16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLWelcomeViewController.m; path = ../GLWelcomeViewController.m; sourceTree = "<group>"; };
+		166BE45F11DDDC9000F41B0B /* LQMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMappedSlider.h; sourceTree = "<group>"; };
+		166BE46011DDDC9000F41B0B /* LQMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMappedSlider.m; sourceTree = "<group>"; };
+		16DA0BB3122390F600382D1F /* LQWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQWelcomeViewController.h; path = ../LQWelcomeViewController.h; sourceTree = "<group>"; };
+		16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LQWelcomeViewController.m; path = ../LQWelcomeViewController.m; sourceTree = "<group>"; };
 		16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GLWelcomeViewController.xib; path = ../GLWelcomeViewController.xib; sourceTree = "<group>"; };
-		16DA0BCF1223973500382D1F /* GLSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSignUpViewController.h; sourceTree = "<group>"; };
-		16DA0BD01223973500382D1F /* GLSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSignUpViewController.m; sourceTree = "<group>"; };
+		16DA0BCF1223973500382D1F /* LQSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSignUpViewController.h; sourceTree = "<group>"; };
+		16DA0BD01223973500382D1F /* LQSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSignUpViewController.m; sourceTree = "<group>"; };
 		16DA0BD11223973500382D1F /* GLSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLSignUpViewController.xib; sourceTree = "<group>"; };
-		16DA0BF812239BBC00382D1F /* GLLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLogInViewController.h; sourceTree = "<group>"; };
-		16DA0BF912239BBC00382D1F /* GLLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLogInViewController.m; sourceTree = "<group>"; };
-		16EE822911D69FD70026503D /* GLDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLDataViewController.h; path = Classes/GLDataViewController.h; sourceTree = "<group>"; };
-		16EE822A11D69FD70026503D /* GLDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLDataViewController.m; path = Classes/GLDataViewController.m; sourceTree = "<group>"; };
+		16DA0BF812239BBC00382D1F /* LQLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLogInViewController.h; sourceTree = "<group>"; };
+		16DA0BF912239BBC00382D1F /* LQLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLogInViewController.m; sourceTree = "<group>"; };
+		16EE822911D69FD70026503D /* LQDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQDataViewController.h; path = Classes/LQDataViewController.h; sourceTree = "<group>"; };
+		16EE822A11D69FD70026503D /* LQDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LQDataViewController.m; path = Classes/LQDataViewController.m; sourceTree = "<group>"; };
 		16EE824711D6A1760026503D /* GeoloqiAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoloqiAppDelegate.h; sourceTree = "<group>"; };
 		16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoloqiAppDelegate.m; sourceTree = "<group>"; };
 		16EE827611D6A1FA0026503D /* GLDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLDataViewController.xib; sourceTree = "<group>"; };
 		16EE832911D6C96C0026503D /* SliderMappings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SliderMappings.plist; sourceTree = "<group>"; };
-		16EE842811D72C450026503D /* GLMutablePolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMutablePolyline.h; sourceTree = "<group>"; };
-		16EE842911D72C450026503D /* GLMutablePolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMutablePolyline.m; sourceTree = "<group>"; };
-		16EE843311D72CE00026503D /* GLMutablePolylineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMutablePolylineView.h; sourceTree = "<group>"; };
-		16EE843411D72CE00026503D /* GLMutablePolylineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMutablePolylineView.m; sourceTree = "<group>"; };
+		16EE842811D72C450026503D /* LQMutablePolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMutablePolyline.h; sourceTree = "<group>"; };
+		16EE842911D72C450026503D /* LQMutablePolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMutablePolyline.m; sourceTree = "<group>"; };
+		16EE843311D72CE00026503D /* LQMutablePolylineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMutablePolylineView.h; sourceTree = "<group>"; };
+		16EE843411D72CE00026503D /* LQMutablePolylineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMutablePolylineView.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Geoloqi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geoloqi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -406,11 +406,11 @@
 		DD3550B311D6794200EEF7BC /* GeonoteConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteConfirmationViewController.h; sourceTree = "<group>"; };
 		DD3550B411D6794200EEF7BC /* GeonoteConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteConfirmationViewController.m; sourceTree = "<group>"; };
 		DD3550B511D6794200EEF7BC /* GeonoteConfirmationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteConfirmationViewController.xib; sourceTree = "<group>"; };
-		DD91DF8F11BF3F400097F6F5 /* GLMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMapViewController.h; sourceTree = "<group>"; };
-		DD91DF9011BF3F400097F6F5 /* GLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMapViewController.m; sourceTree = "<group>"; };
+		DD91DF8F11BF3F400097F6F5 /* LQMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMapViewController.h; sourceTree = "<group>"; };
+		DD91DF9011BF3F400097F6F5 /* LQMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMapViewController.m; sourceTree = "<group>"; };
 		DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLMapViewController.xib; sourceTree = "<group>"; };
 		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		DDACF629125C24B7000511E5 /* GLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLConstants.h; path = Classes/GLConstants.h; sourceTree = "<group>"; };
+		DDACF629125C24B7000511E5 /* LQConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQConstants.h; path = Classes/LQConstants.h; sourceTree = "<group>"; };
 		DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-top@2x.png"; sourceTree = "<group>"; };
 		DDBDE696126E7AB200B1FB60 /* welcome-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-top.png"; sourceTree = "<group>"; };
 		DDBDE697126E7AB200B1FB60 /* welcome-bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-bottom@2x.png"; sourceTree = "<group>"; };
@@ -857,14 +857,14 @@
 		16DA0BB91223910100382D1F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				16DA0BB3122390F600382D1F /* GLWelcomeViewController.h */,
-				16DA0BB4122390F600382D1F /* GLWelcomeViewController.m */,
+				16DA0BB3122390F600382D1F /* LQWelcomeViewController.h */,
+				16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */,
 				16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */,
-				16DA0BCF1223973500382D1F /* GLSignUpViewController.h */,
-				16DA0BD01223973500382D1F /* GLSignUpViewController.m */,
+				16DA0BCF1223973500382D1F /* LQSignUpViewController.h */,
+				16DA0BD01223973500382D1F /* LQSignUpViewController.m */,
 				16DA0BD11223973500382D1F /* GLSignUpViewController.xib */,
-				16DA0BF812239BBC00382D1F /* GLLogInViewController.h */,
-				16DA0BF912239BBC00382D1F /* GLLogInViewController.m */,
+				16DA0BF812239BBC00382D1F /* LQLogInViewController.h */,
+				16DA0BF912239BBC00382D1F /* LQLogInViewController.m */,
 				0F0189431299CD7B001508D9 /* GLLogInViewController.xib */,
 			);
 			name = Auth;
@@ -874,10 +874,10 @@
 		16EE842711D72C290026503D /* Mutable polyline */ = {
 			isa = PBXGroup;
 			children = (
-				16EE842811D72C450026503D /* GLMutablePolyline.h */,
-				16EE842911D72C450026503D /* GLMutablePolyline.m */,
-				16EE843311D72CE00026503D /* GLMutablePolylineView.h */,
-				16EE843411D72CE00026503D /* GLMutablePolylineView.m */,
+				16EE842811D72C450026503D /* LQMutablePolyline.h */,
+				16EE842911D72C450026503D /* LQMutablePolyline.m */,
+				16EE843311D72CE00026503D /* LQMutablePolylineView.h */,
+				16EE843411D72CE00026503D /* LQMutablePolylineView.m */,
 			);
 			name = "Mutable polyline";
 			sourceTree = "<group>";
@@ -895,7 +895,7 @@
 			children = (
 				A645401612A204240014F23C /* libGeoloqi.a */,
 				A61096CB12A1D2C600A92CA6 /* Geoloqi.h */,
-				DDACF629125C24B7000511E5 /* GLConstants.h */,
+				DDACF629125C24B7000511E5 /* LQConstants.h */,
 				0F0184211296FDDF001508D9 /* ShareKit */,
 				080E96DDFE201D6D7F000001 /* Main */,
 				16DA0BB91223910100382D1F /* Auth */,
@@ -1067,8 +1067,8 @@
 			isa = PBXGroup;
 			children = (
 				DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */,
-				DD91DF8F11BF3F400097F6F5 /* GLMapViewController.h */,
-				DD91DF9011BF3F400097F6F5 /* GLMapViewController.m */,
+				DD91DF8F11BF3F400097F6F5 /* LQMapViewController.h */,
+				DD91DF9011BF3F400097F6F5 /* LQMapViewController.m */,
 				16EE842711D72C290026503D /* Mutable polyline */,
 			);
 			name = Map;
@@ -1078,10 +1078,10 @@
 			isa = PBXGroup;
 			children = (
 				16EE827611D6A1FA0026503D /* GLDataViewController.xib */,
-				16EE822911D69FD70026503D /* GLDataViewController.h */,
-				16EE822A11D69FD70026503D /* GLDataViewController.m */,
-				166BE45F11DDDC9000F41B0B /* GLMappedSlider.h */,
-				166BE46011DDDC9000F41B0B /* GLMappedSlider.m */,
+				16EE822911D69FD70026503D /* LQDataViewController.h */,
+				16EE822A11D69FD70026503D /* LQDataViewController.m */,
+				166BE45F11DDDC9000F41B0B /* LQMappedSlider.h */,
+				166BE46011DDDC9000F41B0B /* LQMappedSlider.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -1247,21 +1247,21 @@
 				49B68E9811B31874001CB3FA /* CJSONSerializer.m in Sources */,
 				49B68E9911B31874001CB3FA /* CSerializedJSONData.m in Sources */,
 				49B68EC711B31B4E001CB3FA /* ISO8601DateFormatter.m in Sources */,
-				DD91DF9211BF3F400097F6F5 /* GLMapViewController.m in Sources */,
+				DD91DF9211BF3F400097F6F5 /* LQMapViewController.m in Sources */,
 				DD354F7611D666BA00EEF7BC /* GeonoteFriendPickerController.m in Sources */,
 				DD354F9111D669C300EEF7BC /* GeonoteNavigationController.m in Sources */,
 				DD354FB611D66BB500EEF7BC /* GeonoteMapViewController.m in Sources */,
 				DD35501211D6709D00EEF7BC /* Geonote.m in Sources */,
 				DD35503D11D6736200EEF7BC /* GeonoteMessageViewController.m in Sources */,
 				DD3550B611D6794200EEF7BC /* GeonoteConfirmationViewController.m in Sources */,
-				16EE822B11D69FD70026503D /* GLDataViewController.m in Sources */,
+				16EE822B11D69FD70026503D /* LQDataViewController.m in Sources */,
 				16EE824911D6A1760026503D /* GeoloqiAppDelegate.m in Sources */,
-				16EE842A11D72C450026503D /* GLMutablePolyline.m in Sources */,
-				16EE843511D72CE00026503D /* GLMutablePolylineView.m in Sources */,
-				166BE46111DDDC9000F41B0B /* GLMappedSlider.m in Sources */,
-				16DA0BB6122390F600382D1F /* GLWelcomeViewController.m in Sources */,
-				16DA0BD21223973500382D1F /* GLSignUpViewController.m in Sources */,
-				16DA0BFB12239BBC00382D1F /* GLLogInViewController.m in Sources */,
+				16EE842A11D72C450026503D /* LQMutablePolyline.m in Sources */,
+				16EE843511D72CE00026503D /* LQMutablePolylineView.m in Sources */,
+				166BE46111DDDC9000F41B0B /* LQMappedSlider.m in Sources */,
+				16DA0BB6122390F600382D1F /* LQWelcomeViewController.m in Sources */,
+				16DA0BD21223973500382D1F /* LQSignUpViewController.m in Sources */,
+				16DA0BFB12239BBC00382D1F /* LQLogInViewController.m in Sources */,
 				49EB2203125D7D8C00EDFAB1 /* CTableViewController.m in Sources */,
 				0F0183C21296F4B3001508D9 /* LQShareViewController.m in Sources */,
 				0F0184BE1296FDDF001508D9 /* SHKCustomFormController.m in Sources */,

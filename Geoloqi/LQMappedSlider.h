@@ -1,5 +1,5 @@
 //
-//  GLMappedSlider.h
+//  LQMappedSlider.h
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 7/2/10.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface GLMappedSlider : UISlider {
+@interface LQMappedSlider : UISlider {
 	NSArray *mapping;
 	id<NSObject> target;
 	SEL action;

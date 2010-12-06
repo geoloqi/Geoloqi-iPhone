@@ -1,5 +1,5 @@
 //
-//  GLMutablePolylineView.h
+//  LQMutablePolylineView.h
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 6/26/10.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface GLMutablePolylineView : MKOverlayView {
+@interface LQMutablePolylineView : MKOverlayView {
 
 }
 

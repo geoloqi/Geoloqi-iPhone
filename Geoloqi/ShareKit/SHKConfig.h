@@ -36,7 +36,7 @@
  leaving that decision up to the user.
  */
 
-#import "GLConstants.h"
+#import "LQConstants.h"
 
 // Delicious - https://developer.apps.yahoo.com/projects
 #define SHKDeliciousConsumerKey		@""
@@ -46,7 +46,7 @@
 // If SHKFacebookUseSessionProxy is enabled then SHKFacebookSecret is ignored and should be left blank
 
 /*
- * Moved to GLConstants.h
+ * Moved to LQConstants.h
 #define SHKFacebookUseSessionProxy  NO 
 #define SHKFacebookKey				@""
 #define SHKFacebookSecret			@""
@@ -73,7 +73,7 @@
  3. 'Callback URL' should match whatever you enter in SHKTwitterCallbackUrl.  The callback url doesn't have to be an actual existing url.  The user will never get to it because ShareKit intercepts it before the user is redirected.  It just needs to match.
  */
 /*
- * Moved to GLConstants.h
+ * Moved to LQConstants.h
 #define SHKTwitterConsumerKey		@""
 #define SHKTwitterSecret			@""
 #define SHKTwitterCallbackUrl		@"" // You need to set this if using OAuth, see note above (xAuth users can skip it)

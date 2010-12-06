@@ -1,5 +1,5 @@
 //
-//  GLConstants.h
+//  LQConstants.h
 //  Geoloqi
 //
 //  Created by Justin R. Miller on 10/5/10.

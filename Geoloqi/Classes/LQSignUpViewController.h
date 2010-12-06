@@ -1,5 +1,5 @@
 //
-//  GLSignUpViewController.h
+//  LQSignUpViewController.h
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 8/23/10.
@@ -10,7 +10,7 @@
 
 #import "CTableViewController.h"
 
-@interface GLSignUpViewController : CTableViewController {
+@interface LQSignUpViewController : CTableViewController {
 
 }
 

@@ -1,5 +1,5 @@
 //
-//  GLMutablePolyline.h
+//  LQMutablePolyline.h
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 6/26/10.
@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <pthread.h>
 
-@interface GLMutablePolyline : NSObject <MKOverlay> {
+@interface LQMutablePolyline : NSObject <MKOverlay> {
 	// MKOverlay stuff
 	MKMapRect boundingMapRect;
 	CLLocationCoordinate2D coordinate;

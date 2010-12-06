@@ -1,5 +1,5 @@
 //
-//  GLDataViewController.h
+//  LQDataViewController.h
 //  Geoloqi
 //
 //  Created by caseorganic on 6/3/10.
@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Geoloqi.h"
 
-NSString *const GLTrackingOnUserInfoKey;
+NSString *const LQTrackingOnUserInfoKey;
 
-@class GLMappedSlider;
+@class LQMappedSlider;
 
-@interface GLDataViewController : UITableViewController {
+@interface LQDataViewController : UITableViewController {
 	UITableViewCell *coordsCell;
 	UILabel *latLabel;
 	UILabel *longLabel;
@@ -23,15 +23,15 @@ NSString *const GLTrackingOnUserInfoKey;
 	
 	UITableViewCell *trackingFrequencyCell;
 	UILabel *trackingFrequencyLabel;
-	GLMappedSlider *trackingFrequencySlider;
+	LQMappedSlider *trackingFrequencySlider;
 	
 	UITableViewCell *distanceFilterCell;
 	UILabel *distanceFilterLabel;
-	GLMappedSlider *distanceFilterSlider;
+	LQMappedSlider *distanceFilterSlider;
 	
 	UITableViewCell *sendingFrequencyCell;
 	UILabel *sendingFrequencyLabel;
-	GLMappedSlider *sendingFrequencySlider;
+	LQMappedSlider *sendingFrequencySlider;
 }
 @property (nonatomic, retain) IBOutlet UITableViewCell *coordsCell;
 @property (nonatomic, retain) IBOutlet UILabel *latLabel;
@@ -43,18 +43,18 @@ NSString *const GLTrackingOnUserInfoKey;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *distanceFilterCell;
 @property (nonatomic, retain) IBOutlet UILabel *distanceFilterLabel;
-@property (nonatomic, retain) IBOutlet GLMappedSlider *distanceFilterSlider;
-- (void)changeDistanceFilter:(GLMappedSlider *)sender;
+@property (nonatomic, retain) IBOutlet LQMappedSlider *distanceFilterSlider;
+- (void)changeDistanceFilter:(LQMappedSlider *)sender;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *trackingFrequencyCell;
 @property (nonatomic, retain) IBOutlet UILabel *trackingFrequencyLabel;
-@property (nonatomic, retain) IBOutlet GLMappedSlider *trackingFrequencySlider;
-- (void)changeTrackingFrequency:(GLMappedSlider *)sender;
+@property (nonatomic, retain) IBOutlet LQMappedSlider *trackingFrequencySlider;
+- (void)changeTrackingFrequency:(LQMappedSlider *)sender;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *sendingFrequencyCell;
 @property (nonatomic, retain) IBOutlet UILabel *sendingFrequencyLabel;
-@property (nonatomic, retain) IBOutlet GLMappedSlider *sendingFrequencySlider;
-- (void)changeSendingFrequency:(GLMappedSlider *)sender;
+@property (nonatomic, retain) IBOutlet LQMappedSlider *sendingFrequencySlider;
+- (void)changeSendingFrequency:(LQMappedSlider *)sender;
 
 
 @end

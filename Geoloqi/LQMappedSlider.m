@@ -1,15 +1,15 @@
 //
-//  GLMappedSlider.m
+//  LQMappedSlider.m
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 7/2/10.
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
-#import "GLMappedSlider.h"
+#import "LQMappedSlider.h"
 
 
-@implementation GLMappedSlider
+@implementation LQMappedSlider
 
 @synthesize mapping, target, action;
 

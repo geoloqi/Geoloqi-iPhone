@@ -7,7 +7,7 @@
 //
 
 #import "Geoloqi.h"
-#import "GLConstants.h"
+#import "LQConstants.h"
 #import "GeoloqiAppDelegate.h"
 
 GeoloqiAppDelegate *gAppDelegate;

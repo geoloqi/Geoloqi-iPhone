@@ -1,15 +1,15 @@
 //
-//  GLMutablePolylineView.m
+//  LQMutablePolylineView.m
 //  Geoloqi
 //
 //  Created by Jacob Bandes-Storch on 6/26/10.
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
-#import "GLMutablePolylineView.h"
-#import "GLMutablePolyline.h"
+#import "LQMutablePolylineView.h"
+#import "LQMutablePolyline.h"
 
-@interface GLMutablePolylineView () // Private methods
+@interface LQMutablePolylineView () // Private methods
 - (CGPathRef)createPathForPoints:(MKMapPoint *)points
                       pointCount:(NSUInteger)pointCount
                         clipRect:(MKMapRect)mapRect
@@ -17,7 +17,7 @@
 @end
 
 
-@implementation GLMutablePolylineView
+@implementation LQMutablePolylineView
 
 
 - (void)drawMapRect:(MKMapRect)mapRect
@@ -27,7 +27,7 @@
 //	NSLog(@"Drawing rect %@ @ zoom %f, actual rect %@, bounding %@", MKStringFromMapRect(mapRect), zoomScale,
 //		  NSStringFromCGRect([self rectForMapRect:mapRect]), MKStringFromMapRect(self.overlay.boundingMapRect));
 	
-	GLMutablePolyline *line = (GLMutablePolyline *)self.overlay;
+	LQMutablePolyline *line = (LQMutablePolyline *)self.overlay;
 	
 	CGFloat lineWidth = MKRoadWidthAtZoomScale(zoomScale);
     

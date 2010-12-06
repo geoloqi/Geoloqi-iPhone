@@ -1,5 +1,5 @@
 //
-//  MapViewController.h
+//  LQMapViewController.h
 //  Geoloqi
 //
 //  Created by Justin R. Miller on 6/8/10.
@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@class GLMutablePolyline, GLMutablePolylineView;
+@class LQMutablePolyline, LQMutablePolylineView;
 
-@interface GLMapViewController : UIViewController <MKMapViewDelegate> {
+@interface LQMapViewController : UIViewController <MKMapViewDelegate> {
 	MKMapView *map;
-	GLMutablePolyline *line;
-	GLMutablePolylineView *lineView;
+	LQMutablePolyline *line;
+	LQMutablePolylineView *lineView;
 	bool firstLoad;
 }
 
