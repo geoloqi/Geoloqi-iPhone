@@ -88,7 +88,7 @@
 		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
 		166BE46111DDDC9000F41B0B /* LQMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* LQMappedSlider.m */; };
 		16DA0BB6122390F600382D1F /* LQWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */; };
-		16DA0BB7122390F600382D1F /* GLWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */; };
+		16DA0BB7122390F600382D1F /* LQWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BB5122390F600382D1F /* LQWelcomeViewController.xib */; };
 		16DA0BD21223973500382D1F /* LQSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BD01223973500382D1F /* LQSignUpViewController.m */; };
 		16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BD11223973500382D1F /* GLSignUpViewController.xib */; };
 		16DA0BFB12239BBC00382D1F /* LQLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BF912239BBC00382D1F /* LQLogInViewController.m */; };
@@ -311,7 +311,7 @@
 		166BE46011DDDC9000F41B0B /* LQMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMappedSlider.m; sourceTree = "<group>"; };
 		16DA0BB3122390F600382D1F /* LQWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQWelcomeViewController.h; path = ../LQWelcomeViewController.h; sourceTree = "<group>"; };
 		16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LQWelcomeViewController.m; path = ../LQWelcomeViewController.m; sourceTree = "<group>"; };
-		16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GLWelcomeViewController.xib; path = ../GLWelcomeViewController.xib; sourceTree = "<group>"; };
+		16DA0BB5122390F600382D1F /* LQWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LQWelcomeViewController.xib; path = ../LQWelcomeViewController.xib; sourceTree = "<group>"; };
 		16DA0BCF1223973500382D1F /* LQSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSignUpViewController.h; sourceTree = "<group>"; };
 		16DA0BD01223973500382D1F /* LQSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSignUpViewController.m; sourceTree = "<group>"; };
 		16DA0BD11223973500382D1F /* GLSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLSignUpViewController.xib; sourceTree = "<group>"; };
@@ -859,7 +859,7 @@
 			children = (
 				16DA0BB3122390F600382D1F /* LQWelcomeViewController.h */,
 				16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */,
-				16DA0BB5122390F600382D1F /* GLWelcomeViewController.xib */,
+				16DA0BB5122390F600382D1F /* LQWelcomeViewController.xib */,
 				16DA0BCF1223973500382D1F /* LQSignUpViewController.h */,
 				16DA0BD01223973500382D1F /* LQSignUpViewController.m */,
 				16DA0BD11223973500382D1F /* GLSignUpViewController.xib */,
@@ -1189,7 +1189,7 @@
 				DD3550B711D6794200EEF7BC /* GeonoteConfirmationViewController.xib in Resources */,
 				16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */,
 				16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */,
-				16DA0BB7122390F600382D1F /* GLWelcomeViewController.xib in Resources */,
+				16DA0BB7122390F600382D1F /* LQWelcomeViewController.xib in Resources */,
 				16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */,
 				49EB224D125D7F7100EDFAB1 /* 07-map-marker.png in Resources */,
 				49EB224E125D7F7100EDFAB1 /* 20-gear2.png in Resources */,
