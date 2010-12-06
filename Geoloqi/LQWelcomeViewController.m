@@ -36,7 +36,6 @@
 	[self.signUpButton setBackgroundImage:stretImg forState:UIControlStateNormal];
 	[self.useAnonymouslyButton setBackgroundImage:stretImg forState:UIControlStateNormal];
 	[self.signInButton setBackgroundImage:stretImgSm forState:UIControlStateNormal];
-	
 }
 
 #pragma mark -

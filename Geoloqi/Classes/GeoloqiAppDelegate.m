@@ -48,7 +48,8 @@ GeoloqiAppDelegate *gAppDelegate;
                                                  selector:@selector(authenticationDidSucceed:) 
                                                      name:LQAuthenticationSucceededNotification 
                                                    object:nil];
-
+		NSLog(@"Showing welcome view");
+		NSLog(@"%@", welcomeViewController);
         [tabBarController presentModalViewController:welcomeViewController animated:YES];
     }
 	// else, use the refresh token to get a new access token right now
@@ -62,13 +63,16 @@ GeoloqiAppDelegate *gAppDelegate;
 //	NSLog(@"Name %@, Sys name %@, Sys version %@, Model %@, Idiom %d, Battery %f",
 //		  d.name, d.systemName, d.systemVersion, d.model, d.userInterfaceIdiom, d.batteryLevel);
 
+	// TODO: Check for net access here and don't make this request if we're offline
+	/*
 	NSLog(@"Registering for push notifications");
 	[[UIApplication sharedApplication]
 	 registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
 										 UIRemoteNotificationTypeSound |
 										 UIRemoteNotificationTypeAlert)];
+	*/
 	
-	
+	// For checking to see what options the app launched with
 	//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:[launchOptions description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
 	//[alert show];
 
@@ -113,12 +117,12 @@ GeoloqiAppDelegate *gAppDelegate;
 	
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setHTTPMethod:@"PUT"];
-    
+	 
     // Authenticate to the server
     [request addValue:[NSString stringWithFormat:@"Basic %@",
                        [GeoloqiAppDelegate base64forData:[[NSString stringWithFormat:@"%@:%@",
-                                                        kApplicationKey,
-                                                        kApplicationSecret] dataUsingEncoding: NSUTF8StringEncoding]]] forHTTPHeaderField:@"Authorization"];
+                                                        UAApplicationKey,
+                                                        UAApplicationSecret] dataUsingEncoding: NSUTF8StringEncoding]]] forHTTPHeaderField:@"Authorization"];
     
     [[NSURLConnection connectionWithRequest:request delegate:self] start];
 }

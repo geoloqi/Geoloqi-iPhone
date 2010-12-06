@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+	// TODO: Make this request asynchronous, and cache the layer thumbnails
 	layerName.text = [layer objectForKey:@"name"];
 	layerDescription.text = [layer objectForKey:@"description"];
 	layerImg.image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: [layer objectForKey:@"icon"]]]];
@@ -91,6 +92,7 @@
 	[layerName release];
 	[layerDescription release];
 	[webView release];
+	[layerActivatedCallback release];
     [super dealloc];
 }
 

@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-#define LQ_OAUTH_CLIENT_ID	@"1"
-#define LQ_OAUTH_SECRET		@"1"
-
 static NSString *const LQAuthenticationSucceededNotification = @"LQAuthenticationSucceededNotification";
 
 NSString *const LQLocationUpdateManagerDidUpdateLocationNotification;
@@ -49,6 +46,8 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (NSTimeInterval)trackingFrequency;
 - (NSTimeInterval)sendingFrequency;
 - (NSUInteger)locationQueueCount;
+
+- (void)loadHistory:(NSDictionary *)params callback:(LQHTTPRequestCallback)callback;
 
 #pragma mark Authentication
 

@@ -16,10 +16,13 @@
 	LQMutablePolyline *line;
 	LQMutablePolylineView *lineView;
 	bool firstLoad;
+	LQHTTPRequestCallback historyLoadedCallback;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *map;
 
 - (void)zoomMapToLocation:(CLLocation *)location;
+- (void)reloadMapHistory;
+- (LQHTTPRequestCallback)historyLoadedCallback;
 
 @end

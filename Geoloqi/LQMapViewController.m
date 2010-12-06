@@ -33,17 +33,18 @@
 	// The map will center on the user's location as soon as it's received
 	firstLoad = YES;
 	
-	// TODO: Make this use the Geoloqi API instead
-	
-	ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:
-						   [NSURL URLWithString:
-							[NSString stringWithFormat:
-							 @"http://fakeapi.local/1/location/history?count=200&thinning=3&oauth_token=%@",
-							 @"1234567890"]]];
-	req.delegate = self;
-	[req startAsynchronous];
-	
 	NSLog(@"MapDidLoad");
+
+	// Don't attempt to load the history unless the user is logged in
+	if([[Geoloqi sharedInstance] hasRefreshToken]) {
+		[self reloadMapHistory];
+	}else{
+		// otherwise, listen for the notification that authentication was successful, then load the history
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(reloadMapHistory)
+													 name:LQAuthenticationSucceededNotification
+												   object:nil];
+	}
 	
 	// Observe our own location manager for updates
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -58,6 +59,52 @@
 						  context:NULL];
 }
 
+- (void)reloadMapHistory {
+	[[Geoloqi sharedInstance] loadHistory:[NSDictionary dictionaryWithObjectsAndKeys:
+										   @"200", @"count",
+										   @"3", @"thinning",
+										   nil]
+								 callback:[self historyLoadedCallback]];
+}
+
+- (LQHTTPRequestCallback)historyLoadedCallback {
+	if (historyLoadedCallback) return historyLoadedCallback;
+	return historyLoadedCallback = [^(NSError *error, NSString *responseBody) {
+
+		NSLog(@"Map history loaded!");
+		
+		line = [[LQMutablePolyline alloc] init];
+		[map addOverlay:line];
+
+		NSError *err = nil;
+		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
+																					   NSUTF8StringEncoding]
+																				error:&err];
+		if (!res || [res objectForKey:@"error"] != nil) {
+			NSLog(@"Error deserializing response (for layer/subscribe) \"%@\": %@", responseBody, err);
+			[[Geoloqi sharedInstance] errorProcessingAPIRequest];
+			return;
+		}
+		
+		for (NSDictionary *point in [res objectForKey:@"points"]) {
+			if ( ! [[point valueForKeyPath:@"location.position.horizontal_accuracy"] isEqual:[NSNull null]] &&
+				[[point valueForKeyPath:@"location.position.horizontal_accuracy"] doubleValue] < 100) {
+				CLLocationCoordinate2D coord;
+				coord.latitude = [[point valueForKeyPath:@"location.position.latitude"] doubleValue];
+				coord.longitude = [[point valueForKeyPath:@"location.position.longitude"] doubleValue];
+				[line addCoordinate:coord];
+			}
+		}
+		[lineView setNeedsDisplayInMapRect:line.boundingMapRect];
+		
+		if ( ! MKMapRectIsNull(line.boundingMapRect))
+			[map setRegion:MKCoordinateRegionForMapRect(line.boundingMapRect)
+				  animated:YES];
+		
+	} copy];
+}
+
+/*
 - (void)requestFinished:(ASIHTTPRequest *)request {
 	
 	line = [[LQMutablePolyline alloc] init];
@@ -86,6 +133,7 @@
         [map setRegion:MKCoordinateRegionForMapRect(line.boundingMapRect)
               animated:YES];
 }
+*/
 
 - (void)requestFailed:(ASIHTTPRequest *)request {
 	NSLog(@"Failed to get most recent 200 points: %@", [request error]);
@@ -165,6 +213,7 @@
 	[lineView release];
 	[line release];
 	[map release];
+	[historyLoadedCallback release];
     [super dealloc];
 }
 
