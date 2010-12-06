@@ -16,12 +16,12 @@
 {
     IBOutlet UITextView *textView;
     Geonote *geonote;
-	GLHTTPRequestCallback geonoteSentCallback;
+	LQHTTPRequestCallback geonoteSentCallback;
 }
 
 @property (nonatomic, retain) Geonote *geonote;
 
-- (GLHTTPRequestCallback)geonoteSentCallback;
+- (LQHTTPRequestCallback)geonoteSentCallback;
 
 - (IBAction)tappedFinish:(id)sender;
 

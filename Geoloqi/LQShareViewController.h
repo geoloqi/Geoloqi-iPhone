@@ -17,7 +17,7 @@
 	IBOutlet UIButton *shareButton;
 	UITextField *shareDescriptionField;
 	NSString *sharedLinkCreated;
-	GLHTTPRequestCallback linkCreatedCallback;
+	LQHTTPRequestCallback linkCreatedCallback;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *shareDescriptionField;
@@ -25,7 +25,7 @@
 @property (nonatomic, retain) NSMutableArray *durations;
 @property (nonatomic, retain) NSMutableArray *durationMinutes;
 
-- (GLHTTPRequestCallback)linkCreatedCallback;
+- (LQHTTPRequestCallback)linkCreatedCallback;
 - (IBAction)tappedShare:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 - (IBAction)backgroundTouched:(id)sender;

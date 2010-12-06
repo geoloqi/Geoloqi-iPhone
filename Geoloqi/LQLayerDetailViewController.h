@@ -18,13 +18,13 @@
 	IBOutlet UILabel *layerDescription;	
 	IBOutlet UIWebView *webView;
 	IBOutlet UIButton *activateButton;
-	GLHTTPRequestCallback layerActivatedCallback;
+	LQHTTPRequestCallback layerActivatedCallback;
 }
 
 @property (nonatomic, retain) NSDictionary *layer;
 
 - (id)initWithLayer:(NSDictionary *)_layer;
 - (IBAction)tappedActivate:(id)sender;
-- (GLHTTPRequestCallback)layerActivatedCallback;
+- (LQHTTPRequestCallback)layerActivatedCallback;
 
 @end

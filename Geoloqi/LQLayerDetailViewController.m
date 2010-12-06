@@ -46,7 +46,7 @@
     [[Geoloqi sharedInstance] subscribeToLayer:[layer objectForKey:@"layer_id"] callback:[self layerActivatedCallback]];
 }
 
-- (GLHTTPRequestCallback)layerActivatedCallback {
+- (LQHTTPRequestCallback)layerActivatedCallback {
 	if (layerActivatedCallback) return layerActivatedCallback;
 	return layerActivatedCallback = [^(NSError *error, NSString *responseBody) {
 		NSLog(@"Layer activated!");

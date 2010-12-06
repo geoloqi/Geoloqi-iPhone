@@ -47,7 +47,7 @@
     
 }
 
-- (GLHTTPRequestCallback)geonoteSentCallback {
+- (LQHTTPRequestCallback)geonoteSentCallback {
 	if (geonoteSentCallback) return geonoteSentCallback;
 	NSLog(@"Making a new geonoteSentCallback block");
 	return geonoteSentCallback = [^(NSError *error, NSString *responseBody) {

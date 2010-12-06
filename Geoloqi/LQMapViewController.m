@@ -33,7 +33,7 @@
 	// The map will center on the user's location as soon as it's received
 	firstLoad = YES;
 	
-	// TODO: Make this use [GLAuthenticationManager callAPIPath] instead
+	// TODO: Make this use the Geoloqi API instead
 	
 	ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:
 						   [NSURL URLWithString:
@@ -48,7 +48,7 @@
 	// Observe our own location manager for updates
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(locationUpdated:)
-												 name:GLLocationUpdateManagerDidUpdateLocationNotification
+												 name:LQLocationUpdateManagerDidUpdateLocationNotification
 											   object:nil];
 	
 	// Observe the map for location updates

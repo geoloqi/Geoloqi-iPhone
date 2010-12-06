@@ -38,7 +38,7 @@ GeoloqiAppDelegate *gAppDelegate;
     
     // IMPORTANT: Set up OAuth prior to making network calls to the geoloqi server.
     // The default API server is https://api.geoloqi.com/1/
-    [[Geoloqi sharedInstance] setOauthClientID:GL_OAUTH_CLIENT_ID secret:GL_OAUTH_SECRET];
+    [[Geoloqi sharedInstance] setOauthClientID:LQ_OAUTH_CLIENT_ID secret:LQ_OAUTH_SECRET];
     
 
 	// If there is no refresh token present, show the login/signup screen
@@ -46,7 +46,7 @@ GeoloqiAppDelegate *gAppDelegate;
     {
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(authenticationDidSucceed:) 
-                                                     name:GLAuthenticationSucceededNotification 
+                                                     name:LQAuthenticationSucceededNotification 
                                                    object:nil];
 
         [tabBarController presentModalViewController:welcomeViewController animated:YES];
@@ -182,7 +182,7 @@ GeoloqiAppDelegate *gAppDelegate;
 - (void)authenticationDidSucceed:(NSNotificationCenter *)notification
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self 
-                                                    name:GLAuthenticationSucceededNotification 
+                                                    name:LQAuthenticationSucceededNotification 
                                                   object:nil];
     
     if (tabBarController.modalViewController && [tabBarController.modalViewController isKindOfClass:[welcomeViewController class]])

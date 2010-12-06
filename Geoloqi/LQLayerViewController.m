@@ -16,7 +16,7 @@
 @synthesize layerCell;
 @synthesize featuredLayers, yourLayers;
 
-- (GLHTTPRequestCallback)loadLayersCallback {
+- (LQHTTPRequestCallback)loadLayersCallback {
 	if (loadLayersCallback) return loadLayersCallback;
 	NSLog(@"Making a new loadLayersCallback block");
 	return loadLayersCallback = [^(NSError *error, NSString *responseBody) {

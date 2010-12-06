@@ -15,7 +15,7 @@
 	IBOutlet UITableView *layerTable;
 	IBOutlet LQLayerCellView *layerCell;
 	NSArray *featuredLayers, *yourLayers;
-	GLHTTPRequestCallback loadLayersCallback;
+	LQHTTPRequestCallback loadLayersCallback;
 }
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *layerCell;

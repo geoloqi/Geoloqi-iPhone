@@ -125,7 +125,7 @@
     
 }
 
-- (GLHTTPRequestCallback)linkCreatedCallback {
+- (LQHTTPRequestCallback)linkCreatedCallback {
 	if (linkCreatedCallback) return linkCreatedCallback;
 	NSLog(@"Making a new linkCreatedCallback block");
 	return linkCreatedCallback = [^(NSError *error, NSString *responseBody) {

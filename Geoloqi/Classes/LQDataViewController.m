@@ -85,7 +85,7 @@ enum {
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(locationUpdated:)
-												 name:GLLocationUpdateManagerDidUpdateLocationNotification
+												 name:LQLocationUpdateManagerDidUpdateLocationNotification
 											   object:nil];
 }
 - (void)viewDidAppear:(BOOL)animated {
