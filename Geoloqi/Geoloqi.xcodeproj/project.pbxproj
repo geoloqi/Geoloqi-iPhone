@@ -76,7 +76,7 @@
 		0F01850F1296FE0B001508D9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F01850E1296FE0B001508D9 /* MessageUI.framework */; };
 		0F0185111296FE0B001508D9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0185101296FE0B001508D9 /* Security.framework */; };
 		0F01853D12989664001508D9 /* 56-cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F01853C12989664001508D9 /* 56-cloud.png */; };
-		0F0189441299CD7B001508D9 /* GLLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0189431299CD7B001508D9 /* GLLogInViewController.xib */; };
+		0F0189441299CD7B001508D9 /* LQLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0189431299CD7B001508D9 /* LQLogInViewController.xib */; };
 		0F018E93129CBE2F001508D9 /* LQLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F018E92129CBE2F001508D9 /* LQLayerViewController.xib */; };
 		0F018E97129CBF47001508D9 /* LQLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F018E96129CBF47001508D9 /* LQLayerViewController.m */; };
 		0F018F4D129EC430001508D9 /* LQLayerCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F018F4C129EC430001508D9 /* LQLayerCellView.m */; };
@@ -90,11 +90,11 @@
 		16DA0BB6122390F600382D1F /* LQWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */; };
 		16DA0BB7122390F600382D1F /* LQWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BB5122390F600382D1F /* LQWelcomeViewController.xib */; };
 		16DA0BD21223973500382D1F /* LQSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BD01223973500382D1F /* LQSignUpViewController.m */; };
-		16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BD11223973500382D1F /* GLSignUpViewController.xib */; };
+		16DA0BD31223973500382D1F /* LQSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DA0BD11223973500382D1F /* LQSignUpViewController.xib */; };
 		16DA0BFB12239BBC00382D1F /* LQLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BF912239BBC00382D1F /* LQLogInViewController.m */; };
 		16EE822B11D69FD70026503D /* LQDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE822A11D69FD70026503D /* LQDataViewController.m */; };
 		16EE824911D6A1760026503D /* GeoloqiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */; };
-		16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EE827611D6A1FA0026503D /* GLDataViewController.xib */; };
+		16EE827711D6A1FA0026503D /* LQDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EE827611D6A1FA0026503D /* LQDataViewController.xib */; };
 		16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16EE832911D6C96C0026503D /* SliderMappings.plist */; };
 		16EE842A11D72C450026503D /* LQMutablePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE842911D72C450026503D /* LQMutablePolyline.m */; };
 		16EE843511D72CE00026503D /* LQMutablePolylineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EE843411D72CE00026503D /* LQMutablePolylineView.m */; };
@@ -150,7 +150,7 @@
 		DD3550B611D6794200EEF7BC /* GeonoteConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3550B411D6794200EEF7BC /* GeonoteConfirmationViewController.m */; };
 		DD3550B711D6794200EEF7BC /* GeonoteConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3550B511D6794200EEF7BC /* GeonoteConfirmationViewController.xib */; };
 		DD91DF9211BF3F400097F6F5 /* LQMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9011BF3F400097F6F5 /* LQMapViewController.m */; };
-		DD91DF9311BF3F400097F6F5 /* GLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */; };
+		DD91DF9311BF3F400097F6F5 /* LQMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9111BF3F400097F6F5 /* LQMapViewController.xib */; };
 		DD91E15E11BF4C1F0097F6F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */; };
 		DDBDE699126E7AB200B1FB60 /* welcome-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */; };
 		DDBDE69A126E7AB200B1FB60 /* welcome-top.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE696126E7AB200B1FB60 /* welcome-top.png */; };
@@ -293,7 +293,7 @@
 		0F01850E1296FE0B001508D9 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		0F0185101296FE0B001508D9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0F01853C12989664001508D9 /* 56-cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-cloud.png"; sourceTree = "<group>"; };
-		0F0189431299CD7B001508D9 /* GLLogInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLLogInViewController.xib; sourceTree = "<group>"; };
+		0F0189431299CD7B001508D9 /* LQLogInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQLogInViewController.xib; sourceTree = "<group>"; };
 		0F018E92129CBE2F001508D9 /* LQLayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQLayerViewController.xib; sourceTree = "<group>"; };
 		0F018E95129CBF47001508D9 /* LQLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLayerViewController.h; sourceTree = "<group>"; };
 		0F018E96129CBF47001508D9 /* LQLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLayerViewController.m; sourceTree = "<group>"; };
@@ -314,14 +314,14 @@
 		16DA0BB5122390F600382D1F /* LQWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LQWelcomeViewController.xib; path = ../LQWelcomeViewController.xib; sourceTree = "<group>"; };
 		16DA0BCF1223973500382D1F /* LQSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSignUpViewController.h; sourceTree = "<group>"; };
 		16DA0BD01223973500382D1F /* LQSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSignUpViewController.m; sourceTree = "<group>"; };
-		16DA0BD11223973500382D1F /* GLSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLSignUpViewController.xib; sourceTree = "<group>"; };
+		16DA0BD11223973500382D1F /* LQSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQSignUpViewController.xib; sourceTree = "<group>"; };
 		16DA0BF812239BBC00382D1F /* LQLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLogInViewController.h; sourceTree = "<group>"; };
 		16DA0BF912239BBC00382D1F /* LQLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLogInViewController.m; sourceTree = "<group>"; };
 		16EE822911D69FD70026503D /* LQDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQDataViewController.h; path = Classes/LQDataViewController.h; sourceTree = "<group>"; };
 		16EE822A11D69FD70026503D /* LQDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LQDataViewController.m; path = Classes/LQDataViewController.m; sourceTree = "<group>"; };
 		16EE824711D6A1760026503D /* GeoloqiAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoloqiAppDelegate.h; sourceTree = "<group>"; };
 		16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoloqiAppDelegate.m; sourceTree = "<group>"; };
-		16EE827611D6A1FA0026503D /* GLDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLDataViewController.xib; sourceTree = "<group>"; };
+		16EE827611D6A1FA0026503D /* LQDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQDataViewController.xib; sourceTree = "<group>"; };
 		16EE832911D6C96C0026503D /* SliderMappings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SliderMappings.plist; sourceTree = "<group>"; };
 		16EE842811D72C450026503D /* LQMutablePolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMutablePolyline.h; sourceTree = "<group>"; };
 		16EE842911D72C450026503D /* LQMutablePolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMutablePolyline.m; sourceTree = "<group>"; };
@@ -408,7 +408,7 @@
 		DD3550B511D6794200EEF7BC /* GeonoteConfirmationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteConfirmationViewController.xib; sourceTree = "<group>"; };
 		DD91DF8F11BF3F400097F6F5 /* LQMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMapViewController.h; sourceTree = "<group>"; };
 		DD91DF9011BF3F400097F6F5 /* LQMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMapViewController.m; sourceTree = "<group>"; };
-		DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLMapViewController.xib; sourceTree = "<group>"; };
+		DD91DF9111BF3F400097F6F5 /* LQMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQMapViewController.xib; sourceTree = "<group>"; };
 		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DDACF629125C24B7000511E5 /* LQConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQConstants.h; path = Classes/LQConstants.h; sourceTree = "<group>"; };
 		DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-top@2x.png"; sourceTree = "<group>"; };
@@ -862,10 +862,10 @@
 				16DA0BB5122390F600382D1F /* LQWelcomeViewController.xib */,
 				16DA0BCF1223973500382D1F /* LQSignUpViewController.h */,
 				16DA0BD01223973500382D1F /* LQSignUpViewController.m */,
-				16DA0BD11223973500382D1F /* GLSignUpViewController.xib */,
+				16DA0BD11223973500382D1F /* LQSignUpViewController.xib */,
 				16DA0BF812239BBC00382D1F /* LQLogInViewController.h */,
 				16DA0BF912239BBC00382D1F /* LQLogInViewController.m */,
-				0F0189431299CD7B001508D9 /* GLLogInViewController.xib */,
+				0F0189431299CD7B001508D9 /* LQLogInViewController.xib */,
 			);
 			name = Auth;
 			path = Classes;
@@ -1066,7 +1066,7 @@
 		DD354F6C11D665B500EEF7BC /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				DD91DF9111BF3F400097F6F5 /* GLMapViewController.xib */,
+				DD91DF9111BF3F400097F6F5 /* LQMapViewController.xib */,
 				DD91DF8F11BF3F400097F6F5 /* LQMapViewController.h */,
 				DD91DF9011BF3F400097F6F5 /* LQMapViewController.m */,
 				16EE842711D72C290026503D /* Mutable polyline */,
@@ -1077,7 +1077,7 @@
 		DD354F6D11D665BA00EEF7BC /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				16EE827611D6A1FA0026503D /* GLDataViewController.xib */,
+				16EE827611D6A1FA0026503D /* LQDataViewController.xib */,
 				16EE822911D69FD70026503D /* LQDataViewController.h */,
 				16EE822A11D69FD70026503D /* LQDataViewController.m */,
 				166BE45F11DDDC9000F41B0B /* LQMappedSlider.h */,
@@ -1105,16 +1105,8 @@
 				DD3550B311D6794200EEF7BC /* GeonoteConfirmationViewController.h */,
 				DD3550B411D6794200EEF7BC /* GeonoteConfirmationViewController.m */,
 				DD3550B511D6794200EEF7BC /* GeonoteConfirmationViewController.xib */,
-				DD35511E11D681BB00EEF7BC /* Resources */,
 			);
 			name = Geonote;
-			sourceTree = "<group>";
-		};
-		DD35511E11D681BB00EEF7BC /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		DD91DF8C11BF3F1F0097F6F5 /* Tabs */ = {
@@ -1182,15 +1174,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				DD91DF9311BF3F400097F6F5 /* GLMapViewController.xib in Resources */,
+				DD91DF9311BF3F400097F6F5 /* LQMapViewController.xib in Resources */,
 				DD354F7711D666BA00EEF7BC /* GeonoteFriendPickerController.xib in Resources */,
 				DD354FB711D66BB500EEF7BC /* GeonoteMapViewController.xib in Resources */,
 				DD35503E11D6736200EEF7BC /* GeonoteMessageViewController.xib in Resources */,
 				DD3550B711D6794200EEF7BC /* GeonoteConfirmationViewController.xib in Resources */,
-				16EE827711D6A1FA0026503D /* GLDataViewController.xib in Resources */,
+				16EE827711D6A1FA0026503D /* LQDataViewController.xib in Resources */,
 				16EE832A11D6C96C0026503D /* SliderMappings.plist in Resources */,
 				16DA0BB7122390F600382D1F /* LQWelcomeViewController.xib in Resources */,
-				16DA0BD31223973500382D1F /* GLSignUpViewController.xib in Resources */,
+				16DA0BD31223973500382D1F /* LQSignUpViewController.xib in Resources */,
 				49EB224D125D7F7100EDFAB1 /* 07-map-marker.png in Resources */,
 				49EB224E125D7F7100EDFAB1 /* 20-gear2.png in Resources */,
 				49EB224F125D7F7100EDFAB1 /* 103-map.png in Resources */,
@@ -1214,7 +1206,7 @@
 				0F0184C21296FDDF001508D9 /* SHKSharers.plist in Resources */,
 				0F0184DF1296FDDF001508D9 /* FBConnect.bundle in Resources */,
 				0F01853D12989664001508D9 /* 56-cloud.png in Resources */,
-				0F0189441299CD7B001508D9 /* GLLogInViewController.xib in Resources */,
+				0F0189441299CD7B001508D9 /* LQLogInViewController.xib in Resources */,
 				0F018E93129CBE2F001508D9 /* LQLayerViewController.xib in Resources */,
 				0F018F8A129EC9AB001508D9 /* LQLayerCellView.xib in Resources */,
 				0F01902A129F423D001508D9 /* LQLayerDetailViewController.xib in Resources */,
