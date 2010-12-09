@@ -25,6 +25,7 @@ GeoloqiAppDelegate *gAppDelegate;
     
 	gAppDelegate = self;
 	
+	// Starts location updates if the last state of the app had updates turned on
 	[[Geoloqi sharedInstance] startOrStopMonitoringLocationIfNecessary];
 	
     // Override point for customization after application launch.

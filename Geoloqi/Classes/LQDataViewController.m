@@ -42,6 +42,9 @@ enum {
 	// Load from defaults
 	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState];
 	//trackingFrequencySlider.enabled = sender.on;
+
+	// hide the spinner at first
+	sendingActivityIndicator.hidden = YES;
 	
 	NSDictionary *sliderMappings = [NSDictionary dictionaryWithContentsOfFile:
 									[[NSBundle mainBundle] pathForResource:@"SliderMappings"
@@ -92,6 +95,15 @@ enum {
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(startedSendingLocations:)
+												 name:LQLocationUpdateManagerStartedSendingLocations
+											   object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(finishedSendingLocations:)
+												 name:LQLocationUpdateManagerFinishedSendingLocations
+											   object:nil];
+	
 	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
 														target:self
 													  selector:@selector(viewRefreshTimerDidFire:)
@@ -102,10 +114,32 @@ enum {
 
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self 
+                                                    name:LQLocationUpdateManagerStartedSendingLocations
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self 
+                                                    name:LQLocationUpdateManagerFinishedSendingLocations
+                                                  object:nil];
+	
 	[viewRefreshTimer invalidate];
 	[viewRefreshTimer release];
 	viewRefreshTimer = nil;
 }
+
+// This method is called when Geoloqi starts sending location updates to the server
+- (void)startedSendingLocations:(NSNotification *)notification {
+	NSLog(@"startedSendingLocations");
+	sendingActivityIndicator.hidden = NO;
+	sendNowButton.enabled = NO;
+}
+// This method is called when the location sending method completes
+- (void)finishedSendingLocations:(NSNotification *)notification {
+	NSLog(@"finishedSendingLocations");
+	sendingActivityIndicator.hidden = YES;
+	sendNowButton.enabled = YES;
+}
+
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
 	// Update the "Last point:" status text
@@ -113,12 +147,12 @@ enum {
 				  withRowAnimation:UITableViewRowAnimationNone];
 }
 
-
 - (void)locationUpdated:(NSNotification *)theNotification {
 	[self updateLabels];
-//	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
-//				  withRowAnimation:UITableViewRowAnimationNone];
+	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
+				  withRowAnimation:UITableViewRowAnimationNone];
 }
+
 - (void)coordLongPressDetected {
 	if (![[Geoloqi sharedInstance] currentLocation]) return;
 	
@@ -183,8 +217,11 @@ enum {
 #pragma mark Sliders
 
 - (void)toggleTracking:(UISwitch *)sender {
-	[[Geoloqi sharedInstance] setLocationUpdatesTo:sender.on];
-	//trackingFrequencySlider.enabled = sender.on;
+	if(sender.on){
+		[[Geoloqi sharedInstance] startLocationUpdates];
+	}else{
+		[[Geoloqi sharedInstance] stopLocationUpdates];
+	}
 }
 - (void)changeDistanceFilter:(LQMappedSlider *)sender {
 	//TODO: use kCLDistanceFilterNone?

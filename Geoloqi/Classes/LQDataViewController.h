@@ -33,6 +33,9 @@ NSString *const LQTrackingOnUserInfoKey;
 	UILabel *sendingFrequencyLabel;
 	LQMappedSlider *sendingFrequencySlider;
 
+	IBOutlet UIButton *sendNowButton;
+	IBOutlet UIActivityIndicatorView *sendingActivityIndicator;
+
 	NSTimer *viewRefreshTimer;
 }
 @property (nonatomic, retain) IBOutlet UITableViewCell *coordsCell;
@@ -62,5 +65,8 @@ NSString *const LQTrackingOnUserInfoKey;
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer;
 
 - (IBAction)sendNowWasTapped:(UIButton *)button;
+
+- (void)startedSendingLocations:(NSNotification *)notification;
+- (void)finishedSendingLocations:(NSNotification *)notification;
 
 @end

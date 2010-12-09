@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *const LQAuthenticationSucceededNotification = @"LQAuthenticationSucceededNotification";
+
 @interface GeoloqiAppDelegate : NSObject <UIApplicationDelegate, UIAlertViewDelegate> {
     UIWindow *window;
 	IBOutlet UITabBarController *tabBarController;
