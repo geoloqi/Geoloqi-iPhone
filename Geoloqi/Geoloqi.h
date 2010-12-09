@@ -48,6 +48,9 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (NSUInteger)locationQueueCount;
 
 - (void)loadHistory:(NSDictionary *)params callback:(LQHTTPRequestCallback)callback;
+- (void)sendLocationData:(NSMutableArray *)points callback:(LQHTTPRequestCallback)callback;
+- (void)sendQueuedPoints;
+- (NSDictionary *)dictionaryFromLocation:(CLLocation *)location;
 
 #pragma mark Authentication
 

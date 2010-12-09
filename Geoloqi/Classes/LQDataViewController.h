@@ -61,4 +61,6 @@ NSString *const LQTrackingOnUserInfoKey;
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer;
 
+- (IBAction)sendNowWasTapped:(UIButton *)button;
+
 @end

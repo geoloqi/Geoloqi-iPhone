@@ -312,6 +312,11 @@ enum {
 			return nil;
 	}
 }
+
+- (IBAction)sendNowWasTapped:(UIButton *)button {
+	[[Geoloqi sharedInstance] sendQueuedPoints];
+}
+
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 //	switch (section) {
 //		case kSectionCoordinates:
