@@ -32,7 +32,7 @@
 	</array>
 	<key>rate_limit</key>
 	<array>
-		<integer>0</integer>
+		<integer>1</integer>
 		<integer>5</integer>
 		<integer>10</integer>
 		<integer>15</integer>

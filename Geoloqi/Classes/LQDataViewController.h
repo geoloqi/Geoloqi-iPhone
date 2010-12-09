@@ -32,6 +32,8 @@ NSString *const LQTrackingOnUserInfoKey;
 	UITableViewCell *sendingFrequencyCell;
 	UILabel *sendingFrequencyLabel;
 	LQMappedSlider *sendingFrequencySlider;
+
+	NSTimer *viewRefreshTimer;
 }
 @property (nonatomic, retain) IBOutlet UITableViewCell *coordsCell;
 @property (nonatomic, retain) IBOutlet UILabel *latLabel;
@@ -56,5 +58,6 @@ NSString *const LQTrackingOnUserInfoKey;
 @property (nonatomic, retain) IBOutlet LQMappedSlider *sendingFrequencySlider;
 - (void)changeSendingFrequency:(LQMappedSlider *)sender;
 
+- (void)viewRefreshTimerDidFire:(NSTimer *)timer;
 
 @end

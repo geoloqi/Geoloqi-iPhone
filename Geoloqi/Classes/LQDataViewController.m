@@ -90,11 +90,29 @@ enum {
 }
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	
+
+	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
+														target:self
+													  selector:@selector(viewRefreshTimerDidFire:)
+													  userInfo:nil
+													   repeats:YES] retain];
+	[self viewRefreshTimerDidFire:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	[viewRefreshTimer invalidate];
+	[viewRefreshTimer release];
+	viewRefreshTimer = nil;
+}
+
+- (void)viewRefreshTimerDidFire:(NSTimer *)timer {
 	// Update the "Last point:" status text
 	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
 				  withRowAnimation:UITableViewRowAnimationNone];
 }
+
+
 - (void)locationUpdated:(NSNotification *)theNotification {
 	[self updateLabels];
 //	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
@@ -328,6 +346,8 @@ enum {
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -336,6 +356,8 @@ enum {
 
 
 - (void)dealloc {
+	[viewRefreshTimer invalidate];
+	[viewRefreshTimer release];
 	[coordsCell release];
 	[trackingToggleCell release];
 	[trackingFrequencyCell release];
