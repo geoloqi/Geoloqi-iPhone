@@ -60,6 +60,7 @@ enum {
 	sendingFrequencySlider.mapping = [sliderMappings objectForKey:@"rate_limit"];
 	sendingFrequencySlider.target = self;
 	sendingFrequencySlider.action = @selector(changeSendingFrequency:);
+	sendingFrequencySlider.finishAction = @selector(sendingFrequencyWasChanged:);
 	sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
 	
 	[self updateLabels];
@@ -195,6 +196,9 @@ enum {
 	[self updateLabels];
 }
 - (void)changeSendingFrequency:(LQMappedSlider *)sender {
+	[self updateLabels];
+}
+- (void)sendingFrequencyWasChanged:(LQMappedSlider *)sender {
 	[[Geoloqi sharedInstance] setSendingFrequencyTo:sender.mappedValue];
 	[self updateLabels];
 }

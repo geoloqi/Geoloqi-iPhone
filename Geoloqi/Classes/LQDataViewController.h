@@ -57,6 +57,7 @@ NSString *const LQTrackingOnUserInfoKey;
 @property (nonatomic, retain) IBOutlet UILabel *sendingFrequencyLabel;
 @property (nonatomic, retain) IBOutlet LQMappedSlider *sendingFrequencySlider;
 - (void)changeSendingFrequency:(LQMappedSlider *)sender;
+- (void)sendingFrequencyWasChanged:(LQMappedSlider *)sender;
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer;
 

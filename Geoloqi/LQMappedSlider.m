@@ -11,13 +11,16 @@
 
 @implementation LQMappedSlider
 
-@synthesize mapping, target, action;
+@synthesize mapping, target, action, finishAction;
 
 - (id)initWithCoder:(NSCoder *)coder {
 	if (self = [super initWithCoder:coder]) {
 		[self addTarget:self
 				 action:@selector(valueChanged:)
 	   forControlEvents:UIControlEventValueChanged];
+		[self addTarget:self
+				 action:@selector(valueChangeDidFinish:)
+	   forControlEvents:UIControlEventTouchUpInside];
 	}
 	return self;
 }
@@ -31,6 +34,14 @@
 - (void)valueChanged:(id)sender {
 	self.value = round(self.value); // snap to each position
 	[target performSelector:action
+				 withObject:self];
+}
+
+- (void)valueChangeDidFinish:(id)sender {
+	if(!finishAction) {
+		return;
+	}
+	[target performSelector:finishAction
 				 withObject:self];
 }
 

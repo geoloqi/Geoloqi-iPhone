@@ -13,10 +13,12 @@
 	NSArray *mapping;
 	id<NSObject> target;
 	SEL action;
+	SEL finishAction;
 }
 @property (nonatomic, copy) NSArray *mapping;
 @property (nonatomic, assign) id<NSObject> target;
 @property (nonatomic) SEL action;
+@property (nonatomic) SEL finishAction;
 
 @property (nonatomic) float mappedValue;
 
