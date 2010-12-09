@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-static NSString *const LQAuthenticationSucceededNotification = @"LQAuthenticationSucceededNotification";
-
-NSString *const LQLocationUpdateManagerDidUpdateLocationNotification;
+static NSString *const LQLocationUpdateManagerDidUpdateLocationNotification = @"LQLocationUpdateManagerDidUpdateLocationNotification";
+static NSString *const LQLocationUpdateManagerStartedSendingLocations = @"LQLocationUpdateManagerStartedSendingLocations";
+static NSString *const LQLocationUpdateManagerFinishedSendingLocations = @"LQLocationUpdateManagerFinishedSendingLocations";
 
 typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
@@ -35,7 +35,8 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 #pragma mark Location
 
 - (void)startOrStopMonitoringLocationIfNecessary;
-- (void)setLocationUpdatesTo:(BOOL)state;
+- (void)startLocationUpdates;
+- (void)stopLocationUpdates;
 - (void)setDistanceFilterTo:(CLLocationDistance)distance;
 - (void)setTrackingFrequencyTo:(NSTimeInterval)frequency;
 - (void)setSendingFrequencyTo:(NSTimeInterval)frequency;
