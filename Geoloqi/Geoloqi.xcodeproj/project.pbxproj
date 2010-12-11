@@ -306,6 +306,7 @@
 		0F0190D612A0762C001508D9 /* LQLayerTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQLayerTableView.xib; sourceTree = "<group>"; };
 		0F0190EF12A07A9E001508D9 /* LQLayerNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLayerNavigationController.h; sourceTree = "<group>"; };
 		0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLayerNavigationController.m; sourceTree = "<group>"; };
+		0F4E1FF612B4060B001C6856 /* LQConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQConstants.h; sourceTree = "<group>"; };
 		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 		166BE45F11DDDC9000F41B0B /* LQMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* LQMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMappedSlider.m; sourceTree = "<group>"; };
@@ -410,7 +411,7 @@
 		DD91DF9011BF3F400097F6F5 /* LQMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMapViewController.m; sourceTree = "<group>"; };
 		DD91DF9111BF3F400097F6F5 /* LQMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQMapViewController.xib; sourceTree = "<group>"; };
 		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		DDACF629125C24B7000511E5 /* LQConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQConstants.h; path = Classes/LQConstants.h; sourceTree = "<group>"; };
+		DDACF629125C24B7000511E5 /* LQConstants.template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQConstants.template.h; path = Classes/LQConstants.template.h; sourceTree = "<group>"; };
 		DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-top@2x.png"; sourceTree = "<group>"; };
 		DDBDE696126E7AB200B1FB60 /* welcome-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-top.png"; sourceTree = "<group>"; };
 		DDBDE697126E7AB200B1FB60 /* welcome-bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-bottom@2x.png"; sourceTree = "<group>"; };
@@ -895,7 +896,8 @@
 			children = (
 				A645401612A204240014F23C /* libGeoloqi.a */,
 				A61096CB12A1D2C600A92CA6 /* Geoloqi.h */,
-				DDACF629125C24B7000511E5 /* LQConstants.h */,
+				0F4E1FF612B4060B001C6856 /* LQConstants.h */,
+				DDACF629125C24B7000511E5 /* LQConstants.template.h */,
 				0F0184211296FDDF001508D9 /* ShareKit */,
 				080E96DDFE201D6D7F000001 /* Main */,
 				16DA0BB91223910100382D1F /* Auth */,
