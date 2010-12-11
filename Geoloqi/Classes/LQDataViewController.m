@@ -41,12 +41,13 @@ enum {
 	
 	// Load from defaults
 	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState];
+	[self updateSendNowButtonTitle];
 	//trackingFrequencySlider.enabled = sender.on;
 
 	// hide the spinner at first
 	sendingActivityIndicator.hidden = YES;
 	[self setSendNowButtonState:NO];
-	
+
 	NSDictionary *sliderMappings = [NSDictionary dictionaryWithContentsOfFile:
 									[[NSBundle mainBundle] pathForResource:@"SliderMappings"
 																	ofType:@"plist"]];
@@ -230,6 +231,7 @@ enum {
 		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
 		[self setSendNowButtonState:YES];
 	}
+	[self updateSendNowButtonTitle];
 }
 - (void)changeDistanceFilter:(LQMappedSlider *)sender {
 	//TODO: use kCLDistanceFilterNone?
@@ -379,6 +381,14 @@ enum {
 	} else {
 		sendNowButton.enabled = NO;
 		[sendNowButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
+	}
+}
+
+- (void)updateSendNowButtonTitle {
+	if(trackingToggleSwitch.on) {
+		[sendNowButton setTitle:@"Send Points" forState:UIControlStateNormal];
+	} else {
+		[sendNowButton setTitle:@"Check In" forState:UIControlStateNormal];
 	}
 }
 

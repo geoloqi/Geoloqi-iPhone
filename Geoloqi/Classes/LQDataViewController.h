@@ -66,6 +66,7 @@ NSString *const LQTrackingOnUserInfoKey;
 
 - (IBAction)sendNowWasTapped:(UIButton *)button;
 - (void)setSendNowButtonState:(BOOL)enabled;
+- (void)updateSendNowButtonTitle;
 
 - (void)startedSendingLocations:(NSNotification *)notification;
 - (void)finishedSendingLocations:(NSNotification *)notification;
