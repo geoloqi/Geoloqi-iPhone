@@ -55,6 +55,11 @@ GeoloqiAppDelegate *gAppDelegate;
                                                  selector:@selector(authenticationDidFail:) 
                                                      name:LQAuthenticationFailedNotification 
                                                    object:nil];
+
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(unknownAPIError:) 
+                                                     name:LQAPIUnknownErrorNotification 
+                                                   object:nil];
 		
 		NSLog(@"Showing welcome view");
 		NSLog(@"%@", welcomeViewController);
@@ -212,6 +217,14 @@ GeoloqiAppDelegate *gAppDelegate;
     if (tabBarController.modalViewController && [tabBarController.modalViewController isKindOfClass:[welcomeViewController class]]) {
         [tabBarController.modalViewController dismissModalViewControllerAnimated:YES];
 	}
+}
+
+- (void)unknownAPIError:(NSNotificationCenter *)notification
+{
+	[[SHKActivityIndicator currentIndicator] displayCompleted:@"There was an error!"];
+	[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
+	
+	[tabBarController presentModalViewController:welcomeViewController animated:YES];
 }
 
 // From: http://www.cocoadev.com/index.pl?BaseSixtyFour
