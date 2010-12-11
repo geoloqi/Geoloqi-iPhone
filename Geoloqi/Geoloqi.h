@@ -34,6 +34,8 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 #pragma mark Location
 
+- (void)singleLocationUpdate;
+
 - (void)startOrStopMonitoringLocationIfNecessary;
 - (void)startLocationUpdates;
 - (void)stopLocationUpdates;
@@ -41,6 +43,9 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)setTrackingFrequencyTo:(NSTimeInterval)frequency;
 - (void)setSendingFrequencyTo:(NSTimeInterval)frequency;
 
+- (NSDate *)lastLocationDate;
+- (NSDate *)lastUpdateDate;
+- (CLLocation *)currentSingleLocation;
 - (CLLocation *)currentLocation;
 - (BOOL)locationUpdatesState;
 - (CLLocationDistance)distanceFilterDistance;

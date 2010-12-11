@@ -45,6 +45,7 @@ enum {
 
 	// hide the spinner at first
 	sendingActivityIndicator.hidden = YES;
+	[self setSendNowButtonState:NO];
 	
 	NSDictionary *sliderMappings = [NSDictionary dictionaryWithContentsOfFile:
 									[[NSBundle mainBundle] pathForResource:@"SliderMappings"
@@ -131,13 +132,15 @@ enum {
 - (void)startedSendingLocations:(NSNotification *)notification {
 	NSLog(@"startedSendingLocations");
 	sendingActivityIndicator.hidden = NO;
-	sendNowButton.enabled = NO;
+	[self setSendNowButtonState:NO];
 }
 // This method is called when the location sending method completes
 - (void)finishedSendingLocations:(NSNotification *)notification {
 	NSLog(@"finishedSendingLocations");
 	sendingActivityIndicator.hidden = YES;
-	sendNowButton.enabled = YES;
+	if(![[Geoloqi sharedInstance] locationUpdatesState]) {
+		[self setSendNowButtonState:YES];
+	}
 }
 
 
@@ -148,6 +151,7 @@ enum {
 }
 
 - (void)locationUpdated:(NSNotification *)theNotification {
+	[self setSendNowButtonState:YES];
 	[self updateLabels];
 	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
 				  withRowAnimation:UITableViewRowAnimationNone];
@@ -219,8 +223,12 @@ enum {
 - (void)toggleTracking:(UISwitch *)sender {
 	if(sender.on){
 		[[Geoloqi sharedInstance] startLocationUpdates];
+		// Disable the "send now" button, it will be enabled when a new location point has been received
+		[self setSendNowButtonState:NO];
 	}else{
 		[[Geoloqi sharedInstance] stopLocationUpdates];
+		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
+		[self setSendNowButtonState:YES];
 	}
 }
 - (void)changeDistanceFilter:(LQMappedSlider *)sender {
@@ -324,9 +332,9 @@ enum {
 		{
 			NSMutableString *footer = [NSMutableString string];
 			
-			NSTimeInterval ago = [[NSDate date] timeIntervalSinceDate:
-								  [[Geoloqi sharedInstance] currentLocation].timestamp];
-			if (ago > 60) {
+			NSTimeInterval ago = [[NSDate date] timeIntervalSinceDate:[[Geoloqi sharedInstance] lastUpdateDate]];
+								  
+			if ([[Geoloqi sharedInstance] lastUpdateDate] && ago > 60) {
 				[footer appendFormat:
 						@"Last update: %.0f min. %.0f sec. ago",
 						floor(ago/60), fmod(ago, 60)];
@@ -350,8 +358,28 @@ enum {
 	}
 }
 
+#pragma mark -
+
 - (IBAction)sendNowWasTapped:(UIButton *)button {
-	[[Geoloqi sharedInstance] sendQueuedPoints];
+	NSLog(@"Send now was tapped");
+	if([[Geoloqi sharedInstance] locationUpdatesState]) {
+		// If passive location updates are on, flush the queue of points
+		[[Geoloqi sharedInstance] sendQueuedPoints];
+	} else {
+		// If passive location updates are off, get the user's location and send a single point
+		[[Geoloqi sharedInstance] singleLocationUpdate];
+	}
+}
+
+- (void)setSendNowButtonState:(BOOL)enabled {
+	if(enabled) {
+		sendNowButton.enabled = YES;
+		// Is there a better way to get the default blue color here?
+		[sendNowButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
+	} else {
+		sendNowButton.enabled = NO;
+		[sendNowButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
+	}
 }
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

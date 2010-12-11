@@ -196,7 +196,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
-							<object class="IBUIButton" id="829109919">
+							<object class="IBUIButton" id="791071607">
 								<reference key="NSNextResponder" ref="747762562"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{215, 6}, {85, 37}}</string>
@@ -218,7 +218,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 									<bytes key="NSWhite">MC41AA</bytes>
 								</object>
 							</object>
-							<object class="IBUIActivityIndicatorView" id="207669113">
+							<object class="IBUIActivityIndicatorView" id="178718303">
 								<reference key="NSNextResponder" ref="747762562"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{185, 14}, {20, 20}}</string>
@@ -728,7 +728,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">sendNowWasTapped:</string>
-						<reference key="source" ref="829109919"/>
+						<reference key="source" ref="791071607"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -738,7 +738,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">sendNowButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="829109919"/>
+						<reference key="destination" ref="791071607"/>
 					</object>
 					<int key="connectionID">88</int>
 				</object>
@@ -746,7 +746,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">sendingActivityIndicator</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="207669113"/>
+						<reference key="destination" ref="178718303"/>
 					</object>
 					<int key="connectionID">89</int>
 				</object>
@@ -785,8 +785,8 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<reference ref="471406404"/>
 							<reference ref="196799739"/>
 							<reference ref="1058419659"/>
-							<reference ref="829109919"/>
-							<reference ref="207669113"/>
+							<reference ref="791071607"/>
+							<reference ref="178718303"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Coordinates</string>
@@ -918,12 +918,12 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">85</int>
-						<reference key="object" ref="829109919"/>
+						<reference key="object" ref="791071607"/>
 						<reference key="parent" ref="789099780"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">87</int>
-						<reference key="object" ref="207669113"/>
+						<reference key="object" ref="178718303"/>
 						<reference key="parent" ref="789099780"/>
 					</object>
 				</object>

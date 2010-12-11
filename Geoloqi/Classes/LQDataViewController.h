@@ -65,6 +65,7 @@ NSString *const LQTrackingOnUserInfoKey;
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer;
 
 - (IBAction)sendNowWasTapped:(UIButton *)button;
+- (void)setSendNowButtonState:(BOOL)enabled;
 
 - (void)startedSendingLocations:(NSNotification *)notification;
 - (void)finishedSendingLocations:(NSNotification *)notification;
