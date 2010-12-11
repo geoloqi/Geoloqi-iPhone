@@ -3,3 +3,5 @@ build
 *.mode*v3
 *.perspective*v3
 *.pbxuser
+
+Geoloqi/LQConstants.h

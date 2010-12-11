@@ -2,13 +2,12 @@
 //  LQConstants.h
 //  Geoloqi
 //
-//  Created by Justin R. Miller on 10/5/10.
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
 
 // Geoloqi client credentials for talking to the API
-#define LQ_OAUTH_CLIENT_ID	@"geoloqi_iphone"
-#define LQ_OAUTH_SECRET		@"61e75dc0ab9d849b4de4c4736ce45ed1"
+#define LQ_OAUTH_CLIENT_ID	@"geoloqi"
+#define LQ_OAUTH_SECRET		@""
 
 // Urban Airship for push notifications
 #define UAApplicationKey			@""
