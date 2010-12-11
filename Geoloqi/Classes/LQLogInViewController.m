@@ -13,9 +13,16 @@
 
 @synthesize usernameField, passwordField, activityIndicator;
 
+- (void)viewWillAppear:(BOOL)animated;
+{
+	[super viewWillAppear:animated];
+	[usernameField becomeFirstResponder];
+}
+
 - (IBAction)cancel {
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
+
 - (IBAction)logInAction {
 	[[Geoloqi sharedInstance] authenticateWithUsername:usernameField.text
 															 password:passwordField.text];
@@ -67,12 +74,6 @@
 	return cell;
 }
 
-- (void)viewWillAppear:(BOOL)animated;
-{
-	[super viewWillAppear:animated];
-	[usernameField becomeFirstResponder];
-}
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;   // return NO to not change text
 {
 	self.navigationItem.rightBarButtonItem.enabled = [self isComplete];
@@ -109,6 +110,14 @@
 
 #pragma mark -
 #pragma mark Lifecycle
+
+- (void)viewWillDisappear:(BOOL)animated {
+	// Closing the login view controller, reset to the default state
+	self.navigationItem.rightBarButtonItem.enabled = NO;
+	self.navigationItem.leftBarButtonItem.enabled = NO;
+	self.activityIndicator.alpha = 0.0f;
+	passwordField.text = @"";
+}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

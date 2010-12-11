@@ -7,8 +7,8 @@
 //
 
 // Geoloqi client credentials for talking to the API
-#define LQ_OAUTH_CLIENT_ID	@"geoloqi"
-#define LQ_OAUTH_SECRET		@"1234"
+#define LQ_OAUTH_CLIENT_ID	@"geoloqi_iphone"
+#define LQ_OAUTH_SECRET		@"61e75dc0ab9d849b4de4c4736ce45ed1"
 
 // Urban Airship for push notifications
 #define UAApplicationKey			@""

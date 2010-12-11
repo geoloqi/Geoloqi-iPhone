@@ -9,6 +9,7 @@
 #import "Geoloqi.h"
 #import "LQConstants.h"
 #import "GeoloqiAppDelegate.h"
+#import "SHK.h"
 
 GeoloqiAppDelegate *gAppDelegate;
 
@@ -49,6 +50,12 @@ GeoloqiAppDelegate *gAppDelegate;
                                                  selector:@selector(authenticationDidSucceed:) 
                                                      name:LQAuthenticationSucceededNotification 
                                                    object:nil];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(authenticationDidFail:) 
+                                                     name:LQAuthenticationFailedNotification 
+                                                   object:nil];
+		
 		NSLog(@"Showing welcome view");
 		NSLog(@"%@", welcomeViewController);
         [tabBarController presentModalViewController:welcomeViewController animated:YES];
@@ -189,9 +196,22 @@ GeoloqiAppDelegate *gAppDelegate;
     [[NSNotificationCenter defaultCenter] removeObserver:self 
                                                     name:LQAuthenticationSucceededNotification 
                                                   object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self 
+                                                    name:LQAuthenticationFailedNotification 
+                                                  object:nil];
     
     if (tabBarController.modalViewController && [tabBarController.modalViewController isKindOfClass:[welcomeViewController class]])
         [tabBarController dismissModalViewControllerAnimated:YES];
+}
+
+- (void)authenticationDidFail:(NSNotificationCenter *)notification
+{
+	[[SHKActivityIndicator currentIndicator] displayCompleted:@"Error Logging In!"];
+	[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
+	
+    if (tabBarController.modalViewController && [tabBarController.modalViewController isKindOfClass:[welcomeViewController class]]) {
+        [tabBarController.modalViewController dismissModalViewControllerAnimated:YES];
+	}
 }
 
 // From: http://www.cocoadev.com/index.pl?BaseSixtyFour

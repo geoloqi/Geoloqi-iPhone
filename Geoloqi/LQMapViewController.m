@@ -81,7 +81,7 @@
 																					   NSUTF8StringEncoding]
 																				error:&err];
 		if (!res || [res objectForKey:@"error"] != nil) {
-			NSLog(@"Error deserializing response (for layer/subscribe) \"%@\": %@", responseBody, err);
+			NSLog(@"Error deserializing response (for location/history) \"%@\": %@", responseBody, err);
 			[[Geoloqi sharedInstance] errorProcessingAPIRequest];
 			return;
 		}

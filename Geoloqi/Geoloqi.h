@@ -12,6 +12,9 @@
 static NSString *const LQLocationUpdateManagerDidUpdateLocationNotification = @"LQLocationUpdateManagerDidUpdateLocationNotification";
 static NSString *const LQLocationUpdateManagerStartedSendingLocations = @"LQLocationUpdateManagerStartedSendingLocations";
 static NSString *const LQLocationUpdateManagerFinishedSendingLocations = @"LQLocationUpdateManagerFinishedSendingLocations";
+static NSString *const LQAuthenticationSucceededNotification = @"LQAuthenticationSucceededNotification";
+static NSString *const LQAuthenticationFailedNotification = @"LQAuthenticationFailedNotification";
+
 
 typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 

@@ -38,7 +38,7 @@
 
 - (NSString *)tableView:(UITableView *)inTableView titleForFooterInSection:(NSInteger)section;
 {
-	return NSLocalizedString(@"You'll get an email to complete the setup, but you can start using the app right away!", nil);
+	return NSLocalizedString(@"You'll get an email to complete the setup. You can start using Geoloqi right away!", nil);
 }
 
 
@@ -108,6 +108,12 @@
 	[emailAddressField becomeFirstResponder];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+	// Closing the login view controller, reset to the default state
+	self.navigationItem.rightBarButtonItem.enabled = YES;
+	self.navigationItem.leftBarButtonItem.enabled = NO;
+	self.activityIndicator.alpha = 0.0f;
+}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
