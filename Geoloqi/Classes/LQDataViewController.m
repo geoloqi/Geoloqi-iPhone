@@ -14,6 +14,7 @@ NSString *const LQTrackingOnUserInfoKey = @"LQTrackingOnUserInfoKey";
 
 enum {
 	kSectionBasic = 0,
+	kSectionCoords,
 	kSectionTrackingMode,
 	kSectionAdvanced,
 	kNumberOfSections
@@ -306,6 +307,7 @@ enum {
 	switch (section) {
 		case kSectionBasic:
 			return 2;
+		case kSectionCoords:
 		case kSectionTrackingMode:
 			return 1;
 		case kSectionAdvanced:
@@ -324,6 +326,8 @@ enum {
 				case 1: return checkInCell;
 				default: return nil;
 			}
+		case kSectionCoords:
+			return coordsCell;
 		case kSectionTrackingMode:
 			return trackingModeCell;
 		case kSectionAdvanced:
@@ -343,6 +347,9 @@ enum {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	switch (indexPath.section) {
 		case kSectionBasic:
+			return 48;
+		case kSectionCoords:
+			return 40;
 		case kSectionTrackingMode:
 			return 44;
 		case kSectionAdvanced:
@@ -361,6 +368,7 @@ enum {
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
 		case kSectionBasic:
+		case kSectionCoords:
 		case kSectionTrackingMode:
 			return nil;
 		case kSectionAdvanced:
@@ -373,16 +381,9 @@ enum {
 	return nil;
 	switch (section) {
 		case kSectionBasic:
+		case kSectionCoords:
 		case kSectionTrackingMode:
-			return nil;
 		case kSectionAdvanced:
-			return @"Advanced Settings";
-//		case kSectionDistanceFilter:
-//			return @"Minimum position change";
-//		case kSectionTrackingFrequency:
-//			return @"Minimum time between points";
-//		case kSectionSendingFrequency:
-//			return @"Minimum time between server calls";
 		default:
 			return nil;
 	}
