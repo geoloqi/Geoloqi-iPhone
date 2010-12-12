@@ -16,13 +16,23 @@ NSString *const LQTrackingOnUserInfoKey;
 @interface LQDataViewController : UIViewController {
 	UITableView *table;
 	
+	UITableViewCell *updateQueueCell;
+	IBOutlet UILabel *lastUpdateLabel;
+	IBOutlet UILabel *inQueueLabel;
+	
 	UITableViewCell *coordsCell;
 	UILabel *latLabel;
 	UILabel *longLabel;
 	
 	UITableViewCell *trackingToggleCell;
 	UISwitch *trackingToggleSwitch;
-	
+
+	UITableViewCell *trackingModeCell;
+	IBOutlet UISegmentedControl *trackingModeSwitch;
+
+	UITableViewCell *checkInCell;
+	IBOutlet UIButton *checkInButton;
+
 	UITableViewCell *trackingFrequencyCell;
 	UILabel *trackingFrequencyLabel;
 	LQMappedSlider *trackingFrequencySlider;
@@ -37,14 +47,23 @@ NSString *const LQTrackingOnUserInfoKey;
 
 	IBOutlet UIButton *sendNowButton;
 	IBOutlet UIActivityIndicatorView *sendingActivityIndicator;
-
+	
+	IBOutlet UIButton *trackingButton;
+	
 	NSTimer *viewRefreshTimer;
 }
 @property (nonatomic, retain) IBOutlet UITableView *table;
 
+@property (nonatomic, retain) IBOutlet UITableViewCell *updateQueueCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell *coordsCell;
 @property (nonatomic, retain) IBOutlet UILabel *latLabel;
 @property (nonatomic, retain) IBOutlet UILabel *longLabel;
+
+@property (nonatomic, retain) IBOutlet UITableViewCell *checkInCell;
+@property (nonatomic, retain) IBOutlet UIButton *checkInButton;
+
+@property (nonatomic, retain) IBOutlet UITableViewCell *trackingModeCell;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *trackingModeSwitch;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *trackingToggleCell;
 @property (nonatomic, retain) IBOutlet UISwitch *trackingToggleSwitch;
@@ -63,14 +82,20 @@ NSString *const LQTrackingOnUserInfoKey;
 @property (nonatomic, retain) IBOutlet UITableViewCell *sendingFrequencyCell;
 @property (nonatomic, retain) IBOutlet UILabel *sendingFrequencyLabel;
 @property (nonatomic, retain) IBOutlet LQMappedSlider *sendingFrequencySlider;
+
 - (void)changeSendingFrequency:(LQMappedSlider *)sender;
 - (void)sendingFrequencyWasChanged:(LQMappedSlider *)sender;
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer;
 
+- (IBAction)checkInButtonWasTapped:(UIButton *)button;
+- (IBAction)trackingButtonWasTapped:(UIButton *)button;
+
 - (IBAction)sendNowWasTapped:(UIButton *)button;
-- (void)setSendNowButtonState:(BOOL)enabled;
+- (void)updateButtonStates;
 - (void)updateSendNowButtonTitle;
+
+- (IBAction)trackingModeWasChanged:(UISegmentedControl *)control;
 
 - (void)startedSendingLocations:(NSNotification *)notification;
 - (void)finishedSendingLocations:(NSNotification *)notification;

@@ -13,12 +13,9 @@
 NSString *const LQTrackingOnUserInfoKey = @"LQTrackingOnUserInfoKey";
 
 enum {
-	kSectionCoordinates = 0,
-	kSectionTrackingToggle,
-	kSectionSliders,
-//	kSectionDistanceFilter,
-//	kSectionTrackingFrequency,
-//	kSectionSendingFrequency,
+	kSectionBasic = 0,
+	kSectionTrackingMode,
+	kSectionAdvanced,
 	kNumberOfSections
 };
 
@@ -31,7 +28,10 @@ enum {
 @implementation LQDataViewController
 
 @synthesize table;
+@synthesize updateQueueCell;
+@synthesize checkInCell, checkInButton;
 @synthesize coordsCell, latLabel, longLabel;
+@synthesize trackingModeCell, trackingModeSwitch;
 @synthesize trackingToggleCell, trackingToggleSwitch;
 @synthesize distanceFilterCell, distanceFilterLabel, distanceFilterSlider;
 @synthesize trackingFrequencyCell, trackingFrequencyLabel, trackingFrequencySlider;
@@ -47,7 +47,7 @@ enum {
 
 	// hide the spinner at first
 	sendingActivityIndicator.hidden = YES;
-	[self setSendNowButtonState:NO];
+	[self updateButtonStates];
 
 	NSDictionary *sliderMappings = [NSDictionary dictionaryWithContentsOfFile:
 									[[NSBundle mainBundle] pathForResource:@"SliderMappings"
@@ -77,6 +77,12 @@ enum {
 	trackingToggleCell.textLabel.text = @"Location Tracking";
 	trackingToggleCell.accessoryView = trackingToggleSwitch;
 	trackingToggleCell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+	checkInCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+										 reuseIdentifier:nil];
+	checkInCell.textLabel.text = @"Check In Once";
+	checkInCell.accessoryView = checkInButton;
+	checkInCell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
 	UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
 	v.backgroundColor = [UIColor clearColor];
@@ -134,29 +140,28 @@ enum {
 - (void)startedSendingLocations:(NSNotification *)notification {
 	NSLog(@"startedSendingLocations");
 	sendingActivityIndicator.hidden = NO;
-	[self setSendNowButtonState:NO];
+	[self updateButtonStates];
 }
 // This method is called when the location sending method completes
 - (void)finishedSendingLocations:(NSNotification *)notification {
 	NSLog(@"finishedSendingLocations");
 	sendingActivityIndicator.hidden = YES;
 	if(![[Geoloqi sharedInstance] locationUpdatesState]) {
-		[self setSendNowButtonState:YES];
+		[self updateButtonStates];
 	}
 }
 
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
 	// Update the "Last point:" status text
-	[self.table reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
-				  withRowAnimation:UITableViewRowAnimationNone];
+	[self updateLabels];
 }
 
 - (void)locationUpdated:(NSNotification *)theNotification {
-	[self setSendNowButtonState:YES];
+	[self updateButtonStates];
 	[self updateLabels];
-	[self.table reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
-				  withRowAnimation:UITableViewRowAnimationNone];
+	//[self.table reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
+	//			  withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)coordLongPressDetected {
@@ -226,11 +231,11 @@ enum {
 	if(sender.on){
 		[[Geoloqi sharedInstance] startLocationUpdates];
 		// Disable the "send now" button, it will be enabled when a new location point has been received
-		[self setSendNowButtonState:NO];
+		[self updateButtonStates];
 	}else{
 		[[Geoloqi sharedInstance] stopLocationUpdates];
 		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
-		[self setSendNowButtonState:YES];
+		[self updateButtonStates];
 	}
 	[self updateSendNowButtonTitle];
 }
@@ -263,6 +268,20 @@ enum {
 								distanceFilterSlider.mappedValue];
 	trackingFrequencyLabel.text = [self formatSeconds:trackingFrequencySlider.mappedValue];
 	sendingFrequencyLabel.text = [self formatSeconds:sendingFrequencySlider.mappedValue];
+	
+	NSTimeInterval ago = [[NSDate date] timeIntervalSinceDate:[[Geoloqi sharedInstance] lastUpdateDate]];
+	
+	if ([[Geoloqi sharedInstance] lastUpdateDate] == nil) {
+		lastUpdateLabel.text = @"Not sent yet";
+	} else if ([[Geoloqi sharedInstance] lastUpdateDate] && ago > 60) {
+		lastUpdateLabel.text = [NSString stringWithFormat:@"%.0fm %.0fs ago", floor(ago/60), fmod(ago, 60)];
+	} else {
+		lastUpdateLabel.text = [NSString stringWithFormat:@"%.0fs ago", ago];
+	}
+	
+	NSUInteger pts = [[Geoloqi sharedInstance] locationQueueCount];
+	inQueueLabel.text = [NSString stringWithFormat:@"%d point%@", pts, (pts == 1) ? @"" : @"s"];
+	
 }
 - (NSString *)formatSeconds:(NSTimeInterval)s {
 	if (s < 60) {
@@ -285,11 +304,12 @@ enum {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
-		case kSectionCoordinates:
-		case kSectionTrackingToggle:
+		case kSectionBasic:
+			return 2;
+		case kSectionTrackingMode:
 			return 1;
-		case kSectionSliders:
-			return 3;
+		case kSectionAdvanced:
+			return 4;
 		default:
 			return 0;
 	}
@@ -298,15 +318,20 @@ enum {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	switch (indexPath.section) {
-		case kSectionCoordinates:
-			return coordsCell;
-		case kSectionTrackingToggle:
-			return trackingToggleCell;
-		case kSectionSliders:
+		case kSectionBasic:
 			switch (indexPath.row) {
-				case 0: return distanceFilterCell;
-				case 1: return trackingFrequencyCell;
-				case 2: return sendingFrequencyCell;
+				case 0: return trackingToggleCell;
+				case 1: return checkInCell;
+				default: return nil;
+			}
+		case kSectionTrackingMode:
+			return trackingModeCell;
+		case kSectionAdvanced:
+			switch (indexPath.row) {
+				case 0: return updateQueueCell;
+				case 1: return distanceFilterCell;
+				case 2: return trackingFrequencyCell;
+				case 3: return sendingFrequencyCell;
 				default: return nil;
 			}
 		default:
@@ -317,39 +342,41 @@ enum {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	switch (indexPath.section) {
-		case kSectionCoordinates:
-		case kSectionTrackingToggle:
+		case kSectionBasic:
+		case kSectionTrackingMode:
 			return 44;
-		case kSectionSliders:
-			return 64;
+		case kSectionAdvanced:
+			switch (indexPath.row) {
+				case 0:
+					return 54;
+				default:
+					return 64;
+			}
 		default:
 			return 44;
 	}
 	return 44;
 }
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case kSectionCoordinates:
+		case kSectionBasic:
+		case kSectionTrackingMode:
 			return nil;
-		case kSectionTrackingToggle:
-		{
-			NSMutableString *footer = [NSMutableString string];
-			
-			NSTimeInterval ago = [[NSDate date] timeIntervalSinceDate:[[Geoloqi sharedInstance] lastUpdateDate]];
-								  
-			if ([[Geoloqi sharedInstance] lastUpdateDate] && ago > 60) {
-				[footer appendFormat:
-						@"Last update: %.0f min. %.0f sec. ago",
-						floor(ago/60), fmod(ago, 60)];
-			} else {
-				[footer appendFormat:@"Last update: %.0f second%@ ago", ago, (ago == 1.0) ? @"" : @"s"];
-			}
-			
-			NSUInteger pts = [[Geoloqi sharedInstance] locationQueueCount];
-			[footer appendFormat:@"\nQueue: %d unsent point%@", pts, (pts == 1) ? @"" : @"s"];
-			
-			return footer;
-		}
+		case kSectionAdvanced:
+			return @"Advanced Settings";
+		default:
+			return nil;
+	}
+}
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+	return nil;
+	switch (section) {
+		case kSectionBasic:
+		case kSectionTrackingMode:
+			return nil;
+		case kSectionAdvanced:
+			return @"Advanced Settings";
 //		case kSectionDistanceFilter:
 //			return @"Minimum position change";
 //		case kSectionTrackingFrequency:
@@ -374,8 +401,22 @@ enum {
 	}
 }
 
-- (void)setSendNowButtonState:(BOOL)enabled {
-	if(enabled) {
+- (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
+	NSLog(@"Tracking mode was changed");
+}
+
+- (IBAction)checkInButtonWasTapped:(UIButton *)button {
+	NSLog(@"Checkin button was tapped");
+	
+}
+
+- (IBAction)trackingButtonWasTapped:(UIButton *)button {
+	NSLog(@"Tracking button was tapped");
+	
+}
+
+- (void)updateButtonStates {
+	if([[Geoloqi sharedInstance] locationUpdatesState]) {
 		sendNowButton.enabled = YES;
 		// Is there a better way to get the default blue color here?
 		[sendNowButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
@@ -392,37 +433,6 @@ enum {
 		[sendNowButton setTitle:@"Check In" forState:UIControlStateNormal];
 	}
 }
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//	switch (section) {
-//		case kSectionCoordinates:
-//		case kSectionTrackingToggle:
-//			return nil;
-//		case kSectionDistanceFilter:
-//			return @"Distance Filter";
-//		case kSectionTrackingFrequency:
-//			return @"Tracking Frequency";
-//		case kSectionSendingFrequency:
-//			return @"Sending Frequency";
-//		default:
-//			return nil;
-//	}
-//	return nil;
-//}
-
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//	if (section == [cells count] - 1) {
-//		return trackingFrequencyLabel.bounds.size.height;
-//	}
-//	return 0;
-//}
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//	if (section == [cells count] - 1) {
-//		return trackingFrequencyLabel;
-//	}
-//	return nil;
-//}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

@@ -85,7 +85,7 @@
 		0F01902A129F423D001508D9 /* LQLayerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F019028129F423D001508D9 /* LQLayerDetailViewController.xib */; };
 		0F0190D712A0762C001508D9 /* LQLayerTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0190D612A0762C001508D9 /* LQLayerTableView.xib */; };
 		0F0190F112A07A9E001508D9 /* LQLayerNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */; };
-		0F4E206112B457F7001C6856 /* LQTitleBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F4E206012B457F7001C6856 /* LQTitleBarView.xib */; };
+		0F4E20E212B48193001C6856 /* title-bar-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4E20E112B48193001C6856 /* title-bar-logo.png */; };
 		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
 		166BE46111DDDC9000F41B0B /* LQMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* LQMappedSlider.m */; };
 		16DA0BB6122390F600382D1F /* LQWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */; };
@@ -308,7 +308,7 @@
 		0F0190EF12A07A9E001508D9 /* LQLayerNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLayerNavigationController.h; sourceTree = "<group>"; };
 		0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLayerNavigationController.m; sourceTree = "<group>"; };
 		0F4E1FF612B4060B001C6856 /* LQConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQConstants.h; sourceTree = "<group>"; };
-		0F4E206012B457F7001C6856 /* LQTitleBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LQTitleBarView.xib; path = Classes/LQTitleBarView.xib; sourceTree = "<group>"; };
+		0F4E20E112B48193001C6856 /* title-bar-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-bar-logo.png"; sourceTree = "<group>"; };
 		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 		166BE45F11DDDC9000F41B0B /* LQMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* LQMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMappedSlider.m; sourceTree = "<group>"; };
@@ -909,7 +909,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				0F4E206012B457F7001C6856 /* LQTitleBarView.xib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -937,6 +936,7 @@
 				49EB224A125D7F7100EDFAB1 /* signin-btn.png */,
 				49EB224B125D7F7100EDFAB1 /* small-btn@2x.png */,
 				49EB224C125D7F7100EDFAB1 /* small-btn.png */,
+				0F4E20E112B48193001C6856 /* title-bar-logo.png */,
 				DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */,
 				DDBDE696126E7AB200B1FB60 /* welcome-top.png */,
 				DDBDE697126E7AB200B1FB60 /* welcome-bottom@2x.png */,
@@ -1216,7 +1216,7 @@
 				0F018F8A129EC9AB001508D9 /* LQLayerCellView.xib in Resources */,
 				0F01902A129F423D001508D9 /* LQLayerDetailViewController.xib in Resources */,
 				0F0190D712A0762C001508D9 /* LQLayerTableView.xib in Resources */,
-				0F4E206112B457F7001C6856 /* LQTitleBarView.xib in Resources */,
+				0F4E20E212B48193001C6856 /* title-bar-logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
