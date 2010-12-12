@@ -14,8 +14,8 @@ NSString *const LQTrackingOnUserInfoKey = @"LQTrackingOnUserInfoKey";
 
 enum {
 	kSectionBasic = 0,
-	kSectionCoords,
 	kSectionTrackingMode,
+	kSectionCoords,
 	kSectionAdvanced,
 	kNumberOfSections
 };
@@ -101,6 +101,12 @@ enum {
 											 selector:@selector(locationUpdated:)
 												 name:LQLocationUpdateManagerDidUpdateLocationNotification
 											   object:nil];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(locationUpdated:)
+												 name:LQLocationUpdateManagerFinishedSendingSingleLocation
+											   object:nil];
+
 }
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
@@ -162,8 +168,8 @@ enum {
 - (void)locationUpdated:(NSNotification *)theNotification {
 	[self updateButtonStates];
 	[self updateLabels];
-	//[self.table reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
-	//			  withRowAnimation:UITableViewRowAnimationNone];
+	//[self.table reloadSections:[NSIndexSet indexSetWithIndex:kSectionCoords]
+	//		  withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)coordLongPressDetected {
@@ -256,8 +262,19 @@ enum {
 	[self updateLabels];
 }
 - (void)updateLabels {
-	if ([[Geoloqi sharedInstance] currentLocation]) {
-		CLLocationCoordinate2D coord = [[Geoloqi sharedInstance] currentLocation].coordinate;
+	
+	CLLocationCoordinate2D coord;
+	BOOL hasLocation = NO;
+	
+	if ([[Geoloqi sharedInstance] locationUpdatesState]) {
+		coord = [[Geoloqi sharedInstance] currentLocation].coordinate;
+		hasLocation = YES;
+	} else {
+		coord = [[Geoloqi sharedInstance] currentSingleLocation].coordinate;
+		hasLocation = YES;
+	}
+		
+	if (hasLocation) {
 		latLabel.text = [NSString stringWithFormat:@"%f", coord.latitude];
 		longLabel.text = [NSString stringWithFormat:@"%f", coord.longitude];
 	} else {
