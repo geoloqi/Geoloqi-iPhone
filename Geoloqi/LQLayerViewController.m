@@ -28,7 +28,7 @@
 																				error:&err];
 		if (!res || [res objectForKey:@"error"] != nil) {
 			NSLog(@"Error deserializing response (for layer/app_list) \"%@\": %@", responseBody, err);
-			[[Geoloqi sharedInstance] errorProcessingAPIRequest];
+			// [[Geoloqi sharedInstance] errorProcessingAPIRequest];
 			return;
 		}
 		
