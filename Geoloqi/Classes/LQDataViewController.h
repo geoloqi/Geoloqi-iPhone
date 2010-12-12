@@ -13,7 +13,9 @@ NSString *const LQTrackingOnUserInfoKey;
 
 @class LQMappedSlider;
 
-@interface LQDataViewController : UITableViewController {
+@interface LQDataViewController : UIViewController {
+	UITableView *table;
+	
 	UITableViewCell *coordsCell;
 	UILabel *latLabel;
 	UILabel *longLabel;
@@ -38,6 +40,8 @@ NSString *const LQTrackingOnUserInfoKey;
 
 	NSTimer *viewRefreshTimer;
 }
+@property (nonatomic, retain) IBOutlet UITableView *table;
+
 @property (nonatomic, retain) IBOutlet UITableViewCell *coordsCell;
 @property (nonatomic, retain) IBOutlet UILabel *latLabel;
 @property (nonatomic, retain) IBOutlet UILabel *longLabel;

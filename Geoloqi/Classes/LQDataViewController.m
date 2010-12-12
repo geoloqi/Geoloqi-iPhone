@@ -30,6 +30,7 @@ enum {
 
 @implementation LQDataViewController
 
+@synthesize table;
 @synthesize coordsCell, latLabel, longLabel;
 @synthesize trackingToggleCell, trackingToggleSwitch;
 @synthesize distanceFilterCell, distanceFilterLabel, distanceFilterSlider;
@@ -147,14 +148,14 @@ enum {
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
 	// Update the "Last point:" status text
-	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
+	[self.table reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
 				  withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)locationUpdated:(NSNotification *)theNotification {
 	[self setSendNowButtonState:YES];
 	[self updateLabels];
-	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
+	[self.table reloadSections:[NSIndexSet indexSetWithIndex:kSectionTrackingToggle]
 				  withRowAnimation:UITableViewRowAnimationNone];
 }
 
