@@ -43,11 +43,11 @@ enum {
 	
 	// Load from defaults
 	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState];
-	[self updateSendNowButtonTitle];
 	//trackingFrequencySlider.enabled = sender.on;
 
 	// hide the spinner at first
 	sendingActivityIndicator.hidden = YES;
+	
 	[self updateButtonStates];
 
 	NSDictionary *sliderMappings = [NSDictionary dictionaryWithContentsOfFile:
@@ -155,6 +155,7 @@ enum {
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
 	// Update the "Last point:" status text
+	[self updateButtonStates];
 	[self updateLabels];
 }
 
@@ -232,13 +233,11 @@ enum {
 	if(sender.on){
 		[[Geoloqi sharedInstance] startLocationUpdates];
 		// Disable the "send now" button, it will be enabled when a new location point has been received
-		[self updateButtonStates];
 	}else{
 		[[Geoloqi sharedInstance] stopLocationUpdates];
 		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
-		[self updateButtonStates];
 	}
-	[self updateSendNowButtonTitle];
+	[self updateButtonStates];
 }
 - (void)changeDistanceFilter:(LQMappedSlider *)sender {
 	//TODO: use kCLDistanceFilterNone?
@@ -418,20 +417,27 @@ enum {
 
 - (void)updateButtonStates {
 	if([[Geoloqi sharedInstance] locationUpdatesState]) {
-		sendNowButton.enabled = YES;
-		// Is there a better way to get the default blue color here?
-		[sendNowButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
+		// Background location is on. Don't allow checkin, allow flushing the queue if there are points.
+
+		if ([[Geoloqi sharedInstance] locationQueueCount] > 0) {
+			sendNowButton.enabled = YES;
+			[sendNowButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
+		} else {
+			sendNowButton.enabled = NO;
+			[sendNowButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
+		}
+		
+		checkInButton.enabled = NO;
+		[checkInButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
+		
 	} else {
+		// Background location is off. Allow checkin, don't allow flushing the queue.
+		
 		sendNowButton.enabled = NO;
 		[sendNowButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
-	}
-}
 
-- (void)updateSendNowButtonTitle {
-	if(trackingToggleSwitch.on) {
-		[sendNowButton setTitle:@"Send Points" forState:UIControlStateNormal];
-	} else {
-		[sendNowButton setTitle:@"Check In" forState:UIControlStateNormal];
+		checkInButton.enabled = YES;
+		[checkInButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
 	}
 }
 

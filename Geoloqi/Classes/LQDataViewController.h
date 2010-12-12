@@ -55,6 +55,8 @@ NSString *const LQTrackingOnUserInfoKey;
 @property (nonatomic, retain) IBOutlet UITableView *table;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *updateQueueCell;
+- (IBAction)sendNowWasTapped:(UIButton *)button;
+
 @property (nonatomic, retain) IBOutlet UITableViewCell *coordsCell;
 @property (nonatomic, retain) IBOutlet UILabel *latLabel;
 @property (nonatomic, retain) IBOutlet UILabel *longLabel;
@@ -64,6 +66,7 @@ NSString *const LQTrackingOnUserInfoKey;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *trackingModeCell;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *trackingModeSwitch;
+- (IBAction)trackingModeWasChanged:(UISegmentedControl *)control;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *trackingToggleCell;
 @property (nonatomic, retain) IBOutlet UISwitch *trackingToggleSwitch;
@@ -91,11 +94,7 @@ NSString *const LQTrackingOnUserInfoKey;
 - (IBAction)checkInButtonWasTapped:(UIButton *)button;
 - (IBAction)trackingButtonWasTapped:(UIButton *)button;
 
-- (IBAction)sendNowWasTapped:(UIButton *)button;
 - (void)updateButtonStates;
-- (void)updateSendNowButtonTitle;
-
-- (IBAction)trackingModeWasChanged:(UISegmentedControl *)control;
 
 - (void)startedSendingLocations:(NSNotification *)notification;
 - (void)finishedSendingLocations:(NSNotification *)notification;
