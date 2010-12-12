@@ -58,6 +58,16 @@
 			<key>File</key>
 			<string>About</string>
 		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Presets</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Key</key>
+			<string>Presets</string>
+			<key>File</key>
+			<string>Presets</string>
+		</dict>
 	</array>
 </dict>
 </plist>

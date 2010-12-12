@@ -138,6 +138,8 @@ GeoloqiAppDelegate *gAppDelegate;
                                                         UAApplicationSecret] dataUsingEncoding: NSUTF8StringEncoding]]] forHTTPHeaderField:@"Authorization"];
     
     [[NSURLConnection connectionWithRequest:request delegate:self] start];
+	
+	[self registerPresetDefaultsFromSettingsBundle];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -225,6 +227,28 @@ GeoloqiAppDelegate *gAppDelegate;
 	[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
 	
 	[tabBarController presentModalViewController:welcomeViewController animated:YES];
+}
+
+- (void)registerPresetDefaultsFromSettingsBundle {
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    if(!settingsBundle) {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+	
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Presets.plist"]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+	
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for(NSDictionary *prefSpecification in preferences) {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if(key) {
+            [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+        }
+    }
+	
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+    [defaultsToRegister release];
 }
 
 // From: http://www.cocoadev.com/index.pl?BaseSixtyFour

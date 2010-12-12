@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<string>Presets</string>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Battery Saver</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Distance Filter</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Key</key>
+			<string>batteryDistanceFilter</string>
+			<key>DefaultValue</key>
+			<string>5</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Tracking Limit</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Key</key>
+			<string>batteryTrackingLimit</string>
+			<key>DefaultValue</key>
+			<string>30</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Rate Limit</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Key</key>
+			<string>batteryRateLimit</string>
+			<key>DefaultValue</key>
+			<string>600</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>High Resolution</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Distance Filter</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Key</key>
+			<string>hiresDistanceFilter</string>
+			<key>DefaultValue</key>
+			<string>1</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Tracking Limit</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Key</key>
+			<string>hiresTrackingLimit</string>
+			<key>DefaultValue</key>
+			<string>5</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Rate Limit</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Key</key>
+			<string>hiresRateLimit</string>
+			<key>DefaultValue</key>
+			<string>10</string>
+		</dict>
+	</array>
+</dict>
+</plist>

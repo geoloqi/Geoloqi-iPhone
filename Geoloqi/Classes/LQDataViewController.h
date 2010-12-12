@@ -92,7 +92,6 @@ NSString *const LQTrackingOnUserInfoKey;
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer;
 
 - (IBAction)checkInButtonWasTapped:(UIButton *)button;
-- (IBAction)trackingButtonWasTapped:(UIButton *)button;
 
 - (void)updateButtonStates;
 

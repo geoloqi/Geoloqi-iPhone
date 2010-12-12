@@ -395,24 +395,28 @@ enum {
 	if([[Geoloqi sharedInstance] locationUpdatesState]) {
 		// If passive location updates are on, flush the queue of points
 		[[Geoloqi sharedInstance] sendQueuedPoints];
-	} else {
-		// If passive location updates are off, get the user's location and send a single point
-		[[Geoloqi sharedInstance] singleLocationUpdate];
 	}
 }
 
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
-	NSLog(@"Tracking mode was changed");
+	// Load the default slider values from the user preferences
+
+	// If 
+	float batteryDistanceFilter;
+	
+	if (control.selectedSegmentIndex == 0) {
+		NSLog(@"Setting to battery saver mode %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"]);
+		[distanceFilterSlider setValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFiltefr"] floatValue] animated:YES];
+	} else {
+		NSLog(@"Setting to high res mode");
+	}
 }
 
 - (IBAction)checkInButtonWasTapped:(UIButton *)button {
 	NSLog(@"Checkin button was tapped");
 	
-}
-
-- (IBAction)trackingButtonWasTapped:(UIButton *)button {
-	NSLog(@"Tracking button was tapped");
-	
+	// If passive location updates are off, get the user's location and send a single point
+	[[Geoloqi sharedInstance] singleLocationUpdate];
 }
 
 - (void)updateButtonStates {
