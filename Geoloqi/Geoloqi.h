@@ -18,6 +18,10 @@ static NSString *const LQAuthenticationSucceededNotification = @"LQAuthenticatio
 static NSString *const LQAuthenticationFailedNotification = @"LQAuthenticationFailedNotification";
 static NSString *const LQAPIUnknownErrorNotification = @"LQAPIUnknownErrorNotification";
 
+enum {
+	LQPresetBattery = 0,
+	LQPresetRealtime
+};
 
 typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 

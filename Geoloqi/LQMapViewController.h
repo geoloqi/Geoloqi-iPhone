@@ -21,8 +21,6 @@
 
 @property (nonatomic, retain) IBOutlet MKMapView *map;
 
-- (IBAction)checkInWasTapped:(UIButton *)button;
-
 - (void)zoomMapToLocation:(CLLocation *)location;
 - (void)reloadMapHistory;
 - (LQHTTPRequestCallback)historyLoadedCallback;

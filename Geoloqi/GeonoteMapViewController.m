@@ -112,6 +112,9 @@
 	
     GeonoteMessageViewController *messageViewController = [[[GeonoteMessageViewController alloc] initWithNibName:nil bundle:nil] autorelease];
     
+	// TODO: Figure out why the radius isn't being calculated properly
+	self.geonote.radius = 50;
+	
     messageViewController.geonote = self.geonote;
     
     [self.navigationController pushViewController:messageViewController animated:YES];
@@ -155,20 +158,23 @@
 
 - (void)showRadiusOverlay
 {
-    if ( ! [mapView.overlays count])
+    if ( ![mapView.overlays count] )
     {
         MKCoordinateSpan currentSpan = mapView.region.span;
-
+		
         // 111.0 km/degree of latitude * 1000 m/km * current delta * 40% of the half-screen width
-        //
         CGFloat desiredRadius = 111.0 * 1000 * currentSpan.latitudeDelta * 0.4;
         
         MKCircle *circle = [MKCircle circleWithCenterCoordinate:mapView.centerCoordinate radius:desiredRadius];
         
         [mapView addOverlay:circle];
         [mapView setVisibleMapRect:circle.boundingMapRect animated:NO];
+		
+		NSLog(@"Setting radius of geonote");
         
         self.geonote.radius = desiredRadius;
+		
+		NSLog(@"%@", [self.geonote description]);
 		nextButton.enabled = YES;
     }
 }

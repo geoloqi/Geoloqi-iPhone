@@ -267,11 +267,15 @@ enum {
 	BOOL hasLocation = NO;
 	
 	if ([[Geoloqi sharedInstance] locationUpdatesState]) {
-		coord = [[Geoloqi sharedInstance] currentLocation].coordinate;
-		hasLocation = YES;
+		if([[Geoloqi sharedInstance] currentLocation]) {
+			coord = [[Geoloqi sharedInstance] currentLocation].coordinate;
+			hasLocation = YES;
+		}
 	} else {
-		coord = [[Geoloqi sharedInstance] currentSingleLocation].coordinate;
-		hasLocation = YES;
+		if([[Geoloqi sharedInstance] currentSingleLocation]) {
+			coord = [[Geoloqi sharedInstance] currentSingleLocation].coordinate;
+			hasLocation = YES;
+		}
 	}
 		
 	if (hasLocation) {
