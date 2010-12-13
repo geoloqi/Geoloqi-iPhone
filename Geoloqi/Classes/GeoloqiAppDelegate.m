@@ -88,7 +88,9 @@ GeoloqiAppDelegate *gAppDelegate;
 	// For checking to see what options the app launched with
 	//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:[launchOptions description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
 	//[alert show];
-
+	
+	[self registerPresetDefaultsFromSettingsBundle];
+	
     return YES;
 }
 
@@ -138,8 +140,6 @@ GeoloqiAppDelegate *gAppDelegate;
                                                         UAApplicationSecret] dataUsingEncoding: NSUTF8StringEncoding]]] forHTTPHeaderField:@"Authorization"];
     
     [[NSURLConnection connectionWithRequest:request delegate:self] start];
-	
-	[self registerPresetDefaultsFromSettingsBundle];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -230,6 +230,14 @@ GeoloqiAppDelegate *gAppDelegate;
 }
 
 - (void)registerPresetDefaultsFromSettingsBundle {
+	
+	if([[NSUserDefaults standardUserDefaults] stringForKey:@"batteryTrackingLimit"]) {
+		NSLog(@"Slider presets are already saved");
+		return;
+	} else {
+		NSLog(@"Slider presets are not present, loading from plist");
+	}
+	
     NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
     if(!settingsBundle) {
         NSLog(@"Could not find Settings.bundle");
@@ -243,6 +251,7 @@ GeoloqiAppDelegate *gAppDelegate;
     for(NSDictionary *prefSpecification in preferences) {
         NSString *key = [prefSpecification objectForKey:@"Key"];
         if(key) {
+			NSLog(@"Will register %@", key);
             [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
         }
     }

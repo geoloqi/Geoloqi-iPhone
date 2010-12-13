@@ -22,4 +22,7 @@
 
 @property (nonatomic) float mappedValue;
 
+- (NSUInteger)findIndexForValue:(float)val;
+- (void)setMappedValue:(float)newVal animated:(BOOL)animated;
+
 @end

@@ -13,9 +13,9 @@
 NSString *const LQTrackingOnUserInfoKey = @"LQTrackingOnUserInfoKey";
 
 enum {
-	kSectionBasic = 0,
+	kSectionCoords = 0,
+	kSectionBasic,
 	kSectionTrackingMode,
-	kSectionCoords,
 	kSectionAdvanced,
 	kNumberOfSections
 };
@@ -418,14 +418,16 @@ enum {
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
 	// Load the default slider values from the user preferences
 
-	// If 
-	float batteryDistanceFilter;
-	
 	if (control.selectedSegmentIndex == 0) {
 		NSLog(@"Setting to battery saver mode %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"]);
-		[distanceFilterSlider setValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFiltefr"] floatValue] animated:YES];
+		[distanceFilterSlider setValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"] floatValue] animated:YES];
+		[trackingFrequencySlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryTrackingLimit"] floatValue] animated:YES];
+		[sendingFrequencySlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryRateLimit"] floatValue] animated:YES];
 	} else {
 		NSLog(@"Setting to high res mode");
+		[distanceFilterSlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"] floatValue] animated:YES];
+		[trackingFrequencySlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresTrackingLimit"] floatValue] animated:YES];
+		[sendingFrequencySlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresRateLimit"] floatValue] animated:YES];
 	}
 }
 

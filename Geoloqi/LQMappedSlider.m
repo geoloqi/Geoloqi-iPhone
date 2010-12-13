@@ -49,8 +49,12 @@
 	return [[mapping objectAtIndex:round(self.value)] floatValue];
 }
 - (void)setMappedValue:(float)newVal {
+	self.value = [self findIndexForValue:newVal];
+}
+
+- (NSUInteger)findIndexForValue:(float)val {
 	NSUInteger values = [mapping count];
-	if (values <= 0) return;
+	if (values <= 0) return 0;
 	
 	// Find value in mapping dict with least difference from target
 	float bestDiff;
@@ -58,14 +62,18 @@
 	
 	for (NSUInteger i = 0; i < values; i++) {
 		float curVal = [[mapping objectAtIndex:i] floatValue];
-		float diff = abs(curVal - newVal);
+		float diff = abs(curVal - val);
 		if (i == 0 || diff < bestDiff) {
 			bestDiff = diff;
 			bestValIndex = i;
 		}
 	}
 	
-	self.value = bestValIndex;
+	return bestValIndex;
+}
+
+- (void)setMappedValue:(float)newVal animated:(BOOL)animated {
+	[self setValue:[self findIndexForValue:newVal] animated:animated];
 }
 
 - (void)dealloc {
