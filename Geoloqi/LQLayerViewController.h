@@ -7,20 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LQLayerDetailViewController.h"
 #import "LQLayerCellView.h"
 #import "Geoloqi.h"
 
 
-@interface LQLayerViewController : UIViewController {
+@interface LQLayerViewController : UIViewController <LQLayerDetailViewControllerDelegate> {
 	IBOutlet UITableView *layerTable;
 	IBOutlet LQLayerCellView *layerCell;
 	NSArray *featuredLayers, *yourLayers;
+	NSIndexPath *selectedIndexPath;
 	LQHTTPRequestCallback loadLayersCallback;
 }
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *layerCell;
 @property (nonatomic, retain) NSArray *featuredLayers, *yourLayers;
+@property (nonatomic, retain) NSIndexPath *selectedIndexPath;
 
-- (NSDictionary *) getLayerAtIndexPath:(NSIndexPath *)indexPath;
+- (NSMutableDictionary *) getLayerAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

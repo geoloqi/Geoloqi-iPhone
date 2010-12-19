@@ -9,22 +9,33 @@
 #import <UIKit/UIKit.h>
 #import "Geoloqi.h"
 
+@protocol LQLayerDetailViewControllerDelegate;
+
 
 @interface LQLayerDetailViewController : UIViewController {
-    NSDictionary *layer;
+    NSMutableDictionary *layer;
 	NSString *layerID;
 	IBOutlet UILabel *layerName;
 	IBOutlet UIImageView *layerImg;
 	IBOutlet UILabel *layerDescription;	
 	IBOutlet UIWebView *webView;
-	IBOutlet UIButton *activateButton;
-	LQHTTPRequestCallback layerActivatedCallback;
+	IBOutlet UISwitch *subscribeSwitch;
+	LQHTTPRequestCallback layerSubscribeCallback;
+	id delegate;
 }
 
-@property (nonatomic, retain) NSDictionary *layer;
+@property (nonatomic, retain) NSMutableDictionary *layer;
+@property (nonatomic, assign) id <LQLayerDetailViewControllerDelegate> delegate;
 
-- (id)initWithLayer:(NSDictionary *)_layer;
-- (IBAction)tappedActivate:(id)sender;
-- (LQHTTPRequestCallback)layerActivatedCallback;
+- (id)initWithLayer:(NSMutableDictionary *)_layer;
+- (IBAction)subscribeChanged:(id)sender;
+- (LQHTTPRequestCallback)layerSubscribeCallback;
+
+@end
+
+
+@protocol LQLayerDetailViewControllerDelegate <NSObject>
+
+- (void) layerDetailViewControllerDidUpdateLayer: (NSMutableDictionary*) layer;
 
 @end

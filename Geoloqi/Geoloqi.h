@@ -41,6 +41,7 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)layerAppList:(LQHTTPRequestCallback)callback;
 
 - (void)subscribeToLayer:(NSString *)layerID callback:(LQHTTPRequestCallback)callback;
+- (void)unSubscribeFromLayer:(NSString *)layerID callback:(LQHTTPRequestCallback)callback;
 
 #pragma mark Location
 
@@ -101,9 +102,12 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 - (NSString *)refreshToken;
 
+- (NSString *)accessToken;
+
 - (NSString *)serverURL;
 
 - (BOOL)hasRefreshToken;
 
+- (NSString *)hardware;
 
 @end

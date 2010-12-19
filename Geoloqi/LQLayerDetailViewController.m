@@ -13,8 +13,10 @@
 @implementation LQLayerDetailViewController
 
 @synthesize layer;
+@synthesize delegate;
 
-- (id)initWithLayer:(NSDictionary *)_layer {
+- (id)initWithLayer:(NSMutableDictionary *)_layer {
+
 	if (self = [self initWithNibName:@"LQLayerDetailViewController" bundle:nil]) {
 		self.layer = _layer;
 	}
@@ -24,13 +26,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	// TODO: Make this request asynchronous, and cache the layer thumbnails
 	layerName.text = [layer objectForKey:@"name"];
 	layerDescription.text = [layer objectForKey:@"description"];
+	
+	if([[NSString stringWithFormat:@"%@", [layer objectForKey:@"subscribed"]] isEqualToString:@"1"]) {
+		subscribeSwitch.on = YES;
+	}else{
+		subscribeSwitch.on = NO;
+	}
+	
+	// TODO: Make this request asynchronous, and cache the layer thumbnails
 	layerImg.image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: [layer objectForKey:@"icon"]]]];
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[layer objectForKey:@"url"]]];
+	NSString *model = [[NSString stringWithFormat:@"%@+%@", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSLog(@"%@", model);
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?oauth_token=%@&model=%@", [layer objectForKey:@"url"], [[Geoloqi sharedInstance] accessToken], model]]];
 	[webView loadRequest:request];
-	[activateButton setTitle:@"Subscribe" forState:UIControlStateNormal];
 }
 
 /*
@@ -41,16 +51,26 @@
 }
 */
 
-- (IBAction)tappedActivate:(id)sender
+- (IBAction)subscribeChanged:(UISwitch *)sender
 {
-	NSLog(@"User tapped activate on layer ID %@!", [layer objectForKey:@"layer_id"]);
-    [[Geoloqi sharedInstance] subscribeToLayer:[layer objectForKey:@"layer_id"] callback:[self layerActivatedCallback]];
+	NSLog(@"User changed subscribe switch on layer ID %@!", [layer objectForKey:@"layer_id"]);
+	if([sender isOn]){
+		[layer setObject:@"1" forKey:@"subscribed"];
+		[[Geoloqi sharedInstance] subscribeToLayer:[layer objectForKey:@"layer_id"] callback:[self layerSubscribeCallback]];
+	}else{
+		[layer setObject:@"0" forKey:@"subscribed"];
+		[[Geoloqi sharedInstance] unSubscribeFromLayer:[layer objectForKey:@"layer_id"] callback:[self layerSubscribeCallback]];
+	}
+	
+    if( [self.delegate respondsToSelector: @selector( layerDetailViewControllerDidUpdateLayer: )] ){
+        [self.delegate layerDetailViewControllerDidUpdateLayer: self.layer];
+    }
 }
 
-- (LQHTTPRequestCallback)layerActivatedCallback {
-	if (layerActivatedCallback) return layerActivatedCallback;
-	return layerActivatedCallback = [^(NSError *error, NSString *responseBody) {
-		NSLog(@"Layer activated!");
+- (LQHTTPRequestCallback)layerSubscribeCallback {
+	if (layerSubscribeCallback) return layerSubscribeCallback;
+	return layerSubscribeCallback = [^(NSError *error, NSString *responseBody) {
+		NSLog(@"Layer subscription response");
 		
 		NSError *err = nil;
 		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
@@ -61,11 +81,15 @@
 			[[Geoloqi sharedInstance] errorProcessingAPIRequest];
 			return;
 		}
-		
-		[[SHKActivityIndicator currentIndicator] displayCompleted:@"Subscribed!"];
 
-		activateButton.titleLabel.text = @"Subscribed";
+		NSString* msg;
+		if([[NSString stringWithFormat:@"%@", [res objectForKey:@"subscribed"]] isEqualToString:@"1"]){
+			msg = @"Subscribed!";
+		}else{
+			msg = @"Unsubscribed";
+		}
 		
+		[[SHKActivityIndicator currentIndicator] displayCompleted:msg];
 	} copy];
 }
 
@@ -92,7 +116,7 @@
 	[layerName release];
 	[layerDescription release];
 	[webView release];
-	[layerActivatedCallback release];
+	[layerSubscribeCallback release];
     [super dealloc];
 }
 

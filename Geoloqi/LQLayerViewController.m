@@ -7,7 +7,6 @@
 //
 
 #import "LQLayerViewController.h"
-#import "LQLayerDetailViewController.h"
 #import "LQLayerCellView.h"
 #import "CJSONDeserializer.h"
 
@@ -15,6 +14,7 @@
 
 @synthesize layerCell;
 @synthesize featuredLayers, yourLayers;
+@synthesize selectedIndexPath;
 
 - (LQHTTPRequestCallback)loadLayersCallback {
 	if (loadLayersCallback) return loadLayersCallback;
@@ -23,11 +23,10 @@
 		NSLog(@"Layer list loaded");
 		
 		NSError *err = nil;
-		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
-																					   NSUTF8StringEncoding]
-																				error:&err];
+		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:NSUTF8StringEncoding]
+																						error:&err];
 		if (!res || [res objectForKey:@"error"] != nil) {
-			NSLog(@"Error deserializing response (for layer/app_list) \"%@\": %@", responseBody, err);
+			NSLog(@"Error deserializing response (for layer list) \"%@\": %@", responseBody, err);
 			// [[Geoloqi sharedInstance] errorProcessingAPIRequest];
 			return;
 		}
@@ -147,9 +146,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSLog(@"Selected a layer");
 	
-	NSDictionary *layer = [self getLayerAtIndexPath:indexPath];
+	NSMutableDictionary *layer = [self getLayerAtIndexPath:indexPath];
 	LQLayerDetailViewController *detailController = [[LQLayerDetailViewController alloc] initWithLayer:layer];
+	detailController.delegate = self;
 	
+	self.selectedIndexPath = indexPath;
+
 	[self.navigationController pushViewController:detailController animated:YES];
 
 	[detailController release];
@@ -157,23 +159,42 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (NSDictionary *) getLayerAtIndexPath:(NSIndexPath *)indexPath {
-	 NSDictionary *layer;
+- (NSMutableDictionary *) getLayerAtIndexPath:(NSIndexPath *)indexPath {
+	 NSMutableDictionary *layer = nil;
 	 
 	 switch(indexPath.section) {
 		 case 0:
-			 layer = [featuredLayers objectAtIndex:indexPath.row];
+			 layer = [[featuredLayers objectAtIndex:indexPath.row] mutableCopy];
 			 break;
 		 case 1:
-			 layer = [yourLayers objectAtIndex:indexPath.row];
+			 layer = [[yourLayers objectAtIndex:indexPath.row] mutableCopy];
 			 break;
 		 default:
-			 layer = [NSDictionary dictionary];
+			 layer = [NSMutableDictionary dictionary];
 			 break;
 	 }
 	 return layer;
 }
-	 
+	
+- (void) layerDetailViewControllerDidUpdateLayer: (NSMutableDictionary*) layer {
+	NSLog(@"%@", self.selectedIndexPath);
+	
+	NSArray *theArray = nil;
+	if(self.selectedIndexPath.section == 0){
+		theArray = featuredLayers;
+	}else{
+		theArray = yourLayers;
+	}
+	
+	for( NSMutableDictionary *iLayer in theArray )
+	{
+		if([[iLayer objectForKey:@"layer_id"] isEqualToString: [layer objectForKey:@"layer_id"]]){
+			[iLayer setValue:[layer objectForKey:@"subscribed"] forKey:@"subscribed"];
+		}
+	}
+	
+}
+
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -194,6 +215,7 @@
 	[featuredLayers release];
 	[yourLayers release];
 	[loadLayersCallback release];
+	[selectedIndexPath release];
 
     [super dealloc];
 }
