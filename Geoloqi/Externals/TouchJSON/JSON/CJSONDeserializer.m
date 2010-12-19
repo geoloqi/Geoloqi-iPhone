@@ -68,7 +68,7 @@ if (inData == NULL || [inData length] == 0)
 	return(NULL);
 	}
 CJSONScanner *theScanner = [CJSONScanner scannerWithData:inData];
-NSDictionary *theDictionary = NULL;
+NSMutableDictionary *theDictionary = NULL;
 if ([theScanner scanJSONDictionary:&theDictionary error:outError] == YES)
 	return(theDictionary);
 else
