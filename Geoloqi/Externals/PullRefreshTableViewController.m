@@ -37,14 +37,36 @@
 
 @synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner;
 
-- (id)initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:style];
+- (void)initTextLabels {
     if (self != nil) {
         textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
         textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
         textLoading = [[NSString alloc] initWithString:@"Loading..."];
     }
+}
+
+- (id)init {
+    self = [super init];
+	[self initTextLabels];
     return self;
+}
+
+- (id)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
+	[self initTextLabels];
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	[self initTextLabels];
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super initWithCoder:aDecoder];
+	[self initTextLabels];
+	return self;
 }
 
 - (void)viewDidLoad {
