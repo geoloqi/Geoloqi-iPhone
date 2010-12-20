@@ -57,11 +57,13 @@ enum {
 	distanceFilterSlider.mapping = [sliderMappings objectForKey:@"distance_filter"];
 	distanceFilterSlider.target = self;
 	distanceFilterSlider.action = @selector(changeDistanceFilter:);
+	distanceFilterSlider.finishAction = @selector(distanceFilterWasChanged:);
 	distanceFilterSlider.mappedValue = [[Geoloqi sharedInstance] distanceFilterDistance];
 	
 	trackingFrequencySlider.mapping = [sliderMappings objectForKey:@"tracking_limit"];
 	trackingFrequencySlider.target = self;
 	trackingFrequencySlider.action = @selector(changeTrackingFrequency:);
+	trackingFrequencySlider.finishAction = @selector(trackingFrequencyWasChanged:);
 	trackingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] trackingFrequency];
 	
 	sendingFrequencySlider.mapping = [sliderMappings objectForKey:@"rate_limit"];
@@ -246,11 +248,17 @@ enum {
 	[self updateButtonStates];
 }
 - (void)changeDistanceFilter:(LQMappedSlider *)sender {
+	[self updateLabels];
+}
+- (void)distanceFilterWasChanged:(LQMappedSlider *)sender {
 	//TODO: use kCLDistanceFilterNone?
 	[[Geoloqi sharedInstance] setDistanceFilterTo:sender.mappedValue];
 	[self updateLabels];
 }
 - (void)changeTrackingFrequency:(LQMappedSlider *)sender {
+	[self updateLabels];
+}
+- (void)trackingFrequencyWasChanged:(LQMappedSlider *)sender {
 	[[Geoloqi sharedInstance] setTrackingFrequencyTo:sender.mappedValue];
 	[self updateLabels];
 }
@@ -424,14 +432,20 @@ enum {
 
 	if (control.selectedSegmentIndex == 0) {
 		NSLog(@"Setting to battery saver mode %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"]);
-		[distanceFilterSlider setValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"] floatValue] animated:YES];
+		[distanceFilterSlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"] floatValue] animated:YES];
+		[self distanceFilterWasChanged:distanceFilterSlider];
 		[trackingFrequencySlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryTrackingLimit"] floatValue] animated:YES];
+		[self trackingFrequencyWasChanged:trackingFrequencySlider];
 		[sendingFrequencySlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryRateLimit"] floatValue] animated:YES];
+		[self sendingFrequencyWasChanged:sendingFrequencySlider];
 	} else {
 		NSLog(@"Setting to high res mode");
 		[distanceFilterSlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"] floatValue] animated:YES];
+		[self distanceFilterWasChanged:distanceFilterSlider];
 		[trackingFrequencySlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresTrackingLimit"] floatValue] animated:YES];
+		[self trackingFrequencyWasChanged:trackingFrequencySlider];
 		[sendingFrequencySlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresRateLimit"] floatValue] animated:YES];
+		[self sendingFrequencyWasChanged:sendingFrequencySlider];
 	}
 }
 
