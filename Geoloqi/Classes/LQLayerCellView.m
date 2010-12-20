@@ -37,15 +37,21 @@
     [super dealloc];
 }
 
-- (void)setLabelText:(NSString *)_text;{
+- (void)setLabelText:(NSString *)_text {
 	cellText.text = _text;
 }
 
-- (void)setDescpText:(NSString *)_text;{
+- (void)setDescpText:(NSString *)_text {
 	descriptionText.text = _text;
 }
 
-- (void)setLayerImage:(NSString *)_url;{
-	layerImg.image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: _url]]];
+- (void)setLayerImage:(NSString *)_url {
+	dispatch_async(dispatch_get_global_queue(0,0), ^{
+		UIImage *img = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: _url]]];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			layerImg.image = img;
+		});
+	});
 }
+
 @end

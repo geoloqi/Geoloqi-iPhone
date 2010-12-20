@@ -35,8 +35,14 @@
 		subscribeSwitch.on = NO;
 	}
 	
-	// TODO: Make this request asynchronous, and cache the layer thumbnails
-	layerImg.image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: [layer objectForKey:@"icon"]]]];
+	// TODO: Cache the layer thumbnails
+	dispatch_async(dispatch_get_global_queue(0,0), ^{
+		UIImage *img = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: [layer objectForKey:@"icon"]]]];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			layerImg.image = img;
+		});
+	});
+	
 	NSString *model = [[NSString stringWithFormat:@"%@+%@", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSLog(@"%@", model);
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?oauth_token=%@&model=%@", [layer objectForKey:@"url"], [[Geoloqi sharedInstance] accessToken], model]]];
