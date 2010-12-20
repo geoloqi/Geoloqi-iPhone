@@ -25,7 +25,11 @@ GeoloqiAppDelegate *gAppDelegate;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
 	gAppDelegate = self;
-	
+
+	// IMPORTANT: Set up OAuth prior to making network calls to the geoloqi server.
+    [[Geoloqi sharedInstance] setOauthClientID:LQ_OAUTH_CLIENT_ID secret:LQ_OAUTH_SECRET];
+
+    
 	// Starts location updates if the last state of the app had updates turned on
 	[[Geoloqi sharedInstance] startOrStopMonitoringLocationIfNecessary];
 	
@@ -38,11 +42,6 @@ GeoloqiAppDelegate *gAppDelegate;
     [window makeKeyAndVisible];
 
     
-    // IMPORTANT: Set up OAuth prior to making network calls to the geoloqi server.
-    // The default API server is https://api.geoloqi.com/1/
-    [[Geoloqi sharedInstance] setOauthClientID:LQ_OAUTH_CLIENT_ID secret:LQ_OAUTH_SECRET];
-    
-
 	// If there is no refresh token present, show the login/signup screen
 	if(![[Geoloqi sharedInstance] hasRefreshToken])
     {
@@ -229,6 +228,8 @@ GeoloqiAppDelegate *gAppDelegate;
 	[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
 	
 	[tabBarController presentModalViewController:welcomeViewController animated:YES];
+	
+	[[Geoloqi sharedInstance] logOut];
 }
 
 - (void)registerPresetDefaultsFromSettingsBundle {

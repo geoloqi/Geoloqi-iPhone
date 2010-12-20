@@ -37,7 +37,8 @@
             
 			self.yourLayers = [res objectForKey:@"your_layers"];
 			self.featuredLayers= [res objectForKey:@"featured_layers"];
-			[layerTable reloadData];
+			[self.tableView reloadData];
+			[self stopLoading];
 			
 			return;
 		}
@@ -47,13 +48,23 @@
 	} copy];
 }
 
+/*
+- (void) loadView
+{
+	[super loadView];
+	layerTable = 
+}
+*/
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+	[self refresh];
+}
+
+- (void)refresh {
     [[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];	
 }
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -73,15 +84,14 @@
 }
 */
 
-/*
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	switch (indexPath.section) {
 		default:
-			return 44;
+			return 65;
 	}
-	return 44;
+	return 65;
 }
-*/
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PullRefreshTableViewController.h"
 #import "LQLayerDetailViewController.h"
 #import "LQLayerCellView.h"
 #import "Geoloqi.h"
 
 
-@interface LQLayerViewController : UIViewController <LQLayerDetailViewControllerDelegate> {
-	IBOutlet UITableView *layerTable;
+@interface LQLayerViewController : PullRefreshTableViewController <LQLayerDetailViewControllerDelegate> {
 	IBOutlet LQLayerCellView *layerCell;
 	NSArray *featuredLayers, *yourLayers;
 	NSIndexPath *selectedIndexPath;

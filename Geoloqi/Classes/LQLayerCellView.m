@@ -47,6 +47,5 @@
 
 - (void)setLayerImage:(NSString *)_url;{
 	layerImg.image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: _url]]];
-//	layerImg.image = [UIImage imageNamed:_text];
 }
 @end

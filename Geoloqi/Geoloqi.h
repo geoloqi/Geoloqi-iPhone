@@ -3,7 +3,6 @@
  *  Geoloqi API 
  *
  *  Copyright 2010 Geoloqi.com. All rights reserved.
- *
  */
 
 #import <Foundation/Foundation.h>
@@ -107,6 +106,8 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (NSString *)serverURL;
 
 - (BOOL)hasRefreshToken;
+
+- (void)logOut;
 
 - (NSString *)hardware;
 
