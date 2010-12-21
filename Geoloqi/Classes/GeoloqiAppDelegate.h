@@ -19,7 +19,7 @@
 @property (nonatomic, retain) NSString *deviceToken;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
-- (void)registerPresetDefaultsFromSettingsBundle;
++ (void)registerPresetDefaultsFromSettingsBundle;
 + (NSString*)base64forData:(NSData*)theData;
 
 @end

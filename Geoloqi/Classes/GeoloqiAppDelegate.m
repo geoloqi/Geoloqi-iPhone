@@ -88,9 +88,11 @@ GeoloqiAppDelegate *gAppDelegate;
 //	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:[launchOptions description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
 //	[alert show];
 	
-	[self registerPresetDefaultsFromSettingsBundle];
-	
     return YES;
+}
+
++ (void)initialize {
+	[self registerPresetDefaultsFromSettingsBundle];
 }
 
 // A cheap way to quit the program after the "error" alert from an HTTP request pops up.
@@ -106,8 +108,8 @@ GeoloqiAppDelegate *gAppDelegate;
 	[alert release];
 }
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-	NSLog(@"%@", error);
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error  {
+	NSLog(@"Error Registering for Push Notifications! %@", error);
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)_deviceToken {
@@ -236,14 +238,14 @@ GeoloqiAppDelegate *gAppDelegate;
 	[[Geoloqi sharedInstance] logOut];
 }
 
-- (void)registerPresetDefaultsFromSettingsBundle {
++ (void)registerPresetDefaultsFromSettingsBundle {
 	
-	if([[NSUserDefaults standardUserDefaults] stringForKey:@"batteryTrackingLimit"]) {
-		NSLog(@"Slider presets are already saved");
-		return;
-	} else {
-		NSLog(@"Slider presets are not present, loading from plist");
-	}
+//	if([[NSUserDefaults standardUserDefaults] objectForKey:@"batteryTrackingLimit"]) {
+//		NSLog(@"Slider presets are already saved");
+//		return;
+//	} else {
+//		NSLog(@"Slider presets are not present, loading from plist");
+//	}
 	
     NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
     if(!settingsBundle) {
@@ -261,6 +263,13 @@ GeoloqiAppDelegate *gAppDelegate;
             [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
         }
     }
+	
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) {
+		[[Geoloqi sharedInstance] setDistanceFilterTo:[[defaultsToRegister objectForKey:@"batteryDistanceFilter"] doubleValue]];
+		[[Geoloqi sharedInstance] setTrackingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryTrackingLimit"] doubleValue]];
+		[[Geoloqi sharedInstance] setSendingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryRateLimit"] doubleValue]];
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"defaultValuesEnteredOnce"];
+	}
 	
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
     [defaultsToRegister release];
