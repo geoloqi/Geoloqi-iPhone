@@ -28,6 +28,7 @@ enum {
 
 @interface LQDataViewController () // Private methods
 - (void)updateLabels;
+- (void)updatePreset;
 - (NSString *)formatSeconds:(NSTimeInterval)s;
 @end
 
