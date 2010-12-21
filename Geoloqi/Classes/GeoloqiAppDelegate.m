@@ -76,17 +76,17 @@ GeoloqiAppDelegate *gAppDelegate;
 //		  d.name, d.systemName, d.systemVersion, d.model, d.userInterfaceIdiom, d.batteryLevel);
 
 	// TODO: Check for net access here and don't make this request if we're offline
-	/*
+
 	NSLog(@"Registering for push notifications");
 	[[UIApplication sharedApplication]
 	 registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
 										 UIRemoteNotificationTypeSound |
 										 UIRemoteNotificationTypeAlert)];
-	*/
+
 	
 	// For checking to see what options the app launched with
-	//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:[launchOptions description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-	//[alert show];
+//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:[launchOptions description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+//	[alert show];
 	
     return YES;
 }
@@ -103,14 +103,15 @@ GeoloqiAppDelegate *gAppDelegate;
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:[userInfo description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:[userInfo valueForKeyPath:@"aps.alert"] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error  {
-	NSLog(@"Error: %@", error);
+	NSLog(@"Error Registering for Push Notifications! %@", error);
 }
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)_deviceToken {
     // Get a hex string from the device token with no spaces or < >
     self.deviceToken = [[[[_deviceToken description]
@@ -120,9 +121,9 @@ GeoloqiAppDelegate *gAppDelegate;
 	
 	NSLog(@"Device Token: %@", self.deviceToken);
 	
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Token" message:deviceToken delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-	[alert show];
-	[alert release];
+//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Token" message:deviceToken delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+//	[alert show];
+//	[alert release];
 	
 	if ([application enabledRemoteNotificationTypes] == UIRemoteNotificationTypeNone) {
 		NSLog(@"Notifications are disabled for this application. Not registering with Urban Airship");
@@ -259,7 +260,6 @@ GeoloqiAppDelegate *gAppDelegate;
     for(NSDictionary *prefSpecification in preferences) {
         NSString *key = [prefSpecification objectForKey:@"Key"];
         if(key) {
-			NSLog(@"Will register %@", key);
             [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
         }
     }
