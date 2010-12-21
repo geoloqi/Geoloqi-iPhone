@@ -20,6 +20,12 @@ enum {
 	kNumberOfSections
 };
 
+enum {
+	kTrackingModeBatterySaver = 0,
+	kTrackingModeHiRes,
+	kTrackingModeCustom
+};
+
 @interface LQDataViewController () // Private methods
 - (void)updateLabels;
 - (NSString *)formatSeconds:(NSTimeInterval)s;
@@ -71,6 +77,8 @@ enum {
 	sendingFrequencySlider.action = @selector(changeSendingFrequency:);
 	sendingFrequencySlider.finishAction = @selector(sendingFrequencyWasChanged:);
 	sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
+	
+	[self updatePreset];
 	
 	[self updateLabels];
 	
@@ -253,6 +261,7 @@ enum {
 - (void)distanceFilterWasChanged:(LQMappedSlider *)sender {
 	//TODO: use kCLDistanceFilterNone?
 	[[Geoloqi sharedInstance] setDistanceFilterTo:sender.mappedValue];
+	[self updatePreset];
 	[self updateLabels];
 }
 - (void)changeTrackingFrequency:(LQMappedSlider *)sender {
@@ -260,6 +269,7 @@ enum {
 }
 - (void)trackingFrequencyWasChanged:(LQMappedSlider *)sender {
 	[[Geoloqi sharedInstance] setTrackingFrequencyTo:sender.mappedValue];
+	[self updatePreset];
 	[self updateLabels];
 }
 - (void)changeSendingFrequency:(LQMappedSlider *)sender {
@@ -267,7 +277,25 @@ enum {
 }
 - (void)sendingFrequencyWasChanged:(LQMappedSlider *)sender {
 	[[Geoloqi sharedInstance] setSendingFrequencyTo:sender.mappedValue];
+	[self updatePreset];
 	[self updateLabels];
+}
+
+- (void)updatePreset {
+	Geoloqi *g = [Geoloqi sharedInstance];
+	NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+	
+	if ([g distanceFilterDistance] == [d doubleForKey:@"batteryDistanceFilter"] &&
+		[g trackingFrequency] == [d doubleForKey:@"batteryTrackingLimit"] &&
+		[g sendingFrequency] == [d doubleForKey:@"batteryRateLimit"]) {
+		trackingModeSwitch.selectedSegmentIndex = kTrackingModeBatterySaver;
+	} else if ([g distanceFilterDistance] == [d doubleForKey:@"hiresDistanceFilter"] &&
+			   [g trackingFrequency] == [d doubleForKey:@"hiresTrackingLimit"] &&
+			   [g sendingFrequency] == [d doubleForKey:@"hiresRateLimit"]) {
+		trackingModeSwitch.selectedSegmentIndex = kTrackingModeHiRes;
+	} else {
+		trackingModeSwitch.selectedSegmentIndex = kTrackingModeCustom;
+	}
 }
 - (void)updateLabels {
 	
@@ -430,7 +458,7 @@ enum {
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
 	// Load the default slider values from the user preferences
 
-	if (control.selectedSegmentIndex == 0) {
+	if (control.selectedSegmentIndex == kTrackingModeBatterySaver) {
 		NSLog(@"Setting to battery saver mode %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"]);
 		[distanceFilterSlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"] floatValue] animated:YES];
 		[self distanceFilterWasChanged:distanceFilterSlider];
@@ -438,7 +466,7 @@ enum {
 		[self trackingFrequencyWasChanged:trackingFrequencySlider];
 		[sendingFrequencySlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryRateLimit"] floatValue] animated:YES];
 		[self sendingFrequencyWasChanged:sendingFrequencySlider];
-	} else {
+	} else if (control.selectedSegmentIndex == kTrackingModeHiRes) {
 		NSLog(@"Setting to high res mode");
 		[distanceFilterSlider setMappedValue:[[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"] floatValue] animated:YES];
 		[self distanceFilterWasChanged:distanceFilterSlider];
