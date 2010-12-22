@@ -24,7 +24,7 @@
                                                           emailAddress:emailAddressField.text];
 	
 	self.navigationItem.rightBarButtonItem.enabled = NO;
-	self.navigationItem.leftBarButtonItem.enabled = NO;
+	self.navigationItem.leftBarButtonItem.enabled = YES;
 	
 	[UIView beginAnimations:nil context:NULL];
 	self.activityIndicator.alpha = 1.0f;
@@ -111,7 +111,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
 	// Closing the login view controller, reset to the default state
 	self.navigationItem.rightBarButtonItem.enabled = YES;
-	self.navigationItem.leftBarButtonItem.enabled = NO;
+	//self.navigationItem.leftBarButtonItem.enabled = NO;
 	self.activityIndicator.alpha = 0.0f;
 }
 
