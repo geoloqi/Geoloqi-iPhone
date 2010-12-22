@@ -270,36 +270,16 @@ enum {
 		df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"] floatValue];
 		tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryTrackingLimit"] floatValue];
 		rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryRateLimit"] floatValue];
-//		[self sendingFrequencyWasChanged:sendingFrequencySlider];
-//		[self distanceFilterWasChanged:distanceFilterSlider];
-//		[self trackingFrequencyWasChanged:trackingFrequencySlider];
 	} else if (control.selectedSegmentIndex == kTrackingModeHiRes) {
 		NSLog(@"Setting to high res mode");
 		df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"] floatValue];
 		tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresTrackingLimit"] floatValue];
 		rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresRateLimit"] floatValue];
-//		[self sendingFrequencyWasChanged:sendingFrequencySlider];
-//		[self distanceFilterWasChanged:distanceFilterSlider];
-//		[self trackingFrequencyWasChanged:trackingFrequencySlider];
 	} else if (control.selectedSegmentIndex == kTrackingModeCustom) {
 		NSLog(@"Setting to custom mode");
 		df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"customDistanceFilter"] floatValue];
 		tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"customTrackingLimit"] floatValue];
 		rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"customRateLimit"] floatValue];
-
-//		if(df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"customDistanceFilter"] floatValue]){
-//			[distanceFilterSlider setMappedValue:d animated:YES];
-////			[self distanceFilterWasChanged:distanceFilterSlider];
-//		}
-//		if(tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"customTrackingLimit"] floatValue]){
-//			[trackingFrequencySlider setMappedValue:t animated:YES];
-////			[self trackingFrequencyWasChanged:trackingFrequencySlider];
-//		}
-//		if(rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"customRateLimit"] floatValue]){
-//			[sendingFrequencySlider setMappedValue:r animated:YES];
-////			[self sendingFrequencyWasChanged:sendingFrequencySlider];
-//		}
-		
 	}
 
 	[distanceFilterSlider setMappedValue:df animated:YES];
@@ -311,7 +291,6 @@ enum {
 	[[Geoloqi sharedInstance] setSendingFrequencyTo:df];
 	[[Geoloqi sharedInstance] setTrackingFrequencyTo:tl];
 	[[Geoloqi sharedInstance] setDistanceFilterTo:rl];
-	
 }
 
 - (void)saveCustomSliderPresets {
@@ -329,6 +308,7 @@ enum {
 - (void)distanceFilterWasChanged:(LQMappedSlider *)sender {
 	//TODO: use kCLDistanceFilterNone?
 	[[Geoloqi sharedInstance] setDistanceFilterTo:sender.mappedValue];
+	[self saveCustomSliderPresets];
 	[self updatePreset];
 	[self updateLabels];
 }
@@ -337,6 +317,7 @@ enum {
 }
 - (void)trackingFrequencyWasChanged:(LQMappedSlider *)sender {
 	[[Geoloqi sharedInstance] setTrackingFrequencyTo:sender.mappedValue];
+	[self saveCustomSliderPresets];
 	[self updatePreset];
 	[self updateLabels];
 }
@@ -345,6 +326,7 @@ enum {
 }
 - (void)sendingFrequencyWasChanged:(LQMappedSlider *)sender {
 	[[Geoloqi sharedInstance] setSendingFrequencyTo:sender.mappedValue];
+	[self saveCustomSliderPresets];
 	[self updatePreset];
 	[self updateLabels];
 }
