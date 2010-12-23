@@ -1,0 +1,12 @@
+/* 
+   Localizable.strings
+   Geoloqi
+
+   Created by Aaron Parecki on 12/23/10.
+   Copyright 2010 Geoloqi.com. All rights reserved.
+ */
+
+// For push notifications
+"YES" = "Yes";
+"NO" = "No";
+"Keep Updating" = "Keep Updating";

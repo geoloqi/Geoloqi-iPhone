@@ -101,9 +101,28 @@ GeoloqiAppDelegate *gAppDelegate;
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:[userInfo valueForKeyPath:@"aps.alert"] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-	[alert show];
-	[alert release];
+	NSLog(@"---- Received Push! %@", userInfo);
+	NSString *title;
+	
+	NSString *type = [userInfo valueForKeyPath:@"geoloqi.type"];
+	
+	if(type && [@"geonote" isEqualToString:type]) {
+		title = @"Geonote";
+	} else if(type && [@"message" isEqualToString:type]) {
+		title = @"Message";
+	} else {
+		title = @"Geoloqi";
+	}
+
+	if([userInfo valueForKeyPath:@"aps.alert.body"] != nil) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title 
+														message:[userInfo valueForKeyPath:@"aps.alert.body"] 
+													   delegate:nil 
+											  cancelButtonTitle:nil
+											  otherButtonTitles:@"Ok", nil];
+		[alert show];
+		[alert release];
+	}
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error  {
