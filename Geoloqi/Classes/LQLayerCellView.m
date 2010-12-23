@@ -7,6 +7,7 @@
 //
 
 #import "LQLayerCellView.h"
+#import "PKHTTPCachedImage.h"
 
 
 @implementation LQLayerCellView
@@ -46,12 +47,7 @@
 }
 
 - (void)setLayerImage:(NSString *)_url {
-	dispatch_async(dispatch_get_global_queue(0,0), ^{
-		UIImage *img = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: _url]]];
-		dispatch_async(dispatch_get_main_queue(), ^{
-			layerImg.image = img;
-		});
-	});
+	[[PKHTTPCachedImage sharedInstance] setImageForView:layerImg withURL:_url];
 }
 
 @end

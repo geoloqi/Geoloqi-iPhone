@@ -8,6 +8,7 @@
 
 #import "CJSONDeserializer.h"
 #import "LQLayerDetailViewController.h"
+#import "PKHTTPCachedImage.h"
 #import "SHK.h"
 
 @implementation LQLayerDetailViewController
@@ -35,13 +36,7 @@
 		subscribeSwitch.on = NO;
 	}
 	
-	// TODO: Cache the layer thumbnails
-	dispatch_async(dispatch_get_global_queue(0,0), ^{
-		UIImage *img = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: [layer objectForKey:@"icon"]]]];
-		dispatch_async(dispatch_get_main_queue(), ^{
-			layerImg.image = img;
-		});
-	});
+	[[PKHTTPCachedImage sharedInstance] setImageForView:layerImg withURL:[layer objectForKey:@"icon"]];
 	
 	NSString *model = [[NSString stringWithFormat:@"%@+%@", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSLog(@"%@", model);
