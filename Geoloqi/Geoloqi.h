@@ -41,6 +41,7 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 - (void)subscribeToLayer:(NSString *)layerID callback:(LQHTTPRequestCallback)callback;
 - (void)unSubscribeFromLayer:(NSString *)layerID callback:(LQHTTPRequestCallback)callback;
+- (void)sendAPNDeviceToken:(NSString *)deviceToken callback:(LQHTTPRequestCallback)callback;
 
 #pragma mark Location
 

@@ -67,6 +67,12 @@ GeoloqiAppDelegate *gAppDelegate;
 	// else, use the refresh token to get a new access token right now
 	else {
 		[[Geoloqi sharedInstance] initTokenAndGetUsername];
+
+		NSLog(@"Registering for push notifications");
+		[[UIApplication sharedApplication]
+		 registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+											 UIRemoteNotificationTypeSound |
+											 UIRemoteNotificationTypeAlert)];
 	}
 
 
@@ -74,14 +80,6 @@ GeoloqiAppDelegate *gAppDelegate;
 	d.batteryMonitoringEnabled = YES;
 //	NSLog(@"Name %@, Sys name %@, Sys version %@, Model %@, Idiom %d, Battery %f",
 //		  d.name, d.systemName, d.systemVersion, d.model, d.userInterfaceIdiom, d.batteryLevel);
-
-	// TODO: Check for net access here and don't make this request if we're offline
-
-	NSLog(@"Registering for push notifications");
-	[[UIApplication sharedApplication]
-	 registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-										 UIRemoteNotificationTypeSound |
-										 UIRemoteNotificationTypeAlert)];
 
 	
 	// For checking to see what options the app launched with
@@ -130,9 +128,13 @@ GeoloqiAppDelegate *gAppDelegate;
 		return;
 	}
 	
-	// Put the token in someone's server log
-	[NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pin13.net?token=%@", deviceToken]] encoding:NSUTF8StringEncoding error:nil];
+	// Send the token to Geoloqi
+	[[Geoloqi sharedInstance] sendAPNDeviceToken:self.deviceToken callback:^(NSError *error, NSString *responseBody){
+		NSLog(@"%@", responseBody);
+	}];
 	
+	
+	// Send the token to urban airship
     NSString *UAServer = @"https://go.urbanairship.com";
     NSString *urlString = [NSString stringWithFormat:@"%@%@%@/", UAServer, @"/api/device_tokens/", self.deviceToken];
     NSURL *url = [NSURL URLWithString:urlString];
@@ -213,9 +215,16 @@ GeoloqiAppDelegate *gAppDelegate;
     [[NSNotificationCenter defaultCenter] removeObserver:self 
                                                     name:LQAuthenticationFailedNotification 
                                                   object:nil];
-    
+
     if (tabBarController.modalViewController && [tabBarController.modalViewController isKindOfClass:[welcomeViewController class]])
         [tabBarController dismissModalViewControllerAnimated:YES];
+
+	// Register for push notifications after logging in successfully
+	NSLog(@"Registering for push notifications");
+	[[UIApplication sharedApplication]
+	 registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+										 UIRemoteNotificationTypeSound |
+										 UIRemoteNotificationTypeAlert)];
 }
 
 - (void)authenticationDidFail:(NSNotificationCenter *)notification
