@@ -15,6 +15,7 @@
 	NSMutableArray *durationMinutes;
 	NSString *selectedMinutes;
 	IBOutlet UIButton *shareButton;
+	IBOutlet UIView *activityIndicator;
 	UITextField *shareDescriptionField;
 	NSString *sharedLinkCreated;
 	LQHTTPRequestCallback linkCreatedCallback;
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, retain) NSMutableArray *durations;
 @property (nonatomic, retain) NSMutableArray *durationMinutes;
+@property (nonatomic, retain) IBOutlet UIView *activityIndicator;
 
 - (LQHTTPRequestCallback)linkCreatedCallback;
 - (IBAction)tappedShare:(id)sender;

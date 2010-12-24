@@ -18,6 +18,7 @@
 
 @synthesize durations, durationMinutes;
 @synthesize shareDescriptionField, pickerView;
+@synthesize activityIndicator;
 
 /*
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -86,6 +87,10 @@
 }
 */
 
+- (void)viewWillAppear:(BOOL)animated {
+	self.activityIndicator.alpha = 0.0f;
+}
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
 	return 1;
 }
@@ -119,6 +124,8 @@
 
 - (IBAction)tappedShare:(id)sender
 {
+	self.activityIndicator.alpha = 1.0f;
+	
     [[Geoloqi sharedInstance] createLink:[shareDescriptionField text] 
                                  minutes:[selectedMinutes intValue]
                                 callback:[self linkCreatedCallback]];
@@ -130,6 +137,8 @@
 	NSLog(@"Making a new linkCreatedCallback block");
 	return linkCreatedCallback = [^(NSError *error, NSString *responseBody) {
 		NSLog(@"Link Created!");
+
+		self.activityIndicator.alpha = 0.0f;
 		
 		NSError *err = nil;
 		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
