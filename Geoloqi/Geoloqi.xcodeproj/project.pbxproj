@@ -1388,7 +1388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Parecki (P9888B3L8U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Parecki (UR6C55S2E6)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1401,7 +1401,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Geoloqi;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BC6AADD9-0C38-457F-BC05-65685C09C6BB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FF210639-35EE-4FC9-9C66-AFF49EDA6C83";
 			};
 			name = Debug;
 		};
@@ -1409,7 +1409,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Parecki (P9888B3L8U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Parecki (UR6C55S2E6)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Geoloqi_Prefix.pch;
@@ -1420,7 +1420,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Geoloqi;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BC6AADD9-0C38-457F-BC05-65685C09C6BB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FF210639-35EE-4FC9-9C66-AFF49EDA6C83";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1429,12 +1429,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Parecki (UR6C55S2E6)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FF210639-35EE-4FC9-9C66-AFF49EDA6C83";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1443,13 +1444,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Parecki (UR6C55S2E6)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FF210639-35EE-4FC9-9C66-AFF49EDA6C83";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
