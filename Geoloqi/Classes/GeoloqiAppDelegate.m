@@ -32,18 +32,16 @@ GeoloqiAppDelegate *gAppDelegate;
 	// IMPORTANT: Set up OAuth prior to making network calls to the geoloqi server.
     [[Geoloqi sharedInstance] setOauthClientID:LQ_OAUTH_CLIENT_ID secret:LQ_OAUTH_SECRET];
 
-    
 	// Starts location updates if the last state of the app had updates turned on
 	[[Geoloqi sharedInstance] startOrStopMonitoringLocationIfNecessary];
 	
     // Override point for customization after application launch.
 	if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
-		NSLog(@"Launched in response to location change update.");
+		NSLog(@"Launched with options %@", launchOptions);
 	}
-	
+
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
-
     
 	// If there is no refresh token present, show the login/signup screen
 	if(![[Geoloqi sharedInstance] hasRefreshToken])
@@ -64,7 +62,6 @@ GeoloqiAppDelegate *gAppDelegate;
                                                    object:nil];
 		
 		NSLog(@"Showing welcome view");
-		NSLog(@"%@", welcomeViewController);
         [tabBarController presentModalViewController:welcomeViewController animated:YES];
     }
 	// else, use the refresh token to get a new access token right now
@@ -76,18 +73,17 @@ GeoloqiAppDelegate *gAppDelegate;
 		 registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
 											 UIRemoteNotificationTypeSound |
 											 UIRemoteNotificationTypeAlert)];
-	}
 
+		// If the app was launched from a push notification, handle that here
+		if(launchOptions){
+			[pushHandler handleLaunch:launchOptions];
+		}
+	}
 
 	UIDevice *d = [UIDevice currentDevice];
 	d.batteryMonitoringEnabled = YES;
 //	NSLog(@"Name %@, Sys name %@, Sys version %@, Model %@, Idiom %d, Battery %f",
 //		  d.name, d.systemName, d.systemVersion, d.model, d.userInterfaceIdiom, d.batteryLevel);
-
-	
-	// For checking to see what options the app launched with
-//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:[launchOptions description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-//	[alert show];
 	
     return YES;
 }
@@ -133,7 +129,7 @@ GeoloqiAppDelegate *gAppDelegate;
 	
 	// Send the token to Geoloqi
 	[[Geoloqi sharedInstance] sendAPNDeviceToken:self.deviceToken callback:^(NSError *error, NSString *responseBody){
-		NSLog(@"%@", responseBody);
+		//NSLog(@"Sent device token: %@", responseBody);
 	}];
 	
 	

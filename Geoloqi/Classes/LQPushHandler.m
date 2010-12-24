@@ -35,6 +35,18 @@
 			[alert setTag:kLQPushAlertShutdown];
 			[alert show];
 		}
+	} else if([type isEqualToString:@"startPrompt"]) {
+		// Received a push notification asking the user if they want to turn on location updates.
+		// If updates are already on, don't bother actually prompting this.
+		if([[Geoloqi sharedInstance] locationUpdatesState] == NO){
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+															message:[userInfo valueForKeyPath:@"aps.alert.body"]
+														   delegate:self
+												  cancelButtonTitle:@"No"
+												  otherButtonTitles:@"Yes", nil];
+			[alert setTag:kLQPushAlertStart];
+			[alert show];
+		}
 	} else {
 		if([userInfo valueForKeyPath:@"aps.alert.body"] != nil) {
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title 
@@ -48,13 +60,44 @@
 	}
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)handleLaunch:(NSDictionary *)launchOptions {
+	
+	NSDictionary *data = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+	NSString *type = [data valueForKeyPath:@"geoloqi.type"];
 
+	if([type isEqualToString:@"startPrompt"]){
+
+		[[Geoloqi sharedInstance] startLocationUpdates];
+		gAppDelegate.tabBarController.selectedIndex = 1;
+		
+	}else if([type isEqualToString:@"shutdownPrompt"]){
+		
+		[[Geoloqi sharedInstance] stopLocationUpdates];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Geoloqi"
+														message:@"Location tracking is off"
+													   delegate:nil
+											  cancelButtonTitle:nil
+											  otherButtonTitles:@"Ok", nil];
+		[alert show];
+		[alert release];
+	}
+
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	
 	switch([alertView tag]) {
 		case kLQPushAlertShutdown:
 			if(buttonIndex == 1){
 				// Shut off location tracking now
 				[[Geoloqi sharedInstance] stopLocationUpdates];
+			}
+			break;
+		case kLQPushAlertStart:
+			if(buttonIndex == 1){
+				// Turn on location tracking now
+				[[Geoloqi sharedInstance] startLocationUpdates];
 			}
 			break;
 	}

@@ -20,5 +20,6 @@ enum {
 }
 
 - (void)handlePush:(NSDictionary *)userInfo;
+- (void)handleLaunch:(NSDictionary *)launchOptions;
 
 @end
