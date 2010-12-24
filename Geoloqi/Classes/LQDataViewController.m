@@ -53,7 +53,6 @@ enum {
 	
 	// Load from defaults
 	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState];
-	//trackingFrequencySlider.enabled = sender.on;
 
 	// hide the spinner at first
 	sendingActivityIndicator.hidden = YES;
@@ -125,6 +124,8 @@ enum {
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 
+	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
+
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(startedSendingLocations:)
 												 name:LQLocationUpdateManagerStartedSendingLocations
@@ -175,6 +176,7 @@ enum {
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
 	// Update the "Last point:" status text
+	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:YES];
 	[self updateButtonStates];
 	[self updateLabels];
 }

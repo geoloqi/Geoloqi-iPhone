@@ -18,6 +18,7 @@ GeoloqiAppDelegate *gAppDelegate;
 @synthesize deviceToken;
 @synthesize window, welcomeViewController;
 @synthesize tabBarController;
+@synthesize pushHandler;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -25,6 +26,8 @@ GeoloqiAppDelegate *gAppDelegate;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
 	gAppDelegate = self;
+	
+	pushHandler = [[LQPushHandler alloc] init];
 
 	// IMPORTANT: Set up OAuth prior to making network calls to the geoloqi server.
     [[Geoloqi sharedInstance] setOauthClientID:LQ_OAUTH_CLIENT_ID secret:LQ_OAUTH_SECRET];
@@ -102,27 +105,8 @@ GeoloqiAppDelegate *gAppDelegate;
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 	NSLog(@"---- Received Push! %@", userInfo);
-	NSString *title;
-	
-	NSString *type = [userInfo valueForKeyPath:@"geoloqi.type"];
-	
-	if(type && [@"geonote" isEqualToString:type]) {
-		title = @"Geonote";
-	} else if(type && [@"message" isEqualToString:type]) {
-		title = @"Message";
-	} else {
-		title = @"Geoloqi";
-	}
 
-	if([userInfo valueForKeyPath:@"aps.alert.body"] != nil) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title 
-														message:[userInfo valueForKeyPath:@"aps.alert.body"] 
-													   delegate:nil 
-											  cancelButtonTitle:nil
-											  otherButtonTitles:@"Ok", nil];
-		[alert show];
-		[alert release];
-	}
+	[self.pushHandler handlePush:userInfo];
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error  {
@@ -213,12 +197,14 @@ GeoloqiAppDelegate *gAppDelegate;
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
     /*
-     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
+     TODO: Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */
+	NSLog(@"Received memory warning");
 }
 
 
 - (void)dealloc {
+	[pushHandler release];
     [welcomeViewController release];
     [window release];
     [super dealloc];
