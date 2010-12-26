@@ -10,6 +10,7 @@
 #import "GeonoteMessageViewController.h"
 #import "Geonote.h"
 #import "CJSONDeserializer.h"
+#import "GeonoteMapViewGestureRecognizer.h"
 
 @interface GeonoteMapViewController (GeonoteMapViewControllerPrivate)
 
@@ -51,6 +52,12 @@
 					   forKeyPath:@"location"  
 						  options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)  
 						  context:NULL];
+
+	GeonoteMapViewGestureRecognizer *tapInterceptor = [[GeonoteMapViewGestureRecognizer alloc] init];
+	tapInterceptor.touchesBeganCallback = ^(NSSet * touches, UIEvent * event) {
+		[self startedDraggingMap];
+	};
+	[mapView addGestureRecognizer:tapInterceptor];
 	
     nextButton.enabled = NO;
 }
@@ -88,15 +95,15 @@
 {
     CLLocation *location;
     
-    if(location = [[Geoloqi sharedInstance] currentLocation])
-    {
-        [self zoomMapToLocation:location];
-    }
-    else if(mapView.userLocationVisible)
-    {
+//    if(location = [[Geoloqi sharedInstance] currentLocation])
+//    {
+//        [self zoomMapToLocation:location];
+//    }
+//    else if(mapView.userLocationVisible)
+//    {
         location = mapView.userLocation.location;
         [self zoomMapToLocation:location];
-    }
+//    }
 }
 
 - (IBAction)tappedNext:(id)sender
@@ -148,7 +155,7 @@
 	// 111.0 km/degree of latitude * 1000 m/km * current delta * 20% of the half-screen width
 	CGFloat desiredRadius = 111.0 * 1000 * currentSpan.latitudeDelta * 0.2;
 	
-	NSLog(@"Setting position and radius of geonote");
+	//NSLog(@"Setting position and radius of geonote");
 
     self.geonote.location = [[[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude 
                                                         longitude:mapView.centerCoordinate.longitude] autorelease];
@@ -158,7 +165,7 @@
 	
 	self.geonote.radius = desiredRadius;
 	
-	NSLog(@"Geonote: %@", [self.geonote description]);
+	//NSLog(@"Geonote: %@", [self.geonote description]);
 	nextButton.enabled = YES;
 }
 
@@ -173,7 +180,6 @@
     NSString *query = [aSearchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     // http://code.google.com/apis/maps/documentation/geocoding/
-    //
     NSString *requestString = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?address=%@&sensor=true", query];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
@@ -206,14 +212,23 @@
 
 #pragma mark -
 
-- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+- (void)startedDraggingMap
 {
-	NSLog(@"Region will change");
+	[UIView beginAnimations:@"" context:NULL];
+	self.geonotePin.center = (CGPoint){self.geonotePin.center.x, 123};
+	[UIView setAnimationDuration:0.25];
+	[UIView setAnimationDelay:UIViewAnimationCurveEaseOut];
+	[UIView commitAnimations];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-	NSLog(@"Map view region did change");
+	[UIView beginAnimations:@"" context:NULL];
+	self.geonotePin.center = (CGPoint){self.geonotePin.center.x, 143};
+	[UIView setAnimationDuration:0.25];
+	[UIView setAnimationDelay:UIViewAnimationCurveEaseIn];
+	[UIView commitAnimations];
+
     [self setGeonotePosition];
 }
 

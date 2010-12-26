@@ -29,6 +29,7 @@
 - (void)tappedLocate:(id)sender;
 - (IBAction)tappedNext:(id)sender;
 - (void)zoomMapToLocation:(CLLocation *)location;
+- (void)startedDraggingMap;
 - (void)setGeonotePosition;
 
 @end

@@ -91,6 +91,7 @@
 		0F13106612C40D6700FBC2B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F13106412C40D6700FBC2B5 /* Localizable.strings */; };
 		0F13109512C4106100FBC2B5 /* LQPushHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F13109412C4106100FBC2B5 /* LQPushHandler.m */; };
 		0F4E20E212B48193001C6856 /* title-bar-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4E20E112B48193001C6856 /* title-bar-logo.png */; };
+		0FC5482512C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */; };
 		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
 		166BE46111DDDC9000F41B0B /* LQMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* LQMappedSlider.m */; };
 		16DA0BB6122390F600382D1F /* LQWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */; };
@@ -322,6 +323,8 @@
 		0F4E1FF612B4060B001C6856 /* LQConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQConstants.h; sourceTree = "<group>"; };
 		0F4E20E112B48193001C6856 /* title-bar-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-bar-logo.png"; sourceTree = "<group>"; };
 		0F4E238E12B546CB001C6856 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		0FC5482312C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteMapViewGestureRecognizer.h; sourceTree = "<group>"; };
+		0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteMapViewGestureRecognizer.m; sourceTree = "<group>"; };
 		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 		166BE45F11DDDC9000F41B0B /* LQMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* LQMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMappedSlider.m; sourceTree = "<group>"; };
@@ -1147,6 +1150,8 @@
 				DD3550B311D6794200EEF7BC /* GeonoteConfirmationViewController.h */,
 				DD3550B411D6794200EEF7BC /* GeonoteConfirmationViewController.m */,
 				DD3550B511D6794200EEF7BC /* GeonoteConfirmationViewController.xib */,
+				0FC5482312C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.h */,
+				0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */,
 			);
 			name = Geonote;
 			sourceTree = "<group>";
@@ -1367,6 +1372,7 @@
 				0F130BDB12BE9AF200FBC2B5 /* PullRefreshTableViewController.m in Sources */,
 				0F130E3712BEDD9600FBC2B5 /* PKHTTPCachedImage.m in Sources */,
 				0F13109512C4106100FBC2B5 /* LQPushHandler.m in Sources */,
+				0FC5482512C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
