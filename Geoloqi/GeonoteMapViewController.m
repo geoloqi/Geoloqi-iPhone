@@ -23,6 +23,8 @@
 @implementation GeonoteMapViewController
 
 @synthesize geonote;
+@synthesize geonotePin;
+@synthesize geonoteTarget;
 
 - (void)viewDidLoad
 {
@@ -32,11 +34,11 @@
 
 	firstLoad = YES;
 	
-	/*
-	 * The geonote object doesn't exist at this point
-    if ( ! self.geonote.location)
-        self.geonote.location = gAppDelegate.locationUpdateManager.currentLocation;
-    */
+	// Create the Geonote object
+	self.geonote = [[[Geonote alloc] init] autorelease];
+	
+    if (!self.geonote.location)
+        self.geonote.location = [[Geoloqi sharedInstance] currentLocation];
 	
     self.navigationItem.titleView = searchBar;
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolbarLocate.png"]
@@ -99,22 +101,10 @@
 
 - (IBAction)tappedNext:(id)sender
 {
-	// Create the Geonote object
-	self.geonote = [[[Geonote alloc] init] autorelease];
-	
-    self.geonote.location = [[[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude 
-                                                        longitude:mapView.centerCoordinate.longitude] autorelease];
-
-	self.geonote.latitude = mapView.centerCoordinate.latitude;
-	self.geonote.longitude = mapView.centerCoordinate.longitude;
-	
-	NSLog(@"Selected location and radius of geonote. %@", [self.geonote description]);
+	NSLog(@"Confirmed location and radius of geonote. %@", [self.geonote description]);
 	
     GeonoteMessageViewController *messageViewController = [[[GeonoteMessageViewController alloc] initWithNibName:nil bundle:nil] autorelease];
     
-	// TODO: Figure out why the radius isn't being calculated properly
-	self.geonote.radius = 50;
-	
     messageViewController.geonote = self.geonote;
     
     [self.navigationController pushViewController:messageViewController animated:YES];
@@ -128,6 +118,7 @@
 	if(firstLoad && mapView.userLocation)
     {
         [self zoomMapToLocation:mapView.userLocation.location];
+		
 		firstLoad = NO;
     }
 }
@@ -146,37 +137,29 @@
     region.span   = span;
     
     [mapView setRegion:region animated:YES];
-    
-    [self hideRadiusOverlay];
-    [self showRadiusOverlay];
+
+    [self setGeonotePosition];
 }
 
-- (void)hideRadiusOverlay
+- (void)setGeonotePosition
 {
-    [mapView removeOverlays:mapView.overlays];
-}
+	MKCoordinateSpan currentSpan = mapView.region.span;
+	
+	// 111.0 km/degree of latitude * 1000 m/km * current delta * 20% of the half-screen width
+	CGFloat desiredRadius = 111.0 * 1000 * currentSpan.latitudeDelta * 0.2;
+	
+	NSLog(@"Setting position and radius of geonote");
 
-- (void)showRadiusOverlay
-{
-    if ( ![mapView.overlays count] )
-    {
-        MKCoordinateSpan currentSpan = mapView.region.span;
-		
-        // 111.0 km/degree of latitude * 1000 m/km * current delta * 40% of the half-screen width
-        CGFloat desiredRadius = 111.0 * 1000 * currentSpan.latitudeDelta * 0.4;
-        
-        MKCircle *circle = [MKCircle circleWithCenterCoordinate:mapView.centerCoordinate radius:desiredRadius];
-        
-        [mapView addOverlay:circle];
-        [mapView setVisibleMapRect:circle.boundingMapRect animated:NO];
-		
-		NSLog(@"Setting radius of geonote");
-        
-        self.geonote.radius = desiredRadius;
-		
-		NSLog(@"%@", [self.geonote description]);
-		nextButton.enabled = YES;
-    }
+    self.geonote.location = [[[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude 
+                                                        longitude:mapView.centerCoordinate.longitude] autorelease];
+	
+	self.geonote.latitude = mapView.centerCoordinate.latitude;
+	self.geonote.longitude = mapView.centerCoordinate.longitude;
+	
+	self.geonote.radius = desiredRadius;
+	
+	NSLog(@"Geonote: %@", [self.geonote description]);
+	nextButton.enabled = YES;
 }
 
 #pragma mark -
@@ -225,23 +208,13 @@
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 {
-    [self hideRadiusOverlay];
+	NSLog(@"Region will change");
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    [self showRadiusOverlay];
-}
-
-- (MKOverlayView *)mapView:(MKMapView *)inMapView viewForOverlay:(id <MKOverlay>)overlay
-{
-    MKCircleView *circleView = [[[MKCircleView alloc] initWithCircle:(MKCircle *)overlay] autorelease];
-    
-    circleView.fillColor   = [UIColor colorWithRed:0.214 green:0.585 blue:0.807 alpha:0.4];
-    circleView.strokeColor = [UIColor colorWithRed:0.214 green:0.585 blue:0.807 alpha:1.0];
-    circleView.lineWidth   = 2.0;
-    
-    return circleView;
+	NSLog(@"Map view region did change");
+    [self setGeonotePosition];
 }
 
 @end

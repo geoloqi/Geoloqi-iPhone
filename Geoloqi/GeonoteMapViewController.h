@@ -16,14 +16,19 @@
     IBOutlet UISearchBar *searchBar;
     IBOutlet MKMapView *mapView;
     IBOutlet UIButton *nextButton;
+	IBOutlet UIView *geonotePin;
+	IBOutlet UIView *geonoteTarget;
     Geonote *geonote;
 	bool firstLoad;
 }
 
 @property (nonatomic, retain) Geonote *geonote;
+@property (nonatomic, retain) IBOutlet UIView *geonotePin;
+@property (nonatomic, retain) IBOutlet UIView *geonoteTarget;
 
 - (void)tappedLocate:(id)sender;
 - (IBAction)tappedNext:(id)sender;
 - (void)zoomMapToLocation:(CLLocation *)location;
+- (void)setGeonotePosition;
 
 @end

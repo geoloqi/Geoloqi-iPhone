@@ -19,7 +19,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Geonote at %f, %f with radius %f: \"%@\"", 
+    return [NSString stringWithFormat:@"Geonote at %f, %f with radius %f, text: \"%@\"", 
 																				 self.latitude, 
 																				 self.longitude, 
 																				 self.radius, 

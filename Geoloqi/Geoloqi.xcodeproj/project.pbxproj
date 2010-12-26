@@ -1401,7 +1401,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Geoloqi;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FF210639-35EE-4FC9-9C66-AFF49EDA6C83";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08F2862F-EFA0-4AAC-9E5D-8CE28A2657CA";
 			};
 			name = Debug;
 		};
@@ -1420,7 +1420,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Geoloqi;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FF210639-35EE-4FC9-9C66-AFF49EDA6C83";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08F2862F-EFA0-4AAC-9E5D-8CE28A2657CA";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
