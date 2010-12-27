@@ -208,7 +208,6 @@
     [map setRegion:region animated:YES];
 }
 
-
 - (void)dealloc {
 	[lineView release];
 	[line release];

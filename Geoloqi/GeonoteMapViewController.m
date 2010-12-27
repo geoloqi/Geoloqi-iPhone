@@ -148,6 +148,22 @@
     [self setGeonotePosition];
 }
 
+- (void)zoomMapToLocation:(CLLocation *)location withViewport:(CLLocation *)southwest northeast:(CLLocation *)northeast
+{
+    MKCoordinateSpan span;
+    span.latitudeDelta  = fabs(northeast.coordinate.latitude - southwest.coordinate.latitude);
+    span.longitudeDelta = fabs(northeast.coordinate.longitude - southwest.coordinate.longitude);
+	
+    MKCoordinateRegion region;
+	
+    [mapView setCenterCoordinate:location.coordinate animated:YES];
+	
+    region.center = location.coordinate;
+    region.span   = span;
+	
+    [mapView setRegion:region animated:YES];
+}
+
 - (void)setGeonotePosition
 {
 	MKCoordinateSpan currentSpan = mapView.region.span;
@@ -197,12 +213,19 @@
         {
             if ([[json objectForKey:@"results"] count])
             {
-                NSDictionary *locationInfo = [[[[json objectForKey:@"results"] objectAtIndex:0] objectForKey:@"geometry"] objectForKey:@"location"];
-                
-                CLLocation *resultLocation = [[[CLLocation alloc] initWithLatitude:[[locationInfo objectForKey:@"lat"] floatValue] 
-                                                                         longitude:[[locationInfo objectForKey:@"lng"] floatValue]] autorelease];
-                
-                [self zoomMapToLocation:resultLocation];
+                NSDictionary *centerDict = [[[[json objectForKey:@"results"] objectAtIndex:0] objectForKey:@"geometry"] objectForKey:@"location"];
+                CLLocation *center = [[[CLLocation alloc] initWithLatitude:[[centerDict objectForKey:@"lat"] floatValue] 
+																 longitude:[[centerDict objectForKey:@"lng"] floatValue]] autorelease];
+
+				NSDictionary *southwestDict = [[[[[json objectForKey:@"results"] objectAtIndex:0] objectForKey:@"geometry"] objectForKey:@"viewport"] objectForKey:@"southwest"];
+                CLLocation *southwest = [[[CLLocation alloc] initWithLatitude:[[southwestDict objectForKey:@"lat"] floatValue] 
+																	longitude:[[southwestDict objectForKey:@"lng"] floatValue]] autorelease];
+
+				NSDictionary *northeastDict = [[[[[json objectForKey:@"results"] objectAtIndex:0] objectForKey:@"geometry"] objectForKey:@"viewport"] objectForKey:@"northeast"];
+                CLLocation *northeast = [[[CLLocation alloc] initWithLatitude:[[northeastDict objectForKey:@"lat"] floatValue] 
+																	longitude:[[northeastDict objectForKey:@"lng"] floatValue]] autorelease];
+				
+				[self zoomMapToLocation:center withViewport:southwest northeast:northeast];
                 
                 nextButton.enabled = YES;
             }
