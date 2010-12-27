@@ -36,6 +36,12 @@
 		subscribeSwitch.on = NO;
 	}
 	
+	if([[NSString stringWithFormat:@"%@", [layer objectForKey:@"type"]] isEqualToString:@"geonotes"]) {
+		subscribeSwitch.hidden = YES;
+	}else{
+		subscribeSwitch.hidden = NO;
+	}
+	
 	[[PKHTTPCachedImage sharedInstance] setImageForView:layerImg withURL:[layer objectForKey:@"icon"]];
 	
 	NSString *model = [[NSString stringWithFormat:@"%@+%@", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
