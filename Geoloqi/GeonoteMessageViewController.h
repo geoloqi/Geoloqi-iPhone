@@ -15,11 +15,13 @@
 @interface GeonoteMessageViewController : UIViewController <UITextViewDelegate>
 {
     IBOutlet UITextView *textView;
+	IBOutlet UIView *activityIndicator;
     Geonote *geonote;
 	LQHTTPRequestCallback geonoteSentCallback;
 }
 
 @property (nonatomic, retain) Geonote *geonote;
+@property (nonatomic, retain) UIView *activityIndicator;
 
 - (LQHTTPRequestCallback)geonoteSentCallback;
 

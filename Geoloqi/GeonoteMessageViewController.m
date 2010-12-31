@@ -15,6 +15,7 @@
 @implementation GeonoteMessageViewController
 
 @synthesize geonote;
+@synthesize activityIndicator;
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -50,6 +51,8 @@
 {
 	self.geonote.text = [NSString stringWithString:textView.text];
 	NSLog(@"Geonote: %@", [self.geonote description]);
+	
+	activityIndicator.hidden = NO;
 	 
     [[Geoloqi sharedInstance] createGeonote:textView.text 
                                    latitude:self.geonote.latitude 
@@ -64,6 +67,8 @@
 	NSLog(@"Making a new geonoteSentCallback block");
 	return geonoteSentCallback = [^(NSError *error, NSString *responseBody) {
 		NSLog(@"Geonote sent!");
+
+		activityIndicator.hidden = YES;
 
 		NSError *err = nil;
 		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
