@@ -10,6 +10,7 @@
 #import "Geonote.h"
 #import "CJSONDeserializer.h"
 #import "SHKActivityIndicator.h"
+#import "BlueButton.h"
 
 @implementation GeonoteMessageViewController
 
@@ -19,10 +20,21 @@
 {
     [super viewWillAppear:animated];
     
-    self.navigationItem.title = @"Enter your message";
+    self.navigationItem.title = @"Geonote";
     
-    if ( ! self.geonote.radius)
+	[textView becomeFirstResponder];
+	
+    if( !self.geonote.radius )
         self.geonote.radius = 120;
+}
+
+- (void)viewDidLoad
+{
+	BlueButton *blueSendButton = [[BlueButton alloc] init];
+	[blueSendButton setTitle:@"Send" forState:UIControlStateNormal];
+	[blueSendButton addTarget:self action:@selector(tappedFinish:) forControlEvents:UIControlEventTouchUpInside];
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:blueSendButton] autorelease];
+	[blueSendButton release];
 }
 
 - (void)dealloc

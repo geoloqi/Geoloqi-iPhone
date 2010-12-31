@@ -107,6 +107,9 @@
 		0FA8E11F12CA923D00F65858 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E11E12CA923D00F65858 /* Default@2x.png */; };
 		0FA8E12312CA92BC00F65858 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E12212CA92BC00F65858 /* iTunesArtwork */; };
 		0FC5482512C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */; };
+		0FC583B312CDB46700238518 /* BlueButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC583B212CDB46700238518 /* BlueButton.m */; };
+		0FC583CE12CDBAD700238518 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC583CC12CDBAD700238518 /* blueButton.png */; };
+		0FC583CF12CDBAD700238518 /* blueButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC583CD12CDBAD700238518 /* blueButton@2x.png */; };
 		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
 		166BE46111DDDC9000F41B0B /* LQMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* LQMappedSlider.m */; };
 		16DA0BB6122390F600382D1F /* LQWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */; };
@@ -354,6 +357,10 @@
 		0FA8E12212CA92BC00F65858 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		0FC5482312C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteMapViewGestureRecognizer.h; sourceTree = "<group>"; };
 		0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteMapViewGestureRecognizer.m; sourceTree = "<group>"; };
+		0FC583B112CDB46700238518 /* BlueButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueButton.h; sourceTree = "<group>"; };
+		0FC583B212CDB46700238518 /* BlueButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueButton.m; sourceTree = "<group>"; };
+		0FC583CC12CDBAD700238518 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
+		0FC583CD12CDBAD700238518 /* blueButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueButton@2x.png"; sourceTree = "<group>"; };
 		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 		166BE45F11DDDC9000F41B0B /* LQMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* LQMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMappedSlider.m; sourceTree = "<group>"; };
@@ -1014,6 +1021,10 @@
 				0FA8E11E12CA923D00F65858 /* Default@2x.png */,
 				0F13106412C40D6700FBC2B5 /* Localizable.strings */,
 				0F7F330912CD5A2E0009CB1C /* Default.png */,
+				0FC583CC12CDBAD700238518 /* blueButton.png */,
+				0FC583CD12CDBAD700238518 /* blueButton@2x.png */,
+				0FC583B112CDB46700238518 /* BlueButton.h */,
+				0FC583B212CDB46700238518 /* BlueButton.m */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1316,6 +1327,8 @@
 				0F7F330012CD500A0009CB1C /* layers-icon@2x.png in Resources */,
 				0F7F330A12CD5A2E0009CB1C /* Default.png in Resources */,
 				0F7F331012CD5E390009CB1C /* title-bar-logo.png in Resources */,
+				0FC583CE12CDBAD700238518 /* blueButton.png in Resources */,
+				0FC583CF12CDBAD700238518 /* blueButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1429,6 +1442,7 @@
 				0F130E3712BEDD9600FBC2B5 /* PKHTTPCachedImage.m in Sources */,
 				0F13109512C4106100FBC2B5 /* LQPushHandler.m in Sources */,
 				0FC5482512C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m in Sources */,
+				0FC583B312CDB46700238518 /* BlueButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1463,7 +1477,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Geoloqi;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "78126428-D00D-4D09-9284-94B990F7D7C9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FAA8C9F4-2C66-45F8-9AFB-FA78165E3DA0";
 			};
 			name = Debug;
 		};
@@ -1482,7 +1496,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Geoloqi;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "78126428-D00D-4D09-9284-94B990F7D7C9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FAA8C9F4-2C66-45F8-9AFB-FA78165E3DA0";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1497,7 +1511,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "78126428-D00D-4D09-9284-94B990F7D7C9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FAA8C9F4-2C66-45F8-9AFB-FA78165E3DA0";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1513,7 +1527,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "78126428-D00D-4D09-9284-94B990F7D7C9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FAA8C9F4-2C66-45F8-9AFB-FA78165E3DA0";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
