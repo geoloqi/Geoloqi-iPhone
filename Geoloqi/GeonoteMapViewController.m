@@ -25,6 +25,7 @@
 
 @synthesize geonote;
 @synthesize geonotePin;
+@synthesize geonotePinShadow;
 @synthesize geonoteTarget;
 
 - (void)viewDidLoad
@@ -239,7 +240,8 @@
 {
 	[UIView beginAnimations:@"" context:NULL];
 	self.geonotePin.center = (CGPoint){self.geonotePin.center.x, 123};
-	[UIView setAnimationDuration:0.25];
+	self.geonotePinShadow.center = (CGPoint){181, 136};
+	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationDelay:UIViewAnimationCurveEaseOut];
 	[UIView commitAnimations];
 }
@@ -248,7 +250,8 @@
 {
 	[UIView beginAnimations:@"" context:NULL];
 	self.geonotePin.center = (CGPoint){self.geonotePin.center.x, 143};
-	[UIView setAnimationDuration:0.25];
+	self.geonotePinShadow.center = (CGPoint){171, 146};
+	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationDelay:UIViewAnimationCurveEaseIn];
 	[UIView commitAnimations];
 

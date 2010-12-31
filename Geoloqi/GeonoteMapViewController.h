@@ -17,6 +17,7 @@
     IBOutlet MKMapView *mapView;
     IBOutlet UIButton *nextButton;
 	IBOutlet UIView *geonotePin;
+	IBOutlet UIView *geonotePinShadow;
 	IBOutlet UIView *geonoteTarget;
     Geonote *geonote;
 	bool firstLoad;
@@ -24,6 +25,7 @@
 
 @property (nonatomic, retain) Geonote *geonote;
 @property (nonatomic, retain) IBOutlet UIView *geonotePin;
+@property (nonatomic, retain) IBOutlet UIView *geonotePinShadow;
 @property (nonatomic, retain) IBOutlet UIView *geonoteTarget;
 
 - (void)tappedLocate:(id)sender;
