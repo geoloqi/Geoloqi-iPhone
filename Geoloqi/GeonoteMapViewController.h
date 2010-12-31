@@ -21,9 +21,11 @@
 	IBOutlet UIView *geonoteTarget;
     Geonote *geonote;
 	bool firstLoad;
+	bool firstNote;
 }
 
 @property (nonatomic, retain) Geonote *geonote;
+@property (nonatomic, retain) UIButton *nextButton;
 @property (nonatomic, retain) IBOutlet UIView *geonotePin;
 @property (nonatomic, retain) IBOutlet UIView *geonotePinShadow;
 @property (nonatomic, retain) IBOutlet UIView *geonoteTarget;

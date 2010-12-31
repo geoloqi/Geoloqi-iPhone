@@ -59,7 +59,7 @@
                                   longitude:self.geonote.longitude 
                                      radius:self.geonote.radius
                                    callback:[self geonoteSentCallback]];
-    
+
 }
 
 - (LQHTTPRequestCallback)geonoteSentCallback {
@@ -99,14 +99,13 @@
 		
 		[[SHKActivityIndicator currentIndicator] displayCompleted:@"Geonote created!"];
 	
-		// Restore the Geonote tabe to its original state showing the map
+		// Restore the Geonote tab to its original state showing the map
 		
 		UITabBarController *appTabBarController = ((UITabBarController *)self.parentViewController.parentViewController);
 		UINavigationController *geonoteNavigationController = ((UINavigationController *)appTabBarController.selectedViewController);
 		
 		[geonoteNavigationController popToRootViewControllerAnimated:YES];
 		[appTabBarController dismissModalViewControllerAnimated:YES];
-		
 	} copy];
 }
 
@@ -115,7 +114,7 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)aTextView
 {
-    if ( ! self.geonote.text)
+    if( !self.geonote.text )
         aTextView.text = @"";
 }
 

@@ -27,6 +27,7 @@
 @synthesize geonotePin;
 @synthesize geonotePinShadow;
 @synthesize geonoteTarget;
+@synthesize nextButton;
 
 - (void)viewDidLoad
 {
@@ -35,6 +36,7 @@
 	//self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 
 	firstLoad = YES;
+	firstNote = YES;
 	
 	// Create the Geonote object
 	self.geonote = [[[Geonote alloc] init] autorelease];
@@ -69,9 +71,17 @@
     
     self.navigationItem.title = @"Choose a location";
 	
-	// When the Geonote screen first appears, start by zooming in on the current location
-	// "tap" the locate button in the top right corner to do this
-	[self tappedLocate:self];
+	if(firstNote)
+	{
+		// When the Geonote screen first appears, start by zooming in on the current location
+		// "tap" the locate button in the top right corner to do this
+		[self tappedLocate:self];
+	}
+	else
+	{
+		[self.nextButton setTitle:@"Leave Another Geonote" forState:UIControlStateNormal];
+	}
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -114,6 +124,8 @@
     GeonoteMessageViewController *messageViewController = [[[GeonoteMessageViewController alloc] initWithNibName:nil bundle:nil] autorelease];
     
     messageViewController.geonote = self.geonote;
+	
+	firstNote = NO;
     
     [self.navigationController pushViewController:messageViewController animated:YES];
 }
