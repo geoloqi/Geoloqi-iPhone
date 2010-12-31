@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
 			<integer value="5"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -118,7 +118,7 @@
 					<object class="IBUIImageView" id="281273866">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{151.5, 129.5}, {17, 27}}</string>
+						<string key="NSFrame">{{151, 129}, {18, 28}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIAutoresizesSubviews">NO</bool>
 						<int key="IBUIContentMode">4</int>
@@ -745,7 +745,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{26, 22}</string>
-				<string>{17, 27}</string>
+				<string>{18, 28}</string>
 				<string>{16, 12}</string>
 			</object>
 		</object>
