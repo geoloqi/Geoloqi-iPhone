@@ -926,6 +926,17 @@
 			name = PKHTTPCachedImage;
 			sourceTree = "<group>";
 		};
+		0FC583DE12CDBC6D00238518 /* Blue Button */ = {
+			isa = PBXGroup;
+			children = (
+				0FC583CC12CDBAD700238518 /* blueButton.png */,
+				0FC583CD12CDBAD700238518 /* blueButton@2x.png */,
+				0FC583B112CDB46700238518 /* BlueButton.h */,
+				0FC583B212CDB46700238518 /* BlueButton.m */,
+			);
+			name = "Blue Button";
+			sourceTree = "<group>";
+		};
 		16DA0BB91223910100382D1F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -994,6 +1005,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0FC583DE12CDBC6D00238518 /* Blue Button */,
 				0F01830D1294E105001508D9 /* Settings.bundle */,
 				49EB2259125D7F7800EDFAB1 /* Tab Bar */,
 				49EB2247125D7F7100EDFAB1 /* Icon.png */,
@@ -1021,10 +1033,6 @@
 				0FA8E11E12CA923D00F65858 /* Default@2x.png */,
 				0F13106412C40D6700FBC2B5 /* Localizable.strings */,
 				0F7F330912CD5A2E0009CB1C /* Default.png */,
-				0FC583CC12CDBAD700238518 /* blueButton.png */,
-				0FC583CD12CDBAD700238518 /* blueButton@2x.png */,
-				0FC583B112CDB46700238518 /* BlueButton.h */,
-				0FC583B212CDB46700238518 /* BlueButton.m */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
