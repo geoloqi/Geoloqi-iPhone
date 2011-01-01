@@ -23,6 +23,8 @@ NSString *const LQTrackingOnUserInfoKey;
 	UITableViewCell *coordsCell;
 	UILabel *latLabel;
 	UILabel *longLabel;
+	UILabel *altLabel;
+	UILabel *spdLabel;
 	
 	UITableViewCell *trackingToggleCell;
 	UISwitch *trackingToggleSwitch;
@@ -60,6 +62,8 @@ NSString *const LQTrackingOnUserInfoKey;
 @property (nonatomic, retain) IBOutlet UITableViewCell *coordsCell;
 @property (nonatomic, retain) IBOutlet UILabel *latLabel;
 @property (nonatomic, retain) IBOutlet UILabel *longLabel;
+@property (nonatomic, retain) IBOutlet UILabel *altLabel;
+@property (nonatomic, retain) IBOutlet UILabel *spdLabel;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *checkInCell;
 @property (nonatomic, retain) IBOutlet UIButton *checkInButton;

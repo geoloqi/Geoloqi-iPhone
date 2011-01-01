@@ -41,7 +41,7 @@ enum {
 @synthesize table;
 @synthesize updateQueueCell;
 @synthesize checkInCell, checkInButton;
-@synthesize coordsCell, latLabel, longLabel;
+@synthesize coordsCell, latLabel, longLabel, altLabel, spdLabel;
 @synthesize trackingModeCell, trackingModeSwitch;
 @synthesize trackingToggleCell, trackingToggleSwitch;
 @synthesize distanceFilterCell, distanceFilterLabel, distanceFilterSlider;
@@ -353,15 +353,18 @@ enum {
 - (void)updateLabels {
 	
 	CLLocationCoordinate2D coord;
+	CLLocation *loc;
 	BOOL hasLocation = NO;
 	
 	if ([[Geoloqi sharedInstance] locationUpdatesState]) {
 		if([[Geoloqi sharedInstance] currentLocation]) {
+			loc = [[Geoloqi sharedInstance] currentLocation];
 			coord = [[Geoloqi sharedInstance] currentLocation].coordinate;
 			hasLocation = YES;
 		}
 	} else {
 		if([[Geoloqi sharedInstance] currentSingleLocation]) {
+			loc = [[Geoloqi sharedInstance] currentSingleLocation];
 			coord = [[Geoloqi sharedInstance] currentSingleLocation].coordinate;
 			hasLocation = YES;
 		}
@@ -370,8 +373,10 @@ enum {
 	if (hasLocation) {
 		latLabel.text = [NSString stringWithFormat:@"%f", coord.latitude];
 		longLabel.text = [NSString stringWithFormat:@"%f", coord.longitude];
+		spdLabel.text = [NSString stringWithFormat:@"%.0f km/h", (loc.speed * 3.6)];
+		altLabel.text = [NSString stringWithFormat:@"%.0f km", (loc.altitude / 1000)];
 	} else {
-		latLabel.text = longLabel.text = @"-";
+		latLabel.text = longLabel.text = altLabel.text = spdLabel.text = @"";
 	}
 	
 	distanceFilterLabel.text = [NSString stringWithFormat:@"%.0fm",
@@ -565,6 +570,8 @@ enum {
 	[trackingFrequencyCell release];
 	[latLabel release];
 	[longLabel release];
+	[altLabel release];
+	[spdLabel release];
 	[trackingFrequencyLabel release];
 	[trackingToggleSwitch release];
     [super dealloc];
