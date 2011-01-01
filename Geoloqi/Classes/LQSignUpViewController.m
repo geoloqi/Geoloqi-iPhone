@@ -20,8 +20,8 @@
 }
 
 - (IBAction)signUpAction {
-    [[Geoloqi sharedInstance] createAccountWithUsername:usernameField.text 
-                                                          emailAddress:emailAddressField.text];
+    [[Geoloqi sharedInstance] createAccountWithEmailAddress:emailAddressField.text
+													   name:usernameField.text];
 	
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 	self.navigationItem.leftBarButtonItem.enabled = YES;
@@ -58,11 +58,11 @@
 	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil] autorelease];
 
 	if (indexPath.row == 0) {
+		cell.accessoryView = usernameField;
+		cell.detailTextLabel.text = NSLocalizedString(@"Your Name", nil);
+	} else if  (indexPath.row == 1) {
 		cell.accessoryView = emailAddressField;
 		cell.detailTextLabel.text = NSLocalizedString(@"Email", nil);
-	} else if  (indexPath.row == 1) {
-		cell.accessoryView = usernameField;
-		cell.detailTextLabel.text = NSLocalizedString(@"Username", nil);
 	}
 	
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -94,9 +94,9 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)inTextField;
 {
-	if (inTextField == emailAddressField) {
-		[usernameField becomeFirstResponder];
-	} else if (inTextField == usernameField && [self isComplete]) {
+	if (inTextField == usernameField) {
+		[emailAddressField becomeFirstResponder];
+	} else if (inTextField == emailAddressField && [self isComplete]) {
 		[self signUpAction];
 	}
 	return YES;
@@ -105,7 +105,7 @@
 - (void)viewWillAppear:(BOOL)animated;
 {
 	[super viewWillAppear:animated];
-	[emailAddressField becomeFirstResponder];
+	[usernameField becomeFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

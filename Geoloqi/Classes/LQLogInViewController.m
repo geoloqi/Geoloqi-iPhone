@@ -11,12 +11,12 @@
 
 @implementation LQLogInViewController
 
-@synthesize usernameField, passwordField, activityIndicator;
+@synthesize emailField, passwordField, activityIndicator;
 
 - (void)viewWillAppear:(BOOL)animated;
 {
 	[super viewWillAppear:animated];
-	[usernameField becomeFirstResponder];
+	[emailField becomeFirstResponder];
 }
 
 - (IBAction)cancel {
@@ -24,8 +24,8 @@
 }
 
 - (IBAction)logInAction {
-	[[Geoloqi sharedInstance] authenticateWithUsername:usernameField.text
-															 password:passwordField.text];
+	[[Geoloqi sharedInstance] authenticateWithEmail:emailField.text
+										   password:passwordField.text];
 
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 	self.navigationItem.leftBarButtonItem.enabled = YES;
@@ -37,7 +37,7 @@
 
 - (NSString *)tableView:(UITableView *)inTableView titleForHeaderInSection:(NSInteger)section;
 {
-	return NSLocalizedString(@"Log in with your username and password", nil);
+	return NSLocalizedString(@"Log in with your email address and password", nil);
 }
 
 - (NSString *)tableView:(UITableView *)inTableView titleForFooterInSection:(NSInteger)section;
@@ -53,7 +53,7 @@
 
 - (BOOL)isComplete;
 {
-	return usernameField.text.length > 0 &&  passwordField.text.length > 0;
+	return emailField.text.length > 0 &&  passwordField.text.length > 0;
 }
 
 
@@ -62,8 +62,8 @@
 	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil] autorelease];
 	
 	if (indexPath.row == 0) {
-		cell.accessoryView = usernameField;
-		cell.detailTextLabel.text = NSLocalizedString(@"Username", nil);
+		cell.accessoryView = emailField;
+		cell.detailTextLabel.text = NSLocalizedString(@"Email", nil);
 	} else if  (indexPath.row == 1) {
 		cell.accessoryView = passwordField;
 		cell.detailTextLabel.text = NSLocalizedString(@"Password", nil);
@@ -82,7 +82,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)inTextField;
 {
-	if (inTextField == usernameField) {
+	if (inTextField == emailField) {
 		[passwordField becomeFirstResponder];
 	} else if (inTextField == passwordField && [self isComplete]) {
 		[self logInAction];
@@ -134,7 +134,7 @@
 
 
 - (void)dealloc {
-	[usernameField release];
+	[emailField release];
 	[passwordField release];
     [super dealloc];
 }

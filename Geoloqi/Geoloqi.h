@@ -71,10 +71,9 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 #pragma mark Authentication
 
-- (void)authenticateWithUsername:(NSString *)username
-						password:(NSString *)password;
-- (void)createAccountWithUsername:(NSString *)username
-                     emailAddress:(NSString *)emailAddress;
+- (void)authenticateWithEmail:(NSString *)emailAddress password:(NSString *)password;
+- (void)createAccountWithEmailAddress:(NSString *)emailAddress name:(NSString *)name;
+
 - (void)createAnonymousAccount;
 - (void)createAnonymousAccount:(NSString*)name;
 
