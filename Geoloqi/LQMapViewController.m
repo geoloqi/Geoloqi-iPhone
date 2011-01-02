@@ -16,6 +16,8 @@
 @implementation LQMapViewController
 
 @synthesize map;
+@synthesize anonymousBanner;
+@synthesize anonymousSignUpButton;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -44,6 +46,14 @@
 												 selector:@selector(reloadMapHistory)
 													 name:LQAuthenticationSucceededNotification
 												   object:nil];
+	}
+	
+	// If the user is anonymous, show a banner
+	if( YES ){
+		UIImage *stretImg = [[UIImage imageNamed:@"anonButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+		[self.anonymousSignUpButton setBackgroundImage:stretImg forState:UIControlStateNormal];
+		[self.view addSubview:self.anonymousBanner];
+		[self.anonymousBanner setCenter:(CGPoint){160.0, 64.0}];
 	}
 	
 	// Observe our own location manager for updates
@@ -212,6 +222,8 @@
 	[lineView release];
 	[line release];
 	[map release];
+	[anonymousBanner release];
+	[anonymousSignUpButton release];
 	[historyLoadedCallback release];
     [super dealloc];
 }

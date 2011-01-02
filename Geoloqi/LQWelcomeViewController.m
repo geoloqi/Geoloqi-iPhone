@@ -26,6 +26,8 @@
 							animated:YES];
 }
 - (IBAction)useAnonymously {
+	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"is_anonymous"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 	[[Geoloqi sharedInstance] createAnonymousAccount];
 }
 

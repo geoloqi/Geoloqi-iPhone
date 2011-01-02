@@ -17,9 +17,13 @@
 	LQMutablePolylineView *lineView;
 	bool firstLoad;
 	LQHTTPRequestCallback historyLoadedCallback;
+	UIView *anonymousBanner;
+	UIButton *anonymousSignUpButton;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *map;
+@property (nonatomic, retain) IBOutlet UIView *anonymousBanner;
+@property (nonatomic, retain) IBOutlet UIButton *anonymousSignUpButton;
 
 - (void)zoomMapToLocation:(CLLocation *)location;
 - (void)reloadMapHistory;

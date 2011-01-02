@@ -110,6 +110,8 @@
 		0FC583B312CDB46700238518 /* BlueButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC583B212CDB46700238518 /* BlueButton.m */; };
 		0FC583CE12CDBAD700238518 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC583CC12CDBAD700238518 /* blueButton.png */; };
 		0FC583CF12CDBAD700238518 /* blueButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC583CD12CDBAD700238518 /* blueButton@2x.png */; };
+		0FC5856812D10AE500238518 /* anonButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC5856612D10AE500238518 /* anonButton.png */; };
+		0FC5856912D10AE500238518 /* anonButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC5856712D10AE500238518 /* anonButton@2x.png */; };
 		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
 		166BE46111DDDC9000F41B0B /* LQMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* LQMappedSlider.m */; };
 		16DA0BB6122390F600382D1F /* LQWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */; };
@@ -361,6 +363,8 @@
 		0FC583B212CDB46700238518 /* BlueButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueButton.m; sourceTree = "<group>"; };
 		0FC583CC12CDBAD700238518 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
 		0FC583CD12CDBAD700238518 /* blueButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueButton@2x.png"; sourceTree = "<group>"; };
+		0FC5856612D10AE500238518 /* anonButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anonButton.png; sourceTree = "<group>"; };
+		0FC5856712D10AE500238518 /* anonButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anonButton@2x.png"; sourceTree = "<group>"; };
 		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 		166BE45F11DDDC9000F41B0B /* LQMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* LQMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMappedSlider.m; sourceTree = "<group>"; };
@@ -1014,6 +1018,8 @@
 				0F130D1C12BEB62400FBC2B5 /* arrow.png */,
 				0FA8E12212CA92BC00F65858 /* iTunesArtwork */,
 				0FF3B50E128E375100958BCA /* ToolbarLocate.png */,
+				0FC5856612D10AE500238518 /* anonButton.png */,
+				0FC5856712D10AE500238518 /* anonButton@2x.png */,
 				0F7F32E412CD47270009CB1C /* 07-map-marker.png */,
 				0F7F32E512CD47270009CB1C /* 07-map-marker@2x.png */,
 				0F7F32F112CD4C5F0009CB1C /* 07-map-marker-shadow.png */,
@@ -1337,6 +1343,8 @@
 				0F7F331012CD5E390009CB1C /* title-bar-logo.png in Resources */,
 				0FC583CE12CDBAD700238518 /* blueButton.png in Resources */,
 				0FC583CF12CDBAD700238518 /* blueButton@2x.png in Resources */,
+				0FC5856812D10AE500238518 /* anonButton.png in Resources */,
+				0FC5856912D10AE500238518 /* anonButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
