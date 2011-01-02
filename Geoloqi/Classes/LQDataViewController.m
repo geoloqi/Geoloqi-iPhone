@@ -374,7 +374,7 @@ enum {
 		latLabel.text = [NSString stringWithFormat:@"%f", coord.latitude];
 		longLabel.text = [NSString stringWithFormat:@"%f", coord.longitude];
 		spdLabel.text = [NSString stringWithFormat:@"%.0f km/h", (loc.speed * 3.6)];
-		altLabel.text = [NSString stringWithFormat:@"%.0f km", (loc.altitude / 1000)];
+		altLabel.text = [NSString stringWithFormat:@"%.0f m", loc.altitude];
 	} else {
 		latLabel.text = longLabel.text = altLabel.text = spdLabel.text = @"";
 	}
