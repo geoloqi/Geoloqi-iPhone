@@ -279,9 +279,24 @@ enum {
 		rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresRateLimit"] floatValue];
 	} else if (control.selectedSegmentIndex == kTrackingModeCustom) {
 		NSLog(@"Setting to custom mode");
-		df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"customDistanceFilter"] floatValue];
-		tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"customTrackingLimit"] floatValue];
-		rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"customRateLimit"] floatValue];
+		NSString *dfstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customDistanceFilter"];
+		if(dfstr == nil) {
+			df = 2.0;
+		} else {
+			df = [dfstr floatValue];
+		}
+		NSString *tlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customTrackingLimit"];
+		if(tlstr == nil) {
+			tl = 10.0;
+		} else {
+			tl = [tlstr floatValue];
+		}
+		NSString *rlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customRateLimit"];
+		if(rlstr == nil) {
+			rl = 120.0;
+		} else {
+			rl = [rlstr floatValue];
+		}
 	}
 
 	[distanceFilterSlider setMappedValue:df animated:YES];
@@ -373,7 +388,11 @@ enum {
 	if (hasLocation) {
 		latLabel.text = [NSString stringWithFormat:@"%f", coord.latitude];
 		longLabel.text = [NSString stringWithFormat:@"%f", coord.longitude];
-		spdLabel.text = [NSString stringWithFormat:@"%.0f km/h", (loc.speed * 3.6)];
+		if(loc.speed < 0) {
+			spdLabel.text = @"--";
+		} else {
+			spdLabel.text = [NSString stringWithFormat:@"%.0f km/h", (loc.speed * 3.6)];
+		}
 		altLabel.text = [NSString stringWithFormat:@"%.0f m", loc.altitude];
 	} else {
 		latLabel.text = longLabel.text = altLabel.text = spdLabel.text = @"";
