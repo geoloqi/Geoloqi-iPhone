@@ -227,7 +227,6 @@
 			<string>hiresRateLimit</string>
 			<key>Values</key>
 			<array>
-				<integer>1</integer>
 				<integer>5</integer>
 				<integer>10</integer>
 				<integer>15</integer>
