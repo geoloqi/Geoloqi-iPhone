@@ -14,7 +14,7 @@
 
 }
 
-@property (nonatomic, retain) IBOutlet UITextField *usernameField;
+@property (nonatomic, retain) IBOutlet UITextField *nameField;
 @property (nonatomic, retain) IBOutlet UITextField *emailAddressField;
 @property (nonatomic, retain) IBOutlet UIView *activityIndicator;
 

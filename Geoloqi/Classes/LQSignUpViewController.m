@@ -11,7 +11,7 @@
 
 @implementation LQSignUpViewController
 
-@synthesize usernameField;
+@synthesize nameField;
 @synthesize emailAddressField;
 @synthesize activityIndicator;
 
@@ -21,7 +21,7 @@
 
 - (IBAction)signUpAction {
     [[Geoloqi sharedInstance] createAccountWithEmailAddress:emailAddressField.text
-													   name:usernameField.text];
+													   name:nameField.text];
 	
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 	self.navigationItem.leftBarButtonItem.enabled = YES;
@@ -49,7 +49,7 @@
 
 - (BOOL)isComplete;
 {
-	return usernameField.text.length > 0 &&  emailAddressField.text.length > 0;
+	return nameField.text.length > 0 &&  emailAddressField.text.length > 0;
 }
 
 
@@ -58,7 +58,7 @@
 	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil] autorelease];
 
 	if (indexPath.row == 0) {
-		cell.accessoryView = usernameField;
+		cell.accessoryView = nameField;
 		cell.detailTextLabel.text = NSLocalizedString(@"Your Name", nil);
 	} else if  (indexPath.row == 1) {
 		cell.accessoryView = emailAddressField;
@@ -94,7 +94,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)inTextField;
 {
-	if (inTextField == usernameField) {
+	if (inTextField == nameField) {
 		[emailAddressField becomeFirstResponder];
 	} else if (inTextField == emailAddressField && [self isComplete]) {
 		[self signUpAction];
@@ -105,7 +105,7 @@
 - (void)viewWillAppear:(BOOL)animated;
 {
 	[super viewWillAppear:animated];
-	[usernameField becomeFirstResponder];
+	[nameField becomeFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -130,7 +130,7 @@
 
 
 - (void)dealloc {
-    [usernameField release];
+    [nameField release];
     [emailAddressField release];
     [super dealloc];
 }
