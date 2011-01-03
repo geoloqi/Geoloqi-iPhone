@@ -24,9 +24,11 @@
 @property (nonatomic, retain) IBOutlet MKMapView *map;
 @property (nonatomic, retain) IBOutlet UIView *anonymousBanner;
 @property (nonatomic, retain) IBOutlet UIButton *anonymousSignUpButton;
+@property (nonatomic, retain) IBOutlet UIViewController *signUpViewController;
 
 - (void)zoomMapToLocation:(CLLocation *)location;
 - (void)reloadMapHistory;
 - (LQHTTPRequestCallback)historyLoadedCallback;
+- (IBAction)signUp;
 
 @end

@@ -112,6 +112,8 @@
 		0FC583CF12CDBAD700238518 /* blueButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC583CD12CDBAD700238518 /* blueButton@2x.png */; };
 		0FC5856812D10AE500238518 /* anonButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC5856612D10AE500238518 /* anonButton.png */; };
 		0FC5856912D10AE500238518 /* anonButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC5856712D10AE500238518 /* anonButton@2x.png */; };
+		0FC585C512D111C800238518 /* LQMapSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC585C312D111C800238518 /* LQMapSignUpViewController.m */; };
+		0FC585C612D111C800238518 /* LQMapSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC585C412D111C800238518 /* LQMapSignUpViewController.xib */; };
 		0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3B50E128E375100958BCA /* ToolbarLocate.png */; };
 		166BE46111DDDC9000F41B0B /* LQMappedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BE46011DDDC9000F41B0B /* LQMappedSlider.m */; };
 		16DA0BB6122390F600382D1F /* LQWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */; };
@@ -365,6 +367,9 @@
 		0FC583CD12CDBAD700238518 /* blueButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueButton@2x.png"; sourceTree = "<group>"; };
 		0FC5856612D10AE500238518 /* anonButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anonButton.png; sourceTree = "<group>"; };
 		0FC5856712D10AE500238518 /* anonButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anonButton@2x.png"; sourceTree = "<group>"; };
+		0FC585C212D111C800238518 /* LQMapSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMapSignUpViewController.h; sourceTree = "<group>"; };
+		0FC585C312D111C800238518 /* LQMapSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMapSignUpViewController.m; sourceTree = "<group>"; };
+		0FC585C412D111C800238518 /* LQMapSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQMapSignUpViewController.xib; sourceTree = "<group>"; };
 		0FF3B50E128E375100958BCA /* ToolbarLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLocate.png; sourceTree = "<group>"; };
 		166BE45F11DDDC9000F41B0B /* LQMappedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMappedSlider.h; sourceTree = "<group>"; };
 		166BE46011DDDC9000F41B0B /* LQMappedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMappedSlider.m; sourceTree = "<group>"; };
@@ -1182,6 +1187,9 @@
 				DD91DF8F11BF3F400097F6F5 /* LQMapViewController.h */,
 				DD91DF9011BF3F400097F6F5 /* LQMapViewController.m */,
 				16EE842711D72C290026503D /* Mutable polyline */,
+				0FC585C212D111C800238518 /* LQMapSignUpViewController.h */,
+				0FC585C312D111C800238518 /* LQMapSignUpViewController.m */,
+				0FC585C412D111C800238518 /* LQMapSignUpViewController.xib */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -1345,6 +1353,7 @@
 				0FC583CF12CDBAD700238518 /* blueButton@2x.png in Resources */,
 				0FC5856812D10AE500238518 /* anonButton.png in Resources */,
 				0FC5856912D10AE500238518 /* anonButton@2x.png in Resources */,
+				0FC585C612D111C800238518 /* LQMapSignUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1459,6 +1468,7 @@
 				0F13109512C4106100FBC2B5 /* LQPushHandler.m in Sources */,
 				0FC5482512C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m in Sources */,
 				0FC583B312CDB46700238518 /* BlueButton.m in Sources */,
+				0FC585C512D111C800238518 /* LQMapSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

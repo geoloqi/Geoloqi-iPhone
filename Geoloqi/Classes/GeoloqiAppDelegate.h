@@ -22,6 +22,9 @@
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) LQPushHandler *pushHandler;
 
++ (void)userIsAnonymous;
++ (void)userIsNotAnonymous;
++ (BOOL)isUserAnonymous;
 + (void)registerPresetDefaultsFromSettingsBundle;
 + (NSString*)base64forData:(NSData*)theData;
 

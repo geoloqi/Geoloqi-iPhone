@@ -15,6 +15,8 @@ static NSString *const LQLocationUpdateManagerFinishedSendingSingleLocation = @"
 static NSString *const LQLocationUpdateManagerErrorSendingSingleLocation = @"LQLocationUpdateManagerErrorSendingSingleLocation";
 static NSString *const LQAuthenticationSucceededNotification = @"LQAuthenticationSucceededNotification";
 static NSString *const LQAuthenticationFailedNotification = @"LQAuthenticationFailedNotification";
+static NSString *const LQAnonymousSignupSucceededNotification = @"LQAnonymousSignupSucceededNotification";
+static NSString *const LQAnonymousSignupFailedNotification = @"LQAnonymousSignupFailedNotification";
 static NSString *const LQAPIUnknownErrorNotification = @"LQAPIUnknownErrorNotification";
 
 enum {
@@ -76,6 +78,7 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 - (void)createAnonymousAccount;
 - (void)createAnonymousAccount:(NSString*)name;
+- (void)setAnonymousAccountEmail:(NSString *)emailAddress name:(NSString *)name;
 
 - (void)initTokenAndGetUsername;
 

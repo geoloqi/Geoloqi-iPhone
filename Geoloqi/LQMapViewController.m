@@ -8,6 +8,7 @@
 
 #import "Geoloqi.h"
 #import "LQMapViewController.h"
+#import "LQMapSignUpViewController.h"
 #import "LQMutablePolyline.h"
 #import "LQMutablePolylineView.h"
 #import "ASIHTTPRequest.h"
@@ -18,6 +19,7 @@
 @synthesize map;
 @synthesize anonymousBanner;
 @synthesize anonymousSignUpButton;
+@synthesize signUpViewController;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -67,6 +69,10 @@
 					   forKeyPath:@"location"  
 						  options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)  
 						  context:NULL];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	self.anonymousBanner.hidden = ![GeoloqiAppDelegate isUserAnonymous];
 }
 
 - (void)reloadMapHistory {
@@ -216,6 +222,12 @@
     region.span   = span;
     
     [map setRegion:region animated:YES];
+}
+
+- (IBAction)signUp
+{
+	[self presentModalViewController:signUpViewController
+							animated:YES];
 }
 
 - (void)dealloc {

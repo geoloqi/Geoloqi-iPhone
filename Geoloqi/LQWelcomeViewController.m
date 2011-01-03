@@ -18,16 +18,17 @@
 @synthesize useAnonymouslyButton;
 
 - (IBAction)signUp {
+	[GeoloqiAppDelegate userIsNotAnonymous];
 	[self presentModalViewController:signUpViewController
 							animated:YES];
 }
 - (IBAction)logIn {
+	[GeoloqiAppDelegate userIsNotAnonymous];
 	[self presentModalViewController:logInViewController
 							animated:YES];
 }
 - (IBAction)useAnonymously {
-	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"is_anonymous"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+	[GeoloqiAppDelegate userIsAnonymous];
 	[[Geoloqi sharedInstance] createAnonymousAccount];
 }
 

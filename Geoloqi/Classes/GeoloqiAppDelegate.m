@@ -248,6 +248,20 @@ GeoloqiAppDelegate *gAppDelegate;
 	[[Geoloqi sharedInstance] logOut];
 }
 
++ (void)userIsAnonymous {
+	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"is_anonymous"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)userIsNotAnonymous {
+	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"is_anonymous"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL)isUserAnonymous {
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"is_anonymous"];
+}
+
 + (void)registerPresetDefaultsFromSettingsBundle {
 	
 //	if([[NSUserDefaults standardUserDefaults] objectForKey:@"batteryTrackingLimit"]) {

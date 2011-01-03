@@ -34,7 +34,7 @@
 			<key>Key</key>
 			<string>Version</string>
 			<key>DefaultValue</key>
-			<string>1.0.0</string>
+			<string>20110102</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -101,6 +101,16 @@
 			<string>AndrewPouliot</string>
 			<key>DefaultValue</key>
 			<string>http://darknoon.com</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>P Mark Anderson</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>PMarkAnderson</string>
+			<key>DefaultValue</key>
+			<string>http://spotmetrix.com</string>
 		</dict>
 		<dict>
 			<key>Title</key>
