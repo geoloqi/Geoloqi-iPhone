@@ -36,7 +36,7 @@
 @synthesize spinner;
 
 static SHKActivityIndicator *currentIndicator = nil;
-
+static SHKActivityIndicator *topIndicator = nil;
 
 + (SHKActivityIndicator *)currentIndicator
 {
@@ -72,6 +72,42 @@ static SHKActivityIndicator *currentIndicator = nil;
 	}
 	
 	return currentIndicator;
+}
+
++ (SHKActivityIndicator *)topIndicator
+{
+	if (topIndicator == nil)
+	{
+		UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+		
+		CGFloat width = 160;
+		CGFloat height = 160;
+		CGRect centeredFrame = CGRectMake(round(keyWindow.bounds.size.width/2 - width/2),
+										  round(keyWindow.bounds.size.height*0.35 - height/2),
+										  width,
+										  height);
+		
+		topIndicator = [[SHKActivityIndicator alloc] initWithFrame:centeredFrame];
+		
+		topIndicator.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+		topIndicator.opaque = NO;
+		topIndicator.alpha = 0;
+		
+		topIndicator.layer.cornerRadius = 10;
+		
+		topIndicator.userInteractionEnabled = NO;
+		topIndicator.autoresizesSubviews = YES;
+		topIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |  UIViewAutoresizingFlexibleTopMargin |  UIViewAutoresizingFlexibleBottomMargin;
+		
+		[topIndicator setProperRotation:NO];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:topIndicator
+												 selector:@selector(setProperRotation)
+													 name:UIDeviceOrientationDidChangeNotification
+												   object:nil];
+	}
+	
+	return topIndicator;
 }
 
 #pragma mark -

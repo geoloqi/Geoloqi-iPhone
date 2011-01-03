@@ -43,6 +43,7 @@
 
 
 + (SHKActivityIndicator *)currentIndicator;
++ (SHKActivityIndicator *)topIndicator;
 
 - (void)show;
 - (void)hideAfterDelay;
