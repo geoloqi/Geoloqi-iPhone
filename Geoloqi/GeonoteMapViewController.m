@@ -45,10 +45,10 @@
         self.geonote.location = [[Geoloqi sharedInstance] currentLocation];
 	
     self.navigationItem.titleView = searchBar;
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolbarLocate.png"]
-                                                                               style:UIBarButtonItemStylePlain
-                                                                              target:self
-                                                                              action:@selector(tappedLocate:)] autorelease];
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolbarLocate.png"]
+																			  style:UIBarButtonItemStylePlain
+																			 target:self
+																			 action:@selector(tappedLocate:)] autorelease];
 
 	// Observe the map for location updates
 	[mapView.userLocation addObserver:self  
@@ -244,6 +244,11 @@
             }
         }
     }
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+	[searchBar resignFirstResponder];
 }
 
 #pragma mark -
