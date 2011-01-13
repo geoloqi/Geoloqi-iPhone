@@ -18,10 +18,16 @@
 	bool firstLoad;
 	LQHTTPRequestCallback historyLoadedCallback;
 	UIView *anonymousBanner;
+	UIView *controlBanner;
 	UIButton *anonymousSignUpButton;
+	IBOutlet UISwitch *trackingToggleSwitch;
+	IBOutlet UIButton *checkInButton;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *map;
+@property (nonatomic, retain) IBOutlet UIView *controlBanner;
+@property (nonatomic, retain) IBOutlet UIButton *checkInButton;
+@property (nonatomic, retain) IBOutlet UISwitch *trackingToggleSwitch;
 @property (nonatomic, retain) IBOutlet UIView *anonymousBanner;
 @property (nonatomic, retain) IBOutlet UIButton *anonymousSignUpButton;
 @property (nonatomic, retain) IBOutlet UIViewController *signUpViewController;
@@ -30,5 +36,9 @@
 - (void)reloadMapHistory;
 - (LQHTTPRequestCallback)historyLoadedCallback;
 - (IBAction)signUp;
+
+- (void)toggleTracking:(UISwitch *)sender;
+- (IBAction)checkInButtonWasTapped:(UIButton *)button;
+- (void)updateCheckinButtonState;
 
 @end

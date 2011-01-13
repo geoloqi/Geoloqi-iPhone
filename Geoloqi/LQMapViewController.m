@@ -17,8 +17,8 @@
 @implementation LQMapViewController
 
 @synthesize map;
-@synthesize anonymousBanner;
-@synthesize anonymousSignUpButton;
+@synthesize controlBanner, trackingToggleSwitch, checkInButton;
+@synthesize anonymousBanner, anonymousSignUpButton;
 @synthesize signUpViewController;
 
 /*
@@ -49,13 +49,16 @@
 													 name:LQAuthenticationSucceededNotification
 												   object:nil];
 	}
+
+	[self.view addSubview:self.controlBanner];
+	[self.controlBanner setCenter:(CGPoint){160.0, 64.0}];
 	
 	// If the user is anonymous, show a banner
 	if( YES ){
 		UIImage *stretImg = [[UIImage imageNamed:@"anonButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
 		[self.anonymousSignUpButton setBackgroundImage:stretImg forState:UIControlStateNormal];
 		[self.view addSubview:self.anonymousBanner];
-		[self.anonymousBanner setCenter:(CGPoint){160.0, 64.0}];
+		[self.anonymousBanner setCenter:(CGPoint){160.0, 104.0}];
 	}
 	
 	// Observe our own location manager for updates
@@ -79,12 +82,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.anonymousBanner.hidden = ![GeoloqiAppDelegate isUserAnonymous];
+	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
+	[self updateCheckinButtonState];
 }
 
 - (void)reloadMapHistory {
 	[[Geoloqi sharedInstance] loadHistory:[NSDictionary dictionaryWithObjectsAndKeys:
 										   @"200", @"count",
-										   @"3", @"thinning",
+//										   @"3", @"thinning",
 										   nil]
 								 callback:[self historyLoadedCallback]];
 }
@@ -251,10 +256,40 @@
 							animated:YES];
 }
 
+- (void)toggleTracking:(UISwitch *)sender {
+	if(sender.on){
+		[[Geoloqi sharedInstance] startLocationUpdates];
+	}else{
+		[[Geoloqi sharedInstance] stopLocationUpdates];
+	}
+	[self updateCheckinButtonState];
+}
+
+- (void)updateCheckinButtonState {
+	if([[Geoloqi sharedInstance] locationUpdatesState]) {
+		// Disable the "send now" button, it will be enabled when a new location point has been received
+		checkInButton.enabled = NO;
+		[checkInButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
+	} else {
+		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
+		checkInButton.enabled = YES;
+		[checkInButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
+	}
+}
+
+- (IBAction)checkInButtonWasTapped:(UIButton *)button {
+	// If passive location updates are off, get the user's location and send a single point
+	[[Geoloqi sharedInstance] singleLocationUpdate];
+}
+
+
 - (void)dealloc {
 	[lineView release];
 	[line release];
 	[map release];
+	[controlBanner release];
+	[checkInButton release];
+	[trackingToggleSwitch release];
 	[anonymousBanner release];
 	[anonymousSignUpButton release];
 	[historyLoadedCallback release];
