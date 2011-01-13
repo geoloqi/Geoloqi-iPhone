@@ -246,9 +246,9 @@
     }
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+- (void)searchBarCancelButtonClicked:(UISearchBar *)bar
 {
-	[searchBar resignFirstResponder];
+	[bar resignFirstResponder];
 }
 
 #pragma mark -

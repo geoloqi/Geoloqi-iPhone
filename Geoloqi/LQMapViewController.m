@@ -63,6 +63,12 @@
 											 selector:@selector(locationUpdated:)
 												 name:LQLocationUpdateManagerDidUpdateLocationNotification
 											   object:nil];
+
+	// Observe the single location manager for updates
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(singleLocationUpdated:)
+												 name:LQLocationUpdateManagerDidUpdateSingleLocationNotification
+											   object:nil];
 	
 	// Observe the map for location updates
 	[map.userLocation addObserver:self  
@@ -155,16 +161,31 @@
 	NSLog(@"Failed to get most recent 200 points: %@", [request error]);
 }
 
-// This method is called when our internal location manager receives a new point
-- (void)locationUpdated:(NSNotification *)theNotification {
-	CLLocation *newLoc = [[Geoloqi sharedInstance] currentLocation];
-
+- (void)updateLocationOnMap:(CLLocation *)loc {
+	if(firstLoad)
+    {
+        [self zoomMapToLocation:loc];
+		firstLoad = NO;
+    }
+	
 	// add new location to polyline
-	MKMapRect updateRect = [line addCoordinate:newLoc.coordinate];
+	MKMapRect updateRect = [line addCoordinate:loc.coordinate];
 	if (!MKMapRectIsNull(updateRect)) {
 		//NSLog(@"Setting needs display in %@ on %@", MKStringFromMapRect(updateRect), lineView);
 		[lineView setNeedsDisplayInMapRect:updateRect];
 	}
+}
+
+// This method is called when our internal location manager receives a new point
+- (void)locationUpdated:(NSNotification *)theNotification {
+	CLLocation *newLoc = [[Geoloqi sharedInstance] currentLocation];
+	[self updateLocationOnMap:newLoc];
+}
+
+// This method is called when our internal location manager receives a new point
+- (void)singleLocationUpdated:(NSNotification *)theNotification {
+	CLLocation *newLoc = [[Geoloqi sharedInstance] currentSingleLocation];
+	[self updateLocationOnMap:newLoc];
 }
 
 // When the map view receives its location, this method is called
@@ -176,8 +197,8 @@
 
 	if(firstLoad && map.userLocation)
     {
-        [self zoomMapToLocation:map.userLocation.location];
-		firstLoad = NO;
+        //[self zoomMapToLocation:map.userLocation.location];
+		//firstLoad = NO;
     }
 }
 
