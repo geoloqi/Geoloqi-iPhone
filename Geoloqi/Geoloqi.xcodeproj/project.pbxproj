@@ -83,6 +83,13 @@
 		0F019029129F423D001508D9 /* LQLayerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F019027129F423D001508D9 /* LQLayerDetailViewController.m */; };
 		0F01902A129F423D001508D9 /* LQLayerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F019028129F423D001508D9 /* LQLayerDetailViewController.xib */; };
 		0F0190F112A07A9E001508D9 /* LQLayerNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */; };
+		0F0E236A12DFDE5100EF1AC7 /* CustomUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */; };
+		0F0E236E12E0E95900EF1AC7 /* switch_red_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */; };
+		0F0E236F12E0E95900EF1AC7 /* switch_red_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */; };
+		0F0E237012E0E95900EF1AC7 /* switch_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236D12E0E95900EF1AC7 /* switch_red.png */; };
+		0F0E245612E1040300EF1AC7 /* switch_dark_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E245312E1040300EF1AC7 /* switch_dark_off.png */; };
+		0F0E245712E1040300EF1AC7 /* switch_dark_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E245412E1040300EF1AC7 /* switch_dark_on.png */; };
+		0F0E245812E1040300EF1AC7 /* switch_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E245512E1040300EF1AC7 /* switch_dark.png */; };
 		0F130BDB12BE9AF200FBC2B5 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F130BDA12BE9AF200FBC2B5 /* PullRefreshTableViewController.m */; };
 		0F130BEC12BE9B1A00FBC2B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F130BEB12BE9B1A00FBC2B5 /* QuartzCore.framework */; };
 		0F130D1D12BEB62400FBC2B5 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F130D1C12BEB62400FBC2B5 /* arrow.png */; };
@@ -331,6 +338,14 @@
 		0F019028129F423D001508D9 /* LQLayerDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQLayerDetailViewController.xib; sourceTree = "<group>"; };
 		0F0190EF12A07A9E001508D9 /* LQLayerNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLayerNavigationController.h; sourceTree = "<group>"; };
 		0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLayerNavigationController.m; sourceTree = "<group>"; };
+		0F0E236812DFDE5100EF1AC7 /* CustomUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISwitch.h; sourceTree = "<group>"; };
+		0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISwitch.m; sourceTree = "<group>"; };
+		0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red_off.png; sourceTree = "<group>"; };
+		0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red_on.png; sourceTree = "<group>"; };
+		0F0E236D12E0E95900EF1AC7 /* switch_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red.png; sourceTree = "<group>"; };
+		0F0E245312E1040300EF1AC7 /* switch_dark_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_dark_off.png; sourceTree = "<group>"; };
+		0F0E245412E1040300EF1AC7 /* switch_dark_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_dark_on.png; sourceTree = "<group>"; };
+		0F0E245512E1040300EF1AC7 /* switch_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_dark.png; sourceTree = "<group>"; };
 		0F130BD912BE9AF200FBC2B5 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
 		0F130BDA12BE9AF200FBC2B5 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		0F130BEB12BE9B1A00FBC2B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -917,6 +932,21 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		0F0E236712DFDE2A00EF1AC7 /* CustomUISwitch */ = {
+			isa = PBXGroup;
+			children = (
+				0F0E245312E1040300EF1AC7 /* switch_dark_off.png */,
+				0F0E245412E1040300EF1AC7 /* switch_dark_on.png */,
+				0F0E245512E1040300EF1AC7 /* switch_dark.png */,
+				0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */,
+				0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */,
+				0F0E236D12E0E95900EF1AC7 /* switch_red.png */,
+				0F0E236812DFDE5100EF1AC7 /* CustomUISwitch.h */,
+				0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */,
+			);
+			name = CustomUISwitch;
+			sourceTree = "<group>";
+		};
 		0F130BD512BE9ACD00FBC2B5 /* PullRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -1014,6 +1044,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0F0E236712DFDE2A00EF1AC7 /* CustomUISwitch */,
 				0FC583DE12CDBC6D00238518 /* Blue Button */,
 				0F01830D1294E105001508D9 /* Settings.bundle */,
 				49EB2259125D7F7800EDFAB1 /* Tab Bar */,
@@ -1354,6 +1385,12 @@
 				0FC5856812D10AE500238518 /* anonButton.png in Resources */,
 				0FC5856912D10AE500238518 /* anonButton@2x.png in Resources */,
 				0FC585C612D111C800238518 /* LQMapSignUpViewController.xib in Resources */,
+				0F0E236E12E0E95900EF1AC7 /* switch_red_off.png in Resources */,
+				0F0E236F12E0E95900EF1AC7 /* switch_red_on.png in Resources */,
+				0F0E237012E0E95900EF1AC7 /* switch_red.png in Resources */,
+				0F0E245612E1040300EF1AC7 /* switch_dark_off.png in Resources */,
+				0F0E245712E1040300EF1AC7 /* switch_dark_on.png in Resources */,
+				0F0E245812E1040300EF1AC7 /* switch_dark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1469,6 +1506,7 @@
 				0FC5482512C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m in Sources */,
 				0FC583B312CDB46700238518 /* BlueButton.m in Sources */,
 				0FC585C512D111C800238518 /* LQMapSignUpViewController.m in Sources */,
+				0F0E236A12DFDE5100EF1AC7 /* CustomUISwitch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

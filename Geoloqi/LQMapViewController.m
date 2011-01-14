@@ -13,6 +13,7 @@
 #import "LQMutablePolylineView.h"
 #import "ASIHTTPRequest.h"
 #import "CJSONDeserializer.h"
+#import "CustomUISwitch.h"
 
 @implementation LQMapViewController
 
@@ -51,16 +52,26 @@
 	}
 
 	[self.view addSubview:self.controlBanner];
-	[self.controlBanner setCenter:(CGPoint){160.0, 64.0}];
+	[self.controlBanner setCenter:(CGPoint){160.0, 20.0}];
 	
+	CustomUISwitch *toggleSwitch = [[CustomUISwitch alloc] initWithImageNamed:@"switch_dark.png"
+															 withOnImageNamed:@"switch_dark_on.png"
+															withOffImageNamed:@"switch_dark_off.png"];
+	[toggleSwitch setCenter:(CGPoint){266.0, 21.0}];
+	[self.controlBanner addSubview: toggleSwitch];
+	[toggleSwitch release];
+	
+	UIImage *stretImg = [[UIImage imageNamed:@"anonButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+
 	// If the user is anonymous, show a banner
 	if( YES ){
-		UIImage *stretImg = [[UIImage imageNamed:@"anonButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
 		[self.anonymousSignUpButton setBackgroundImage:stretImg forState:UIControlStateNormal];
 		[self.view addSubview:self.anonymousBanner];
-		[self.anonymousBanner setCenter:(CGPoint){160.0, 104.0}];
+		[self.anonymousBanner setCenter:(CGPoint){160.0, 60.0}];
 	}
-	
+
+	[self.checkInButton setBackgroundImage:stretImg forState:UIControlStateNormal];
+
 	// Observe our own location manager for updates
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(locationUpdated:)
