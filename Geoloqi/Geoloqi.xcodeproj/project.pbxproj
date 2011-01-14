@@ -90,6 +90,9 @@
 		0F0E245612E1040300EF1AC7 /* switch_dark_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E245312E1040300EF1AC7 /* switch_dark_off.png */; };
 		0F0E245712E1040300EF1AC7 /* switch_dark_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E245412E1040300EF1AC7 /* switch_dark_on.png */; };
 		0F0E245812E1040300EF1AC7 /* switch_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E245512E1040300EF1AC7 /* switch_dark.png */; };
+		0F0E247812E10D2900EF1AC7 /* checkinButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E247712E10D2900EF1AC7 /* checkinButton.png */; };
+		0F0E249912E10FF700EF1AC7 /* title-bar-bkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E249812E10FF700EF1AC7 /* title-bar-bkg.png */; };
+		0F0E24AE12E1127100EF1AC7 /* checkinButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E24AD12E1127100EF1AC7 /* checkinButtonDisabled.png */; };
 		0F130BDB12BE9AF200FBC2B5 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F130BDA12BE9AF200FBC2B5 /* PullRefreshTableViewController.m */; };
 		0F130BEC12BE9B1A00FBC2B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F130BEB12BE9B1A00FBC2B5 /* QuartzCore.framework */; };
 		0F130D1D12BEB62400FBC2B5 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F130D1C12BEB62400FBC2B5 /* arrow.png */; };
@@ -346,6 +349,9 @@
 		0F0E245312E1040300EF1AC7 /* switch_dark_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_dark_off.png; sourceTree = "<group>"; };
 		0F0E245412E1040300EF1AC7 /* switch_dark_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_dark_on.png; sourceTree = "<group>"; };
 		0F0E245512E1040300EF1AC7 /* switch_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_dark.png; sourceTree = "<group>"; };
+		0F0E247712E10D2900EF1AC7 /* checkinButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkinButton.png; sourceTree = "<group>"; };
+		0F0E249812E10FF700EF1AC7 /* title-bar-bkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-bar-bkg.png"; sourceTree = "<group>"; };
+		0F0E24AD12E1127100EF1AC7 /* checkinButtonDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkinButtonDisabled.png; sourceTree = "<group>"; };
 		0F130BD912BE9AF200FBC2B5 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
 		0F130BDA12BE9AF200FBC2B5 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		0F130BEB12BE9B1A00FBC2B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1056,6 +1062,8 @@
 				0FF3B50E128E375100958BCA /* ToolbarLocate.png */,
 				0FC5856612D10AE500238518 /* anonButton.png */,
 				0FC5856712D10AE500238518 /* anonButton@2x.png */,
+				0F0E247712E10D2900EF1AC7 /* checkinButton.png */,
+				0F0E24AD12E1127100EF1AC7 /* checkinButtonDisabled.png */,
 				0F7F32E412CD47270009CB1C /* 07-map-marker.png */,
 				0F7F32E512CD47270009CB1C /* 07-map-marker@2x.png */,
 				0F7F32F112CD4C5F0009CB1C /* 07-map-marker-shadow.png */,
@@ -1066,6 +1074,7 @@
 				49EB224A125D7F7100EDFAB1 /* signin-btn.png */,
 				49EB224B125D7F7100EDFAB1 /* small-btn@2x.png */,
 				49EB224C125D7F7100EDFAB1 /* small-btn.png */,
+				0F0E249812E10FF700EF1AC7 /* title-bar-bkg.png */,
 				0F7F330F12CD5E390009CB1C /* title-bar-logo.png */,
 				0F4E20E112B48193001C6856 /* title-bar-logo@2x.png */,
 				DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */,
@@ -1391,6 +1400,9 @@
 				0F0E245612E1040300EF1AC7 /* switch_dark_off.png in Resources */,
 				0F0E245712E1040300EF1AC7 /* switch_dark_on.png in Resources */,
 				0F0E245812E1040300EF1AC7 /* switch_dark.png in Resources */,
+				0F0E247812E10D2900EF1AC7 /* checkinButton.png in Resources */,
+				0F0E249912E10FF700EF1AC7 /* title-bar-bkg.png in Resources */,
+				0F0E24AE12E1127100EF1AC7 /* checkinButtonDisabled.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -57,20 +57,23 @@
 	CustomUISwitch *toggleSwitch = [[CustomUISwitch alloc] initWithImageNamed:@"switch_dark.png"
 															 withOnImageNamed:@"switch_dark_on.png"
 															withOffImageNamed:@"switch_dark_off.png"];
-	[toggleSwitch setCenter:(CGPoint){266.0, 21.0}];
+	[toggleSwitch setCenter:(CGPoint){266.0, 22.0}];
 	[self.controlBanner addSubview: toggleSwitch];
 	[toggleSwitch release];
 	
-	UIImage *stretImg = [[UIImage imageNamed:@"anonButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
-
 	// If the user is anonymous, show a banner
 	if( YES ){
+		UIImage *stretImg = [[UIImage imageNamed:@"anonButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
 		[self.anonymousSignUpButton setBackgroundImage:stretImg forState:UIControlStateNormal];
 		[self.view addSubview:self.anonymousBanner];
-		[self.anonymousBanner setCenter:(CGPoint){160.0, 60.0}];
+		[self.anonymousBanner setCenter:(CGPoint){160.0, 62.0}];
 	}
 
-	[self.checkInButton setBackgroundImage:stretImg forState:UIControlStateNormal];
+	UIImage *checkinBtnImg = [[UIImage imageNamed:@"checkinButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+	[self.checkInButton setBackgroundImage:checkinBtnImg forState:UIControlStateNormal];
+	UIImage *checkinBtnDisabledImg = [[UIImage imageNamed:@"checkinButtonDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+	[self.checkInButton setBackgroundImage:checkinBtnDisabledImg forState:UIControlStateDisabled];
+	[self.checkInButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 
 	// Observe our own location manager for updates
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -280,11 +283,11 @@
 	if([[Geoloqi sharedInstance] locationUpdatesState]) {
 		// Disable the "send now" button, it will be enabled when a new location point has been received
 		checkInButton.enabled = NO;
-		[checkInButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
+		[checkInButton setTitleColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0] forState:UIControlStateNormal];
 	} else {
 		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
 		checkInButton.enabled = YES;
-		[checkInButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
+		[checkInButton setTitleColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
 	}
 }
 
