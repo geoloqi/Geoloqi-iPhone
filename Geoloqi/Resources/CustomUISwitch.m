@@ -15,6 +15,8 @@
 #define RECT_FOR_ON			CGRectMake(0.0, 0.0, SWITCH_WIDTH, SWITCH_HEIGHT)
 #define RECT_FOR_HALFWAY	CGRectMake(-27.5, 0.0, SWITCH_WIDTH, SWITCH_HEIGHT)
 
+#define SWITCH_ANIMATION_DURATION_MS	0.1
+
 @interface CustomUISwitch ()
 @property (nonatomic, retain, readwrite) UIImageView* backgroundImage;
 @property (nonatomic, retain, readwrite) UIImageView* switchImage;
@@ -29,6 +31,10 @@
 @synthesize switchImage = _switchImage;
 @synthesize delegate = _delegate;
 
+@synthesize _switchImageName;
+@synthesize _switchOnImageName;
+@synthesize _switchOffImageName;
+
 /**
  * Destructor
  */
@@ -36,16 +42,25 @@
 {
 	[_backgroundImage release];
 	[_switchImage release];
+	[_switchImageName release];
+	[_switchOnImageName release];
+	[_switchOffImageName release];
 	[super dealloc];
 }
 
 /** 
  * Constructor
  */
-- (id)initWithFrame:(CGRect)frame 
+- (id)initWithImageNamed:(NSString *)switchImageName
+		withOnImageNamed:(NSString *)switchOnImageName
+	   withOffImageNamed:(NSString *)switchOffImageName
 {
-    if (self = [super initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, SWITCH_DISPLAY_WIDTH, SWITCH_HEIGHT)]) 
+    if(self = [super initWithFrame:CGRectMake(0.0, 0.0, SWITCH_DISPLAY_WIDTH, SWITCH_HEIGHT)])
 	{
+		self._switchImageName = switchImageName;
+		self._switchOnImageName = switchOnImageName;
+		self._switchOffImageName = switchOffImageName;
+
 		_on = YES;
 		_hitCount = 0;
 		
@@ -67,7 +82,7 @@
 {
 	// Background image
 	UIImageView* bg = [[UIImageView alloc] initWithFrame:RECT_FOR_ON];
-	bg.image = [UIImage imageNamed:@"switch_on.png"];
+	bg.image = [UIImage imageNamed:self._switchOnImageName];
 	bg.backgroundColor = [UIColor clearColor];
 	bg.contentMode = UIViewContentModeLeft;
 	self.backgroundImage = bg;
@@ -75,7 +90,7 @@
 	
 	// Switch image
 	UIImageView* foreground = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, SWITCH_WIDTH, SWITCH_HEIGHT)];
-	foreground.image = [UIImage imageNamed:@"switch.png"];
+	foreground.image = [UIImage imageNamed:self._switchImageName];
 	foreground.contentMode = UIViewContentModeLeft;
 	self.switchImage = foreground;
 	[foreground release];
@@ -103,12 +118,12 @@
 	if (_on)
 	{
 		self.switchImage.frame = RECT_FOR_ON;
-		self.backgroundImage.image = [UIImage imageNamed:@"switch_on.png"];
+		self.backgroundImage.image = [UIImage imageNamed:self._switchOnImageName];
 	}
 	else
 	{
 		self.switchImage.frame = RECT_FOR_OFF;
-		self.backgroundImage.image = [UIImage imageNamed:@"switch_off.png"];
+		self.backgroundImage.image = [UIImage imageNamed:self._switchOffImageName];
 	}
 }
 
@@ -153,24 +168,24 @@
 - (void)animateSwitch:(BOOL)toOn
 {
 	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:0.1];
+	[UIView setAnimationDuration:SWITCH_ANIMATION_DURATION_MS];
 	
 	self.switchImage.frame = RECT_FOR_HALFWAY;
 	
 	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:0.1];
+	[UIView setAnimationDuration:SWITCH_ANIMATION_DURATION_MS];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationHasFinished:finished:context:)];
 	
 	if (toOn)
 	{
 		self.switchImage.frame = RECT_FOR_ON;
-		self.backgroundImage.image = [UIImage imageNamed:@"switch_on.png"];
+		self.backgroundImage.image = [UIImage imageNamed:self._switchOnImageName];
 	}
 	else
 	{
 		self.switchImage.frame = RECT_FOR_OFF;
-		self.backgroundImage.image = [UIImage imageNamed:@"switch_off.png"];
+		self.backgroundImage.image = [UIImage imageNamed:self._switchOffImageName];
 	}
 	[UIView commitAnimations];
 	

@@ -18,11 +18,23 @@
 	NSInteger _hitCount;
 	UIImageView* _backgroundImage;
 	UIImageView* _switchImage;
+	
+	NSString* _switchImageName;
+	NSString* _switchOnImageName;
+	NSString* _switchOffImageName;
 }
 
 @property (nonatomic, assign, readwrite) id delegate;
 
-- (id)initWithFrame:(CGRect)frame;              // This class enforces a size appropriate for the control. The frame size is ignored.
+@property (nonatomic, retain) NSString* _switchImageName;
+@property (nonatomic, retain) NSString* _switchOnImageName;
+@property (nonatomic, retain) NSString* _switchOffImageName;
+
+//- (id)initWithFrame:(CGRect)frame;              // This class enforces a size appropriate for the control. The frame size is ignored.
+
+- (id)initWithImageNamed:(NSString *)switchImageName
+		withOnImageNamed:(NSString *)switchOnImageName
+	   withOffImageNamed:(NSString *)switchOffImageName;
 
 - (void)setOn:(BOOL)on animated:(BOOL)animated; // does not send action
 - (BOOL)isOn;
