@@ -75,7 +75,7 @@
 	[gAppDelegate makeLQButton:shareBtnCopy];
 	
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
-	
+		
     [super viewDidLoad];
 }
 
@@ -116,13 +116,15 @@
 }
 
 /*
- * Hide the keyboard when the user presses "done". I can't believe this isn't built into the OS...
+ * Hide the keyboard when the user presses "Done". This also means it's impossible to type a newline into the box.
  */
--(IBAction)textFieldReturn:(id)sender
-{
-	[sender resignFirstResponder];
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+	if ([text isEqual:@"\n"]) {
+		[self.shareDescriptionField resignFirstResponder];
+		return NO;
+	}
+	return YES;
 }
-
 /*
  * Hide the keyboard when the user taps the background
  */
@@ -188,6 +190,7 @@
 	  didSelectRow:(NSInteger)row 
 	   inComponent:(NSInteger)component {
 	
+	[self.shareDescriptionField resignFirstResponder];
 	selectedMinutes = [durationMinutes objectAtIndex:row];
 }
 
