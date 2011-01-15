@@ -13,6 +13,7 @@
 #import "LQMutablePolylineView.h"
 #import "ASIHTTPRequest.h"
 #import "CJSONDeserializer.h"
+#import "LQShareViewController.h"
 
 @implementation LQMapViewController
 
@@ -299,6 +300,12 @@
 - (IBAction)checkInButtonWasTapped:(UIButton *)button {
 	// If passive location updates are off, get the user's location and send a single point
 	[[Geoloqi sharedInstance] singleLocationUpdate];
+}
+
+- (IBAction)shareButtonWasTapped:(UIButton *)button {
+	UIViewController *shareView = [[LQShareViewController alloc] init];
+	[self presentModalViewController:shareView animated:YES];
+
 }
 
 

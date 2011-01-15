@@ -74,6 +74,8 @@
 	[gAppDelegate makeLQButton:shareBtnFacebook];
 	[gAppDelegate makeLQButton:shareBtnCopy];
 	
+	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
+	
     [super viewDidLoad];
 }
 
@@ -178,6 +180,9 @@
 	} copy];
 }
 
+- (IBAction)cancelWasTapped {
+	[self.parentViewController dismissModalViewControllerAnimated:YES];
+}
 
 - (void)pickerView:(UIPickerView *)pickerView 
 	  didSelectRow:(NSInteger)row 

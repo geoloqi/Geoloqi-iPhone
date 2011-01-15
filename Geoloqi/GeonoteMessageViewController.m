@@ -36,6 +36,8 @@
 	[blueSendButton addTarget:self action:@selector(tappedFinish:) forControlEvents:UIControlEventTouchUpInside];
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:blueSendButton] autorelease];
 	[blueSendButton release];
+	
+	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
 }
 
 - (void)dealloc

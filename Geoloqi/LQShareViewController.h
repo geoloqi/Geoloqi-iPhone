@@ -32,6 +32,7 @@
 - (IBAction)tappedShare:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 - (IBAction)backgroundTouched:(id)sender;
+- (IBAction)cancelWasTapped;
 //- (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes;
 
 @end

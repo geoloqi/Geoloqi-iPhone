@@ -173,7 +173,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 			<object class="IBUISearchBar" id="322858614">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">290</int>
-				<string key="NSFrame">{{0, 9}, {273, 44}}</string>
+				<string key="NSFrameSize">{273, 44}</string>
 				<reference key="NSSuperview"/>
 				<int key="IBUIContentMode">3</int>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -186,9 +186,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<object class="IBUITextInputTraits" key="IBTextInputTraits">
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				</object>
-				<object class="NSArray" key="IBScopeButtonTitles">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-				</object>
+				<reference key="IBScopeButtonTitles" ref="0"/>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -376,7 +374,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<bytes key="NSTransformStruct">P4AAAL+AAADB6AAAw1kAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{324, 555}, {273, 53}}</string>
+					<string>{{324, 555}, {273, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">

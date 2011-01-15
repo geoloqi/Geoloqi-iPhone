@@ -50,13 +50,15 @@ enum {
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+
+	[self.table setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
 	
 	// Load from defaults
 	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState];
 
 	// hide the spinner at first
 	sendingActivityIndicator.hidden = YES;
-	
+
 	[self updateButtonStates];
 
 	NSDictionary *sliderMappings = [NSDictionary dictionaryWithContentsOfFile:
@@ -525,6 +527,45 @@ enum {
 			return nil;
 	}
 }
+
+/********************************************************************************
+ * Customize the table group label colors. There is no way to do this with
+ * the built in label, so you have to make a separate view for the header
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if ([self tableView:tableView titleForHeaderInSection:section] != nil) {
+        return 36;
+    }
+    else {
+        // If no section header title, no section header needed
+        return 0;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
+    if (sectionTitle == nil) {
+        return nil;
+    }
+	
+    // Create label with section title
+    UILabel *label = [[[UILabel alloc] init] autorelease];
+    label.frame = CGRectMake(20, 6, 300, 30);
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.shadowColor = [UIColor blackColor];
+    label.shadowOffset = CGSizeMake(0.0, -1.0);
+    label.font = [UIFont boldSystemFontOfSize:16];
+    label.text = sectionTitle;
+	
+    // Create header view and add label as a subview
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
+    [view autorelease];
+    [view addSubview:label];
+	
+    return view;
+}
+/********************************************************************************/
 
 #pragma mark -
 

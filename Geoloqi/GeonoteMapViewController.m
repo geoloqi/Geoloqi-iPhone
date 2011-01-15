@@ -34,7 +34,9 @@
     [super viewDidLoad];
 
 	//self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-
+	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
+	[gAppDelegate makeLQButton:self.nextButton];
+	
 	firstLoad = YES;
 	firstNote = YES;
 	

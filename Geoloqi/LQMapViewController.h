@@ -41,6 +41,7 @@
 - (IBAction)signUp;
 
 - (void)toggleTracking:(UISwitch *)sender;
+- (IBAction)shareButtonWasTapped:(UIButton *)button;
 - (IBAction)checkInButtonWasTapped:(UIButton *)button;
 - (void)updateCheckinButtonState;
 
