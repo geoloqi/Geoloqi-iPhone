@@ -13,7 +13,6 @@
 #import "LQMutablePolylineView.h"
 #import "ASIHTTPRequest.h"
 #import "CJSONDeserializer.h"
-#import "CustomUISwitch.h"
 
 @implementation LQMapViewController
 
@@ -54,12 +53,12 @@
 	[self.view addSubview:self.controlBanner];
 	[self.controlBanner setCenter:(CGPoint){160.0, 20.0}];
 	
-	CustomUISwitch *toggleSwitch = [[CustomUISwitch alloc] initWithImageNamed:@"switch_dark.png"
+	trackingToggleSwitch = [[CustomUISwitch alloc] initWithImageNamed:@"switch_dark.png"
 															 withOnImageNamed:@"switch_dark_on.png"
 															withOffImageNamed:@"switch_dark_off.png"];
-	[toggleSwitch setCenter:(CGPoint){266.0, 22.0}];
-	[self.controlBanner addSubview: toggleSwitch];
-	[toggleSwitch release];
+	[trackingToggleSwitch setCenter:(CGPoint){266.0, 22.0}];
+	[self.controlBanner addSubview: trackingToggleSwitch];
+	[trackingToggleSwitch addTarget:self action:@selector(toggleTracking:) forControlEvents:UIControlEventValueChanged];
 	
 	// If the user is anonymous, show a banner
 	if( YES ){

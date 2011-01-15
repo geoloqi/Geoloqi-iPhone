@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "CustomUISwitch.h"
 
 @class LQMutablePolyline, LQMutablePolylineView;
 
@@ -20,14 +21,14 @@
 	UIView *anonymousBanner;
 	UIView *controlBanner;
 	UIButton *anonymousSignUpButton;
-	IBOutlet UISwitch *trackingToggleSwitch;
+	CustomUISwitch *trackingToggleSwitch;
 	IBOutlet UIButton *checkInButton;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *map;
 @property (nonatomic, retain) IBOutlet UIView *controlBanner;
 @property (nonatomic, retain) IBOutlet UIButton *checkInButton;
-@property (nonatomic, retain) IBOutlet UISwitch *trackingToggleSwitch;
+@property (nonatomic, retain) CustomUISwitch *trackingToggleSwitch;
 @property (nonatomic, retain) IBOutlet UIView *anonymousBanner;
 @property (nonatomic, retain) IBOutlet UIButton *anonymousSignUpButton;
 @property (nonatomic, retain) IBOutlet UIViewController *signUpViewController;
