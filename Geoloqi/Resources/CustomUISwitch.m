@@ -115,7 +115,8 @@
  */
 - (void)setOn:(BOOL)on animated:(BOOL)animated
 {
-	if (_on)
+	_on = on;
+	if (on)
 	{
 		self.switchImage.frame = RECT_FOR_ON;
 		self.backgroundImage.image = [UIImage imageNamed:self._switchOnImageName];
@@ -151,6 +152,7 @@
 		_hitCount++;
 		// Do not animate, this will happen when other animation finishes
 	}
+	[self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 /**
