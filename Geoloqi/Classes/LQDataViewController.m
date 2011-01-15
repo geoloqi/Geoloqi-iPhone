@@ -98,6 +98,9 @@ enum {
 	checkInCell.accessoryView = checkInButton;
 	checkInCell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
+	[gAppDelegate makeLQButton:checkInButton];
+	[gAppDelegate makeLQButton:sendNowButton];
+	
 	UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
 	v.backgroundColor = [UIColor clearColor];
 	coordsCell.backgroundView = v;
@@ -545,23 +548,23 @@ enum {
 
 		if ([[Geoloqi sharedInstance] locationQueueCount] > 0) {
 			sendNowButton.enabled = YES;
-			[sendNowButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
+			//[sendNowButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
 		} else {
 			sendNowButton.enabled = NO;
-			[sendNowButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
+			//[sendNowButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
 		}
 		
 		checkInButton.enabled = NO;
-		[checkInButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
+		//[checkInButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
 		
 	} else {
 		// Background location is off. Allow checkin, don't allow flushing the queue.
 		
 		sendNowButton.enabled = NO;
-		[sendNowButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
+		//[sendNowButton setTitleColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] forState:UIControlStateNormal];
 
 		checkInButton.enabled = YES;
-		[checkInButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
+		//[checkInButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
 	}
 }
 

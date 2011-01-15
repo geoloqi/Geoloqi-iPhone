@@ -19,6 +19,7 @@ GeoloqiAppDelegate *gAppDelegate;
 @synthesize window, welcomeViewController;
 @synthesize tabBarController;
 @synthesize pushHandler;
+@synthesize lqBtnImg, lqBtnDisabledImg;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -85,6 +86,9 @@ GeoloqiAppDelegate *gAppDelegate;
 //	NSLog(@"Name %@, Sys name %@, Sys version %@, Model %@, Idiom %d, Battery %f",
 //		  d.name, d.systemName, d.systemVersion, d.model, d.userInterfaceIdiom, d.batteryLevel);
 	
+	self.lqBtnImg = [[UIImage imageNamed:@"LQButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+	self.lqBtnDisabledImg = [[UIImage imageNamed:@"LQButtonDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+
     return YES;
 }
 
@@ -200,6 +204,7 @@ GeoloqiAppDelegate *gAppDelegate;
 
 
 - (void)dealloc {
+	[lqBtnImg release];
 	[pushHandler release];
     [welcomeViewController release];
     [window release];
@@ -260,6 +265,16 @@ GeoloqiAppDelegate *gAppDelegate;
 
 + (BOOL)isUserAnonymous {
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"is_anonymous"];
+}
+
+- (void)makeLQButton:(UIButton *)btn {
+	[btn setBackgroundImage:self.lqBtnImg forState:UIControlStateNormal];
+	[btn setBackgroundImage:self.lqBtnDisabledImg forState:UIControlStateDisabled];
+	[btn.titleLabel setShadowOffset:CGSizeMake(0.0, -1.0)];
+	[btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[btn setTitleShadowColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.5 alpha:1.0] forState:UIControlStateNormal];
+	[btn setTitleColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.4 alpha:1.0] forState:UIControlStateDisabled];
+	[btn setTitleShadowColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.2 alpha:1.0] forState:UIControlStateDisabled];
 }
 
 + (void)registerPresetDefaultsFromSettingsBundle {

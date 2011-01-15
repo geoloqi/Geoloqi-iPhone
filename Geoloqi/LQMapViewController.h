@@ -23,6 +23,7 @@
 	UIButton *anonymousSignUpButton;
 	CustomUISwitch *trackingToggleSwitch;
 	IBOutlet UIButton *checkInButton;
+	IBOutlet UIButton *shareButton;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *map;
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) IBOutlet UIView *anonymousBanner;
 @property (nonatomic, retain) IBOutlet UIButton *anonymousSignUpButton;
 @property (nonatomic, retain) IBOutlet UIViewController *signUpViewController;
+@property (nonatomic, retain) IBOutlet UIButton *shareButton;
 
 - (void)zoomMapToLocation:(CLLocation *)location;
 - (void)reloadMapHistory;

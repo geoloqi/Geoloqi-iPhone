@@ -20,6 +20,7 @@
 @synthesize controlBanner, trackingToggleSwitch, checkInButton;
 @synthesize anonymousBanner, anonymousSignUpButton;
 @synthesize signUpViewController;
+@synthesize shareButton;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -67,13 +68,18 @@
 		[self.view addSubview:self.anonymousBanner];
 		[self.anonymousBanner setCenter:(CGPoint){160.0, 62.0}];
 	}
-
+	
+	/*
 	UIImage *checkinBtnImg = [[UIImage imageNamed:@"checkinButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
 	[self.checkInButton setBackgroundImage:checkinBtnImg forState:UIControlStateNormal];
 	UIImage *checkinBtnDisabledImg = [[UIImage imageNamed:@"checkinButtonDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
 	[self.checkInButton setBackgroundImage:checkinBtnDisabledImg forState:UIControlStateDisabled];
 	[self.checkInButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-
+	[self.checkInButton setTitleColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.3 alpha:1.0] forState:UIControlStateDisabled];
+	 */
+	[gAppDelegate makeLQButton:self.checkInButton];
+	[gAppDelegate makeLQButton:self.shareButton];
+	
 	// Observe our own location manager for updates
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(locationUpdated:)
@@ -282,11 +288,11 @@
 	if([[Geoloqi sharedInstance] locationUpdatesState]) {
 		// Disable the "send now" button, it will be enabled when a new location point has been received
 		checkInButton.enabled = NO;
-		[checkInButton setTitleColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0] forState:UIControlStateNormal];
+		//[checkInButton setTitleColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0] forState:UIControlStateNormal];
 	} else {
 		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
 		checkInButton.enabled = YES;
-		[checkInButton setTitleColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
+		//[checkInButton setTitleColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
 	}
 }
 

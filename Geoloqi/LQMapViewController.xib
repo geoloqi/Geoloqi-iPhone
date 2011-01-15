@@ -13,9 +13,9 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="1"/>
-			<integer value="35"/>
-			<integer value="30"/>
 			<integer value="23"/>
+			<integer value="30"/>
+			<integer value="35"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -55,6 +55,35 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBMKShowsUserLocation">YES</bool>
 					</object>
+					<object class="IBUIButton" id="248032087">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{191, 364}, {119, 37}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<object class="NSFont" key="IBUIFont" id="749676860">
+							<string key="NSName">Helvetica-Bold</string>
+							<double key="NSSize">15</double>
+							<int key="NSfFlags">16</int>
+						</object>
+						<string key="IBUINormalTitle">Send Location</string>
+						<object class="NSColor" key="IBUIHighlightedTitleColor" id="135738836">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
+						</object>
+						<reference key="IBUINormalTitleColor" ref="135738836"/>
+						<object class="NSColor" key="IBUINormalTitleShadowColor" id="345601157">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MC41AA</bytes>
+						</object>
+						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">mapButton.png</string>
+						</object>
+					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
 				<reference key="NSSuperview"/>
@@ -84,10 +113,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">You are using Geoloqi anonymously.</string>
-						<object class="NSColor" key="IBUITextColor" id="135738836">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-						</object>
+						<reference key="IBUITextColor" ref="135738836"/>
 						<reference key="IBUIHighlightedColor" ref="135738836"/>
 						<object class="NSColor" key="IBUIShadowColor" id="4504155">
 							<int key="NSColorSpace">3</int>
@@ -115,10 +141,7 @@
 						<string key="IBUINormalTitle">Sign Up</string>
 						<reference key="IBUIHighlightedTitleColor" ref="135738836"/>
 						<reference key="IBUINormalTitleColor" ref="135738836"/>
-						<object class="NSColor" key="IBUINormalTitleShadowColor" id="345601157">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC41AA</bytes>
-						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="345601157"/>
 						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">anonButton.png</string>
@@ -163,11 +186,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">15</double>
-							<int key="NSfFlags">16</int>
-						</object>
+						<reference key="IBUIFont" ref="749676860"/>
 						<string key="IBUINormalTitle">Check In</string>
 						<reference key="IBUIHighlightedTitleColor" ref="135738836"/>
 						<reference key="IBUINormalTitleColor" ref="135738836"/>
@@ -321,6 +340,14 @@
 					</object>
 					<int key="connectionID">43</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">shareButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="248032087"/>
+					</object>
+					<int key="connectionID">48</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -337,6 +364,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="743225993"/>
+							<reference ref="248032087"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Main View</string>
@@ -435,6 +463,11 @@
 						<reference key="object" ref="106073849"/>
 						<reference key="parent" ref="1068133917"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">47</int>
+						<reference key="object" ref="248032087"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -464,6 +497,8 @@
 					<string>38.IBViewBoundsToFrameTransform</string>
 					<string>45.IBPluginDependency</string>
 					<string>46.IBPluginDependency</string>
+					<string>47.IBPluginDependency</string>
+					<string>47.IBViewBoundsToFrameTransform</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBViewBoundsToFrameTransform</string>
 				</object>
@@ -471,7 +506,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>LQMapViewController</string>
 					<string>UIResponder</string>
-					<string>{{420, 242}, {320, 480}}</string>
+					<string>{{317, 244}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{308, 557}, {320, 40}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -502,6 +537,10 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDNQAAw8SAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw/sAAA</bytes>
 					</object>
 				</object>
@@ -522,7 +561,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">46</int>
+			<int key="maxID">48</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -694,8 +733,8 @@
 							<string>checkInButton</string>
 							<string>controlBanner</string>
 							<string>map</string>
+							<string>shareButton</string>
 							<string>signUpViewController</string>
-							<string>trackingToggleSwitch</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -704,8 +743,8 @@
 							<string>UIButton</string>
 							<string>UIView</string>
 							<string>MKMapView</string>
+							<string>UIButton</string>
 							<string>UIViewController</string>
-							<string>UISwitch</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -717,8 +756,8 @@
 							<string>checkInButton</string>
 							<string>controlBanner</string>
 							<string>map</string>
+							<string>shareButton</string>
 							<string>signUpViewController</string>
-							<string>trackingToggleSwitch</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -743,12 +782,12 @@
 								<string key="candidateClassName">MKMapView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">signUpViewController</string>
-								<string key="candidateClassName">UIViewController</string>
+								<string key="name">shareButton</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">trackingToggleSwitch</string>
-								<string key="candidateClassName">UISwitch</string>
+								<string key="name">signUpViewController</string>
+								<string key="candidateClassName">UIViewController</string>
 							</object>
 						</object>
 					</object>
@@ -1076,11 +1115,13 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>anonButton.png</string>
 				<string>checkinButton.png</string>
+				<string>mapButton.png</string>
 				<string>title-bar-bkg.png</string>
 				<string>title-bar-logo.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{30, 30}</string>
 				<string>{30, 30}</string>
 				<string>{30, 30}</string>
 				<string>{320, 44}</string>

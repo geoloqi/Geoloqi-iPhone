@@ -83,6 +83,12 @@
 		0F019029129F423D001508D9 /* LQLayerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F019027129F423D001508D9 /* LQLayerDetailViewController.m */; };
 		0F01902A129F423D001508D9 /* LQLayerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F019028129F423D001508D9 /* LQLayerDetailViewController.xib */; };
 		0F0190F112A07A9E001508D9 /* LQLayerNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */; };
+		0F0ABA3312E213EC007792AA /* LQButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0ABA3112E213EC007792AA /* LQButton.png */; };
+		0F0ABA3412E213EC007792AA /* LQButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0ABA3212E213EC007792AA /* LQButton@2x.png */; };
+		0F0ABAB212E21F64007792AA /* LQButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0ABAB012E21F64007792AA /* LQButtonDisabled.png */; };
+		0F0ABAB312E21F64007792AA /* LQButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0ABAB112E21F64007792AA /* LQButtonDisabled@2x.png */; };
+		0F0ABB0312E22469007792AA /* spinnerBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0ABB0112E22469007792AA /* spinnerBkg.png */; };
+		0F0ABB0412E22469007792AA /* spinnerBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0ABB0212E22469007792AA /* spinnerBkg@2x.png */; };
 		0F0E236A12DFDE5100EF1AC7 /* CustomUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */; };
 		0F0E236E12E0E95900EF1AC7 /* switch_red_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */; };
 		0F0E236F12E0E95900EF1AC7 /* switch_red_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */; };
@@ -341,6 +347,12 @@
 		0F019028129F423D001508D9 /* LQLayerDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQLayerDetailViewController.xib; sourceTree = "<group>"; };
 		0F0190EF12A07A9E001508D9 /* LQLayerNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQLayerNavigationController.h; sourceTree = "<group>"; };
 		0F0190F012A07A9E001508D9 /* LQLayerNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQLayerNavigationController.m; sourceTree = "<group>"; };
+		0F0ABA3112E213EC007792AA /* LQButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQButton.png; sourceTree = "<group>"; };
+		0F0ABA3212E213EC007792AA /* LQButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LQButton@2x.png"; sourceTree = "<group>"; };
+		0F0ABAB012E21F64007792AA /* LQButtonDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQButtonDisabled.png; sourceTree = "<group>"; };
+		0F0ABAB112E21F64007792AA /* LQButtonDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LQButtonDisabled@2x.png"; sourceTree = "<group>"; };
+		0F0ABB0112E22469007792AA /* spinnerBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinnerBkg.png; sourceTree = "<group>"; };
+		0F0ABB0212E22469007792AA /* spinnerBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spinnerBkg@2x.png"; sourceTree = "<group>"; };
 		0F0E236812DFDE5100EF1AC7 /* CustomUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISwitch.h; sourceTree = "<group>"; };
 		0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISwitch.m; sourceTree = "<group>"; };
 		0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red_off.png; sourceTree = "<group>"; };
@@ -1070,10 +1082,16 @@
 				0F7F32F212CD4C5F0009CB1C /* 07-map-marker-shadow@2x.png */,
 				0F7F32EA12CD487D0009CB1C /* map-x.png */,
 				0F7F32EB12CD487D0009CB1C /* map-x@2x.png */,
+				0F0ABA3112E213EC007792AA /* LQButton.png */,
+				0F0ABA3212E213EC007792AA /* LQButton@2x.png */,
+				0F0ABAB012E21F64007792AA /* LQButtonDisabled.png */,
+				0F0ABAB112E21F64007792AA /* LQButtonDisabled@2x.png */,
 				49EB2249125D7F7100EDFAB1 /* signin-btn@2x.png */,
 				49EB224A125D7F7100EDFAB1 /* signin-btn.png */,
 				49EB224B125D7F7100EDFAB1 /* small-btn@2x.png */,
 				49EB224C125D7F7100EDFAB1 /* small-btn.png */,
+				0F0ABB0112E22469007792AA /* spinnerBkg.png */,
+				0F0ABB0212E22469007792AA /* spinnerBkg@2x.png */,
 				0F0E249812E10FF700EF1AC7 /* title-bar-bkg.png */,
 				0F7F330F12CD5E390009CB1C /* title-bar-logo.png */,
 				0F4E20E112B48193001C6856 /* title-bar-logo@2x.png */,
@@ -1403,6 +1421,12 @@
 				0F0E247812E10D2900EF1AC7 /* checkinButton.png in Resources */,
 				0F0E249912E10FF700EF1AC7 /* title-bar-bkg.png in Resources */,
 				0F0E24AE12E1127100EF1AC7 /* checkinButtonDisabled.png in Resources */,
+				0F0ABA3312E213EC007792AA /* LQButton.png in Resources */,
+				0F0ABA3412E213EC007792AA /* LQButton@2x.png in Resources */,
+				0F0ABAB212E21F64007792AA /* LQButtonDisabled.png in Resources */,
+				0F0ABAB312E21F64007792AA /* LQButtonDisabled@2x.png in Resources */,
+				0F0ABB0312E22469007792AA /* spinnerBkg.png in Resources */,
+				0F0ABB0412E22469007792AA /* spinnerBkg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

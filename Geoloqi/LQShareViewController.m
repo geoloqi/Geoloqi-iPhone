@@ -52,6 +52,8 @@
 	[durationMinutes addObject:@"60"];
 	[durations addObject:@"2 hours"];
 	[durationMinutes addObject:@"120"];
+	[durations addObject:@"4 hours"];
+	[durationMinutes addObject:@"240"];
 	[durations addObject:@"8 hours"];
 	[durationMinutes addObject:@"480"];
 	[durations addObject:@"24 hours"];
@@ -65,6 +67,12 @@
 	
 	[pickerView reloadAllComponents];
 	[pickerView selectRow:2 inComponent:0 animated:NO];
+	
+	[gAppDelegate makeLQButton:shareBtnEmail];
+	[gAppDelegate makeLQButton:shareBtnSMS];
+	[gAppDelegate makeLQButton:shareBtnTwitter];
+	[gAppDelegate makeLQButton:shareBtnFacebook];
+	[gAppDelegate makeLQButton:shareBtnCopy];
 	
     [super viewDidLoad];
 }

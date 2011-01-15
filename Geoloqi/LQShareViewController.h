@@ -14,11 +14,12 @@
 	NSMutableArray *durations;
 	NSMutableArray *durationMinutes;
 	NSString *selectedMinutes;
-	IBOutlet UIButton *shareButton;
 	IBOutlet UIView *activityIndicator;
 	UITextField *shareDescriptionField;
 	NSString *sharedLinkCreated;
 	LQHTTPRequestCallback linkCreatedCallback;
+
+	IBOutlet UIButton *shareBtnEmail, *shareBtnSMS, *shareBtnTwitter, *shareBtnFacebook, *shareBtnCopy;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *shareDescriptionField;
