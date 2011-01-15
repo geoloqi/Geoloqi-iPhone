@@ -12,12 +12,12 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="139"/>
-			<integer value="39"/>
 			<integer value="137"/>
 			<integer value="15"/>
-			<integer value="127"/>
+			<integer value="138"/>
+			<integer value="39"/>
 			<integer value="98"/>
+			<integer value="127"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -144,17 +144,17 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<object class="IBUISegmentedControl" id="974172240">
 								<reference key="NSNextResponder" ref="405549221"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 2}, {300, 40}}</string>
+								<string key="NSFrameSize">{300, 30}</string>
 								<reference key="NSSuperview" ref="405549221"/>
 								<reference key="IBUIBackgroundColor" ref="999950130"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBSegmentControlStyle">3</int>
+								<int key="IBSegmentControlStyle">2</int>
 								<int key="IBNumberOfSegments">3</int>
 								<int key="IBSelectedSegmentIndex">0</int>
 								<object class="NSArray" key="IBSegmentTitles">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<string>Battery</string>
+									<string>Battery Saver</string>
 									<string>High Res</string>
 									<string>Custom</string>
 								</object>
@@ -183,12 +183,12 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 									<reference ref="4"/>
 								</object>
 								<object class="NSColor" key="IBTintColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwLjYxNDE3MjE4NjQgMC44NTcxNDI4NTcxAA</bytes>
+									<int key="NSColorSpace">2</int>
+									<bytes key="NSRGB">MC4wNjY2NjY2NjY2NyAwLjY4OTc4MTAyMTkgMC43NzczNzIyNjI4AA</bytes>
 								</object>
 							</object>
 						</object>
-						<string key="NSFrameSize">{300, 44}</string>
+						<string key="NSFrameSize">{300, 29}</string>
 						<reference key="NSSuperview" ref="938824139"/>
 						<reference key="IBUIBackgroundColor" ref="999950130"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -198,9 +198,10 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{300, 44}</string>
+				<string key="NSFrameSize">{300, 29}</string>
 				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="999950130"/>
+				<bool key="IBUIOpaque">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
 				<reference key="IBUIContentView" ref="405549221"/>
@@ -1587,7 +1588,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{761, 586}, {96, 37}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{346, 260}, {300, 44}}</string>
+					<string>{{346, 275}, {300, 29}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABC6AAAxIFgAA</bytes>

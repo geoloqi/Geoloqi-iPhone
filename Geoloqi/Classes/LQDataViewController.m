@@ -104,6 +104,7 @@ enum {
 	UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
 	v.backgroundColor = [UIColor clearColor];
 	coordsCell.backgroundView = v;
+	trackingModeCell.backgroundView = v;
 	[v release];
 	
 	// Set up long-tap-to-copy
@@ -487,7 +488,7 @@ enum {
 		case kSectionCoords:
 			return 40;
 		case kSectionTrackingMode:
-			return 44;
+			return 29;
 		case kSectionAdvanced:
 			switch (indexPath.row) {
 				case 0:
