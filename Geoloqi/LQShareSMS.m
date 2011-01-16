@@ -17,7 +17,7 @@
 	
 	Class messageClass = (NSClassFromString(@"MFMessageComposeViewController"));
 	if (messageClass != nil) {
-		// We must always check whether the current device is configured for sending emails
+		// We must always check whether the current device is configured for sending SMSs
 		if([MFMessageComposeViewController canSendText]) {
 			MFMessageComposeViewController *mailer = [[MFMessageComposeViewController alloc] init];
 			mailer.messageComposeDelegate = self;

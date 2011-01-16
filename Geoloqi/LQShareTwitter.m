@@ -14,7 +14,8 @@
 @synthesize shareView;
 
 - (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
-	self.shareView = [[LQShareTwitterViewController alloc] init];
+	NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
+	self.shareView = [[LQShareTwitterViewController alloc] initWithMessage:body];
 	self.shareView.delegate = self;
 	[self presentModalViewController:shareView];
 }
