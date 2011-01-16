@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "LQShareService.h"
+#import "LQShareTwitterViewController.h"
 
-
-@interface LQShareTwitter : LQShareService {
+@interface LQShareTwitter : LQShareService <LQShareTwitterDelegate> {
+	LQShareTwitterViewController *shareView;
 }
+
+@property (nonatomic, retain) LQShareTwitterViewController *shareView;
 
 @end

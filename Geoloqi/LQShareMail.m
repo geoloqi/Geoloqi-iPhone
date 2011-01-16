@@ -23,8 +23,8 @@
 		// Fill out the email body text
 		[mailer setMessageBody:[message stringByAppendingFormat:@" %@", [url absoluteString]] 
 						isHTML:NO];
-		
-		[self.controller presentModalViewController:mailer animated:YES];
+
+		[self presentModalViewController:mailer];
 		[mailer release];
 	}
 	else

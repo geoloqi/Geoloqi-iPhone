@@ -24,6 +24,10 @@
 
 }
 
+- (void)presentModalViewController:(UIViewController *)_controller {
+	[self.controller presentModalViewController:_controller animated:YES];
+}
+
 - (void)shareControllerDidFinish {
 	[self.controller.parentViewController dismissModalViewControllerAnimated:YES];
 }

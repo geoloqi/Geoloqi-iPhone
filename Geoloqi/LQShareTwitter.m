@@ -7,14 +7,29 @@
 //
 
 #import "LQShareTwitter.h"
-
+#import "LQShareTwitterViewController.h"
 
 @implementation LQShareTwitter
 
+@synthesize shareView;
+
 - (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
-	
-	
-	
-}	
+	self.shareView = [[LQShareTwitterViewController alloc] init];
+	self.shareView.delegate = self;
+	[self presentModalViewController:shareView];
+}
+
+- (void)twitterDidFinish {
+	[self shareControllerDidFinish];
+}
+
+- (void)twitterDidCancel {
+	[self shareControllerDidCancel:shareView];
+}
+
+- (void)dealloc {
+	[shareView dealloc];
+	[super dealloc];
+}
 
 @end
