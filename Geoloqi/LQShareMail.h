@@ -15,4 +15,6 @@
 	
 }
 
+- (void)launchMailAppOnDeviceWithSubject:(NSString *)subject andBody:(NSString *)body;
+
 @end

@@ -12,25 +12,39 @@
 
 - (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
 	
-	// We must always check whether the current device is configured for sending emails
-	if([MFMailComposeViewController canSendMail])
-	{
-		MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
-		mailer.mailComposeDelegate = self;
-		
-		[mailer setSubject:@"Track me on Geoloqi!"];
-		
-		// Fill out the email body text
-		[mailer setMessageBody:[message stringByAppendingFormat:@" %@", [url absoluteString]] 
-						isHTML:NO];
+	NSString *subject = @"Track me on Geoloqi!";
+	NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
+	
+	Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+	if (NO && mailClass != nil) {
+		// We must always check whether the current device is configured for sending emails
+		if([MFMailComposeViewController canSendMail]) {
+			MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+			mailer.mailComposeDelegate = self;
+			
+			[mailer setSubject:subject];
+			
+			// Fill out the email body text
+			[mailer setMessageBody:body isHTML:NO];
 
-		[self presentModalViewController:mailer];
-		[mailer release];
+			[self presentModalViewController:mailer];
+			[mailer release];
+		} else {
+			// Mail is not configured, launch the app
+			[self launchMailAppOnDeviceWithSubject:subject andBody:body];
+		}
+	} else {
+		// pre iOS 4, so just open the app
+		[self launchMailAppOnDeviceWithSubject:subject andBody:body];
 	}
-	else
-	{
-		// Notify the user that mail is not configured
-	}
+}
+
+-(void)launchMailAppOnDeviceWithSubject:(NSString *)subject andBody:(NSString *)body {
+	NSString *email = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@", subject, body];
+	email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+	NSLog(@"opening mail.app");
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)mailController
