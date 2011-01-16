@@ -12,13 +12,12 @@
 #import "SHK.h"
 
 
-
-
 @implementation LQShareViewController
 
 @synthesize durations, durationMinutes;
 @synthesize shareDescriptionField, pickerView;
 @synthesize activityIndicator;
+@synthesize shareButtonPressed;
 
 /*
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -30,6 +29,22 @@
     return self;
 }
 */
+
+- (LQShareMethod)stringToShareMethod:(NSString *)str {
+	LQShareMethod method;
+	if([self.shareButtonPressed isEqualToString:@"Email"]){
+		method = LQShareMethodEmail;
+	} else if([self.shareButtonPressed isEqualToString:@"SMS"]){
+		method = LQShareMethodSMS;
+	} else if([self.shareButtonPressed isEqualToString:@"Twitter"]){
+		method = LQShareMethodTwitter;
+	} else if([self.shareButtonPressed isEqualToString:@"Facebook"]){
+		method = LQShareMethodFacebook;
+	} else if([self.shareButtonPressed isEqualToString:@"Copy Link"]){
+		method = LQShareMethodCopy;
+	}
+	return method;
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -125,6 +140,10 @@
 	}
 	return YES;
 }
+
+- (void)textFieldReturn:(id)sender {
+}
+
 /*
  * Hide the keyboard when the user taps the background
  */
@@ -137,6 +156,8 @@
 - (IBAction)tappedShare:(id)sender
 {
 	self.activityIndicator.alpha = 1.0f;
+	
+	self.shareButtonPressed = [[sender titleLabel] text];
 	
     [[Geoloqi sharedInstance] createLink:[shareDescriptionField text] 
                                  minutes:[selectedMinutes intValue]
@@ -168,18 +189,47 @@
 			
 			// Create the item to share (in this example, a url)
 			NSURL *url = [NSURL URLWithString:[res objectForKey:@"shortlink"]];
-			SHKItem *item = [SHKItem URL:url title:@"Heading out! Track me on Geoloqi!"];
+			// SHKItem *item = [SHKItem URL:url title:@"Heading out! Track me on Geoloqi!"];
+	
+			[self shareLink:url via:[self stringToShareMethod:self.shareButtonPressed]];
 			
 			// Get the ShareKit action sheet
-			SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
+			// SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
 			
 			// Display the action sheet
-			[actionSheet showFromTabBar:gAppDelegate.tabBarController.tabBar];
+			// [actionSheet showFromTabBar:gAppDelegate.tabBarController.tabBar];
+			
+			NSLog(@"Shared! %@ %@", url, self.shareButtonPressed);
 			
 			return;
 		}
 		
 	} copy];
+}
+
+- (void)shareLink:(NSURL *)url via:(LQShareMethod)method {
+	switch(method){
+		case LQShareMethodEmail:
+			
+			break;
+		case LQShareMethodSMS:
+			
+			break;
+		case LQShareMethodTwitter:
+			
+			break;
+		case LQShareMethodFacebook:
+			
+			break;
+		case LQShareMethodCopy:
+			[[UIPasteboard generalPasteboard] setString:url.absoluteString];
+			[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Copied!")];
+			[self.parentViewController dismissModalViewControllerAnimated:YES];
+			break;
+		default:
+			
+			break;
+	}
 }
 
 - (IBAction)cancelWasTapped {
@@ -209,6 +259,7 @@
 
 
 - (void)dealloc {
+	[shareButtonPressed release];
 	[durations release];
 	[durationMinutes release];
 	[selectedMinutes release];
