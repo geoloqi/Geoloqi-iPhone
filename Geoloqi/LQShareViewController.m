@@ -10,7 +10,10 @@
 #import "CJSONDeserializer.h"
 #import "LQShareViewController.h"
 #import "SHK.h"
-
+#import "LQShareMail.h"
+#import "LQShareSMS.h"
+#import "LQShareTwitter.h"
+#import "LQShareFacebook.h"
 
 @implementation LQShareViewController
 
@@ -18,6 +21,8 @@
 @synthesize shareDescriptionField, pickerView;
 @synthesize activityIndicator;
 @synthesize shareButtonPressed;
+@synthesize navigationController;
+@synthesize sharer;
 
 /*
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -208,18 +213,28 @@
 }
 
 - (void)shareLink:(NSURL *)url via:(LQShareMethod)method {
+	NSString *message = self.shareDescriptionField.text;
+	
+	if([message length] == 0){
+		message = @"Heading out! Track me on Geoloqi!";
+	}
+	
 	switch(method){
 		case LQShareMethodEmail:
-			
+			sharer = [[LQShareMail alloc] init];
+			[sharer shareURL:url withMessage:message fromController:self];
 			break;
 		case LQShareMethodSMS:
-			
+			sharer = [[LQShareSMS alloc] init];
+			[sharer shareURL:url withMessage:message fromController:self];
 			break;
 		case LQShareMethodTwitter:
-			
+			sharer = [[LQShareTwitter alloc] init];
+			[sharer shareURL:url withMessage:message fromController:self];
 			break;
 		case LQShareMethodFacebook:
-			
+			sharer = [[LQShareFacebook alloc] init];
+			[sharer shareURL:url withMessage:message fromController:self];
 			break;
 		case LQShareMethodCopy:
 			[[UIPasteboard generalPasteboard] setString:url.absoluteString];
@@ -259,6 +274,7 @@
 
 
 - (void)dealloc {
+	[sharer release];
 	[shareButtonPressed release];
 	[durations release];
 	[durationMinutes release];

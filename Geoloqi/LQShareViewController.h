@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LQShareService.h"
 
 @interface LQShareViewController : UIViewController
 			<UIPickerViewDataSource, UIPickerViewDelegate> {
@@ -19,6 +19,8 @@
 	NSString *sharedLinkCreated;
 	NSString *shareButtonPressed;
 	LQHTTPRequestCallback linkCreatedCallback;
+	IBOutlet UINavigationBar *navigationBar;
+	NSObject <LQShareService> *sharer;
 
 	IBOutlet UIButton *shareBtnEmail, *shareBtnSMS, *shareBtnTwitter, *shareBtnFacebook, *shareBtnCopy;
 }
@@ -38,6 +40,8 @@ typedef enum {
 @property (nonatomic, retain) NSMutableArray *durationMinutes;
 @property (nonatomic, retain) IBOutlet UIView *activityIndicator;
 @property (nonatomic, retain) NSString *shareButtonPressed;
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) NSObject <LQShareService> *sharer;
 
 - (LQHTTPRequestCallback)linkCreatedCallback;
 - (IBAction)tappedShare:(id)sender;
