@@ -11,8 +11,62 @@
 
 @implementation LQShareSMS
 
-+ (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
 	
+	NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
+	
+	Class messageClass = (NSClassFromString(@"MFMessageComposeViewController"));
+	if (messageClass != nil) {
+		// We must always check whether the current device is configured for sending emails
+		if([MFMessageComposeViewController canSendText]) {
+			MFMessageComposeViewController *mailer = [[MFMessageComposeViewController alloc] init];
+			mailer.messageComposeDelegate = self;
+			
+			// Fill out the email body text
+			[mailer setBody:body];
+			
+			[self presentModalViewController:mailer];
+			[mailer release];
+		} else {
+			// SMS is not configured, (i.e. on an iPod touch or in the simulator), launch the SMS app
+			[self launchMessageAppOnDevice:body];
+		}
+	} else {
+		// pre iOS 4, so just open the app
+		[self launchMessageAppOnDevice:body];
+	}
 }
+
+-(void)launchMessageAppOnDevice:(NSString *)body {
+	// TODO: Apparently Apple doesn't support setting the body of SMSs in a link, so 
+	// copy the body text to the clipboard instead.
+	
+	[[UIPasteboard generalPasteboard] setString:body];
+	
+	NSString *sms = [NSString stringWithFormat:@"sms:?body=%@", body];
+	sms = [sms stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:sms]];
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController*)messageController
+		  didFinishWithResult:(MessageComposeResult)result {
+    switch (result)
+    {
+        case MessageComposeResultCancelled:
+			[self shareControllerDidCancel:messageController];
+            break;
+        case MessageComposeResultSent:
+			[self shareControllerDidFinish];
+            break;
+        case MessageComposeResultFailed:
+			[self shareControllerDidCancel:messageController];
+            break;
+        default:
+			[self shareControllerDidCancel:messageController];
+            break;
+    }
+}
+
 
 @end

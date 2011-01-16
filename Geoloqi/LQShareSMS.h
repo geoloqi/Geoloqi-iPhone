@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMessageComposeViewController.h>
 #import "LQShareService.h"
 
-
-@interface LQShareSMS : NSObject {
-
+@interface LQShareSMS : LQShareService <MFMessageComposeViewControllerDelegate> {
+	
 }
+
+- (void)launchMessageAppOnDevice:(NSString *)body;
 
 @end

@@ -16,7 +16,7 @@
 	NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
 	
 	Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
-	if (NO && mailClass != nil) {
+	if (mailClass != nil) {
 		// We must always check whether the current device is configured for sending emails
 		if([MFMailComposeViewController canSendMail]) {
 			MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
@@ -44,7 +44,6 @@
 	email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
-	NSLog(@"opening mail.app");
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)mailController
