@@ -15,6 +15,7 @@
 
 @synthesize delegate;
 @synthesize navigationBar;
+@synthesize activityIndicator;
 @synthesize sendButton;
 @synthesize textView;
 @synthesize charCounter;
@@ -121,10 +122,25 @@
 	if(self.sendButton.enabled == NO){
 		return;
 	}
+
+	self.activityIndicator.alpha = 1.0f;
 	
-	[self.delegate twitterDidFinish];
+	// Try to post the tweet!
+	[[Geoloqi sharedInstance] postToTwitter:self.textView.text
+								   callback:self.tweetPostedCallback];
 }
 
+- (LQHTTPRequestCallback)tweetPostedCallback {
+	if (tweetPostedCallback) return tweetPostedCallback;
+	return tweetPostedCallback = [^(NSError *error, NSString *responseBody) {
+
+		self.activityIndicator.alpha = 0.0f;
+
+		
+		[self.delegate twitterDidFinish];
+	} copy];
+}
+		
 - (void)cancelWasTapped {
 	[self.delegate twitterDidCancel];
 }
@@ -149,6 +165,7 @@
 - (void)dealloc {
 	[delegate release];
 	[navigationBar release];
+	[activityIndicator release];
 	[sendButton release];
 	[textView release];
 	[charCounter release];

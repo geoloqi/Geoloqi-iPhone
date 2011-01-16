@@ -74,7 +74,7 @@
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 					</object>
-					<object class="IBUILabel" id="563121843">
+					<object class="IBUILabel" id="767708364">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{199, 207}, {109, 22}}</string>
@@ -90,11 +90,11 @@
 							<double key="NSSize">17</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<object class="NSColor" key="IBUITextColor" id="572339156">
+						<object class="NSColor" key="IBUITextColor" id="304495971">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
-						<reference key="IBUIHighlightedColor" ref="572339156"/>
+						<reference key="IBUIHighlightedColor" ref="304495971"/>
 						<object class="NSColor" key="IBUIShadowColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -173,9 +173,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">charCounter</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="563121843"/>
+						<reference key="destination" ref="767708364"/>
 					</object>
 					<int key="connectionID">28</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">activityIndicator</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="817208180"/>
+					</object>
+					<int key="connectionID">29</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -194,7 +202,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="411840622"/>
 							<reference ref="710049899"/>
-							<reference ref="563121843"/>
+							<reference ref="767708364"/>
 							<reference ref="817208180"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -223,7 +231,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
-						<reference key="object" ref="563121843"/>
+						<reference key="object" ref="767708364"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -308,7 +316,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">28</int>
+			<int key="maxID">29</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -320,12 +328,14 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>activityIndicator</string>
 							<string>charCounter</string>
 							<string>delegate</string>
 							<string>textView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIView</string>
 							<string>UILabel</string>
 							<string>id</string>
 							<string>UITextView</string>
@@ -335,12 +345,17 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>activityIndicator</string>
 							<string>charCounter</string>
 							<string>delegate</string>
 							<string>textView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">activityIndicator</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">charCounter</string>
 								<string key="candidateClassName">UILabel</string>

@@ -95,6 +95,10 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 - (void)getAccessTokenForInvitation:(NSString*)invitationToken callback:(LQHTTPRequestCallback)callback;
 
+#pragma mark Twitter/Facebook/etc
+
+- (void)postToTwitter:(NSString *)text callback:(LQHTTPRequestCallback)callback;
+
 #pragma mark -
 
 - (void)setOauthClientID:(NSString*)clientID secret:(NSString*)secret;
