@@ -221,20 +221,20 @@
 	
 	switch(method){
 		case LQShareMethodEmail:
-			sharer = [[LQShareMail alloc] init];
-			[sharer shareURL:url withMessage:message fromController:self];
+			sharer = [[LQShareMail alloc] initWithController:self];
+			[sharer shareURL:url withMessage:message];
 			break;
 		case LQShareMethodSMS:
-			sharer = [[LQShareSMS alloc] init];
-			[sharer shareURL:url withMessage:message fromController:self];
+			sharer = [[LQShareSMS alloc] initWithController:self];
+			[sharer shareURL:url withMessage:message];
 			break;
 		case LQShareMethodTwitter:
-			sharer = [[LQShareTwitter alloc] init];
-			[sharer shareURL:url withMessage:message fromController:self];
+			sharer = [[LQShareTwitter alloc] initWithController:self];
+			[sharer shareURL:url withMessage:message];
 			break;
 		case LQShareMethodFacebook:
-			sharer = [[LQShareFacebook alloc] init];
-			[sharer shareURL:url withMessage:message fromController:self];
+			sharer = [[LQShareFacebook alloc] initWithController:self];
+			[sharer shareURL:url withMessage:message];
 			break;
 		case LQShareMethodCopy:
 			[[UIPasteboard generalPasteboard] setString:url.absoluteString];

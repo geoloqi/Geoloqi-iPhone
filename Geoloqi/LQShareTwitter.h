@@ -10,8 +10,7 @@
 #import "LQShareService.h"
 
 
-@interface LQShareTwitter : NSObject {
-
+@interface LQShareTwitter : LQShareService {
 }
 
 @end

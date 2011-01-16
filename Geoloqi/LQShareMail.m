@@ -10,10 +10,7 @@
 
 @implementation LQShareMail
 
-@synthesize controller;
-
-- (void)shareURL:(NSURL *)url withMessage:(NSString *)message fromController:(UIViewController *)_controller {
-	self.controller = _controller;
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
 	
 	// We must always check whether the current device is configured for sending emails
 	if([MFMailComposeViewController canSendMail])
@@ -39,31 +36,28 @@
 - (void)mailComposeController:(MFMailComposeViewController*)mailController
 		  didFinishWithResult:(MFMailComposeResult)result
 						error:(NSError*)error {
-
     switch (result)
     {
         case MFMailComposeResultCancelled:
-			[mailController dismissModalViewControllerAnimated:YES];
+			[self shareControllerDidCancel:mailController];
             break;
         case MFMailComposeResultSaved:
-			[self.controller.parentViewController dismissModalViewControllerAnimated:YES];
+			[self shareControllerDidFinish];
             break;
         case MFMailComposeResultSent:
-			[self.controller.parentViewController dismissModalViewControllerAnimated:YES];
+			[self shareControllerDidFinish];
             break;
         case MFMailComposeResultFailed:
-			[mailController dismissModalViewControllerAnimated:YES];
+			[self shareControllerDidCancel:mailController];
             break;
         default:
-			[mailController dismissModalViewControllerAnimated:YES];
+			[self shareControllerDidCancel:mailController];
             break;
     }
 }
 
-
 - (void)dealloc 
 {
-	[controller release];
 	[super dealloc];
 }
 

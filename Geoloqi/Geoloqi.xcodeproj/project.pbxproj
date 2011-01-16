@@ -99,6 +99,8 @@
 		0F0ABC5E12E27785007792AA /* LQShareSMS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0ABC5D12E27785007792AA /* LQShareSMS.m */; };
 		0F0ABC6112E2778D007792AA /* LQShareTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0ABC6012E2778D007792AA /* LQShareTwitter.m */; };
 		0F0ABC6412E27793007792AA /* LQShareFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0ABC6312E27793007792AA /* LQShareFacebook.m */; };
+		0F0ABDC712E2BB13007792AA /* LQShareTwitter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0ABDC612E2BB13007792AA /* LQShareTwitter.xib */; };
+		0F0ABDD912E2C015007792AA /* LQShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0ABDD812E2C015007792AA /* LQShareService.m */; };
 		0F0E236A12DFDE5100EF1AC7 /* CustomUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */; };
 		0F0E236E12E0E95900EF1AC7 /* switch_red_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */; };
 		0F0E236F12E0E95900EF1AC7 /* switch_red_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */; };
@@ -377,7 +379,9 @@
 		0F0ABC6012E2778D007792AA /* LQShareTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareTwitter.m; sourceTree = "<group>"; };
 		0F0ABC6212E27793007792AA /* LQShareFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareFacebook.h; sourceTree = "<group>"; };
 		0F0ABC6312E27793007792AA /* LQShareFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareFacebook.m; sourceTree = "<group>"; };
-		0F0ABD4E12E2B43D007792AA /* LQShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareService.h; sourceTree = "<group>"; };
+		0F0ABDC612E2BB13007792AA /* LQShareTwitter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQShareTwitter.xib; sourceTree = "<group>"; };
+		0F0ABDD712E2C015007792AA /* LQShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareService.h; sourceTree = "<group>"; };
+		0F0ABDD812E2C015007792AA /* LQShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareService.m; sourceTree = "<group>"; };
 		0F0E236812DFDE5100EF1AC7 /* CustomUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISwitch.h; sourceTree = "<group>"; };
 		0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISwitch.m; sourceTree = "<group>"; };
 		0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red_off.png; sourceTree = "<group>"; };
@@ -601,11 +605,13 @@
 				0F0ABC3012E273D8007792AA /* LQShareMail.m */,
 				0F0ABC5C12E27785007792AA /* LQShareSMS.h */,
 				0F0ABC5D12E27785007792AA /* LQShareSMS.m */,
+				0F0ABDC612E2BB13007792AA /* LQShareTwitter.xib */,
 				0F0ABC5F12E2778D007792AA /* LQShareTwitter.h */,
 				0F0ABC6012E2778D007792AA /* LQShareTwitter.m */,
 				0F0ABC6212E27793007792AA /* LQShareFacebook.h */,
 				0F0ABC6312E27793007792AA /* LQShareFacebook.m */,
-				0F0ABD4E12E2B43D007792AA /* LQShareService.h */,
+				0F0ABDD712E2C015007792AA /* LQShareService.h */,
+				0F0ABDD812E2C015007792AA /* LQShareService.m */,
 			);
 			name = Share;
 			sourceTree = "<group>";
@@ -1471,6 +1477,7 @@
 				0F0ABB7D12E25666007792AA /* textboxBackgroundLarge.png in Resources */,
 				0F0ABB7E12E25666007792AA /* textboxBackgroundLarge@2x.png in Resources */,
 				0F0ABB8812E25AF0007792AA /* backgroundTexture@2x.png in Resources */,
+				0F0ABDC712E2BB13007792AA /* LQShareTwitter.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1591,6 +1598,7 @@
 				0F0ABC5E12E27785007792AA /* LQShareSMS.m in Sources */,
 				0F0ABC6112E2778D007792AA /* LQShareTwitter.m in Sources */,
 				0F0ABC6412E27793007792AA /* LQShareFacebook.m in Sources */,
+				0F0ABDD912E2C015007792AA /* LQShareService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

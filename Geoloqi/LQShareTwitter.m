@@ -11,8 +11,10 @@
 
 @implementation LQShareTwitter
 
-+ (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
 	
-}
+	
+	
+}	
 
 @end

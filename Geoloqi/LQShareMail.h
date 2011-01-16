@@ -11,10 +11,8 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "LQShareService.h"
 
-@interface LQShareMail : NSObject <LQShareService, MFMailComposeViewControllerDelegate> {
-	UIViewController *controller;
+@interface LQShareMail : LQShareService <MFMailComposeViewControllerDelegate> {
+	
 }
-
-@property (nonatomic, retain) UIViewController *controller;
 
 @end

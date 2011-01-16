@@ -6,8 +6,21 @@
 //  Copyright 2011 Geoloqi.com. All rights reserved.
 //
 
-@protocol LQShareService
+#import <Foundation/Foundation.h>
 
-- (void)shareURL:(NSURL *)url withMessage:(NSString *)message fromController:(UIViewController *)controller;
+
+@interface LQShareService : NSObject {
+	UIViewController *controller;
+}
+
+@property (nonatomic, retain) UIViewController *controller;
+
+- (LQShareService *)initWithController:(UIViewController *)_controller;
+
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message;
+
+- (void)shareControllerDidFinish;
+
+- (void)shareControllerDidCancel:(UIViewController *)_controller;
 
 @end
