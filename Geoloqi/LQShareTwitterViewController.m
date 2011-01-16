@@ -14,7 +14,7 @@
 @implementation LQShareTwitterViewController
 
 @synthesize delegate;
-@synthesize navigationItem;
+@synthesize navigationBar;
 @synthesize textView;
 @synthesize message;
 
@@ -28,12 +28,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
+	navigationBar.barStyle = UIBarStyleBlackOpaque;
+	[self.view addSubview:navigationBar];
+
+	UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"New Tweet"];
+
+	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] init];
+	[cancelButton setTitle:@"Cancel"];
+	cancelButton.target = self;
+	cancelButton.action = @selector(cancelWasTapped:);
+	item.leftBarButtonItem = cancelButton;
+	[cancelButton release];
+	
 	BlueButton *blueSendButton = [[BlueButton alloc] init];
 	[blueSendButton setTitle:@"Send" forState:UIControlStateNormal];
 	[blueSendButton addTarget:self action:@selector(sendWasTapped:) forControlEvents:UIControlEventTouchUpInside];
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:blueSendButton] autorelease];
+	item.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:blueSendButton] autorelease];
 	[blueSendButton release];
+
+	item.hidesBackButton = YES;
+	[navigationBar pushNavigationItem:item animated:NO];
+	[item release];
 	
+	[navigationBar release];
+
 	[self.textView becomeFirstResponder];
 	[self.textView setText:self.message];
 }
@@ -71,7 +90,7 @@
 	[self.delegate twitterDidFinish];
 }
 
-- (IBAction)cancelWasTapped {
+- (void)cancelWasTapped:(id)sender {
 	[self.delegate twitterDidCancel];
 }
 

@@ -11,19 +11,19 @@
 
 @interface LQShareTwitterViewController : UIViewController <UITextViewDelegate> {
 	id delegate;
-	IBOutlet UINavigationItem *navigationItem;
+	UINavigationBar *navigationBar;
 	IBOutlet UITextView *textView;
 	NSString *message;
 }
 
 @property (nonatomic, retain) id delegate;
-@property (nonatomic, retain) IBOutlet UINavigationItem *navigationItem;
+@property (nonatomic, retain) UINavigationBar *navigationBar;
 @property (nonatomic, retain) IBOutlet UITextView *textView;
 @property (nonatomic, retain) NSString *message;
 
 - (LQShareTwitterViewController *)initWithMessage:(NSString *)_message;
 - (void)sendWasTapped:(id)sender;
-- (IBAction)cancelWasTapped;
+- (void)cancelWasTapped:(id)sender;
 
 @end
 
