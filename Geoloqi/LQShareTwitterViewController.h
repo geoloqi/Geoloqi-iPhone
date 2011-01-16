@@ -13,17 +13,22 @@
 	id delegate;
 	UINavigationBar *navigationBar;
 	IBOutlet UITextView *textView;
+	IBOutlet UILabel *charCounter;
+	UIBarButtonItem *sendButton;
 	NSString *message;
 }
 
 @property (nonatomic, retain) id delegate;
 @property (nonatomic, retain) UINavigationBar *navigationBar;
+@property (nonatomic, retain) UIBarButtonItem *sendButton;
 @property (nonatomic, retain) IBOutlet UITextView *textView;
+@property (nonatomic, retain) IBOutlet UILabel *charCounter;
 @property (nonatomic, retain) NSString *message;
 
 - (LQShareTwitterViewController *)initWithMessage:(NSString *)_message;
-- (void)sendWasTapped:(id)sender;
-- (void)cancelWasTapped:(id)sender;
+- (void)updateCharacterCounter;
+- (void)sendWasTapped;
+- (void)cancelWasTapped;
 
 @end
 

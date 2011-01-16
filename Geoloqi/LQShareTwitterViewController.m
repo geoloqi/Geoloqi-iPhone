@@ -15,7 +15,9 @@
 
 @synthesize delegate;
 @synthesize navigationBar;
+@synthesize sendButton;
 @synthesize textView;
+@synthesize charCounter;
 @synthesize message;
 
 - (LQShareTwitterViewController *)initWithMessage:(NSString *)_message {
@@ -37,14 +39,15 @@
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] init];
 	[cancelButton setTitle:@"Cancel"];
 	cancelButton.target = self;
-	cancelButton.action = @selector(cancelWasTapped:);
+	cancelButton.action = @selector(cancelWasTapped);
 	item.leftBarButtonItem = cancelButton;
 	[cancelButton release];
 	
 	BlueButton *blueSendButton = [[BlueButton alloc] init];
 	[blueSendButton setTitle:@"Send" forState:UIControlStateNormal];
-	[blueSendButton addTarget:self action:@selector(sendWasTapped:) forControlEvents:UIControlEventTouchUpInside];
-	item.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:blueSendButton] autorelease];
+	[blueSendButton addTarget:self action:@selector(sendWasTapped) forControlEvents:UIControlEventTouchUpInside];
+	self.sendButton = [[UIBarButtonItem alloc] initWithCustomView:blueSendButton];
+	item.rightBarButtonItem = sendButton;
 	[blueSendButton release];
 
 	item.hidesBackButton = YES;
@@ -53,8 +56,11 @@
 	
 	[navigationBar release];
 
+	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
+
 	[self.textView becomeFirstResponder];
 	[self.textView setText:self.message];
+	[self updateCharacterCounter];
 }
 
 /*
@@ -85,12 +91,41 @@
 }
 */
 
-- (void)sendWasTapped:(id)sender {
+- (void)updateCharacterCounter {
+	int remaining = 140 - [self.textView.text length];
+	[self.charCounter setText:[NSString stringWithFormat:@"%d", remaining]];
+	if(remaining < 0) {
+		self.charCounter.textColor = [UIColor colorWithRed:170.0 green:0 blue:0 alpha:1.0];
+		self.sendButton.enabled = NO;
+	} else {
+		self.charCounter.textColor = [UIColor whiteColor];
+		self.sendButton.enabled = YES;
+	}
+}
+
+/*
+ * Press "Send" when the user presses the Send key on the keyboard. This also means it's impossible to type a newline into the box.
+ * Count down from 140 characters.
+ */
+- (BOOL)textView:(UITextView *)_textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+	if ([text isEqual:@"\n"]) {
+		[self sendWasTapped];
+		return NO;
+	}
+	[self updateCharacterCounter];
+	return YES;
+}
+
+- (void)sendWasTapped {
+	// Prevent pressing "Send" on the keyboard from trying to post a tweet if the actual "Send" button is disabled
+	if(self.sendButton.enabled == NO){
+		return;
+	}
 	
 	[self.delegate twitterDidFinish];
 }
 
-- (void)cancelWasTapped:(id)sender {
+- (void)cancelWasTapped {
 	[self.delegate twitterDidCancel];
 }
 
@@ -114,7 +149,9 @@
 - (void)dealloc {
 	[delegate release];
 	[navigationBar release];
+	[sendButton release];
 	[textView release];
+	[charCounter release];
 	[message release];
     [super dealloc];
 }

@@ -35,6 +35,7 @@
 		
 		// Set the font properties
 		[self setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+		[self setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
 		//[self.titleLabel setTitleShadowOffset:CGSizeMake(0, -1)];
 		//self.titleShadowOffset = CGSizeMake(0, -1);
 		[self.titleLabel setFont:[UIFont boldSystemFontOfSize:13]];
