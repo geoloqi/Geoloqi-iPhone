@@ -7,7 +7,8 @@
 //
 
 #import "LQShareTwitterConnectViewController.h"
-
+#import "LQConstants.h"
+#import "Geoloqi.h"
 
 @implementation LQShareTwitterConnectViewController
 
@@ -28,6 +29,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/post/twitter_connect?oauth_token=%@", LQ_WEB_ROOT, [[Geoloqi sharedInstance] accessToken]]]];
+	[self.webView loadRequest:request];
 }
 
 /*
