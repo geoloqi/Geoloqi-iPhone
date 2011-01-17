@@ -53,7 +53,7 @@
 	}
 
 	[self.view addSubview:self.controlBanner];
-	[self.controlBanner setCenter:(CGPoint){160.0, 20.0}];
+	[self.controlBanner setCenter:(CGPoint){160.0, 22.0}];
 	
 	trackingToggleSwitch = [[CustomUISwitch alloc] initWithImageNamed:@"switch_dark.png"
 															 withOnImageNamed:@"switch_dark_on.png"

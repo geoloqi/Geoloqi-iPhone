@@ -77,7 +77,7 @@
 					<object class="IBUIImageView" id="96275463">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 166}, {320, 217}}</string>
+						<string key="NSFrame">{{0, 166}, {320, 216}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -89,7 +89,7 @@
 					<object class="IBUIPickerView" id="768277403">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrame">{{9, 167}, {160, 216}}</string>
+						<string key="NSFrame">{{9, 166}, {160, 216}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIShowsSelectionIndicator">YES</bool>

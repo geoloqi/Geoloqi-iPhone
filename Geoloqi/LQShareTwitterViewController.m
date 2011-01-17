@@ -8,7 +8,8 @@
 
 #import "LQShareTwitterViewController.h"
 #import "BlueButton.h"
-
+#import "SHKActivityIndicator.h"
+#import "CJSONDeserializer.h"
 
 
 @implementation LQShareTwitterViewController
@@ -136,7 +137,25 @@
 
 		self.activityIndicator.alpha = 0.0f;
 
+		NSError *err = nil;
+		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
+																					   NSUTF8StringEncoding]
+																				error:&err];
 		
+		NSString *msg;
+		
+		if (!res || [res objectForKey:@"error"] != nil) {
+			if([res objectForKey:@"error"] != nil){
+				msg = [res objectForKey:@"error"];
+			}else{
+				msg = @"Unknown Twitter Error!";
+			}
+		}else{
+			msg = @"Tweeted!";
+		}
+
+		[[SHKActivityIndicator currentIndicator] displayCompleted:msg];
+
 		[self.delegate twitterDidFinish];
 	} copy];
 }
