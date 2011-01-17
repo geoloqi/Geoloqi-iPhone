@@ -104,6 +104,10 @@
 		0F0ABE0E12E2CD3F007792AA /* LQShareTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0ABE0D12E2CD3F007792AA /* LQShareTwitterViewController.m */; };
 		0F0AC1DE12E3D156007792AA /* LQShareTwitterConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0AC1DC12E3D156007792AA /* LQShareTwitterConnectViewController.m */; };
 		0F0AC1DF12E3D156007792AA /* LQShareTwitterConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC1DD12E3D156007792AA /* LQShareTwitterConnectViewController.xib */; };
+		0F0AC2BC12E4AAE8007792AA /* LQShareFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC2BB12E4AAE8007792AA /* LQShareFacebookViewController.xib */; };
+		0F0AC2BF12E4AB06007792AA /* LQShareFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0AC2BE12E4AB06007792AA /* LQShareFacebookViewController.m */; };
+		0F0AC2C412E4AB84007792AA /* LQShareFacebookConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC2C312E4AB84007792AA /* LQShareFacebookConnectViewController.xib */; };
+		0F0AC2C712E4AB94007792AA /* LQShareFacebookConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0AC2C612E4AB94007792AA /* LQShareFacebookConnectViewController.m */; };
 		0F0E236A12DFDE5100EF1AC7 /* CustomUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */; };
 		0F0E236E12E0E95900EF1AC7 /* switch_red_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */; };
 		0F0E236F12E0E95900EF1AC7 /* switch_red_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */; };
@@ -390,6 +394,12 @@
 		0F0AC1DB12E3D156007792AA /* LQShareTwitterConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareTwitterConnectViewController.h; sourceTree = "<group>"; };
 		0F0AC1DC12E3D156007792AA /* LQShareTwitterConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareTwitterConnectViewController.m; sourceTree = "<group>"; };
 		0F0AC1DD12E3D156007792AA /* LQShareTwitterConnectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQShareTwitterConnectViewController.xib; sourceTree = "<group>"; };
+		0F0AC2BB12E4AAE8007792AA /* LQShareFacebookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQShareFacebookViewController.xib; sourceTree = "<group>"; };
+		0F0AC2BD12E4AB06007792AA /* LQShareFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareFacebookViewController.h; sourceTree = "<group>"; };
+		0F0AC2BE12E4AB06007792AA /* LQShareFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareFacebookViewController.m; sourceTree = "<group>"; };
+		0F0AC2C312E4AB84007792AA /* LQShareFacebookConnectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQShareFacebookConnectViewController.xib; sourceTree = "<group>"; };
+		0F0AC2C512E4AB94007792AA /* LQShareFacebookConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareFacebookConnectViewController.h; sourceTree = "<group>"; };
+		0F0AC2C612E4AB94007792AA /* LQShareFacebookConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareFacebookConnectViewController.m; sourceTree = "<group>"; };
 		0F0E236812DFDE5100EF1AC7 /* CustomUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISwitch.h; sourceTree = "<group>"; };
 		0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISwitch.m; sourceTree = "<group>"; };
 		0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red_off.png; sourceTree = "<group>"; };
@@ -621,6 +631,12 @@
 				0F0AC1DC12E3D156007792AA /* LQShareTwitterConnectViewController.m */,
 				0F0ABC5F12E2778D007792AA /* LQShareTwitter.h */,
 				0F0ABC6012E2778D007792AA /* LQShareTwitter.m */,
+				0F0AC2BB12E4AAE8007792AA /* LQShareFacebookViewController.xib */,
+				0F0AC2BD12E4AB06007792AA /* LQShareFacebookViewController.h */,
+				0F0AC2BE12E4AB06007792AA /* LQShareFacebookViewController.m */,
+				0F0AC2C312E4AB84007792AA /* LQShareFacebookConnectViewController.xib */,
+				0F0AC2C512E4AB94007792AA /* LQShareFacebookConnectViewController.h */,
+				0F0AC2C612E4AB94007792AA /* LQShareFacebookConnectViewController.m */,
 				0F0ABC6212E27793007792AA /* LQShareFacebook.h */,
 				0F0ABC6312E27793007792AA /* LQShareFacebook.m */,
 				0F0ABDD712E2C015007792AA /* LQShareService.h */,
@@ -1492,6 +1508,8 @@
 				0F0ABB8812E25AF0007792AA /* backgroundTexture@2x.png in Resources */,
 				0F0ABDC712E2BB13007792AA /* LQShareTwitterViewController.xib in Resources */,
 				0F0AC1DF12E3D156007792AA /* LQShareTwitterConnectViewController.xib in Resources */,
+				0F0AC2BC12E4AAE8007792AA /* LQShareFacebookViewController.xib in Resources */,
+				0F0AC2C412E4AB84007792AA /* LQShareFacebookConnectViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1615,6 +1633,8 @@
 				0F0ABDD912E2C015007792AA /* LQShareService.m in Sources */,
 				0F0ABE0E12E2CD3F007792AA /* LQShareTwitterViewController.m in Sources */,
 				0F0AC1DE12E3D156007792AA /* LQShareTwitterConnectViewController.m in Sources */,
+				0F0AC2BF12E4AB06007792AA /* LQShareFacebookViewController.m in Sources */,
+				0F0AC2C712E4AB94007792AA /* LQShareFacebookConnectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -97,6 +97,8 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 #pragma mark Twitter/Facebook/etc
 
+- (void)postToFacebook:(NSString *)text callback:(LQHTTPRequestCallback)callback;
+
 - (void)postToTwitter:(NSString *)text callback:(LQHTTPRequestCallback)callback;
 
 #pragma mark -

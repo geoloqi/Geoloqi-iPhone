@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "LQShareService.h"
+#import "LQShareFacebookViewController.h"
 
-
-@interface LQShareFacebook : NSObject {
-
+@interface LQShareFacebook : LQShareService <LQShareFacebookDelegate> {
+	LQShareFacebookViewController *shareView;
 }
+
+@property (nonatomic, retain) LQShareFacebookViewController *shareView;
 
 @end
