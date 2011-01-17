@@ -8,16 +8,23 @@
 
 #import "LQShareTwitter.h"
 #import "LQShareTwitterViewController.h"
+#import "LQShareTwitterConnectViewController.h"
 
 @implementation LQShareTwitter
 
 @synthesize shareView;
 
-- (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
-	NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
-	self.shareView = [[LQShareTwitterViewController alloc] initWithMessage:body];
-	self.shareView.delegate = self;
-	[self presentModalViewController:shareView];
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message canPost:(BOOL)canPost {
+	if(canPost) {
+		NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
+		self.shareView = [[LQShareTwitterViewController alloc] initWithMessage:body];
+		self.shareView.delegate = self;
+		[self presentModalViewController:shareView];
+	} else {
+		LQShareTwitterConnectViewController *twitterConnectController = [[LQShareTwitterConnectViewController alloc] init];
+		[self presentModalViewController:twitterConnectController];
+		[twitterConnectController release];
+	}
 }
 
 - (void)twitterDidFinish {

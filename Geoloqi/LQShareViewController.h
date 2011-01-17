@@ -48,7 +48,7 @@ typedef enum {
 - (IBAction)textFieldReturn:(id)sender;
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)cancelWasTapped;
-- (void)shareLink:(NSURL *)url via:(LQShareMethod)method;
+- (void)shareLink:(NSURL *)url via:(LQShareMethod)method canTweet:(BOOL)canTweet canFacebook:(BOOL)canFacebook;
 //- (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes;
 
 @end

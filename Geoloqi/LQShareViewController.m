@@ -24,7 +24,7 @@
 @synthesize navigationController;
 @synthesize sharer;
 
-/*
+
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,7 +33,7 @@
     }
     return self;
 }
-*/
+
 
 - (LQShareMethod)stringToShareMethod:(NSString *)str {
 	LQShareMethod method;
@@ -196,15 +196,10 @@
 			NSURL *url = [NSURL URLWithString:[res objectForKey:@"shortlink"]];
 			// SHKItem *item = [SHKItem URL:url title:@"Heading out! Track me on Geoloqi!"];
 	
-			[self shareLink:url via:[self stringToShareMethod:self.shareButtonPressed]];
-			
-			// Get the ShareKit action sheet
-			// SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
-			
-			// Display the action sheet
-			// [actionSheet showFromTabBar:gAppDelegate.tabBarController.tabBar];
-			
-			NSLog(@"Shared! %@ %@", url, self.shareButtonPressed);
+			[self shareLink:url 
+						via:[self stringToShareMethod:self.shareButtonPressed]
+				   canTweet:[[res objectForKey:@"can_tweet"] isEqualToNumber:[NSNumber numberWithInt:1]]
+				canFacebook:[[res objectForKey:@"can_facebookk"] isEqualToNumber:[NSNumber numberWithInt:1]]];
 			
 			return;
 		}
@@ -212,7 +207,11 @@
 	} copy];
 }
 
-- (void)shareLink:(NSURL *)url via:(LQShareMethod)method {
+- (void)shareLink:(NSURL *)url 
+			  via:(LQShareMethod)method 
+		 canTweet:(BOOL)canTweet
+	  canFacebook:(BOOL)canFacebook {
+	
 	NSString *message = self.shareDescriptionField.text;
 	
 	if([message length] == 0){
@@ -230,11 +229,11 @@
 			break;
 		case LQShareMethodTwitter:
 			sharer = [[LQShareTwitter alloc] initWithController:self];
-			[sharer shareURL:url withMessage:message];
+			[sharer shareURL:url withMessage:message canPost:canTweet];
 			break;
 		case LQShareMethodFacebook:
 			sharer = [[LQShareFacebook alloc] initWithController:self];
-			[sharer shareURL:url withMessage:message];
+			[sharer shareURL:url withMessage:message canPost:canFacebook];
 			break;
 		case LQShareMethodCopy:
 			[[UIPasteboard generalPasteboard] setString:url.absoluteString];

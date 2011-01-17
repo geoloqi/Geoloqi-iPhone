@@ -102,6 +102,8 @@
 		0F0ABDC712E2BB13007792AA /* LQShareTwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0ABDC612E2BB13007792AA /* LQShareTwitterViewController.xib */; };
 		0F0ABDD912E2C015007792AA /* LQShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0ABDD812E2C015007792AA /* LQShareService.m */; };
 		0F0ABE0E12E2CD3F007792AA /* LQShareTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0ABE0D12E2CD3F007792AA /* LQShareTwitterViewController.m */; };
+		0F0AC1DE12E3D156007792AA /* LQShareTwitterConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0AC1DC12E3D156007792AA /* LQShareTwitterConnectViewController.m */; };
+		0F0AC1DF12E3D156007792AA /* LQShareTwitterConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC1DD12E3D156007792AA /* LQShareTwitterConnectViewController.xib */; };
 		0F0E236A12DFDE5100EF1AC7 /* CustomUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */; };
 		0F0E236E12E0E95900EF1AC7 /* switch_red_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */; };
 		0F0E236F12E0E95900EF1AC7 /* switch_red_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */; };
@@ -385,6 +387,9 @@
 		0F0ABDD812E2C015007792AA /* LQShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareService.m; sourceTree = "<group>"; };
 		0F0ABE0C12E2CD3F007792AA /* LQShareTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareTwitterViewController.h; sourceTree = "<group>"; };
 		0F0ABE0D12E2CD3F007792AA /* LQShareTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareTwitterViewController.m; sourceTree = "<group>"; };
+		0F0AC1DB12E3D156007792AA /* LQShareTwitterConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareTwitterConnectViewController.h; sourceTree = "<group>"; };
+		0F0AC1DC12E3D156007792AA /* LQShareTwitterConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareTwitterConnectViewController.m; sourceTree = "<group>"; };
+		0F0AC1DD12E3D156007792AA /* LQShareTwitterConnectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQShareTwitterConnectViewController.xib; sourceTree = "<group>"; };
 		0F0E236812DFDE5100EF1AC7 /* CustomUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISwitch.h; sourceTree = "<group>"; };
 		0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISwitch.m; sourceTree = "<group>"; };
 		0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red_off.png; sourceTree = "<group>"; };
@@ -611,6 +616,9 @@
 				0F0ABDC612E2BB13007792AA /* LQShareTwitterViewController.xib */,
 				0F0ABE0C12E2CD3F007792AA /* LQShareTwitterViewController.h */,
 				0F0ABE0D12E2CD3F007792AA /* LQShareTwitterViewController.m */,
+				0F0AC1DD12E3D156007792AA /* LQShareTwitterConnectViewController.xib */,
+				0F0AC1DB12E3D156007792AA /* LQShareTwitterConnectViewController.h */,
+				0F0AC1DC12E3D156007792AA /* LQShareTwitterConnectViewController.m */,
 				0F0ABC5F12E2778D007792AA /* LQShareTwitter.h */,
 				0F0ABC6012E2778D007792AA /* LQShareTwitter.m */,
 				0F0ABC6212E27793007792AA /* LQShareFacebook.h */,
@@ -1483,6 +1491,7 @@
 				0F0ABB7E12E25666007792AA /* textboxBackgroundLarge@2x.png in Resources */,
 				0F0ABB8812E25AF0007792AA /* backgroundTexture@2x.png in Resources */,
 				0F0ABDC712E2BB13007792AA /* LQShareTwitterViewController.xib in Resources */,
+				0F0AC1DF12E3D156007792AA /* LQShareTwitterConnectViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1605,6 +1614,7 @@
 				0F0ABC6412E27793007792AA /* LQShareFacebook.m in Sources */,
 				0F0ABDD912E2C015007792AA /* LQShareService.m in Sources */,
 				0F0ABE0E12E2CD3F007792AA /* LQShareTwitterViewController.m in Sources */,
+				0F0AC1DE12E3D156007792AA /* LQShareTwitterConnectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

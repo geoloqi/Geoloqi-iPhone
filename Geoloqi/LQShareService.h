@@ -19,6 +19,8 @@
 
 - (void)shareURL:(NSURL *)url withMessage:(NSString *)message;
 
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message canPost:(BOOL)canPost;
+
 - (void)presentModalViewController:(UIViewController *)_controller;
 
 - (void)shareControllerDidFinish;

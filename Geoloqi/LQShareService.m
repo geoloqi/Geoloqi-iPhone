@@ -21,7 +21,11 @@
 }
 
 - (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
+	NSLog(@"TODO: Implement this method in the child class to perform the appropriate share function.");
+}
 
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message canPost:(BOOL)canPost {
+	NSLog(@"TODO: Implement this method in the child class to perform the appropriate share function.");
 }
 
 - (void)presentModalViewController:(UIViewController *)_controller {
