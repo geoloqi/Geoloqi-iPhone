@@ -142,21 +142,14 @@
 																					   NSUTF8StringEncoding]
 																				error:&err];
 		
-		NSString *msg;
-		
 		if (!res || [res objectForKey:@"error"] != nil) {
-			if([res objectForKey:@"error"] != nil){
-				msg = [res objectForKey:@"error"];
-			}else{
-				msg = @"Unknown Twitter Error!";
-			}
+			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Twitter Error!"];
+			[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
+			[self.delegate twitterDidCancel];
 		}else{
-			msg = @"Tweeted!";
+			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Tweeted!"];
+			[self.delegate twitterDidFinish];
 		}
-
-		[[SHKActivityIndicator currentIndicator] displayCompleted:msg];
-
-		[self.delegate twitterDidFinish];
 	} copy];
 }
 		
