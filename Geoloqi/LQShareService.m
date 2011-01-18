@@ -7,11 +7,27 @@
 //
 
 #import "LQShareService.h"
-
+#import "Geoloqi.h"
 
 @implementation LQShareService
 
 @synthesize controller;
+
++ (void)linkWasSent:(NSString *)verb {
+	NSString *msg = @"You are now sharing your location!";
+	
+	if(![[Geoloqi sharedInstance] locationUpdatesState]) {
+		msg = [NSString stringWithFormat:@"%@ Tracking has been turned on. Turn off tracking when you stop moving to save battery.", msg];
+	}
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:verb
+													message:msg
+												   delegate:nil
+										  cancelButtonTitle:@"Close"
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+	[[Geoloqi sharedInstance] startLocationUpdates];
+}
 
 - (LQShareService *)initWithController:(UIViewController *)_controller {
     if (self = [super init]) {
@@ -21,11 +37,11 @@
 }
 
 - (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
-	NSLog(@"TODO: Implement this method in the child class to perform the appropriate share function.");
+	NSLog(@"!!!! Implement this method in the child class to perform the appropriate share function.");
 }
 
 - (void)shareURL:(NSURL *)url withMessage:(NSString *)message canPost:(BOOL)canPost {
-	NSLog(@"TODO: Implement this method in the child class to perform the appropriate share function.");
+	NSLog(@"!!!! Implement this method in the child class to perform the appropriate share function.");
 }
 
 - (void)presentModalViewController:(UIViewController *)_controller {
@@ -33,6 +49,7 @@
 }
 
 - (void)shareControllerDidFinish {
+	[[Geoloqi sharedInstance] startLocationUpdates];
 	[self.controller.parentViewController dismissModalViewControllerAnimated:YES];
 }
 

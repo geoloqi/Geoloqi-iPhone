@@ -28,6 +28,7 @@
 }
 
 - (void)twitterDidFinish {
+	[LQShareService linkWasSent:@"Posted to Twitter"];
 	[self shareControllerDidFinish];
 }
 

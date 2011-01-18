@@ -199,7 +199,7 @@
 			[self shareLink:url 
 						via:[self stringToShareMethod:self.shareButtonPressed]
 				   canTweet:[[res objectForKey:@"can_tweet"] isEqualToNumber:[NSNumber numberWithInt:1]]
-				canFacebook:[[res objectForKey:@"can_facebookk"] isEqualToNumber:[NSNumber numberWithInt:1]]];
+				canFacebook:[[res objectForKey:@"can_facebook"] isEqualToNumber:[NSNumber numberWithInt:1]]];
 			
 			return;
 		}
@@ -237,7 +237,8 @@
 			break;
 		case LQShareMethodCopy:
 			[[UIPasteboard generalPasteboard] setString:url.absoluteString];
-			[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Copied!")];
+			// [[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Copied!")];
+			[LQShareService linkWasSent:@"Link Copied"];
 			[self.parentViewController dismissModalViewControllerAnimated:YES];
 			break;
 		default:

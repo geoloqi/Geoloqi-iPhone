@@ -1325,7 +1325,7 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
-		DD354F6D11D665BA00EEF7BC /* Data */ = {
+		DD354F6D11D665BA00EEF7BC /* Controls */ = {
 			isa = PBXGroup;
 			children = (
 				16EE827611D6A1FA0026503D /* LQDataViewController.xib */,
@@ -1334,7 +1334,7 @@
 				166BE45F11DDDC9000F41B0B /* LQMappedSlider.h */,
 				166BE46011DDDC9000F41B0B /* LQMappedSlider.m */,
 			);
-			name = Data;
+			name = Controls;
 			sourceTree = "<group>";
 		};
 		DD354F6E11D665C000EEF7BC /* Geonote */ = {
@@ -1366,7 +1366,7 @@
 			isa = PBXGroup;
 			children = (
 				DD354F6C11D665B500EEF7BC /* Map */,
-				DD354F6D11D665BA00EEF7BC /* Data */,
+				DD354F6D11D665BA00EEF7BC /* Controls */,
 				DD354F6E11D665C000EEF7BC /* Geonote */,
 				0F0183791294FEF6001508D9 /* Layers */,
 				0F0183BE1296F48A001508D9 /* Share */,

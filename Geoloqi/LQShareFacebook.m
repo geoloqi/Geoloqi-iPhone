@@ -16,8 +16,7 @@
 
 - (void)shareURL:(NSURL *)url withMessage:(NSString *)message canPost:(BOOL)canPost {
 	if(canPost) {
-		NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
-		self.shareView = [[LQShareFacebookViewController alloc] initWithMessage:body];
+		self.shareView = [[LQShareFacebookViewController alloc] initWithMessage:message andURL:[url absoluteString]];
 		self.shareView.delegate = self;
 		[self presentModalViewController:shareView];
 	} else {
@@ -28,6 +27,7 @@
 }
 
 - (void)facebookDidFinish {
+	[LQShareService linkWasSent:@"Posted to Facebook"];
 	[self shareControllerDidFinish];
 }
 

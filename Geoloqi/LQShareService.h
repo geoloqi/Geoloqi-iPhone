@@ -15,6 +15,8 @@
 
 @property (nonatomic, retain) UIViewController *controller;
 
++ (void)linkWasSent:(NSString *)verb;
+
 - (LQShareService *)initWithController:(UIViewController *)_controller;
 
 - (void)shareURL:(NSURL *)url withMessage:(NSString *)message;

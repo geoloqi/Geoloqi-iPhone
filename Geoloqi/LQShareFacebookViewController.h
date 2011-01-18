@@ -18,6 +18,7 @@
 	IBOutlet UILabel *charCounter;
 	UIBarButtonItem *sendButton;
 	NSString *message;
+	NSString *url;
 	LQHTTPRequestCallback tweetPostedCallback;
 }
 
@@ -27,9 +28,9 @@
 @property (nonatomic, retain) UIBarButtonItem *sendButton;
 @property (nonatomic, retain) IBOutlet UITextView *textView;
 @property (nonatomic, retain) IBOutlet UILabel *charCounter;
-@property (nonatomic, retain) NSString *message;
+@property (nonatomic, retain) NSString *message, *url;
 
-- (LQShareFacebookViewController *)initWithMessage:(NSString *)_message;
+- (LQShareFacebookViewController *)initWithMessage:(NSString *)_message andURL:(NSString *)_url;
 - (void)updateCharacterCounter;
 - (void)sendWasTapped;
 - (LQHTTPRequestCallback)tweetPostedCallback;

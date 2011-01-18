@@ -57,6 +57,7 @@
 			[self shareControllerDidCancel:messageController];
             break;
         case MessageComposeResultSent:
+			[LQShareService linkWasSent:@"Sent"];
 			[self shareControllerDidFinish];
             break;
         case MessageComposeResultFailed:

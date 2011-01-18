@@ -20,11 +20,12 @@
 @synthesize sendButton;
 @synthesize textView;
 @synthesize charCounter;
-@synthesize message;
+@synthesize message, url;
 
-- (LQShareFacebookViewController *)initWithMessage:(NSString *)_message {
+- (LQShareFacebookViewController *)initWithMessage:(NSString *)_message andURL:(NSString * )_url {
     if (self = [super init]) {
 		self.message = _message;
+		self.url = _url;
     }
     return self;
 }
@@ -36,7 +37,7 @@
 	navigationBar.barStyle = UIBarStyleBlackOpaque;
 	[self.view addSubview:navigationBar];
 	
-	UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"New Tweet"];
+	UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Post to Facebook"];
 	
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] init];
 	[cancelButton setTitle:@"Cancel"];
@@ -128,6 +129,7 @@
 	
 	// Try to post the update!
 	[[Geoloqi sharedInstance] postToFacebook:self.textView.text
+										 url:self.url
 								   callback:self.tweetPostedCallback];
 }
 
@@ -147,7 +149,7 @@
 			[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
 			[self.delegate facebookDidCancel];
 		}else{
-			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Tweeted!"];
+			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Posted!"];
 			[self.delegate facebookDidFinish];
 		}
 	} copy];

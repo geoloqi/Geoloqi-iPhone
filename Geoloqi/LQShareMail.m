@@ -55,9 +55,11 @@
 			[self shareControllerDidCancel:mailController];
             break;
         case MFMailComposeResultSaved:
+			[LQShareService linkWasSent:@"Draft Saved"];
 			[self shareControllerDidFinish];
             break;
         case MFMailComposeResultSent:
+			[LQShareService linkWasSent:@"Sent"];
 			[self shareControllerDidFinish];
             break;
         case MFMailComposeResultFailed:
