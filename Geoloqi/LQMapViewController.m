@@ -81,7 +81,7 @@
 	[gAppDelegate makeLQButton:self.checkInButton];
 	[gAppDelegate makeLQButton:self.shareButton];
 	
-	// Observe our own location manager for updates
+	// Observe the Geoloqi location manager for updates
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(locationUpdated:)
 												 name:LQLocationUpdateManagerDidUpdateLocationNotification
@@ -222,8 +222,10 @@
 
 	if(firstLoad && map.userLocation)
     {
-        //[self zoomMapToLocation:map.userLocation.location];
-		//firstLoad = NO;
+		if(![[Geoloqi sharedInstance] locationUpdatesState]){
+			[self zoomMapToLocation:map.userLocation.location];
+			firstLoad = NO;
+		}
     }
 }
 
