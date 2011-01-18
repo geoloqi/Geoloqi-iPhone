@@ -9,7 +9,7 @@
 #import "CJSONDeserializer.h"
 #import "LQLayerDetailViewController.h"
 #import "PKHTTPCachedImage.h"
-#import "SHK.h"
+#import "SHKActivityIndicator.h"
 
 @implementation LQLayerDetailViewController
 

@@ -9,7 +9,7 @@
 #import "Geoloqi.h"
 #import "LQConstants.h"
 #import "GeoloqiAppDelegate.h"
-#import "SHK.h"
+#import "SHKActivityIndicator.h"
 
 GeoloqiAppDelegate *gAppDelegate;
 

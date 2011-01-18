@@ -9,7 +9,7 @@
 #import "Geoloqi.h"
 #import "CJSONDeserializer.h"
 #import "LQShareViewController.h"
-#import "SHK.h"
+#import "SHKActivityIndicator.h"
 #import "LQShareMail.h"
 #import "LQShareSMS.h"
 #import "LQShareTwitter.h"
