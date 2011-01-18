@@ -9,7 +9,6 @@
 #import "LQLayerCellView.h"
 #import "PKHTTPCachedImage.h"
 
-
 @implementation LQLayerCellView
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {

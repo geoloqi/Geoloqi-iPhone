@@ -31,6 +31,7 @@
 + (NSString*)base64forData:(NSData*)theData;
 - (void)makeLQButton:(UIButton *)btn;
 - (void)makeLQButtonLight:(UIButton *)btn;
+- (void)logOut;
 
 @end
 

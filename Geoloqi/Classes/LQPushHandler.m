@@ -104,7 +104,6 @@
 			}
 			break;
 	}
-	[alertView release];
 }
 
 @end

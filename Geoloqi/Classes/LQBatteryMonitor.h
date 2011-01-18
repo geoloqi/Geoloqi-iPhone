@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 enum {
-	kLQBatteryAlertFirst = 0,
+	kLQBatteryAlertFirst = 1,
 	kLQBatteryAlertSecond
 };
 
