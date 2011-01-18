@@ -48,6 +48,9 @@
 		0F0AC2BF12E4AB06007792AA /* LQShareFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0AC2BE12E4AB06007792AA /* LQShareFacebookViewController.m */; };
 		0F0AC2C412E4AB84007792AA /* LQShareFacebookConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC2C312E4AB84007792AA /* LQShareFacebookConnectViewController.xib */; };
 		0F0AC2C712E4AB94007792AA /* LQShareFacebookConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0AC2C612E4AB94007792AA /* LQShareFacebookConnectViewController.m */; };
+		0F0AC3B012E55AF5007792AA /* LQBatteryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0AC3AF12E55AF5007792AA /* LQBatteryMonitor.m */; };
+		0F0AC41212E5EDD9007792AA /* LQButtonLightDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC41012E5EDD9007792AA /* LQButtonLightDisabled.png */; };
+		0F0AC41312E5EDD9007792AA /* LQButtonLightDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC41112E5EDD9007792AA /* LQButtonLightDisabled@2x.png */; };
 		0F0E236A12DFDE5100EF1AC7 /* CustomUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */; };
 		0F0E236E12E0E95900EF1AC7 /* switch_red_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */; };
 		0F0E236F12E0E95900EF1AC7 /* switch_red_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */; };
@@ -218,6 +221,10 @@
 		0F0AC2C312E4AB84007792AA /* LQShareFacebookConnectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQShareFacebookConnectViewController.xib; sourceTree = "<group>"; };
 		0F0AC2C512E4AB94007792AA /* LQShareFacebookConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareFacebookConnectViewController.h; sourceTree = "<group>"; };
 		0F0AC2C612E4AB94007792AA /* LQShareFacebookConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareFacebookConnectViewController.m; sourceTree = "<group>"; };
+		0F0AC3AE12E55AF5007792AA /* LQBatteryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQBatteryMonitor.h; sourceTree = "<group>"; };
+		0F0AC3AF12E55AF5007792AA /* LQBatteryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQBatteryMonitor.m; sourceTree = "<group>"; };
+		0F0AC41012E5EDD9007792AA /* LQButtonLightDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQButtonLightDisabled.png; sourceTree = "<group>"; };
+		0F0AC41112E5EDD9007792AA /* LQButtonLightDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LQButtonLightDisabled@2x.png"; sourceTree = "<group>"; };
 		0F0E236812DFDE5100EF1AC7 /* CustomUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISwitch.h; sourceTree = "<group>"; };
 		0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISwitch.m; sourceTree = "<group>"; };
 		0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red_off.png; sourceTree = "<group>"; };
@@ -409,6 +416,8 @@
 				16EE824811D6A1760026503D /* GeoloqiAppDelegate.m */,
 				0F13109312C4106100FBC2B5 /* LQPushHandler.h */,
 				0F13109412C4106100FBC2B5 /* LQPushHandler.m */,
+				0F0AC3AE12E55AF5007792AA /* LQBatteryMonitor.h */,
+				0F0AC3AF12E55AF5007792AA /* LQBatteryMonitor.m */,
 			);
 			name = Main;
 			path = Classes;
@@ -488,6 +497,19 @@
 				0F0184BD1296FDDF001508D9 /* Reachability.m */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		0F0AC42812E5F003007792AA /* LQButton */ = {
+			isa = PBXGroup;
+			children = (
+				0F0ABA3112E213EC007792AA /* LQButton.png */,
+				0F0ABA3212E213EC007792AA /* LQButton@2x.png */,
+				0F0ABAB012E21F64007792AA /* LQButtonDisabled.png */,
+				0F0ABAB112E21F64007792AA /* LQButtonDisabled@2x.png */,
+				0F0AC41012E5EDD9007792AA /* LQButtonLightDisabled.png */,
+				0F0AC41112E5EDD9007792AA /* LQButtonLightDisabled@2x.png */,
+			);
+			name = LQButton;
 			sourceTree = "<group>";
 		};
 		0F0E236712DFDE2A00EF1AC7 /* CustomUISwitch */ = {
@@ -602,6 +624,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0F0AC42812E5F003007792AA /* LQButton */,
 				0F0E236712DFDE2A00EF1AC7 /* CustomUISwitch */,
 				0FC583DE12CDBC6D00238518 /* Blue Button */,
 				0F01830D1294E105001508D9 /* Settings.bundle */,
@@ -623,10 +646,6 @@
 				0F7F32F212CD4C5F0009CB1C /* 07-map-marker-shadow@2x.png */,
 				0F7F32EA12CD487D0009CB1C /* map-x.png */,
 				0F7F32EB12CD487D0009CB1C /* map-x@2x.png */,
-				0F0ABA3112E213EC007792AA /* LQButton.png */,
-				0F0ABA3212E213EC007792AA /* LQButton@2x.png */,
-				0F0ABAB012E21F64007792AA /* LQButtonDisabled.png */,
-				0F0ABAB112E21F64007792AA /* LQButtonDisabled@2x.png */,
 				49EB2249125D7F7100EDFAB1 /* signin-btn@2x.png */,
 				49EB224A125D7F7100EDFAB1 /* signin-btn.png */,
 				49EB224B125D7F7100EDFAB1 /* small-btn@2x.png */,
@@ -838,10 +857,10 @@
 			isa = PBXGroup;
 			children = (
 				DD354F6C11D665B500EEF7BC /* Map */,
-				DD354F6D11D665BA00EEF7BC /* Controls */,
 				DD354F6E11D665C000EEF7BC /* Geonote */,
 				0F0183791294FEF6001508D9 /* Layers */,
 				0F0183BE1296F48A001508D9 /* Share */,
+				DD354F6D11D665BA00EEF7BC /* Controls */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -980,6 +999,8 @@
 				0F0AC1DF12E3D156007792AA /* LQShareTwitterConnectViewController.xib in Resources */,
 				0F0AC2BC12E4AAE8007792AA /* LQShareFacebookViewController.xib in Resources */,
 				0F0AC2C412E4AB84007792AA /* LQShareFacebookConnectViewController.xib in Resources */,
+				0F0AC41212E5EDD9007792AA /* LQButtonLightDisabled.png in Resources */,
+				0F0AC41312E5EDD9007792AA /* LQButtonLightDisabled@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,6 +1068,7 @@
 				0F0AC1DE12E3D156007792AA /* LQShareTwitterConnectViewController.m in Sources */,
 				0F0AC2BF12E4AB06007792AA /* LQShareFacebookViewController.m in Sources */,
 				0F0AC2C712E4AB94007792AA /* LQShareFacebookConnectViewController.m in Sources */,
+				0F0AC3B012E55AF5007792AA /* LQBatteryMonitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

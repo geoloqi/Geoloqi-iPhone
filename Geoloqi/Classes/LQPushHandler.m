@@ -34,6 +34,7 @@
 												  otherButtonTitles:@"Yes", nil];
 			[alert setTag:kLQPushAlertShutdown];
 			[alert show];
+			[alert release];
 		}
 	} else if([type isEqualToString:@"startPrompt"]) {
 		// Received a push notification asking the user if they want to turn on location updates.
@@ -46,6 +47,7 @@
 												  otherButtonTitles:@"Yes", nil];
 			[alert setTag:kLQPushAlertStart];
 			[alert show];
+			[alert release];
 		}
 	} else {
 		if([userInfo valueForKeyPath:@"aps.alert.body"] != nil) {
@@ -56,6 +58,7 @@
 												  otherButtonTitles:@"Ok", nil];
 			[alert show];
 			[alert setTag:kLQPushAlertGeonote];
+			[alert release];
 		}	
 	}
 }

@@ -34,7 +34,7 @@
 			<key>Key</key>
 			<string>Version</string>
 			<key>DefaultValue</key>
-			<string>20110102</string>
+			<string>20110118</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -84,11 +84,21 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Jacob Bandes</string>
+			<string>Jacob Bandes-Storch</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 			<key>Key</key>
 			<string>JacobBandes</string>
+			<key>DefaultValue</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>    </string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>JacobBandesWeb</string>
 			<key>DefaultValue</key>
 			<string>twitter.com/jtbandes</string>
 		</dict>
@@ -110,6 +120,16 @@
 			<key>Key</key>
 			<string>PMarkAnderson</string>
 			<key>DefaultValue</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>    </string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Key</key>
+			<string>PMarkAndersonWeb</string>
+			<key>DefaultValue</key>
 			<string>http://spotmetrix.com</string>
 		</dict>
 		<dict>
@@ -127,16 +147,6 @@
 			<string>GlyphishIcons</string>
 			<key>DefaultValue</key>
 			<string>http://glyphish.com</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>ShareKit</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-			<key>Key</key>
-			<string>ShareKit</string>
-			<key>DefaultValue</key>
-			<string>http://sharekit.com</string>
 		</dict>
 	</array>
 </dict>

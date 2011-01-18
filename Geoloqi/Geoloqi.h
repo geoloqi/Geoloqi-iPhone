@@ -16,6 +16,7 @@ static NSString *const LQLocationUpdateManagerFinishedSendingSingleLocation = @"
 static NSString *const LQLocationUpdateManagerErrorSendingSingleLocation = @"LQLocationUpdateManagerErrorSendingSingleLocation";
 static NSString *const LQAuthenticationSucceededNotification = @"LQAuthenticationSucceededNotification";
 static NSString *const LQAuthenticationFailedNotification = @"LQAuthenticationFailedNotification";
+static NSString *const LQAuthenticationLogoutNotification = @"LQAuthenticationLogoutNotification";
 static NSString *const LQAnonymousSignupSucceededNotification = @"LQAnonymousSignupSucceededNotification";
 static NSString *const LQAnonymousSignupFailedNotification = @"LQAnonymousSignupFailedNotification";
 static NSString *const LQAPIUnknownErrorNotification = @"LQAPIUnknownErrorNotification";

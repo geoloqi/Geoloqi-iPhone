@@ -9,6 +9,7 @@
 #import "LQDataViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LQMappedSlider.h"
+#import "Geoloqi.h"
 
 NSString *const LQTrackingOnUserInfoKey = @"LQTrackingOnUserInfoKey";
 
@@ -17,6 +18,7 @@ enum {
 	kSectionBasic,
 	kSectionTrackingMode,
 	kSectionAdvanced,
+	kSectionFooter,
 	kNumberOfSections
 };
 
@@ -47,6 +49,7 @@ enum {
 @synthesize distanceFilterCell, distanceFilterLabel, distanceFilterSlider;
 @synthesize trackingFrequencyCell, trackingFrequencyLabel, trackingFrequencySlider;
 @synthesize sendingFrequencyCell, sendingFrequencyLabel, sendingFrequencySlider;
+@synthesize logoutCell, logoutButton;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -100,8 +103,9 @@ enum {
 	checkInCell.accessoryView = checkInButton;
 	checkInCell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
-	[gAppDelegate makeLQButton:checkInButton];
-	[gAppDelegate makeLQButton:sendNowButton];
+	[gAppDelegate makeLQButtonLight:checkInButton];
+	[gAppDelegate makeLQButtonLight:sendNowButton];
+	[gAppDelegate makeLQButtonLight:logoutButton];
 	
 	UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
 	v.backgroundColor = [UIColor clearColor];
@@ -451,6 +455,8 @@ enum {
 			return 1;
 		case kSectionAdvanced:
 			return 4;
+		case kSectionFooter:
+			return 1;
 		default:
 			return 0;
 	}
@@ -477,6 +483,8 @@ enum {
 				case 3: return sendingFrequencyCell;
 				default: return nil;
 			}
+		case kSectionFooter:
+			return logoutCell;
 		default:
 			return nil;
 	}
@@ -568,6 +576,10 @@ enum {
 /********************************************************************************/
 
 #pragma mark -
+
+- (IBAction)logoutButtonWasTapped:(UIButton *)button {
+	[[NSNotificationCenter defaultCenter] postNotificationName:LQAuthenticationLogoutNotification object:self];
+}
 
 - (IBAction)sendNowWasTapped:(UIButton *)button {
 	NSLog(@"Send now was tapped");

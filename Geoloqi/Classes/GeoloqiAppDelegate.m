@@ -10,6 +10,7 @@
 #import "LQConstants.h"
 #import "GeoloqiAppDelegate.h"
 #import "SHKActivityIndicator.h"
+#import "LQBatteryMonitor.h"
 
 GeoloqiAppDelegate *gAppDelegate;
 
@@ -19,7 +20,7 @@ GeoloqiAppDelegate *gAppDelegate;
 @synthesize window, welcomeViewController;
 @synthesize tabBarController;
 @synthesize pushHandler;
-@synthesize lqBtnImg, lqBtnDisabledImg;
+@synthesize lqBtnImg, lqBtnDisabledImg, lqBtnLightDisabledImg;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -57,11 +58,6 @@ GeoloqiAppDelegate *gAppDelegate;
                                                      name:LQAuthenticationFailedNotification 
                                                    object:nil];
 
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(unknownAPIError:) 
-                                                     name:LQAPIUnknownErrorNotification 
-                                                   object:nil];
-		
 		NSLog(@"Showing welcome view");
         [tabBarController presentModalViewController:welcomeViewController animated:YES];
     }
@@ -81,13 +77,22 @@ GeoloqiAppDelegate *gAppDelegate;
 		}
 	}
 
-	UIDevice *d = [UIDevice currentDevice];
-	d.batteryMonitoringEnabled = YES;
-//	NSLog(@"Name %@, Sys name %@, Sys version %@, Model %@, Idiom %d, Battery %f",
-//		  d.name, d.systemName, d.systemVersion, d.model, d.userInterfaceIdiom, d.batteryLevel);
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(unknownAPIError:) 
+												 name:LQAPIUnknownErrorNotification 
+											   object:nil];
+	
+	// Listen for the "Log Out" notification, which is sent by the API when there is an unrecoverable error
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(logOut) 
+												 name:LQAuthenticationLogoutNotification
+											   object:nil];
+		
+	[[LQBatteryMonitor sharedInstance] start];
 	
 	self.lqBtnImg = [[UIImage imageNamed:@"LQButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
 	self.lqBtnDisabledImg = [[UIImage imageNamed:@"LQButtonDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+	self.lqBtnLightDisabledImg = [[UIImage imageNamed:@"LQButtonLightDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
 
     return YES;
 }
@@ -253,6 +258,22 @@ GeoloqiAppDelegate *gAppDelegate;
 	[[Geoloqi sharedInstance] logOut];
 }
 
+- (void)logOut {
+	[[SHKActivityIndicator currentIndicator] displayCompleted:@"Logged Out!"];
+	[tabBarController presentModalViewController:welcomeViewController animated:YES];
+	[[Geoloqi sharedInstance] logOut];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(authenticationDidSucceed:) 
+												 name:LQAuthenticationSucceededNotification 
+											   object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(authenticationDidFail:) 
+												 name:LQAuthenticationFailedNotification 
+											   object:nil];
+}
+
 + (void)userIsAnonymous {
 	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"is_anonymous"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
@@ -273,8 +294,18 @@ GeoloqiAppDelegate *gAppDelegate;
 	[btn.titleLabel setShadowOffset:CGSizeMake(0.0, -1.0)];
 	[btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[btn setTitleShadowColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.5 alpha:1.0] forState:UIControlStateNormal];
-	[btn setTitleColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.4 alpha:1.0] forState:UIControlStateDisabled];
+	[btn setTitleColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.6 alpha:1.0] forState:UIControlStateDisabled];
 	[btn setTitleShadowColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.2 alpha:1.0] forState:UIControlStateDisabled];
+}
+
+- (void)makeLQButtonLight:(UIButton *)btn {
+	[btn setBackgroundImage:self.lqBtnImg forState:UIControlStateNormal];
+	[btn setBackgroundImage:self.lqBtnLightDisabledImg forState:UIControlStateDisabled];
+	[btn.titleLabel setShadowOffset:CGSizeMake(0.0, -1.0)];
+	[btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[btn setTitleShadowColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.5 alpha:1.0] forState:UIControlStateNormal];
+	[btn setTitleColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.5 alpha:1.0] forState:UIControlStateDisabled];
+	[btn setTitleShadowColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.4 alpha:0.0] forState:UIControlStateDisabled];
 }
 
 + (void)registerPresetDefaultsFromSettingsBundle {

@@ -180,29 +180,10 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIHorizontal">NO</bool>
 					</object>
-					<object class="IBUIViewController" id="965108239">
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="808848699">
-							<string key="IBUITitle">Controls</string>
-							<object class="NSCustomResource" key="IBUIImage">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">106-sliders.png</string>
-							</object>
-							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar"/>
-						</object>
-						<reference key="IBUIToolbarItems" ref="0"/>
-						<reference key="IBUIParentViewController" ref="376017519"/>
-						<string key="IBUINibName">LQDataViewController</string>
-						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
-							<int key="interfaceOrientation">1</int>
-						</object>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<bool key="IBUIHorizontal">NO</bool>
-					</object>
 					<object class="IBUINavigationController" id="116261290">
-						<string key="IBUITitle">Geonote</string>
+						<string key="IBUITitle">Geonotes</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="164163614">
-							<string key="IBUITitle">Geonote</string>
+							<string key="IBUITitle">Geonotes</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">geonote-icon.png</string>
@@ -254,6 +235,25 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						</object>
 					</object>
 					<reference ref="979925177"/>
+					<object class="IBUIViewController" id="965108239">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="808848699">
+							<string key="IBUITitle">Controls</string>
+							<object class="NSCustomResource" key="IBUIImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">106-sliders.png</string>
+							</object>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<reference key="IBUITabBar"/>
+						</object>
+						<reference key="IBUIToolbarItems" ref="0"/>
+						<reference key="IBUIParentViewController" ref="376017519"/>
+						<string key="IBUINibName">LQDataViewController</string>
+						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+							<int key="interfaceOrientation">1</int>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIHorizontal">NO</bool>
+					</object>
 				</object>
 				<object class="IBUITabBar" key="IBUITabBar" id="610627293">
 					<nil key="NSNextResponder"/>
@@ -472,9 +472,9 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="610627293"/>
 							<reference ref="389931932"/>
-							<reference ref="965108239"/>
 							<reference ref="979925177"/>
 							<reference ref="116261290"/>
+							<reference ref="965108239"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
