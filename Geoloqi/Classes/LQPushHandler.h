@@ -20,6 +20,8 @@ enum {
 }
 
 - (void)handlePush:(NSDictionary *)userInfo;
+- (void)handleLocalNotificationFromApp:(UIApplication *)app notif:(UILocalNotification *)notif;
+- (void)handleLocalNotificationFromBackground:(UILocalNotification *)notif;
 - (void)handleLaunch:(NSDictionary *)launchOptions;
 
 @end

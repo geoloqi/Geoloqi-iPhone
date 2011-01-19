@@ -38,10 +38,10 @@ GeoloqiAppDelegate *gAppDelegate;
 	[[Geoloqi sharedInstance] startOrStopMonitoringLocationIfNecessary];
 	
     // Override point for customization after application launch.
-	if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
+	if (launchOptions) {
 		NSLog(@"Launched with options %@", launchOptions);
 	}
-
+	
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
     
@@ -75,6 +75,7 @@ GeoloqiAppDelegate *gAppDelegate;
 		if(launchOptions){
 			[pushHandler handleLaunch:launchOptions];
 		}
+		
 	}
 
 	[[NSNotificationCenter defaultCenter] addObserver:self 
@@ -113,6 +114,12 @@ GeoloqiAppDelegate *gAppDelegate;
 
 	[self.pushHandler handlePush:userInfo];
 }
+
+- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
+    // Handle the notificaton. Sent when the app is in the foreground, but also when the app launches in response to a notification.
+	[self.pushHandler handleLocalNotificationFromApp:app notif:notif];
+}
+
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error  {
 	NSLog(@"Error Registering for Push Notifications! %@", error);

@@ -8,6 +8,7 @@
 
 #import "Geoloqi.h"
 #import "LQPushHandler.h"
+#import "SHKActivityIndicator.h"
 
 @implementation LQPushHandler
 
@@ -60,6 +61,42 @@
 			[alert setTag:kLQPushAlertGeonote];
 			[alert release];
 		}	
+	}
+}
+
+- (void)handleLocalNotificationFromApp:(UIApplication *)app notif:(UILocalNotification *)notif {
+	// A local notification came in but the app was in the foreground. This method is called immediately,
+	// so we need to show them the alert and handle the response appropriately.
+
+	NSLog(@"%@", notif);
+
+	if([app applicationState] == UIApplicationStateActive){
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[notif.userInfo objectForKey:@"title"]
+														message:[notif.userInfo objectForKey:@"description"]
+													   delegate:self
+											  cancelButtonTitle:@"No"
+											  otherButtonTitles:notif.alertAction, nil];
+		[alert show];
+		[alert setTag:kLQPushAlertShutdown];
+		[alert release];
+	} else {
+		// The app just launched and it was running in the background. If they hit "Yes" then shut off updates
+		[[Geoloqi sharedInstance] stopLocationUpdates];
+	}
+}
+
+- (void)handleLocalNotificationFromBackground:(UILocalNotification *)notif {
+	// A local notification came in while the app was in the background. The user clicked the notification, 
+	// and the app delegate called this message with the notification.
+	
+	// If the prompt was a battery alert message, stop location updates immediately because they clicked "Yes"
+	if([[notif.userInfo objectForKey:@"title"] isEqualToString:@"Geoloqi Battery Alert"]){
+		[[Geoloqi sharedInstance] stopLocationUpdates];
+		[[SHKActivityIndicator currentIndicator] displayCompleted:@"Tracking is off!"];
+	}else if([[notif.userInfo objectForKey:@"title"] isEqualToString:@"Stopped Sharing"]){
+	// If the alert was because a shared link expired, stop location updates because they clicked "Yes"
+		[[Geoloqi sharedInstance] stopLocationUpdates];
+		[[SHKActivityIndicator currentIndicator] displayCompleted:@"Tracking is off!"];
 	}
 }
 
