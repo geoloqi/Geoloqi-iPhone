@@ -55,6 +55,9 @@
 		0F0AC54F12E60B80007792AA /* layerHeaderBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC54D12E60B80007792AA /* layerHeaderBkg@2x.png */; };
 		0F0AC74012E69C8D007792AA /* LQAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0AC73E12E69C8D007792AA /* LQAboutViewController.m */; };
 		0F0AC74112E69C8D007792AA /* LQAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC73F12E69C8D007792AA /* LQAboutViewController.xib */; };
+		0F0AC82512E6B15E007792AA /* switch_dark_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC82212E6B15E007792AA /* switch_dark_off@2x.png */; };
+		0F0AC82612E6B15E007792AA /* switch_dark_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC82312E6B15E007792AA /* switch_dark_on@2x.png */; };
+		0F0AC82712E6B15E007792AA /* switch_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC82412E6B15E007792AA /* switch_dark@2x.png */; };
 		0F0E236A12DFDE5100EF1AC7 /* CustomUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */; };
 		0F0E236E12E0E95900EF1AC7 /* switch_red_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */; };
 		0F0E236F12E0E95900EF1AC7 /* switch_red_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */; };
@@ -234,6 +237,9 @@
 		0F0AC73D12E69C8D007792AA /* LQAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQAboutViewController.h; sourceTree = "<group>"; };
 		0F0AC73E12E69C8D007792AA /* LQAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQAboutViewController.m; sourceTree = "<group>"; };
 		0F0AC73F12E69C8D007792AA /* LQAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQAboutViewController.xib; sourceTree = "<group>"; };
+		0F0AC82212E6B15E007792AA /* switch_dark_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_dark_off@2x.png"; sourceTree = "<group>"; };
+		0F0AC82312E6B15E007792AA /* switch_dark_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_dark_on@2x.png"; sourceTree = "<group>"; };
+		0F0AC82412E6B15E007792AA /* switch_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_dark@2x.png"; sourceTree = "<group>"; };
 		0F0E236812DFDE5100EF1AC7 /* CustomUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISwitch.h; sourceTree = "<group>"; };
 		0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISwitch.m; sourceTree = "<group>"; };
 		0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red_off.png; sourceTree = "<group>"; };
@@ -530,6 +536,9 @@
 				0F0E245312E1040300EF1AC7 /* switch_dark_off.png */,
 				0F0E245412E1040300EF1AC7 /* switch_dark_on.png */,
 				0F0E245512E1040300EF1AC7 /* switch_dark.png */,
+				0F0AC82212E6B15E007792AA /* switch_dark_off@2x.png */,
+				0F0AC82312E6B15E007792AA /* switch_dark_on@2x.png */,
+				0F0AC82412E6B15E007792AA /* switch_dark@2x.png */,
 				0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */,
 				0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */,
 				0F0E236D12E0E95900EF1AC7 /* switch_red.png */,
@@ -1018,6 +1027,9 @@
 				0F0AC54E12E60B80007792AA /* layerHeaderBkg.png in Resources */,
 				0F0AC54F12E60B80007792AA /* layerHeaderBkg@2x.png in Resources */,
 				0F0AC74112E69C8D007792AA /* LQAboutViewController.xib in Resources */,
+				0F0AC82512E6B15E007792AA /* switch_dark_off@2x.png in Resources */,
+				0F0AC82612E6B15E007792AA /* switch_dark_on@2x.png in Resources */,
+				0F0AC82712E6B15E007792AA /* switch_dark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

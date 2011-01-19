@@ -64,6 +64,8 @@
 	};
 	[mapView addGestureRecognizer:tapInterceptor];
 	
+	searchBar.showsCancelButton = YES;
+	
     nextButton.enabled = NO;
 }
 
