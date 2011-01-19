@@ -55,6 +55,8 @@ NSString *const LQTrackingOnUserInfoKey;
 	UITableViewCell *logoutCell;
 	IBOutlet UIButton *logoutButton;
 	
+	IBOutlet UIButton *aboutButton;
+	
 	NSTimer *viewRefreshTimer;
 }
 @property (nonatomic, retain) IBOutlet UITableView *table;
@@ -96,6 +98,8 @@ NSString *const LQTrackingOnUserInfoKey;
 @property (nonatomic, retain) IBOutlet UITableViewCell *logoutCell;
 @property (nonatomic, retain) IBOutlet UIButton *logoutButton;
 
+@property (nonatomic, retain) IBOutlet UIButton *aboutButton;
+
 - (void)changeSendingFrequency:(LQMappedSlider *)sender;
 - (void)sendingFrequencyWasChanged:(LQMappedSlider *)sender;
 
@@ -109,5 +113,7 @@ NSString *const LQTrackingOnUserInfoKey;
 - (void)finishedSendingLocations:(NSNotification *)notification;
 
 - (IBAction)logoutButtonWasTapped:(UIButton *)button;
+
+- (IBAction)aboutButtonWasTapped:(UIButton *)button;
 
 @end

@@ -23,5 +23,6 @@
 - (IBAction)signUp;
 - (IBAction)useAnonymously;
 - (IBAction)logIn;
+- (IBAction)about;
 
 @end

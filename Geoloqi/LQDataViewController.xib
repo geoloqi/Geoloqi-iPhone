@@ -12,13 +12,13 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="154"/>
-			<integer value="127"/>
 			<integer value="137"/>
-			<integer value="39"/>
+			<integer value="127"/>
 			<integer value="15"/>
+			<integer value="39"/>
 			<integer value="98"/>
 			<integer value="138"/>
+			<integer value="154"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -5650,6 +5650,23 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 					<int key="connectionID">158</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">aboutButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="896393651"/>
+					</object>
+					<int key="connectionID">161</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">aboutButtonWasTapped:</string>
+						<reference key="source" ref="896393651"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">162</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -6161,7 +6178,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">160</int>
+			<int key="maxID">162</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -6173,6 +6190,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>aboutButtonWasTapped:</string>
 							<string>changeDistanceFilter:</string>
 							<string>changeSendingFrequency:</string>
 							<string>changeTrackingFrequency:</string>
@@ -6185,6 +6203,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIButton</string>
 							<string>LQMappedSlider</string>
 							<string>LQMappedSlider</string>
 							<string>LQMappedSlider</string>
@@ -6200,6 +6219,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>aboutButtonWasTapped:</string>
 							<string>changeDistanceFilter:</string>
 							<string>changeSendingFrequency:</string>
 							<string>changeTrackingFrequency:</string>
@@ -6212,6 +6232,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">aboutButtonWasTapped:</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
 							<object class="IBActionInfo">
 								<string key="name">changeDistanceFilter:</string>
 								<string key="candidateClassName">LQMappedSlider</string>
@@ -6254,6 +6278,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>aboutButton</string>
 							<string>altLabel</string>
 							<string>checkInButton</string>
 							<string>checkInCell</string>
@@ -6286,6 +6311,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
 							<string>UITableViewCell</string>
@@ -6321,6 +6347,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>aboutButton</string>
 							<string>altLabel</string>
 							<string>checkInButton</string>
 							<string>checkInCell</string>
@@ -6353,6 +6380,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">aboutButton</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">altLabel</string>
 								<string key="candidateClassName">UILabel</string>

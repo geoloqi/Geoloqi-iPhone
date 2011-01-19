@@ -53,6 +53,8 @@
 		0F0AC41312E5EDD9007792AA /* LQButtonLightDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC41112E5EDD9007792AA /* LQButtonLightDisabled@2x.png */; };
 		0F0AC54E12E60B80007792AA /* layerHeaderBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC54C12E60B80007792AA /* layerHeaderBkg.png */; };
 		0F0AC54F12E60B80007792AA /* layerHeaderBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC54D12E60B80007792AA /* layerHeaderBkg@2x.png */; };
+		0F0AC74012E69C8D007792AA /* LQAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0AC73E12E69C8D007792AA /* LQAboutViewController.m */; };
+		0F0AC74112E69C8D007792AA /* LQAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC73F12E69C8D007792AA /* LQAboutViewController.xib */; };
 		0F0E236A12DFDE5100EF1AC7 /* CustomUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */; };
 		0F0E236E12E0E95900EF1AC7 /* switch_red_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */; };
 		0F0E236F12E0E95900EF1AC7 /* switch_red_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */; };
@@ -229,6 +231,9 @@
 		0F0AC41112E5EDD9007792AA /* LQButtonLightDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LQButtonLightDisabled@2x.png"; sourceTree = "<group>"; };
 		0F0AC54C12E60B80007792AA /* layerHeaderBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = layerHeaderBkg.png; sourceTree = "<group>"; };
 		0F0AC54D12E60B80007792AA /* layerHeaderBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layerHeaderBkg@2x.png"; sourceTree = "<group>"; };
+		0F0AC73D12E69C8D007792AA /* LQAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQAboutViewController.h; sourceTree = "<group>"; };
+		0F0AC73E12E69C8D007792AA /* LQAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQAboutViewController.m; sourceTree = "<group>"; };
+		0F0AC73F12E69C8D007792AA /* LQAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQAboutViewController.xib; sourceTree = "<group>"; };
 		0F0E236812DFDE5100EF1AC7 /* CustomUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISwitch.h; sourceTree = "<group>"; };
 		0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISwitch.m; sourceTree = "<group>"; };
 		0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red_off.png; sourceTree = "<group>"; };
@@ -422,6 +427,9 @@
 				0F13109412C4106100FBC2B5 /* LQPushHandler.m */,
 				0F0AC3AE12E55AF5007792AA /* LQBatteryMonitor.h */,
 				0F0AC3AF12E55AF5007792AA /* LQBatteryMonitor.m */,
+				0F0AC73F12E69C8D007792AA /* LQAboutViewController.xib */,
+				0F0AC73D12E69C8D007792AA /* LQAboutViewController.h */,
+				0F0AC73E12E69C8D007792AA /* LQAboutViewController.m */,
 			);
 			name = Main;
 			path = Classes;
@@ -563,15 +571,15 @@
 		16DA0BB91223910100382D1F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				16DA0BB5122390F600382D1F /* LQWelcomeViewController.xib */,
 				16DA0BB3122390F600382D1F /* LQWelcomeViewController.h */,
 				16DA0BB4122390F600382D1F /* LQWelcomeViewController.m */,
-				16DA0BB5122390F600382D1F /* LQWelcomeViewController.xib */,
+				16DA0BD11223973500382D1F /* LQSignUpViewController.xib */,
 				16DA0BCF1223973500382D1F /* LQSignUpViewController.h */,
 				16DA0BD01223973500382D1F /* LQSignUpViewController.m */,
-				16DA0BD11223973500382D1F /* LQSignUpViewController.xib */,
+				0F0189431299CD7B001508D9 /* LQLogInViewController.xib */,
 				16DA0BF812239BBC00382D1F /* LQLogInViewController.h */,
 				16DA0BF912239BBC00382D1F /* LQLogInViewController.m */,
-				0F0189431299CD7B001508D9 /* LQLogInViewController.xib */,
 			);
 			name = Auth;
 			path = Classes;
@@ -1009,6 +1017,7 @@
 				0F0AC41312E5EDD9007792AA /* LQButtonLightDisabled@2x.png in Resources */,
 				0F0AC54E12E60B80007792AA /* layerHeaderBkg.png in Resources */,
 				0F0AC54F12E60B80007792AA /* layerHeaderBkg@2x.png in Resources */,
+				0F0AC74112E69C8D007792AA /* LQAboutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,6 +1086,7 @@
 				0F0AC2BF12E4AB06007792AA /* LQShareFacebookViewController.m in Sources */,
 				0F0AC2C712E4AB94007792AA /* LQShareFacebookConnectViewController.m in Sources */,
 				0F0AC3B012E55AF5007792AA /* LQBatteryMonitor.m in Sources */,
+				0F0AC74012E69C8D007792AA /* LQAboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "Geoloqi.h"
 #import "LQWelcomeViewController.h"
+#import "LQAboutViewController.h"
 
 
 @implementation LQWelcomeViewController
@@ -30,6 +31,12 @@
 - (IBAction)useAnonymously {
 	[GeoloqiAppDelegate userIsAnonymous];
 	[[Geoloqi sharedInstance] createAnonymousAccount];
+}
+
+- (IBAction)about {
+	LQAboutViewController *aboutView = [[LQAboutViewController alloc] init];
+	[self presentModalViewController:aboutView animated:YES];
+	[aboutView release];
 }
 
 - (void)viewDidLoad;

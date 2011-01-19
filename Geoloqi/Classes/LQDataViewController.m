@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "LQMappedSlider.h"
 #import "Geoloqi.h"
+#import "LQAboutViewController.h"
 
 NSString *const LQTrackingOnUserInfoKey = @"LQTrackingOnUserInfoKey";
 
@@ -50,6 +51,7 @@ enum {
 @synthesize trackingFrequencyCell, trackingFrequencyLabel, trackingFrequencySlider;
 @synthesize sendingFrequencyCell, sendingFrequencyLabel, sendingFrequencySlider;
 @synthesize logoutCell, logoutButton;
+@synthesize aboutButton;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -578,8 +580,10 @@ enum {
 #pragma mark -
 
 - (IBAction)logoutButtonWasTapped:(UIButton *)button {
-	//[[NSNotificationCenter defaultCenter] postNotificationName:LQAuthenticationLogoutNotification object:self];
-	[[NSNotificationCenter defaultCenter] postNotificationName:UIDeviceBatteryLevelDidChangeNotification object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:LQAuthenticationLogoutNotification object:self];
+	
+	// For testing the battery notifications in the simulator
+	// [[NSNotificationCenter defaultCenter] postNotificationName:UIDeviceBatteryLevelDidChangeNotification object:self];
 }
 
 - (IBAction)sendNowWasTapped:(UIButton *)button {
@@ -595,6 +599,12 @@ enum {
 	
 	// If passive location updates are off, get the user's location and send a single point
 	[[Geoloqi sharedInstance] singleLocationUpdate];
+}
+
+- (IBAction)aboutButtonWasTapped:(UIButton *)button {
+	LQAboutViewController *aboutView = [[LQAboutViewController alloc] init];
+	[self presentModalViewController:aboutView animated:YES];
+	[aboutView release];
 }
 
 - (void)updateButtonStates {
