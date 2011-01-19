@@ -41,21 +41,26 @@ static LQBatteryMonitor *sharedInstance = nil;
 	
 	float currentLevel = [UIDevice currentDevice].batteryLevel * 20;
 
-	/*
+	// The simulator always returns -1, so ignore this check in the simulator
+#if (!TARGET_IPHONE_SIMULATOR)
 	if(currentLevel < 0) {
 		// Unknown
 		NSLog(@"Unknown battery level");
 		return;
 	}
-	*/
+#endif
 
-	if(YES) { //lastBatteryLevel != currentLevel) { // lastBatteryLevel > 6 && currentLevel <= 6) {
+	// If location updates are off, don't say anything
+	if([[Geoloqi sharedInstance] locationUpdatesState]){
+		
+#if (TARGET_IPHONE_SIMULATOR)
+		if(YES) {
+#else
 		// If it was last above 30% and is now below 30%, trigger a prompt
 		// Since we took the raw battery level and multiplied it by 20, 6 is 30% of 20, and this way we ensure
-		// we won't notify the user of updates more granular than 5%
-
-		if([[Geoloqi sharedInstance] locationUpdatesState]){
-
+		// we won't notify the user of updates more granular than 5% even if iOS starts sending updates more frequently.
+		if(lastBatteryLevel > 6 && currentLevel <= 6) {
+#endif
 			UILocalNotification *notification = [[UILocalNotification alloc] init];
 			// TODO: This is from Apple's sample code. When would this not be set?
 			if (notification == nil)
@@ -63,44 +68,44 @@ static LQBatteryMonitor *sharedInstance = nil;
 
 			notification.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
 									 @"Geoloqi Battery Alert", @"title",
-									 @"Your battery is below 30, would you like to turn tracking off", @"description",
+									 @"Your battery is below 30%, would you like to turn tracking off?", @"description",
 									 nil];
-			
+			// The percent sign needs to be escaped for the alertBody
 			notification.alertBody = @"Your battery is below 30%%, would you like to turn tracking off?";
 			notification.alertAction = @"Yes";
+		
+#if (TARGET_IPHONE_SIMULATOR)
+			// If in the simulator, schedule the update for 5 seconds from now to give us a chance to put the app in the background
 			notification.fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:5.0];
 			[[UIApplication sharedApplication] scheduleLocalNotification:notification];
-			//[[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+#else
+			// On the device, present the local notification immediately
+			[[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+#endif
 			[notification release];
-
-			/*
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Geoloqi Battery Alert"
-															message:@"Your battery is below 30%, would you like to turn tracking off?"
-														   delegate:self
-												  cancelButtonTitle:@"No"
-												  otherButtonTitles:@"Yes", nil];
-			[alert setTag:kLQBatteryAlertFirst];
-			[alert show];
-			[alert release];
-			 */
 		}
-		
-	}
 
-	if(lastBatteryLevel > 4 && currentLevel <= 4) {
-		// If it was last above 20 and now below 20
-		if([[Geoloqi sharedInstance] locationUpdatesState]){
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Geoloqi Battery Alert"
-															message:@"Your battery is below 20%, would you like to turn tracking off?"
-														   delegate:self
-												  cancelButtonTitle:@"No"
-												  otherButtonTitles:@"Yes", nil];
-			[alert setTag:kLQBatteryAlertFirst];
-			[alert show];
-			[alert release];
+		if(lastBatteryLevel > 4 && currentLevel <= 4) {
+			// If it was last above 20% and is now below 20%, trigger a prompt
+			
+			UILocalNotification *notification = [[UILocalNotification alloc] init];
+			// TODO: This is from Apple's sample code. When would this not be set?
+			if (notification == nil)
+				return;
+			
+			notification.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+									 @"Geoloqi Battery Alert", @"title",
+									 @"Your battery is below 30%, would you like to turn tracking off?", @"description",
+									 nil];
+			// The percent sign needs to be escaped for the alertBody
+			notification.alertBody = @"Your battery is below 30%%, would you like to turn tracking off?";
+			notification.alertAction = @"Yes";
+			[[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+			[notification release];
 		}
-	}
-	
+			
+	} // end if location updates are off
+
 	lastBatteryLevel = currentLevel;
 }
 

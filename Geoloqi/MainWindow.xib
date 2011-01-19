@@ -62,103 +62,24 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
-				<object class="IBUINavigationController" key="IBUISelectedViewController" id="979925177">
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="199947023">
-						<string key="IBUITitle">Layers</string>
+				<object class="IBUIViewController" key="IBUISelectedViewController" id="965108239">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="808848699">
+						<string key="IBUITitle">Controls</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">layers-icon.png</string>
+							<string key="NSResourceName">106-sliders.png</string>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<reference key="IBUITabBar"/>
 					</object>
 					<reference key="IBUIToolbarItems" ref="0"/>
 					<reference key="IBUIParentViewController" ref="376017519"/>
+					<string key="IBUINibName">LQDataViewController</string>
 					<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 						<int key="interfaceOrientation">1</int>
 					</object>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					<bool key="IBUIHorizontal">NO</bool>
-					<object class="IBUINavigationBar" key="IBUINavigationBar" id="54613300">
-						<nil key="NSNextResponder"/>
-						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{320, 44}</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSColor" key="IBUITintColor" id="154980556">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MAA</bytes>
-						</object>
-					</object>
-					<object class="NSMutableArray" key="IBUIViewControllers">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="IBUITableViewController" id="741156664">
-							<object class="IBUITableView" key="IBUIView" id="549878364">
-								<reference key="NSNextResponder"/>
-								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{320, 367}</string>
-								<reference key="NSSuperview"/>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">10</int>
-									<object class="NSImage" key="NSImage">
-										<int key="NSImageFlags">549453824</int>
-										<string key="NSSize">{84, 1}</string>
-										<object class="NSMutableArray" key="NSReps">
-											<bool key="EncodedWithXMLCoder">YES</bool>
-											<object class="NSArray">
-												<bool key="EncodedWithXMLCoder">YES</bool>
-												<integer value="0"/>
-												<object class="NSBitmapImageRep">
-													<object class="NSData" key="NSTIFFRepresentation">
-														<bytes key="NS.bytes">TU0AKgAAAVjFzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/
-y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/
-xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/
-xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/
-xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/
-xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P8ADQEAAAMAAAABAFQAAAEB
-AAMAAAABAAEAAAECAAMAAAAEAAAB+gEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAABAAAACAES
-AAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMAAAABAAEAAAEXAAQAAAABAAABUAEcAAMAAAABAAEAAAFS
-AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="NSColor" key="NSColor" id="867160485">
-											<int key="NSColorSpace">3</int>
-											<bytes key="NSWhite">MCAwAA</bytes>
-										</object>
-									</object>
-									<string key="IBUIColorCocoaTouchKeyPath">groupTableViewBackgroundColor</string>
-								</object>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<bool key="IBUIAlwaysBounceVertical">YES</bool>
-								<int key="IBUIStyle">1</int>
-								<int key="IBUISeparatorStyle">2</int>
-								<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
-								<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
-								<float key="IBUIRowHeight">44</float>
-								<float key="IBUISectionHeaderHeight">10</float>
-								<float key="IBUISectionFooterHeight">10</float>
-							</object>
-							<object class="IBUINavigationItem" key="IBUINavigationItem" id="133269781">
-								<reference key="IBUINavigationBar"/>
-								<string key="IBUITitle">Layer Catalog</string>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							</object>
-							<reference key="IBUIParentViewController" ref="979925177"/>
-							<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-							<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
-								<int key="interfaceOrientation">1</int>
-							</object>
-							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<bool key="IBUIHorizontal">NO</bool>
-						</object>
-					</object>
 				</object>
 				<object class="NSMutableArray" key="IBUIViewControllers">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -206,7 +127,10 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<bool key="IBUIClipsSubviews">YES</bool>
 							<bool key="IBUIMultipleTouchEnabled">YES</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITintColor" ref="154980556"/>
+							<object class="NSColor" key="IBUITintColor" id="154980556">
+								<int key="NSColorSpace">3</int>
+								<bytes key="NSWhite">MAA</bytes>
+							</object>
 						</object>
 						<object class="IBUIToolbar" key="IBUIToolbar" id="319581789">
 							<nil key="NSNextResponder"/>
@@ -234,25 +158,99 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							</object>
 						</object>
 					</object>
-					<reference ref="979925177"/>
-					<object class="IBUIViewController" id="965108239">
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="808848699">
-							<string key="IBUITitle">Controls</string>
+					<reference ref="965108239"/>
+					<object class="IBUINavigationController" id="979925177">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="199947023">
+							<string key="IBUITitle">Layers</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">106-sliders.png</string>
+								<string key="NSResourceName">layers-icon.png</string>
 							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<reference key="IBUITabBar"/>
 						</object>
 						<reference key="IBUIToolbarItems" ref="0"/>
 						<reference key="IBUIParentViewController" ref="376017519"/>
-						<string key="IBUINibName">LQDataViewController</string>
 						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 							<int key="interfaceOrientation">1</int>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIHorizontal">NO</bool>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="54613300">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">256</int>
+							<string key="NSFrameSize">{320, 44}</string>
+							<bool key="IBUIOpaque">NO</bool>
+							<bool key="IBUIClipsSubviews">YES</bool>
+							<bool key="IBUIMultipleTouchEnabled">YES</bool>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<reference key="IBUITintColor" ref="154980556"/>
+						</object>
+						<object class="NSMutableArray" key="IBUIViewControllers">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUITableViewController" id="741156664">
+								<object class="IBUITableView" key="IBUIView" id="549878364">
+									<nil key="NSNextResponder"/>
+									<int key="NSvFlags">274</int>
+									<string key="NSFrameSize">{320, 367}</string>
+									<object class="NSColor" key="IBUIBackgroundColor">
+										<int key="NSColorSpace">10</int>
+										<object class="NSImage" key="NSImage">
+											<int key="NSImageFlags">549453824</int>
+											<string key="NSSize">{84, 1}</string>
+											<object class="NSMutableArray" key="NSReps">
+												<bool key="EncodedWithXMLCoder">YES</bool>
+												<object class="NSArray">
+													<bool key="EncodedWithXMLCoder">YES</bool>
+													<integer value="0"/>
+													<object class="NSBitmapImageRep">
+														<object class="NSData" key="NSTIFFRepresentation">
+															<bytes key="NS.bytes">TU0AKgAAAVjFzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/
+y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/
+xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/
+xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/
+xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/
+xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P8ADQEAAAMAAAABAFQAAAEB
+AAMAAAABAAEAAAECAAMAAAAEAAAB+gEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAABAAAACAES
+AAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMAAAABAAEAAAEXAAQAAAABAAABUAEcAAMAAAABAAEAAAFS
+AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
+														</object>
+													</object>
+												</object>
+											</object>
+											<object class="NSColor" key="NSColor" id="867160485">
+												<int key="NSColorSpace">3</int>
+												<bytes key="NSWhite">MCAwAA</bytes>
+											</object>
+										</object>
+										<string key="IBUIColorCocoaTouchKeyPath">groupTableViewBackgroundColor</string>
+									</object>
+									<bool key="IBUIOpaque">NO</bool>
+									<bool key="IBUIClipsSubviews">YES</bool>
+									<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+									<bool key="IBUIAlwaysBounceVertical">YES</bool>
+									<int key="IBUIStyle">1</int>
+									<int key="IBUISeparatorStyle">2</int>
+									<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
+									<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
+									<float key="IBUIRowHeight">44</float>
+									<float key="IBUISectionHeaderHeight">10</float>
+									<float key="IBUISectionFooterHeight">10</float>
+								</object>
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="133269781">
+									<string key="IBUITitle">Layer Catalog</string>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
+								<reference key="IBUIParentViewController" ref="979925177"/>
+								<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+									<int key="interfaceOrientation">1</int>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<bool key="IBUIHorizontal">NO</bool>
+							</object>
+						</object>
 					</object>
 				</object>
 				<object class="IBUITabBar" key="IBUITabBar" id="610627293">
@@ -994,6 +992,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>changeSendingFrequency:</string>
 							<string>changeTrackingFrequency:</string>
 							<string>checkInButtonWasTapped:</string>
+							<string>logoutButtonWasTapped:</string>
 							<string>sendNowWasTapped:</string>
 							<string>sendingFrequencyWasChanged:</string>
 							<string>toggleTracking:</string>
@@ -1004,6 +1003,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>LQMappedSlider</string>
 							<string>LQMappedSlider</string>
 							<string>LQMappedSlider</string>
+							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>LQMappedSlider</string>
@@ -1019,6 +1019,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>changeSendingFrequency:</string>
 							<string>changeTrackingFrequency:</string>
 							<string>checkInButtonWasTapped:</string>
+							<string>logoutButtonWasTapped:</string>
 							<string>sendNowWasTapped:</string>
 							<string>sendingFrequencyWasChanged:</string>
 							<string>toggleTracking:</string>
@@ -1040,6 +1041,10 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">checkInButtonWasTapped:</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">logoutButtonWasTapped:</string>
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBActionInfo">
@@ -1074,6 +1079,8 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>inQueueLabel</string>
 							<string>lastUpdateLabel</string>
 							<string>latLabel</string>
+							<string>logoutButton</string>
+							<string>logoutCell</string>
 							<string>longLabel</string>
 							<string>sendNowButton</string>
 							<string>sendingActivityIndicator</string>
@@ -1104,6 +1111,8 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UIButton</string>
+							<string>UITableViewCell</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
 							<string>UIActivityIndicatorView</string>
@@ -1137,6 +1146,8 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>inQueueLabel</string>
 							<string>lastUpdateLabel</string>
 							<string>latLabel</string>
+							<string>logoutButton</string>
+							<string>logoutCell</string>
 							<string>longLabel</string>
 							<string>sendNowButton</string>
 							<string>sendingActivityIndicator</string>
@@ -1196,6 +1207,14 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<object class="IBToOneOutletInfo">
 								<string key="name">latLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">logoutButton</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">logoutCell</string>
+								<string key="candidateClassName">UITableViewCell</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">longLabel</string>

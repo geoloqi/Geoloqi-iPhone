@@ -85,6 +85,7 @@
 	}
 }
 
+/*
 - (void)handleLocalNotificationFromBackground:(UILocalNotification *)notif {
 	// A local notification came in while the app was in the background. The user clicked the notification, 
 	// and the app delegate called this message with the notification.
@@ -99,6 +100,7 @@
 		[[SHKActivityIndicator currentIndicator] displayCompleted:@"Tracking is off!"];
 	}
 }
+*/
 
 - (void)handleLaunch:(NSDictionary *)launchOptions {
 	
