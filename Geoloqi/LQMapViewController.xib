@@ -12,9 +12,9 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="35"/>
-			<integer value="1"/>
 			<integer value="30"/>
+			<integer value="1"/>
+			<integer value="35"/>
 			<integer value="23"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -58,7 +58,7 @@
 					<object class="IBUIButton" id="248032087">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{191, 364}, {119, 37}}</string>
+						<string key="NSFrame">{{186, 364}, {124, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -69,7 +69,7 @@
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<string key="IBUINormalTitle">Send Location</string>
+						<string key="IBUINormalTitle">Share Location</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="135738836">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
