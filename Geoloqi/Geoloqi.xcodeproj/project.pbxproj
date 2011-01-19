@@ -58,6 +58,8 @@
 		0F0AC82512E6B15E007792AA /* switch_dark_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC82212E6B15E007792AA /* switch_dark_off@2x.png */; };
 		0F0AC82612E6B15E007792AA /* switch_dark_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC82312E6B15E007792AA /* switch_dark_on@2x.png */; };
 		0F0AC82712E6B15E007792AA /* switch_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC82412E6B15E007792AA /* switch_dark@2x.png */; };
+		0F0AC83C12E6B3AC007792AA /* GeonoteHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0AC83A12E6B3AC007792AA /* GeonoteHelpViewController.m */; };
+		0F0AC83D12E6B3AC007792AA /* GeonoteHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AC83B12E6B3AC007792AA /* GeonoteHelpViewController.xib */; };
 		0F0E236A12DFDE5100EF1AC7 /* CustomUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */; };
 		0F0E236E12E0E95900EF1AC7 /* switch_red_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */; };
 		0F0E236F12E0E95900EF1AC7 /* switch_red_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E236C12E0E95900EF1AC7 /* switch_red_on.png */; };
@@ -240,6 +242,9 @@
 		0F0AC82212E6B15E007792AA /* switch_dark_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_dark_off@2x.png"; sourceTree = "<group>"; };
 		0F0AC82312E6B15E007792AA /* switch_dark_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_dark_on@2x.png"; sourceTree = "<group>"; };
 		0F0AC82412E6B15E007792AA /* switch_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_dark@2x.png"; sourceTree = "<group>"; };
+		0F0AC83912E6B3AC007792AA /* GeonoteHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteHelpViewController.h; sourceTree = "<group>"; };
+		0F0AC83A12E6B3AC007792AA /* GeonoteHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteHelpViewController.m; sourceTree = "<group>"; };
+		0F0AC83B12E6B3AC007792AA /* GeonoteHelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeonoteHelpViewController.xib; sourceTree = "<group>"; };
 		0F0E236812DFDE5100EF1AC7 /* CustomUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISwitch.h; sourceTree = "<group>"; };
 		0F0E236912DFDE5100EF1AC7 /* CustomUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISwitch.m; sourceTree = "<group>"; };
 		0F0E236B12E0E95900EF1AC7 /* switch_red_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_red_off.png; sourceTree = "<group>"; };
@@ -872,6 +877,9 @@
 				DD3550B511D6794200EEF7BC /* GeonoteConfirmationViewController.xib */,
 				0FC5482312C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.h */,
 				0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */,
+				0F0AC83B12E6B3AC007792AA /* GeonoteHelpViewController.xib */,
+				0F0AC83912E6B3AC007792AA /* GeonoteHelpViewController.h */,
+				0F0AC83A12E6B3AC007792AA /* GeonoteHelpViewController.m */,
 			);
 			name = Geonote;
 			sourceTree = "<group>";
@@ -1030,6 +1038,7 @@
 				0F0AC82512E6B15E007792AA /* switch_dark_off@2x.png in Resources */,
 				0F0AC82612E6B15E007792AA /* switch_dark_on@2x.png in Resources */,
 				0F0AC82712E6B15E007792AA /* switch_dark@2x.png in Resources */,
+				0F0AC83D12E6B3AC007792AA /* GeonoteHelpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1099,6 +1108,7 @@
 				0F0AC2C712E4AB94007792AA /* LQShareFacebookConnectViewController.m in Sources */,
 				0F0AC3B012E55AF5007792AA /* LQBatteryMonitor.m in Sources */,
 				0F0AC74012E69C8D007792AA /* LQAboutViewController.m in Sources */,
+				0F0AC83C12E6B3AC007792AA /* GeonoteHelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

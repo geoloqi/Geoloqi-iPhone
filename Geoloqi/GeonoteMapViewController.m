@@ -11,6 +11,7 @@
 #import "Geonote.h"
 #import "CJSONDeserializer.h"
 #import "GeonoteMapViewGestureRecognizer.h"
+#import "GeonoteHelpViewController.h"
 
 @interface GeonoteMapViewController (GeonoteMapViewControllerPrivate)
 
@@ -67,6 +68,12 @@
 	searchBar.showsCancelButton = YES;
 	
     nextButton.enabled = NO;
+
+	if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSeenGeonoteHelp"]){
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasSeenGeonoteHelp"];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+		[self tappedHelp:nil];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -200,6 +207,13 @@
 	
 	//NSLog(@"Geonote: %@", [self.geonote description]);
 	nextButton.enabled = YES;
+}
+
+- (IBAction)tappedHelp:(UIButton *)sender
+{
+	GeonoteHelpViewController *view = [[GeonoteHelpViewController alloc] init];
+	[self presentModalViewController:view animated:YES];
+	[view release];
 }
 
 #pragma mark -

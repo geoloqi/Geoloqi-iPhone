@@ -38,5 +38,6 @@
 				northeast:(CLLocation *)northeast;
 - (void)startedDraggingMap;
 - (void)setGeonotePosition;
+- (IBAction)tappedHelp:(UIButton *)sender;
 
 @end
