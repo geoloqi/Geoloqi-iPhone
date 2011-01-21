@@ -15,3 +15,5 @@
 // Urban Airship for push notifications
 #define UAApplicationKey			@""
 #define UAApplicationSecret			@""
+
+#define LQ_USER_AGENT		@"geoloqi"

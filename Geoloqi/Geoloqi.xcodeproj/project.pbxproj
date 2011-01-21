@@ -1175,7 +1175,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Parecki (UR6C55S2E6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Geoloqi.com";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Geoloqi_Prefix.pch;
@@ -1186,7 +1186,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Geoloqi;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6C6A0C7-25F7-430E-BC76-E5885A2DDDF2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "06CDC416-783A-4B54-87D1-31C974403508";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1195,14 +1195,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Parecki (UR6C55S2E6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Geoloqi.com";
 				CURRENT_PROJECT_VERSION = 20110107;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6C6A0C7-25F7-430E-BC76-E5885A2DDDF2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "06CDC416-783A-4B54-87D1-31C974403508";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1211,7 +1211,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Parecki (UR6C55S2E6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Geoloqi.com";
 				CURRENT_PROJECT_VERSION = 20110107;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -1219,7 +1219,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6C6A0C7-25F7-430E-BC76-E5885A2DDDF2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "06CDC416-783A-4B54-87D1-31C974403508";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

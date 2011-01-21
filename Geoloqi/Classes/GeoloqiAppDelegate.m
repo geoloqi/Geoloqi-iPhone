@@ -31,6 +31,8 @@ GeoloqiAppDelegate *gAppDelegate;
 	
 	pushHandler = [[LQPushHandler alloc] init];
 
+	[[Geoloqi sharedInstance] setUserAgentString:LQ_USER_AGENT];
+	
 	// IMPORTANT: Set up OAuth prior to making network calls to the geoloqi server.
     [[Geoloqi sharedInstance] setOauthClientID:LQ_OAUTH_CLIENT_ID secret:LQ_OAUTH_SECRET];
 

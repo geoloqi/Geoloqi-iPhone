@@ -37,6 +37,8 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 #pragma mark Application
 
+- (void)setUserAgentString:(NSString *)ua;
+
 - (void)createGeonote:(NSString *)text latitude:(float)latitude longitude:(float)longitude radius:(float)radius callback:(LQHTTPRequestCallback)callback;
 
 - (void)createLink:(NSString *)description minutes:(NSInteger)minutes callback:(LQHTTPRequestCallback)callback;
