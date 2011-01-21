@@ -24,7 +24,6 @@
 }
 */
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,7 +32,7 @@
     webView.delegate = self;
     webView.alpha = 0.0;
 	
-	NSString *url = [NSString stringWithFormat:@"%@/about/index", LQ_WEB_ROOT];
+	NSString *url = [NSString stringWithFormat:@"%@/about/iphone", LQ_WEB_ROOT];
 	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 

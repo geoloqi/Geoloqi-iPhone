@@ -1195,14 +1195,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Geoloqi.com";
-				CURRENT_PROJECT_VERSION = 20110107;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Parecki (UR6C55S2E6)";
+				CURRENT_PROJECT_VERSION = 20110121;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "06CDC416-783A-4B54-87D1-31C974403508";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6C6A0C7-25F7-430E-BC76-E5885A2DDDF2";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1212,7 +1212,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Geoloqi.com";
-				CURRENT_PROJECT_VERSION = 20110107;
+				CURRENT_PROJECT_VERSION = 20110121;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
