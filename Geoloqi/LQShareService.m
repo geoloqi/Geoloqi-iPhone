@@ -26,6 +26,20 @@
 										  otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+
+	/* Set the tracker into hi-res mode */
+	CGFloat df, tl, rl;
+	
+	NSLog(@"Setting to high res mode");
+	df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"] floatValue];
+	tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresTrackingLimit"] floatValue];
+	rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresRateLimit"] floatValue];
+	
+	[[Geoloqi sharedInstance] setDistanceFilterTo:df];
+	[[Geoloqi sharedInstance] setTrackingFrequencyTo:tl];
+	[[Geoloqi sharedInstance] setSendingFrequencyTo:rl];
+	/* * */
+	
 	[[Geoloqi sharedInstance] startLocationUpdates];
 }
 

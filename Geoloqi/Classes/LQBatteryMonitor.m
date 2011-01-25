@@ -68,10 +68,10 @@ static LQBatteryMonitor *sharedInstance = nil;
 
 			notification.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
 									 @"Geoloqi Battery Alert", @"title",
-									 @"Your battery is below 30%, would you like to turn tracking off?", @"description",
+									 @"Your battery is getting low, would you like to turn tracking off?", @"description",
 									 nil];
 			// The percent sign needs to be escaped for the alertBody
-			notification.alertBody = @"Your battery is below 30%%, would you like to turn tracking off?";
+			notification.alertBody = @"Your battery is getting low, would you like to turn tracking off?";
 			notification.alertAction = @"Yes";
 		
 #if (TARGET_IPHONE_SIMULATOR)
@@ -95,10 +95,10 @@ static LQBatteryMonitor *sharedInstance = nil;
 			
 			notification.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
 									 @"Geoloqi Battery Alert", @"title",
-									 @"Your battery is below 30%, would you like to turn tracking off?", @"description",
+									 @"Your battery is really getting low, would you like to turn tracking off?", @"description",
 									 nil];
 			// The percent sign needs to be escaped for the alertBody
-			notification.alertBody = @"Your battery is below 30%%, would you like to turn tracking off?";
+			notification.alertBody = @"Your battery is really getting low, would you like to turn tracking off?";
 			notification.alertAction = @"Yes";
 			[[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 			[notification release];

@@ -74,23 +74,16 @@ enum {
 	distanceFilterSlider.target = self;
 	distanceFilterSlider.action = @selector(changeDistanceFilter:);
 	distanceFilterSlider.finishAction = @selector(distanceFilterWasChanged:);
-	distanceFilterSlider.mappedValue = [[Geoloqi sharedInstance] distanceFilterDistance];
 	
 	trackingFrequencySlider.mapping = [sliderMappings objectForKey:@"tracking_limit"];
 	trackingFrequencySlider.target = self;
 	trackingFrequencySlider.action = @selector(changeTrackingFrequency:);
 	trackingFrequencySlider.finishAction = @selector(trackingFrequencyWasChanged:);
-	trackingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] trackingFrequency];
 	
 	sendingFrequencySlider.mapping = [sliderMappings objectForKey:@"rate_limit"];
 	sendingFrequencySlider.target = self;
 	sendingFrequencySlider.action = @selector(changeSendingFrequency:);
 	sendingFrequencySlider.finishAction = @selector(sendingFrequencyWasChanged:);
-	sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
-	
-	[self updatePreset];
-	
-	[self updateLabels];
 	
 	// Set up cells
 	trackingToggleCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -136,6 +129,13 @@ enum {
 	[super viewDidAppear:animated];
 
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
+
+	distanceFilterSlider.mappedValue = [[Geoloqi sharedInstance] distanceFilterDistance];
+	trackingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] trackingFrequency];
+	sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
+	[self updatePreset];
+	
+	[self updateLabels];
 
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(startedSendingLocations:)
@@ -316,9 +316,9 @@ enum {
 	
 	[self updateLabels];
 	
-	[[Geoloqi sharedInstance] setSendingFrequencyTo:df];
+	[[Geoloqi sharedInstance] setDistanceFilterTo:df];
 	[[Geoloqi sharedInstance] setTrackingFrequencyTo:tl];
-	[[Geoloqi sharedInstance] setDistanceFilterTo:rl];
+	[[Geoloqi sharedInstance] setSendingFrequencyTo:rl];
 }
 
 - (void)saveCustomSliderPresets {
