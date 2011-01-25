@@ -17,7 +17,7 @@ NSString *const LQTrackingOnUserInfoKey = @"LQTrackingOnUserInfoKey";
 enum {
 	kSectionCoords = 0,
 	kSectionBasic,
-	kSectionTrackingMode,
+//	kSectionTrackingMode,
 	kSectionAdvanced,
 	kSectionFooter,
 	kNumberOfSections
@@ -112,7 +112,6 @@ enum {
 	UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
 	v.backgroundColor = [UIColor clearColor];
 	coordsCell.backgroundView = v;
-	trackingModeCell.backgroundView = v;
 	[v release];
 	
 	// Set up long-tap-to-copy
@@ -451,9 +450,9 @@ enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case kSectionBasic:
-			return 2;
+			return 3;
 		case kSectionCoords:
-		case kSectionTrackingMode:
+		//case kSectionTrackingMode:
 			return 1;
 		case kSectionAdvanced:
 			return 4;
@@ -471,15 +470,14 @@ enum {
 			switch (indexPath.row) {
 				case 0: return trackingToggleCell;
 				case 1: return checkInCell;
+				case 2: return updateQueueCell;
 				default: return nil;
 			}
 		case kSectionCoords:
 			return coordsCell;
-		case kSectionTrackingMode:
-			return trackingModeCell;
 		case kSectionAdvanced:
 			switch (indexPath.row) {
-				case 0: return updateQueueCell;
+				case 0: return trackingModeCell;
 				case 1: return distanceFilterCell;
 				case 2: return trackingFrequencyCell;
 				case 3: return sendingFrequencyCell;
@@ -496,15 +494,20 @@ enum {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	switch (indexPath.section) {
 		case kSectionBasic:
-			return 48;
+			switch (indexPath.row) {
+				case 2:
+					return 52;
+				default:
+					return 48;
+			}
 		case kSectionCoords:
 			return 40;
-		case kSectionTrackingMode:
-			return 29;
+		//case kSectionTrackingMode:
+		//	return 29;
 		case kSectionAdvanced:
 			switch (indexPath.row) {
 				case 0:
-					return 54;
+					return 56;
 				default:
 					return 64;
 			}
@@ -518,10 +521,10 @@ enum {
 	switch (section) {
 		case kSectionBasic:
 		case kSectionCoords:
-		case kSectionTrackingMode:
+		//case kSectionTrackingMode:
 			return nil;
 		case kSectionAdvanced:
-			return @"Advanced Settings";
+			return @"Tracking Settings";
 		default:
 			return nil;
 	}
@@ -531,7 +534,7 @@ enum {
 	switch (section) {
 		case kSectionBasic:
 		case kSectionCoords:
-		case kSectionTrackingMode:
+		//case kSectionTrackingMode:
 		case kSectionAdvanced:
 		default:
 			return nil;

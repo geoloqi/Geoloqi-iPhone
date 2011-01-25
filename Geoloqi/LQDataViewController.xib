@@ -12,13 +12,13 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="154"/>
+			<integer value="15"/>
 			<integer value="137"/>
 			<integer value="127"/>
-			<integer value="15"/>
 			<integer value="39"/>
-			<integer value="98"/>
 			<integer value="138"/>
-			<integer value="154"/>
+			<integer value="98"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -4539,17 +4539,16 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<object class="IBUISegmentedControl" id="974172240">
 								<reference key="NSNextResponder" ref="405549221"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrameSize">{300, 30}</string>
+								<string key="NSFrame">{{5, 6}, {290, 44}}</string>
 								<reference key="NSSuperview" ref="405549221"/>
 								<reference key="IBUIBackgroundColor" ref="999950130"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBSegmentControlStyle">2</int>
 								<int key="IBNumberOfSegments">3</int>
 								<int key="IBSelectedSegmentIndex">0</int>
 								<object class="NSArray" key="IBSegmentTitles">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<string>Battery Saver</string>
+									<string>Battery</string>
 									<string>High Res</string>
 									<string>Custom</string>
 								</object>
@@ -4583,7 +4582,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								</object>
 							</object>
 						</object>
-						<string key="NSFrameSize">{300, 29}</string>
+						<string key="NSFrameSize">{300, 56}</string>
 						<reference key="NSSuperview" ref="938824139"/>
 						<reference key="IBUIBackgroundColor" ref="999950130"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -4593,12 +4592,12 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{300, 29}</string>
+				<string key="NSFrameSize">{300, 56}</string>
 				<reference key="NSSuperview"/>
-				<reference key="IBUIBackgroundColor" ref="999950130"/>
-				<bool key="IBUIOpaque">NO</bool>
+				<reference key="IBUIBackgroundColor" ref="156012810"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
+				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="405549221"/>
 			</object>
 			<object class="IBUITableViewCell" id="789099780">
@@ -5007,6 +5006,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
+				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="971390440"/>
 			</object>
 			<object class="IBUITableViewCell" id="163366190">
@@ -5118,7 +5118,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				</object>
 				<string key="NSFrameSize">{320, 64}</string>
 				<reference key="NSSuperview"/>
-				<reference key="IBUIBackgroundColor" ref="799980905"/>
+				<reference key="IBUIBackgroundColor" ref="156012810"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
 				<int key="IBUISelectionStyle">0</int>
@@ -6076,7 +6076,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{333, 588}, {96, 37}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{346, 275}, {300, 29}}</string>
+					<string>{{346, 247}, {300, 56}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABC6AAAxIFgAA</bytes>
