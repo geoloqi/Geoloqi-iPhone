@@ -193,11 +193,15 @@
 		firstLoad = NO;
     }
 	
-	// add new location to polyline
-	MKMapRect updateRect = [line addCoordinate:loc.coordinate];
-	if (!MKMapRectIsNull(updateRect)) {
-		//NSLog(@"Setting needs display in %@ on %@", MKStringFromMapRect(updateRect), lineView);
-		[lineView setNeedsDisplayInMapRect:updateRect];
+	// Don't draw a point on the map if it's from the cell tower location.
+	// Cell positions are reported with accuracy of 500 or above.
+	if(loc.horizontalAccuracy < 300) {
+		// add new location to polyline
+		MKMapRect updateRect = [line addCoordinate:loc.coordinate];
+		if (!MKMapRectIsNull(updateRect)) {
+			//NSLog(@"Setting needs display in %@ on %@", MKStringFromMapRect(updateRect), lineView);
+			[lineView setNeedsDisplayInMapRect:updateRect];
+		}
 	}
 }
 
