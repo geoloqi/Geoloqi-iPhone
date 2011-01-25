@@ -269,15 +269,7 @@ GeoloqiAppDelegate *gAppDelegate;
 	[tabBarController presentModalViewController:welcomeViewController animated:YES];
 	[[Geoloqi sharedInstance] logOut];
 
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(authenticationDidSucceed:) 
-												 name:LQAuthenticationSucceededNotification 
-											   object:nil];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(authenticationDidFail:) 
-												 name:LQAuthenticationFailedNotification 
-											   object:nil];
+	[[UIApplication sharedApplication] terminate];
 }
 
 + (void)userIsAnonymous {

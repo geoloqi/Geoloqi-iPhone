@@ -583,10 +583,10 @@ enum {
 #pragma mark -
 
 - (IBAction)logoutButtonWasTapped:(UIButton *)button {
-	[[NSNotificationCenter defaultCenter] postNotificationName:LQAuthenticationLogoutNotification object:self];
-	
 	// For testing the battery notifications in the simulator
 	// [[NSNotificationCenter defaultCenter] postNotificationName:UIDeviceBatteryLevelDidChangeNotification object:self];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:LQAuthenticationLogoutNotification object:self];
 }
 
 - (IBAction)sendNowWasTapped:(UIButton *)button {
