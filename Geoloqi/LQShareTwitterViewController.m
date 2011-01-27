@@ -58,6 +58,8 @@
 	
 	[navigationBar release];
 
+	self.activityIndicator.alpha = 0.0f;
+
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
 
 	[self.textView becomeFirstResponder];
@@ -125,6 +127,7 @@
 	}
 
 	self.activityIndicator.alpha = 1.0f;
+	self.sendButton.enabled = NO;
 	
 	// Try to post the tweet!
 	[[Geoloqi sharedInstance] postToTwitter:self.textView.text
@@ -136,6 +139,7 @@
 	return tweetPostedCallback = [^(NSError *error, NSString *responseBody) {
 
 		self.activityIndicator.alpha = 0.0f;
+		self.sendButton.enabled = YES;
 
 		NSError *err = nil;
 		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:

@@ -269,7 +269,7 @@ GeoloqiAppDelegate *gAppDelegate;
 	[tabBarController presentModalViewController:welcomeViewController animated:YES];
 	[[Geoloqi sharedInstance] logOut];
 
-	[[UIApplication sharedApplication] terminate];
+	exit(0);
 }
 
 + (void)userIsAnonymous {

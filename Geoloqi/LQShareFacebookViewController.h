@@ -19,7 +19,7 @@
 	UIBarButtonItem *sendButton;
 	NSString *message;
 	NSString *url;
-	LQHTTPRequestCallback tweetPostedCallback;
+	LQHTTPRequestCallback postedCallback;
 }
 
 @property (nonatomic, retain) id delegate;
@@ -33,7 +33,7 @@
 - (LQShareFacebookViewController *)initWithMessage:(NSString *)_message andURL:(NSString *)_url;
 - (void)updateCharacterCounter;
 - (void)sendWasTapped;
-- (LQHTTPRequestCallback)tweetPostedCallback;
+- (LQHTTPRequestCallback)postedCallback;
 - (void)cancelWasTapped;
 
 @end

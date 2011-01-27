@@ -61,6 +61,8 @@
 	
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
 	
+	self.activityIndicator.alpha = 0.0f;
+	
 	[self.textView becomeFirstResponder];
 	[self.textView setText:self.message];
 	[self updateCharacterCounter];
@@ -120,24 +122,26 @@
 }
 
 - (void)sendWasTapped {
-	// Prevent pressing "Send" on the keyboard from trying to post a tweet if the actual "Send" button is disabled
+	// Prevent pressing "Send" on the keyboard from trying to post if the actual "Send" button is disabled
 	if(self.sendButton.enabled == NO){
 		return;
 	}
 	
 	self.activityIndicator.alpha = 1.0f;
+	self.sendButton.enabled = NO;
 	
 	// Try to post the update!
 	[[Geoloqi sharedInstance] postToFacebook:self.textView.text
 										 url:self.url
-								   callback:self.tweetPostedCallback];
+								   callback:self.postedCallback];
 }
 
-- (LQHTTPRequestCallback)tweetPostedCallback {
-	if (tweetPostedCallback) return tweetPostedCallback;
-	return tweetPostedCallback = [^(NSError *error, NSString *responseBody) {
+- (LQHTTPRequestCallback)postedCallback {
+	if (postedCallback) return postedCallback;
+	return postedCallback = [^(NSError *error, NSString *responseBody) {
 		
 		self.activityIndicator.alpha = 0.0f;
+		self.sendButton.enabled = YES;
 		
 		NSError *err = nil;
 		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
