@@ -14,7 +14,8 @@
 
 @synthesize shareView;
 
-- (void)shareURL:(NSURL *)url withMessage:(NSString *)message canPost:(BOOL)canPost {
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message minutes:(NSNumber *)_minutes canPost:(BOOL)canPost {
+	self.minutes = _minutes;
 	if(canPost) {
 		NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
 		self.shareView = [[LQShareTwitterViewController alloc] initWithMessage:body];
@@ -28,7 +29,7 @@
 }
 
 - (void)twitterDidFinish {
-	[LQShareService linkWasSent:@"Posted to Twitter"];
+	[LQShareService linkWasSent:@"Posted to Twitter" minutes:self.minutes];
 	[self shareControllerDidFinish];
 }
 

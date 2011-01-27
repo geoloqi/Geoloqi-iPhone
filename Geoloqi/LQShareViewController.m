@@ -21,6 +21,7 @@
 @synthesize shareDescriptionField, pickerView;
 @synthesize activityIndicator;
 @synthesize shareButtonPressed;
+@synthesize shareMinutes;
 @synthesize navigationController;
 @synthesize sharer;
 
@@ -163,11 +164,11 @@
 	self.activityIndicator.alpha = 1.0f;
 	
 	self.shareButtonPressed = [[sender titleLabel] text];
+	self.shareMinutes = [NSNumber numberWithInt:[selectedMinutes intValue]];
 	
     [[Geoloqi sharedInstance] createLink:[shareDescriptionField text] 
                                  minutes:[selectedMinutes intValue]
                                 callback:[self linkCreatedCallback]];
-    
 }
 
 - (LQHTTPRequestCallback)linkCreatedCallback {
@@ -198,6 +199,7 @@
 	
 			[self shareLink:url 
 						via:[self stringToShareMethod:self.shareButtonPressed]
+					minutes:self.shareMinutes
 				   canTweet:[[res objectForKey:@"can_tweet"] isEqualToNumber:[NSNumber numberWithInt:1]]
 				canFacebook:[[res objectForKey:@"can_facebook"] isEqualToNumber:[NSNumber numberWithInt:1]]];
 			
@@ -209,6 +211,7 @@
 
 - (void)shareLink:(NSURL *)url 
 			  via:(LQShareMethod)method 
+		  minutes:(NSNumber *)minutes
 		 canTweet:(BOOL)canTweet
 	  canFacebook:(BOOL)canFacebook {
 	
@@ -221,24 +224,24 @@
 	switch(method){
 		case LQShareMethodEmail:
 			sharer = [[LQShareMail alloc] initWithController:self];
-			[sharer shareURL:url withMessage:message];
+			[sharer shareURL:url withMessage:message minutes:minutes];
 			break;
 		case LQShareMethodSMS:
 			sharer = [[LQShareSMS alloc] initWithController:self];
-			[sharer shareURL:url withMessage:message];
+			[sharer shareURL:url withMessage:message minutes:minutes];
 			break;
 		case LQShareMethodTwitter:
 			sharer = [[LQShareTwitter alloc] initWithController:self];
-			[sharer shareURL:url withMessage:message canPost:canTweet];
+			[sharer shareURL:url withMessage:message minutes:minutes canPost:canTweet];
 			break;
 		case LQShareMethodFacebook:
 			sharer = [[LQShareFacebook alloc] initWithController:self];
-			[sharer shareURL:url withMessage:message canPost:canFacebook];
+			[sharer shareURL:url withMessage:message minutes:minutes canPost:canFacebook];
 			break;
 		case LQShareMethodCopy:
 			[[UIPasteboard generalPasteboard] setString:url.absoluteString];
 			// [[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Copied!")];
-			[LQShareService linkWasSent:@"Link Copied"];
+			[LQShareService linkWasSent:@"Link Copied" minutes:minutes];
 			[self.parentViewController dismissModalViewControllerAnimated:YES];
 			break;
 		default:

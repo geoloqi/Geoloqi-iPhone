@@ -11,8 +11,10 @@
 
 @implementation LQShareSMS
 
-- (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
-	
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message minutes:(NSNumber *)_minutes {
+
+	self.minutes = _minutes;
+
 	NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
 	
 	Class messageClass = (NSClassFromString(@"MFMessageComposeViewController"));
@@ -57,7 +59,7 @@
 			[self shareControllerDidCancel:messageController];
             break;
         case MessageComposeResultSent:
-			[LQShareService linkWasSent:@"Sent"];
+			[LQShareService linkWasSent:@"Sent" minutes:self.minutes];
 			[self shareControllerDidFinish];
             break;
         case MessageComposeResultFailed:

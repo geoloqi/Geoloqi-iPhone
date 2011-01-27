@@ -12,8 +12,9 @@
 @implementation LQShareService
 
 @synthesize controller;
+@synthesize minutes;
 
-+ (void)linkWasSent:(NSString *)verb {
++ (void)linkWasSent:(NSString *)verb minutes:(NSNumber *)_minutes {
 	NSString *msg = @"You are now sharing your location!";
 	
 	if(![[Geoloqi sharedInstance] locationUpdatesState]) {
@@ -39,8 +40,28 @@
 	[[Geoloqi sharedInstance] setTrackingFrequencyTo:tl];
 	[[Geoloqi sharedInstance] setSendingFrequencyTo:rl];
 	/* * */
+
 	
+	// Start the tracker
 	[[Geoloqi sharedInstance] startLocationUpdates];
+
+	
+	// Create a notification that will prompt the user to turn off tracking after the elapsed time
+	
+	UILocalNotification *notification = [[UILocalNotification alloc] init];
+	// TODO: This is from Apple's sample code. When would this not be set?
+	if (notification == nil)
+		return;
+	
+	notification.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+							 @"Shared Link Expired", @"title",
+							 @"The shared link expired. Would you like to turn tracking off?", @"description",
+							 @"shutdownPrompt", @"type",
+							 nil];
+	notification.alertBody = @"The shared link expired. Would you like to turn tracking off?";
+	notification.alertAction = @"Yes";
+	notification.fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:[_minutes intValue] * 60];
+	[[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 - (LQShareService *)initWithController:(UIViewController *)_controller {
@@ -50,11 +71,11 @@
     return self;
 }
 
-- (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message minutes:(NSNumber *)_minutes {
 	NSLog(@"!!!! Implement this method in the child class to perform the appropriate share function.");
 }
 
-- (void)shareURL:(NSURL *)url withMessage:(NSString *)message canPost:(BOOL)canPost {
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message minutes:(NSNumber *)_minutes canPost:(BOOL)canPost {
 	NSLog(@"!!!! Implement this method in the child class to perform the appropriate share function.");
 }
 

@@ -104,6 +104,17 @@
 	self.anonymousBanner.hidden = ![GeoloqiAppDelegate isUserAnonymous];
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
 	[self updateCheckinButtonState];
+	
+	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
+														 target:self
+													   selector:@selector(viewRefreshTimerDidFire:)
+													   userInfo:nil
+														repeats:YES] retain];
+}
+
+- (void)viewRefreshTimerDidFire:(NSTimer *)timer {
+	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:YES];
+	[self updateCheckinButtonState];
 }
 
 - (void)reloadMapHistory {
@@ -253,6 +264,12 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+	[viewRefreshTimer invalidate];
+	[viewRefreshTimer release];
+	viewRefreshTimer = nil;
+}
+
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -295,11 +312,9 @@
 	if([[Geoloqi sharedInstance] locationUpdatesState]) {
 		// Disable the "send now" button, it will be enabled when a new location point has been received
 		checkInButton.enabled = NO;
-		//[checkInButton setTitleColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0] forState:UIControlStateNormal];
 	} else {
 		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
 		checkInButton.enabled = YES;
-		//[checkInButton setTitleColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
 	}
 }
 

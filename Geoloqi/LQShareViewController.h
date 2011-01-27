@@ -18,6 +18,7 @@
 	UITextView *shareDescriptionField;
 	NSString *sharedLinkCreated;
 	NSString *shareButtonPressed;
+	NSNumber *shareMinutes;
 	LQHTTPRequestCallback linkCreatedCallback;
 	IBOutlet UINavigationBar *navigationBar;
 	LQShareService *sharer;
@@ -40,6 +41,7 @@ typedef enum {
 @property (nonatomic, retain) NSMutableArray *durationMinutes;
 @property (nonatomic, retain) IBOutlet UIView *activityIndicator;
 @property (nonatomic, retain) NSString *shareButtonPressed;
+@property (nonatomic, retain) NSNumber *shareMinutes;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) LQShareService *sharer;
 
@@ -48,7 +50,10 @@ typedef enum {
 - (IBAction)textFieldReturn:(id)sender;
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)cancelWasTapped;
-- (void)shareLink:(NSURL *)url via:(LQShareMethod)method canTweet:(BOOL)canTweet canFacebook:(BOOL)canFacebook;
-//- (void)createSharedLinkWithExpirationInMinutes:(NSString *)minutes;
+- (void)shareLink:(NSURL *)url 
+			  via:(LQShareMethod)method 
+		  minutes:(NSNumber *)minutes 
+		 canTweet:(BOOL)canTweet 
+	  canFacebook:(BOOL)canFacebook;
 
 @end

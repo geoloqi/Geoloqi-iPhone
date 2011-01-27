@@ -24,6 +24,7 @@
 	CustomUISwitch *trackingToggleSwitch;
 	IBOutlet UIButton *checkInButton;
 	IBOutlet UIButton *shareButton;
+	NSTimer *viewRefreshTimer;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *map;

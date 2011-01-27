@@ -14,7 +14,8 @@
 
 @synthesize shareView;
 
-- (void)shareURL:(NSURL *)url withMessage:(NSString *)message canPost:(BOOL)canPost {
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message minutes:(NSNumber *)_minutes canPost:(BOOL)canPost {
+	self.minutes = _minutes;
 	if(canPost) {
 		self.shareView = [[LQShareFacebookViewController alloc] initWithMessage:message andURL:[url absoluteString]];
 		self.shareView.delegate = self;
@@ -27,7 +28,7 @@
 }
 
 - (void)facebookDidFinish {
-	[LQShareService linkWasSent:@"Posted to Facebook"];
+	[LQShareService linkWasSent:@"Posted to Facebook" minutes:self.minutes];
 	[self shareControllerDidFinish];
 }
 

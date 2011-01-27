@@ -10,7 +10,9 @@
 
 @implementation LQShareMail
 
-- (void)shareURL:(NSURL *)url withMessage:(NSString *)message {
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message minutes:(NSNumber *)_minutes {
+
+	self.minutes = _minutes;
 	
 	NSString *subject = @"Track me on Geoloqi!";
 	NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
@@ -55,11 +57,11 @@
 			[self shareControllerDidCancel:mailController];
             break;
         case MFMailComposeResultSaved:
-			[LQShareService linkWasSent:@"Draft Saved"];
+			[LQShareService linkWasSent:@"Draft Saved" minutes:self.minutes];
 			[self shareControllerDidFinish];
             break;
         case MFMailComposeResultSent:
-			[LQShareService linkWasSent:@"Sent"];
+			[LQShareService linkWasSent:@"Sent" minutes:self.minutes];
 			[self shareControllerDidFinish];
             break;
         case MFMailComposeResultFailed:
