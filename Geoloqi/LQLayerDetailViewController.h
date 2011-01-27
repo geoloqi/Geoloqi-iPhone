@@ -20,12 +20,14 @@
 	IBOutlet UILabel *layerDescription;	
 	IBOutlet UIWebView *webView;
 	IBOutlet UISwitch *subscribeSwitch;
+	IBOutlet UIView *activityIndicator;
 	LQHTTPRequestCallback layerSubscribeCallback;
 	id delegate;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *layer;
 @property (nonatomic, assign) id <LQLayerDetailViewControllerDelegate> delegate;
+@property (nonatomic, retain) IBOutlet UIView *activityIndicator;
 
 - (id)initWithLayer:(NSMutableDictionary *)_layer;
 - (IBAction)subscribeChanged:(id)sender;
