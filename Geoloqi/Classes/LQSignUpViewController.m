@@ -8,6 +8,7 @@
 
 #import "Geoloqi.h"
 #import "LQSignUpViewController.h"
+#import "SHKActivityIndicator.h"
 
 @implementation LQSignUpViewController
 
@@ -102,10 +103,22 @@
 	return YES;
 }
 
+- (void)authenticationDidFail:(NSNotificationCenter *)notification {
+	[[SHKActivityIndicator topIndicator] displayCompleted:@"Signup Failed!"];
+	[[SHKActivityIndicator topIndicator] setCenterMessage:@"✕"];
+	self.activityIndicator.alpha = 0.0f;
+	self.navigationItem.rightBarButtonItem.enabled = NO;
+}
+
 - (void)viewWillAppear:(BOOL)animated;
 {
 	[super viewWillAppear:animated];
 	[nameField becomeFirstResponder];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(authenticationDidFail:) 
+												 name:LQAuthenticationFailedNotification 
+											   object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -113,6 +126,10 @@
 	self.navigationItem.rightBarButtonItem.enabled = YES;
 	//self.navigationItem.leftBarButtonItem.enabled = NO;
 	self.activityIndicator.alpha = 0.0f;
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self 
+                                                    name:LQAuthenticationFailedNotification 
+                                                  object:nil];
 }
 
 - (void)didReceiveMemoryWarning {

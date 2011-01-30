@@ -8,15 +8,20 @@
 
 #import "Geoloqi.h"
 #import "LQLogInViewController.h"
+#import "SHKActivityIndicator.h"
 
 @implementation LQLogInViewController
 
 @synthesize emailField, passwordField, activityIndicator;
 
-- (void)viewWillAppear:(BOOL)animated;
-{
+- (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[emailField becomeFirstResponder];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(authenticationDidFail:) 
+												 name:LQAuthenticationFailedNotification 
+											   object:nil];
 }
 
 - (IBAction)cancel {
@@ -106,6 +111,13 @@
 	self.title = NSLocalizedString(@"Log In", nil);
 }
 
+- (void)authenticationDidFail:(NSNotificationCenter *)notification {
+	[[SHKActivityIndicator topIndicator] displayCompleted:@"Login Failed!"];
+	[[SHKActivityIndicator topIndicator] setCenterMessage:@"✕"];
+	passwordField.text = @"";
+	self.activityIndicator.alpha = 0.0f;
+	self.navigationItem.rightBarButtonItem.enabled = NO;
+}
 
 
 #pragma mark -
@@ -117,6 +129,10 @@
 	//self.navigationItem.leftBarButtonItem.enabled = NO;
 	self.activityIndicator.alpha = 0.0f;
 	passwordField.text = @"";
+	
+    [[NSNotificationCenter defaultCenter] removeObserver:self 
+                                                    name:LQAuthenticationFailedNotification 
+                                                  object:nil];
 }
 
 - (void)didReceiveMemoryWarning {

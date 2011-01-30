@@ -55,12 +55,6 @@ GeoloqiAppDelegate *gAppDelegate;
                                                      name:LQAuthenticationSucceededNotification 
                                                    object:nil];
 
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(authenticationDidFail:) 
-                                                     name:LQAuthenticationFailedNotification 
-                                                   object:nil];
-
-		NSLog(@"Showing welcome view");
         [tabBarController presentModalViewController:welcomeViewController animated:YES];
     }
 	// else, use the refresh token to get a new access token right now
@@ -247,21 +241,11 @@ GeoloqiAppDelegate *gAppDelegate;
 										 UIRemoteNotificationTypeAlert)];
 }
 
-- (void)authenticationDidFail:(NSNotificationCenter *)notification
-{
-	[[SHKActivityIndicator currentIndicator] displayCompleted:@"Error Logging In!"];
-	[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
-	
-    if (tabBarController.modalViewController && [tabBarController.modalViewController isKindOfClass:[welcomeViewController class]]) {
-        [tabBarController.modalViewController dismissModalViewControllerAnimated:YES];
-	}
-}
-
 - (void)unknownAPIError:(NSNotificationCenter *)notification
 {
-	//[[SHKActivityIndicator currentIndicator] displayCompleted:@"There was an error!"];
-	//[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
-	[self logOut];
+	[[SHKActivityIndicator currentIndicator] displayCompleted:@"There was an error!"];
+	[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
+	[[Geoloqi sharedInstance] logOut];
 }
 
 - (void)logOut {
