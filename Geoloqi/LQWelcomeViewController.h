@@ -19,6 +19,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *signInButton;
 @property (nonatomic, retain) IBOutlet UIButton *useAnonymouslyButton;
 
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *anonymousSpinner;
 
 - (IBAction)signUp;
 - (IBAction)useAnonymously;

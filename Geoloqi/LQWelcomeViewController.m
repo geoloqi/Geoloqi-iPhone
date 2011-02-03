@@ -17,6 +17,7 @@
 @synthesize signUpButton;
 @synthesize signInButton;
 @synthesize useAnonymouslyButton;
+@synthesize anonymousSpinner;
 
 - (IBAction)signUp {
 	[GeoloqiAppDelegate userIsNotAnonymous];
@@ -31,6 +32,8 @@
 - (IBAction)useAnonymously {
 	[GeoloqiAppDelegate userIsAnonymous];
 	[[Geoloqi sharedInstance] createAnonymousAccount];
+	self.anonymousSpinner.hidden = NO;
+	self.useAnonymouslyButton.enabled = NO;
 }
 
 - (IBAction)about {
@@ -55,6 +58,15 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	self.anonymousSpinner.hidden = YES;
+	self.useAnonymouslyButton.enabled = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	self.anonymousSpinner.hidden = YES;
 }
 
 - (void)viewDidUnload {
