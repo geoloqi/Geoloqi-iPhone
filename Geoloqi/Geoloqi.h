@@ -39,15 +39,18 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 - (void)setUserAgentString:(NSString *)ua;
 
+- (void)sendAPNDeviceToken:(NSString *)deviceToken callback:(LQHTTPRequestCallback)callback;
+
 - (void)createGeonote:(NSString *)text latitude:(float)latitude longitude:(float)longitude radius:(float)radius callback:(LQHTTPRequestCallback)callback;
 
 - (void)createLink:(NSString *)description minutes:(NSInteger)minutes callback:(LQHTTPRequestCallback)callback;
+
+#pragma mark Layers
 
 - (void)layerAppList:(LQHTTPRequestCallback)callback;
 
 - (void)subscribeToLayer:(NSString *)layerID callback:(LQHTTPRequestCallback)callback;
 - (void)unSubscribeFromLayer:(NSString *)layerID callback:(LQHTTPRequestCallback)callback;
-- (void)sendAPNDeviceToken:(NSString *)deviceToken callback:(LQHTTPRequestCallback)callback;
 
 #pragma mark Location
 
@@ -97,6 +100,8 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)confirmInvitation:(NSString*)invitationToken host:(NSString*)host callback:(LQHTTPRequestCallback)callback;
 
 - (void)getAccessTokenForInvitation:(NSString*)invitationToken callback:(LQHTTPRequestCallback)callback;
+
+- (void)getLastPositions:(NSArray *)tokens callback:(LQHTTPRequestCallback)callback;
 
 #pragma mark Twitter/Facebook/etc
 
