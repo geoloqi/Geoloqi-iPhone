@@ -151,6 +151,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 				<float key="IBUIMinimumFontSize">12</float>
 				<object class="IBUITextInputTraits" key="IBUITextInputTraits">
+					<int key="IBUIAutocorrectionType">1</int>
 					<int key="IBUIKeyboardType">1</int>
 					<int key="IBUIReturnKeyType">4</int>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -175,6 +176,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 				<float key="IBUIMinimumFontSize">12</float>
 				<object class="IBUITextInputTraits" key="IBUITextInputTraits">
+					<int key="IBUIAutocorrectionType">1</int>
 					<int key="IBUIReturnKeyType">4</int>
 					<bool key="IBUISecureTextEntry">YES</bool>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
