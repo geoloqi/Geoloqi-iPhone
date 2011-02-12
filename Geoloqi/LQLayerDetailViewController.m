@@ -99,9 +99,9 @@
 
 		NSString* msg;
 		if([[NSString stringWithFormat:@"%@", [res objectForKey:@"subscribed"]] isEqualToString:@"1"]){
-			msg = @"Subscribed!";
+			msg = @"Activated!";
 		}else{
-			msg = @"Unsubscribed";
+			msg = @"Deactivated";
 		}
 		
 		[[SHKActivityIndicator currentIndicator] displayCompleted:msg];
