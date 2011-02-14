@@ -37,10 +37,10 @@
 		subscribeSwitch.on = NO;
 	}
 	
-	if([[NSString stringWithFormat:@"%@", [layer objectForKey:@"type"]] isEqualToString:@"geonotes"]) {
-		subscribeSwitch.hidden = YES;
-	}else{
+	if([[NSString stringWithFormat:@"%@", [layer objectForKey:@"type"]] isEqualToString:@"normal"]) {
 		subscribeSwitch.hidden = NO;
+	}else{
+		subscribeSwitch.hidden = YES;
 	}
 	
 	[[PKHTTPCachedImage sharedInstance] setImageForView:layerImg withURL:[layer objectForKey:@"icon"]];
