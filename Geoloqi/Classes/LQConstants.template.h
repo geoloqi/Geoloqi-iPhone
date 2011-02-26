@@ -16,4 +16,4 @@
 #define UAApplicationKey			@""
 #define UAApplicationSecret			@""
 
-#define LQ_USER_AGENT		@"geoloqi"
+#define LQ_USER_AGENT		@"geoloqi-dev"

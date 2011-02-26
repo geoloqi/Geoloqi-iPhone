@@ -16,10 +16,13 @@ enum {
 };
 
 @interface LQPushHandler : NSObject <UIAlertViewDelegate> {
-
+	NSString *lastAlertURL;
 }
 
-- (void)handlePush:(NSDictionary *)userInfo;
+@property (nonatomic, retain) NSString *lastAlertURL;
+
+- (id)myInit;
+- (void)handlePush:(UIApplication *)application notification:(NSDictionary *)userInfo;
 - (void)handleLocalNotificationFromApp:(UIApplication *)app notif:(UILocalNotification *)notif;
 //- (void)handleLocalNotificationFromBackground:(UILocalNotification *)notif;
 - (void)handleLaunch:(NSDictionary *)launchOptions;

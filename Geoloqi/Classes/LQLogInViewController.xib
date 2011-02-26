@@ -152,7 +152,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<float key="IBUIMinimumFontSize">12</float>
 				<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 					<int key="IBUIAutocorrectionType">1</int>
-					<int key="IBUIKeyboardType">1</int>
+					<int key="IBUIKeyboardType">7</int>
 					<int key="IBUIReturnKeyType">4</int>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				</object>

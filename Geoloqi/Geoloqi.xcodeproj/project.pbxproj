@@ -590,6 +590,13 @@
 			name = PKHTTPCachedImage;
 			sourceTree = "<group>";
 		};
+		0F26B95B13024FEB00EC66C3 /* Foursquare */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Foursquare;
+			sourceTree = "<group>";
+		};
 		0FC583DE12CDBC6D00238518 /* Blue Button */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +654,7 @@
 				0F0184211296FDDF001508D9 /* ShareKit */,
 				080E96DDFE201D6D7F000001 /* Main */,
 				16DA0BB91223910100382D1F /* Auth */,
+				0F26B95B13024FEB00EC66C3 /* Foursquare */,
 				DD91DF8C11BF3F1F0097F6F5 /* Tabs */,
 				49B68DB211B31641001CB3FA /* Externals */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -1212,7 +1220,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Geoloqi.com";
-				CURRENT_PROJECT_VERSION = 20110126;
+				CURRENT_PROJECT_VERSION = 11.059;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

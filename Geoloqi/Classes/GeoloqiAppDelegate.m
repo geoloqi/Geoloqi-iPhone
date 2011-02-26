@@ -29,7 +29,7 @@ GeoloqiAppDelegate *gAppDelegate;
     
 	gAppDelegate = self;
 	
-	pushHandler = [[LQPushHandler alloc] init];
+	pushHandler = [[LQPushHandler alloc] myInit];
 
 	[[Geoloqi sharedInstance] setUserAgentString:LQ_USER_AGENT];
 	
@@ -106,9 +106,9 @@ GeoloqiAppDelegate *gAppDelegate;
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	NSLog(@"---- Received Push! %@", userInfo);
+	NSLog(@"Received Push! %@", userInfo);
 
-	[self.pushHandler handlePush:userInfo];
+	[self.pushHandler handlePush:application notification:userInfo];
 }
 
 - (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
