@@ -13,10 +13,8 @@
 
 @implementation LQWelcomeViewController
 
-@synthesize signUpViewController, logInViewController;
-@synthesize signUpButton;
-@synthesize signInButton;
-@synthesize useAnonymouslyButton;
+@synthesize signUpViewController, logInViewController, twitterAuthViewController;
+@synthesize signUpButton, signInButton, useAnonymouslyButton, twitterAuthButton;
 @synthesize anonymousSpinner;
 
 - (IBAction)signUp {
@@ -36,6 +34,12 @@
 	self.useAnonymouslyButton.enabled = NO;
 }
 
+- (IBAction)twitterAuth {
+	[GeoloqiAppDelegate userIsNotAnonymous];
+	[self presentModalViewController:twitterAuthViewController
+							animated:YES];
+}
+
 - (IBAction)about {
 	LQAboutViewController *aboutView = [[LQAboutViewController alloc] init];
 	[self presentModalViewController:aboutView animated:YES];
@@ -49,6 +53,7 @@
 	[self.signUpButton setBackgroundImage:stretImg forState:UIControlStateNormal];
 	[self.useAnonymouslyButton setBackgroundImage:stretImg forState:UIControlStateNormal];
 	[self.signInButton setBackgroundImage:stretImgSm forState:UIControlStateNormal];
+	[self.twitterAuthButton setBackgroundImage:stretImg forState:UIControlStateNormal];
 }
 
 #pragma mark -
@@ -79,9 +84,11 @@
 - (void)dealloc {
 	[signUpViewController release];
 	[logInViewController release];
+	[twitterAuthViewController release];
 	[signUpButton release];
 	[signInButton release];
 	[useAnonymouslyButton release];
+	[twitterAuthButton release];
     [super dealloc];
 }
 

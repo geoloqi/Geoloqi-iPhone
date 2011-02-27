@@ -69,7 +69,7 @@
 					<object class="IBUIButton" id="101095289">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{20, 231}, {280, 73}}</string>
+						<string key="NSFrame">{{20, 231}, {128, 73}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -99,6 +99,27 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">signin-btn.png</string>
 						</object>
+					</object>
+					<object class="IBUIButton" id="447309321">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">268</int>
+						<string key="NSFrame">{{172, 231}, {128, 73}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="949340600"/>
+						<string key="IBUITitleShadowOffset">{0, 1}</string>
+						<string key="IBUINormalTitle">Twitter</string>
+						<reference key="IBUIHighlightedTitleColor" ref="109214136"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">2</int>
+							<bytes key="NSRGB">MC4xNjA3ODQzMTM3IDAuMTYwNzg0MzEzNyAwLjE2MDc4NDMxMzcAA</bytes>
+						</object>
+						<reference key="IBUIHighlightedTitleShadowColor" ref="828501184"/>
+						<reference key="IBUINormalTitleShadowColor" ref="109214136"/>
+						<reference key="IBUINormalBackgroundImage" ref="358847541"/>
 					</object>
 					<object class="IBUIButton" id="29705281">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -269,6 +290,23 @@
 					</object>
 					<int key="connectionID">21</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">twitterAuth</string>
+						<reference key="source" ref="447309321"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">24</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">twitterAuthButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="447309321"/>
+					</object>
+					<int key="connectionID">25</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -291,6 +329,7 @@
 							<reference ref="29705281"/>
 							<reference ref="152112399"/>
 							<reference ref="454527892"/>
+							<reference ref="447309321"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -340,6 +379,11 @@
 						<reference key="object" ref="454527892"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="447309321"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -356,6 +400,9 @@
 					<string>18.IBPluginDependency</string>
 					<string>18.IBViewBoundsToFrameTransform</string>
 					<string>20.IBPluginDependency</string>
+					<string>20.IBViewBoundsToFrameTransform</string>
+					<string>22.IBPluginDependency</string>
+					<string>22.IBViewBoundsToFrameTransform</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBViewBoundsToFrameTransform</string>
 					<string>6.IBPluginDependency</string>
@@ -367,7 +414,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>LQWelcomeViewController</string>
 					<string>UIResponder</string>
-					<string>{{345, 244}, {320, 480}}</string>
+					<string>{{305, 244}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -379,9 +426,16 @@
 						<bytes key="NSTransformStruct">P4AAAL+AAABDhIAAwhwAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDcwAAw7IAAA</bytes>
+					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBoAAAw5cAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDPAAAw5eAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AUGgAABDZwAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -409,7 +463,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">21</int>
+			<int key="maxID">25</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -424,10 +478,12 @@
 							<string>about</string>
 							<string>logIn</string>
 							<string>signUp</string>
+							<string>twitterAuth</string>
 							<string>useAnonymously</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -441,6 +497,7 @@
 							<string>about</string>
 							<string>logIn</string>
 							<string>signUp</string>
+							<string>twitterAuth</string>
 							<string>useAnonymously</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -458,6 +515,10 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">twitterAuth</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">useAnonymously</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -472,6 +533,8 @@
 							<string>signInButton</string>
 							<string>signUpButton</string>
 							<string>signUpViewController</string>
+							<string>twitterAuthButton</string>
+							<string>twitterAuthViewController</string>
 							<string>useAnonymouslyButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -479,6 +542,8 @@
 							<string>UIActivityIndicatorView</string>
 							<string>UIViewController</string>
 							<string>UIButton</string>
+							<string>UIButton</string>
+							<string>UIViewController</string>
 							<string>UIButton</string>
 							<string>UIViewController</string>
 							<string>UIButton</string>
@@ -493,6 +558,8 @@
 							<string>signInButton</string>
 							<string>signUpButton</string>
 							<string>signUpViewController</string>
+							<string>twitterAuthButton</string>
+							<string>twitterAuthViewController</string>
 							<string>useAnonymouslyButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -515,6 +582,14 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">signUpViewController</string>
+								<string key="candidateClassName">UIViewController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">twitterAuthButton</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">twitterAuthViewController</string>
 								<string key="candidateClassName">UIViewController</string>
 							</object>
 							<object class="IBToOneOutletInfo">

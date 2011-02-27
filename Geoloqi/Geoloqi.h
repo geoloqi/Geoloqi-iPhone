@@ -82,6 +82,7 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 - (void)authenticateWithEmail:(NSString *)emailAddress password:(NSString *)password;
 - (void)createAccountWithEmailAddress:(NSString *)emailAddress name:(NSString *)name;
+- (void)authenticateWithAuthCode:(NSString *)authCode;
 
 - (void)createAnonymousAccount;
 - (void)createAnonymousAccount:(NSString*)name;

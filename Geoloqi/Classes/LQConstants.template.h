@@ -10,7 +10,7 @@
 #define LQ_OAUTH_SECRET		@""
 
 // Base URL for constructing app-specific web views such as the "Log in to Twitter" screen
-#define LQ_WEB_ROOT			@"http://a.geoloqi.com"
+#define LQ_WEB_ROOT			@"https://a.geoloqi.com"
 
 // Urban Airship for push notifications
 #define UAApplicationKey			@""
