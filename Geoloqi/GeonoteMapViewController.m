@@ -269,8 +269,8 @@
 - (void)startedDraggingMap
 {
 	[UIView beginAnimations:@"" context:NULL];
-	self.geonotePin.center = (CGPoint){self.geonotePin.center.x, 123};
-	self.geonotePinShadow.center = (CGPoint){181, 136};
+	self.geonotePin.center = (CGPoint){self.geonotePin.center.x, 142};
+	self.geonotePinShadow.center = (CGPoint){181, 156};
 	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationDelay:UIViewAnimationCurveEaseOut];
 	[UIView commitAnimations];
@@ -279,8 +279,8 @@
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
 	[UIView beginAnimations:@"" context:NULL];
-	self.geonotePin.center = (CGPoint){self.geonotePin.center.x, 143};
-	self.geonotePinShadow.center = (CGPoint){171, 146};
+	self.geonotePin.center = (CGPoint){self.geonotePin.center.x, 172};
+	self.geonotePinShadow.center = (CGPoint){171, 176};
 	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationDelay:UIViewAnimationCurveEaseIn];
 	[UIView commitAnimations];
