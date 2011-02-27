@@ -97,6 +97,8 @@
 		0F7F331012CD5E390009CB1C /* title-bar-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7F330F12CD5E390009CB1C /* title-bar-logo.png */; };
 		0F860A651319E07600E1B8D5 /* LQTwitterAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F860A631319E07600E1B8D5 /* LQTwitterAuthViewController.m */; };
 		0F860A661319E07600E1B8D5 /* LQTwitterAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F860A641319E07600E1B8D5 /* LQTwitterAuthViewController.xib */; };
+		0F860B7B131AD68400E1B8D5 /* toolbar-locate-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F860B79131AD68400E1B8D5 /* toolbar-locate-button.png */; };
+		0F860B7C131AD68400E1B8D5 /* toolbar-locate-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F860B7A131AD68400E1B8D5 /* toolbar-locate-button@2x.png */; };
 		0FA8E11F12CA923D00F65858 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E11E12CA923D00F65858 /* Default@2x.png */; };
 		0FA8E12312CA92BC00F65858 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E12212CA92BC00F65858 /* iTunesArtwork */; };
 		0FC5482512C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */; };
@@ -294,6 +296,8 @@
 		0F860A621319E07600E1B8D5 /* LQTwitterAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQTwitterAuthViewController.h; sourceTree = "<group>"; };
 		0F860A631319E07600E1B8D5 /* LQTwitterAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQTwitterAuthViewController.m; sourceTree = "<group>"; };
 		0F860A641319E07600E1B8D5 /* LQTwitterAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQTwitterAuthViewController.xib; sourceTree = "<group>"; };
+		0F860B79131AD68400E1B8D5 /* toolbar-locate-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-locate-button.png"; sourceTree = "<group>"; };
+		0F860B7A131AD68400E1B8D5 /* toolbar-locate-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-locate-button@2x.png"; sourceTree = "<group>"; };
 		0FA8E11E12CA923D00F65858 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0FA8E12212CA92BC00F65858 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		0FC5482312C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteMapViewGestureRecognizer.h; sourceTree = "<group>"; };
@@ -723,6 +727,8 @@
 				0F0E249812E10FF700EF1AC7 /* title-bar-bkg.png */,
 				0F7F330F12CD5E390009CB1C /* title-bar-logo.png */,
 				0F4E20E112B48193001C6856 /* title-bar-logo@2x.png */,
+				0F860B79131AD68400E1B8D5 /* toolbar-locate-button.png */,
+				0F860B7A131AD68400E1B8D5 /* toolbar-locate-button@2x.png */,
 				DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */,
 				DDBDE696126E7AB200B1FB60 /* welcome-top.png */,
 				DDBDE697126E7AB200B1FB60 /* welcome-bottom@2x.png */,
@@ -1080,6 +1086,8 @@
 				0F0AC87512E6BCC1007792AA /* screenshotGeonote.png in Resources */,
 				0F0AC87612E6BCC1007792AA /* screenshotGeonote@2x.png in Resources */,
 				0F860A661319E07600E1B8D5 /* LQTwitterAuthViewController.xib in Resources */,
+				0F860B7B131AD68400E1B8D5 /* toolbar-locate-button.png in Resources */,
+				0F860B7C131AD68400E1B8D5 /* toolbar-locate-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

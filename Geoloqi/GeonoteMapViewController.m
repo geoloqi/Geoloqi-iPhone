@@ -88,11 +88,6 @@
 		// "tap" the locate button in the top right corner to do this
 		[self tappedLocate:self];
 	}
-	else
-	{
-		[self.nextButton setTitle:@"Leave Another Geonote" forState:UIControlStateNormal];
-	}
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated

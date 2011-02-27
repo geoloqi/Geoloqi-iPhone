@@ -18,7 +18,7 @@
 @implementation LQMapViewController
 
 @synthesize map;
-@synthesize controlBanner, trackingToggleSwitch, checkInButton;
+@synthesize controlBanner, trackingToggleSwitch, checkInButton, centerMapButton;
 @synthesize anonymousBanner, anonymousSignUpButton;
 @synthesize signUpViewController;
 @synthesize shareButton;
@@ -39,8 +39,6 @@
 	// The map will center on the user's location as soon as it's received
 	firstLoad = YES;
 	
-	NSLog(@"MapDidLoad");
-
 	// Don't attempt to load the history unless the user is logged in
 	if([[Geoloqi sharedInstance] hasRefreshToken]) {
 		[self reloadMapHistory];
@@ -61,6 +59,9 @@
 	[trackingToggleSwitch setCenter:(CGPoint){266.0, 22.0}];
 	[self.controlBanner addSubview: trackingToggleSwitch];
 	[trackingToggleSwitch addTarget:self action:@selector(toggleTracking:) forControlEvents:UIControlEventValueChanged];
+
+
+	
 	
 	// If the user is anonymous, show a banner
 	if( YES ){
@@ -80,7 +81,7 @@
 	 */
 	[gAppDelegate makeLQButton:self.checkInButton];
 	[gAppDelegate makeLQButton:self.shareButton];
-	
+
 	// Observe the Geoloqi location manager for updates
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(locationUpdated:)
@@ -214,6 +215,21 @@
 			[lineView setNeedsDisplayInMapRect:updateRect];
 		}
 	}
+}
+
+- (IBAction)tappedLocate:(id)sender
+{
+    CLLocation *location;
+    
+	//    if(location = [[Geoloqi sharedInstance] currentLocation])
+	//    {
+	//        [self zoomMapToLocation:location];
+	//    }
+	//    else if(mapView.userLocationVisible)
+	//    {
+	location = map.userLocation.location;
+	[self zoomMapToLocation:location];
+	//    }
 }
 
 // This method is called when our internal location manager receives a new point

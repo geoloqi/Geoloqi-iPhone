@@ -31,6 +31,7 @@
 @property (nonatomic, retain) IBOutlet UIView *controlBanner;
 @property (nonatomic, retain) IBOutlet UIButton *checkInButton;
 @property (nonatomic, retain) CustomUISwitch *trackingToggleSwitch;
+@property (nonatomic, retain) IBOutlet UIButton *centerMapButton;
 @property (nonatomic, retain) IBOutlet UIView *anonymousBanner;
 @property (nonatomic, retain) IBOutlet UIButton *anonymousSignUpButton;
 @property (nonatomic, retain) IBOutlet UIViewController *signUpViewController;
@@ -45,5 +46,7 @@
 - (IBAction)shareButtonWasTapped:(UIButton *)button;
 - (IBAction)checkInButtonWasTapped:(UIButton *)button;
 - (void)updateCheckinButtonState;
+
+- (IBAction)tappedLocate:(id)sender;
 
 @end
