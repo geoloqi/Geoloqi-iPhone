@@ -84,7 +84,13 @@ GeoloqiAppDelegate *gAppDelegate;
 											 selector:@selector(logOut) 
 												 name:LQAuthenticationLogoutNotification
 											   object:nil];
-		
+
+	// Listen for the "Stopped Tracking" notification which is used to cancel any pending shutoff notifications
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(cancelShutdownNotifications) 
+												 name:LQTrackingStoppedNotification
+											   object:nil];
+	
 	[[LQBatteryMonitor sharedInstance] start];
 	
 	self.lqBtnImg = [[UIImage imageNamed:@"LQButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
@@ -288,6 +294,10 @@ GeoloqiAppDelegate *gAppDelegate;
 	[btn setTitleShadowColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.5 alpha:1.0] forState:UIControlStateNormal];
 	[btn setTitleColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.5 alpha:1.0] forState:UIControlStateDisabled];
 	[btn setTitleShadowColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.4 alpha:0.0] forState:UIControlStateDisabled];
+}
+
+- (void)cancelShutdownNotifications {
+	// [[Geoloqi sharedInstance] cancelShutdownTimers];
 }
 
 + (void)registerPresetDefaultsFromSettingsBundle {

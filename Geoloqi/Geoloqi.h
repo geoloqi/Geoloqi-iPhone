@@ -14,6 +14,8 @@ static NSString *const LQLocationUpdateManagerStartedSendingLocations = @"LQLoca
 static NSString *const LQLocationUpdateManagerFinishedSendingLocations = @"LQLocationUpdateManagerFinishedSendingLocations";
 static NSString *const LQLocationUpdateManagerFinishedSendingSingleLocation = @"LQLocationUpdateManagerFinishedSendingSingleLocation";
 static NSString *const LQLocationUpdateManagerErrorSendingSingleLocation = @"LQLocationUpdateManagerErrorSendingSingleLocation";
+static NSString *const LQTrackingStoppedNotification = @"LQTrackingStoppedNotification";
+static NSString *const LQTrackingStartedNotification = @"LQTrackingStartedNotification";
 static NSString *const LQAuthenticationSucceededNotification = @"LQAuthenticationSucceededNotification";
 static NSString *const LQAuthenticationFailedNotification = @"LQAuthenticationFailedNotification";
 static NSString *const LQAuthenticationLogoutNotification = @"LQAuthenticationLogoutNotification";
@@ -46,6 +48,9 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)createLink:(NSString *)description minutes:(NSInteger)minutes callback:(LQHTTPRequestCallback)callback;
 
 - (void)getBannerForLocation:(CLLocation *)location withCallback:(LQHTTPRequestCallback)callback;
+
+- (void)addShutdownTimer:(id)notification;
+- (void)cancelShutdownTimers;
 
 #pragma mark Layers
 

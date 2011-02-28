@@ -113,17 +113,18 @@
 	// A local notification came in but the app was in the foreground. This method is called immediately,
 	// so we need to show them the alert and handle the response appropriately.
 
-	NSLog(@"%@", notif);
-
 	if([app applicationState] == UIApplicationStateActive){
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[notif.userInfo objectForKey:@"title"]
-														message:[notif.userInfo objectForKey:@"description"]
-													   delegate:self
-											  cancelButtonTitle:@"No"
-											  otherButtonTitles:notif.alertAction, nil];
-		[alert show];
-		[alert setTag:kLQPushAlertShutdown];
-		[alert release];
+		// Don't prompt if tracking is already off. Probably won't happen anymore since the timers are cancelled when tracking is turned off.
+		if([[Geoloqi sharedInstance] locationUpdatesState]){
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[notif.userInfo objectForKey:@"title"]
+															message:[notif.userInfo objectForKey:@"description"]
+														   delegate:self
+												  cancelButtonTitle:@"No"
+												  otherButtonTitles:notif.alertAction, nil];
+			[alert show];
+			[alert setTag:kLQPushAlertShutdown];
+			[alert release];
+		}
 	} else {
 		// The app just launched and it was running in the background. If they hit "Yes" then shut off updates
 		[[Geoloqi sharedInstance] stopLocationUpdates];
