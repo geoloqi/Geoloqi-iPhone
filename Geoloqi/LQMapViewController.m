@@ -14,14 +14,13 @@
 #import "ASIHTTPRequest.h"
 #import "CJSONDeserializer.h"
 #import "LQShareViewController.h"
-#import "PKHTTPCachedImage.h"
 
 @implementation LQMapViewController
 
 @synthesize map;
 @synthesize controlBanner, trackingToggleSwitch, centerMapButton;
 @synthesize anonymousBanner, anonymousSignUpButton;
-@synthesize notificationBanner, notificationImage, notificationText, notification;
+@synthesize notificationBanner;
 @synthesize signUpViewController;
 @synthesize shareButton;
 
@@ -74,8 +73,6 @@
 	[self.notificationBanner setCenter:(CGPoint){160.0, 102.0}];
 	self.notificationBanner.hidden = YES;
 	
-	self.notification = [[LQNotificationBanner alloc] init];
-	
 	[gAppDelegate makeLQButton:self.shareButton];
 
 	// Observe the Geoloqi location manager for updates
@@ -106,7 +103,7 @@
 		[self.notificationBanner setCenter:(CGPoint){160.0, 102.0}];
 	}
 	
-	[self.notification refreshWithCallback:[self bannerLoadedCallback]];
+	[self.notificationBanner refresh];
 	
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
 	
@@ -115,27 +112,6 @@
 													   selector:@selector(viewRefreshTimerDidFire:)
 													   userInfo:nil
 														repeats:YES] retain];
-}
-
-- (LQHTTPRequestCallback)bannerLoadedCallback {
-	if (bannerLoadedCallback) return bannerLoadedCallback;
-	return bannerLoadedCallback = [^(NSError *error, NSString *responseBody) {
-		if(self.notification.img != nil) {
-			[[PKHTTPCachedImage sharedInstance] setImageForView:self.notificationImage withURL:self.notification.img];
-			self.notificationImage.hidden = NO;
-			self.notificationText.hidden = YES;
-			self.notificationBanner.hidden = NO;
-		} else if(self.notification.text != nil) {
-			self.notificationText.text = self.notification.text;
-			self.notificationImage.hidden = YES;
-			self.notificationText.hidden = NO;
-			self.notificationBanner.hidden = NO;
-		} else {
-			self.notificationBanner.hidden = YES;
-		}
-		
-		return;
-	} copy];
 }
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
@@ -362,7 +338,6 @@
 	[anonymousBanner release];
 	[anonymousSignUpButton release];
 	[historyLoadedCallback release];
-	[notification release];
     [super dealloc];
 }
 

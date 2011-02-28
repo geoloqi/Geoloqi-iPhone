@@ -25,8 +25,6 @@
 	CustomUISwitch *trackingToggleSwitch;
 	IBOutlet UIButton *shareButton;
 	NSTimer *viewRefreshTimer;
-	LQNotificationBanner *notification;
-	id bannerLoadedCallback;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *map;
@@ -35,17 +33,13 @@
 @property (nonatomic, retain) IBOutlet UIButton *centerMapButton;
 @property (nonatomic, retain) IBOutlet UIView *anonymousBanner;
 @property (nonatomic, retain) IBOutlet UIButton *anonymousSignUpButton;
-@property (nonatomic, retain) IBOutlet UIView *notificationBanner;
-@property (nonatomic, retain) IBOutlet UILabel *notificationText;
-@property (nonatomic, retain) IBOutlet UIImageView *notificationImage;
-@property (nonatomic, retain) LQNotificationBanner *notification;
+@property (nonatomic, retain) IBOutlet LQNotificationBanner *notificationBanner;
 @property (nonatomic, retain) IBOutlet UIViewController *signUpViewController;
 @property (nonatomic, retain) IBOutlet UIButton *shareButton;
 
 - (void)zoomMapToLocation:(CLLocation *)location;
 - (void)reloadMapHistory;
 - (LQHTTPRequestCallback)historyLoadedCallback;
-- (LQHTTPRequestCallback)bannerLoadedCallback;
 - (IBAction)signUp;
 
 - (void)toggleTracking:(UISwitch *)sender;

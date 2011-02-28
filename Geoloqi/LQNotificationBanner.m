@@ -8,10 +8,12 @@
 
 #import "LQNotificationBanner.h"
 #import "CJSONDeserializer.h"
+#import "PKHTTPCachedImage.h"
 
 @implementation LQNotificationBanner
 
 @synthesize img, text, link;
+@synthesize imageView, textLabel;
 
 - (id)init {
 	self = [super init];
@@ -56,15 +58,26 @@
 		NSLog(@"New notification banner received %@", res);
 		
 		lastUpdated = [[NSDate alloc] init];
-		
-		loadedCallback(nil, nil);
+
+		if(self.img != nil) {
+			[[PKHTTPCachedImage sharedInstance] setImageForView:self.imageView withURL:self.img];
+			self.imageView.hidden = NO;
+			self.textLabel.hidden = YES;
+			self.hidden = NO;
+		} else if(self.text != nil) {
+			self.textLabel.text = self.text;
+			self.imageView.hidden = YES;
+			self.textLabel.hidden = NO;
+			self.hidden = NO;
+		} else {
+			self.hidden = YES;
+		}
 		
 		return;
 	} copy];
 }
 
-- (void)refreshWithCallback:(LQHTTPRequestCallback)cb {
-	loadedCallback = cb;
+- (void)refresh {
 	// Cache the banner for 2 minutes
 	if(lastUpdated == nil || [lastUpdated timeIntervalSinceNow] < -10) {
 		[[Geoloqi sharedInstance] getBannerWithCallback:[self callback]];

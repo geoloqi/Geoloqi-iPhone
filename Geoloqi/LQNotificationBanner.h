@@ -10,17 +10,18 @@
 #import "Geoloqi.h"
 
 
-@interface LQNotificationBanner : NSObject {
+@interface LQNotificationBanner : UIView {
 	NSString *img;
 	NSString *text;
 	NSString *link;
 	NSDate *lastUpdated;
 	LQHTTPRequestCallback callback;
-	LQHTTPRequestCallback loadedCallback;
 }
 
 @property (nonatomic, retain) NSString *img, *text, *link;
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic, retain) IBOutlet UILabel *textLabel;
 
-- (void)refreshWithCallback:(LQHTTPRequestCallback)cb;
+- (void)refresh;
 
 @end
