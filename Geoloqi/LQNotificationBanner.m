@@ -12,7 +12,7 @@
 
 @implementation LQNotificationBanner
 
-@synthesize img, text, link;
+@synthesize img, text, link, lastLocation;
 @synthesize imageView, textLabel;
 
 - (id)init {
@@ -22,6 +22,7 @@
 	self.text = nil;
 	self.link = nil;
 	lastUpdated = nil;
+	self.lastLocation = nil;
 	
 	return self;
 }
@@ -75,10 +76,14 @@
 	} copy];
 }
 
-- (void)refresh {
+- (void)refreshForLocation:(CLLocation *)location {
 	// Cache the banner for 2 minutes
-	if(lastUpdated == nil || [lastUpdated timeIntervalSinceNow] < -120) {
-		[[Geoloqi sharedInstance] getBannerWithCallback:[self callback]];
+	if(location != NULL) {
+		if(self.lastLocation == nil || lastUpdated == nil || [lastUpdated timeIntervalSinceNow] < -120) {
+			[[Geoloqi sharedInstance] getBannerForLocation:location withCallback:[self callback]];
+			NSLog(@"Getting new banner");
+		}
+		self.lastLocation = location;
 	}
 }
 
@@ -96,6 +101,7 @@
 	[link release];
 	[callback release];
 	[lastUpdated release];
+	[lastLocation release];
 	[super dealloc];
 }
 

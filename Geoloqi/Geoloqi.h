@@ -45,7 +45,7 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 - (void)createLink:(NSString *)description minutes:(NSInteger)minutes callback:(LQHTTPRequestCallback)callback;
 
-- (void)getBannerWithCallback:(LQHTTPRequestCallback)callback;
+- (void)getBannerForLocation:(CLLocation *)location withCallback:(LQHTTPRequestCallback)callback;
 
 #pragma mark Layers
 

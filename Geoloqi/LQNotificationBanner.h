@@ -15,13 +15,15 @@
 	NSString *text;
 	NSString *link;
 	NSDate *lastUpdated;
+	CLLocation *lastLocation;
 	LQHTTPRequestCallback callback;
 }
 
 @property (nonatomic, retain) NSString *img, *text, *link;
+@property (nonatomic, retain) CLLocation *lastLocation;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 @property (nonatomic, retain) IBOutlet UILabel *textLabel;
 
-- (void)refresh;
+- (void)refreshForLocation:(CLLocation *)location;
 
 @end

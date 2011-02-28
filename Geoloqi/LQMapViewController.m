@@ -103,7 +103,7 @@
 		[self.notificationBanner setCenter:(CGPoint){160.0, 102.0}];
 	}
 	
-	[self.notificationBanner refresh];
+	[self.notificationBanner refreshForLocation:self.map.userLocation.location];
 	
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
 	
@@ -253,6 +253,8 @@
 
 	if(firstLoad && map.userLocation)
     {
+		[self.notificationBanner refreshForLocation:map.userLocation.location];
+		
 		if(![[Geoloqi sharedInstance] locationUpdatesState]){
 			[self zoomMapToLocation:map.userLocation.location];
 			firstLoad = NO;
