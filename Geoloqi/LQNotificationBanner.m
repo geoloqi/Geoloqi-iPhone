@@ -55,8 +55,6 @@
 			self.link = nil;
 		}
 		
-		NSLog(@"New notification banner received %@", res);
-		
 		lastUpdated = [[NSDate alloc] init];
 
 		if(self.img != nil) {
@@ -79,7 +77,7 @@
 
 - (void)refresh {
 	// Cache the banner for 2 minutes
-	if(lastUpdated == nil || [lastUpdated timeIntervalSinceNow] < -10) {
+	if(lastUpdated == nil || [lastUpdated timeIntervalSinceNow] < -120) {
 		[[Geoloqi sharedInstance] getBannerWithCallback:[self callback]];
 	}
 }
