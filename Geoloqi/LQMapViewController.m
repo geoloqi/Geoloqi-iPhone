@@ -14,12 +14,14 @@
 #import "ASIHTTPRequest.h"
 #import "CJSONDeserializer.h"
 #import "LQShareViewController.h"
+#import "PKHTTPCachedImage.h"
 
 @implementation LQMapViewController
 
 @synthesize map;
-@synthesize controlBanner, trackingToggleSwitch, checkInButton, centerMapButton;
+@synthesize controlBanner, trackingToggleSwitch, centerMapButton;
 @synthesize anonymousBanner, anonymousSignUpButton;
+@synthesize notificationBanner, notificationImage, notificationText, notification;
 @synthesize signUpViewController;
 @synthesize shareButton;
 
@@ -61,25 +63,19 @@
 	[trackingToggleSwitch addTarget:self action:@selector(toggleTracking:) forControlEvents:UIControlEventValueChanged];
 
 
+	// Set up the "anonymous" banner that will be shown if the user is anonymous
+	UIImage *stretImg = [[UIImage imageNamed:@"anonButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+	[self.anonymousSignUpButton setBackgroundImage:stretImg forState:UIControlStateNormal];
+	[self.view addSubview:self.anonymousBanner];
+	[self.anonymousBanner setCenter:(CGPoint){160.0, 62.0}];
 	
+	// Set up the "notification" banner that may be shown
+	[self.view addSubview:self.notificationBanner];
+	[self.notificationBanner setCenter:(CGPoint){160.0, 102.0}];
+	self.notificationBanner.hidden = YES;
 	
-	// If the user is anonymous, show a banner
-	if( YES ){
-		UIImage *stretImg = [[UIImage imageNamed:@"anonButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
-		[self.anonymousSignUpButton setBackgroundImage:stretImg forState:UIControlStateNormal];
-		[self.view addSubview:self.anonymousBanner];
-		[self.anonymousBanner setCenter:(CGPoint){160.0, 62.0}];
-	}
+	self.notification = [[LQNotificationBanner alloc] init];
 	
-	/*
-	UIImage *checkinBtnImg = [[UIImage imageNamed:@"checkinButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
-	[self.checkInButton setBackgroundImage:checkinBtnImg forState:UIControlStateNormal];
-	UIImage *checkinBtnDisabledImg = [[UIImage imageNamed:@"checkinButtonDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
-	[self.checkInButton setBackgroundImage:checkinBtnDisabledImg forState:UIControlStateDisabled];
-	[self.checkInButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	[self.checkInButton setTitleColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.3 alpha:1.0] forState:UIControlStateDisabled];
-	 */
-	[gAppDelegate makeLQButton:self.checkInButton];
 	[gAppDelegate makeLQButton:self.shareButton];
 
 	// Observe the Geoloqi location manager for updates
@@ -103,8 +99,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.anonymousBanner.hidden = ![GeoloqiAppDelegate isUserAnonymous];
+	
+	if(self.anonymousBanner.hidden) {
+		[self.notificationBanner setCenter:(CGPoint){160.0, 62.0}];
+	} else {
+		[self.notificationBanner setCenter:(CGPoint){160.0, 102.0}];
+	}
+	
+	[self.notification refreshWithCallback:[self bannerLoadedCallback]];
+	
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
-	[self updateCheckinButtonState];
 	
 	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
 														 target:self
@@ -113,9 +117,29 @@
 														repeats:YES] retain];
 }
 
+- (LQHTTPRequestCallback)bannerLoadedCallback {
+	if (bannerLoadedCallback) return bannerLoadedCallback;
+	return bannerLoadedCallback = [^(NSError *error, NSString *responseBody) {
+		if(self.notification.img != nil) {
+			[[PKHTTPCachedImage sharedInstance] setImageForView:self.notificationImage withURL:self.notification.img];
+			self.notificationImage.hidden = NO;
+			self.notificationText.hidden = YES;
+			self.notificationBanner.hidden = NO;
+		} else if(self.notification.text != nil) {
+			self.notificationText.text = self.notification.text;
+			self.notificationImage.hidden = YES;
+			self.notificationText.hidden = NO;
+			self.notificationBanner.hidden = NO;
+		} else {
+			self.notificationBanner.hidden = YES;
+		}
+		
+		return;
+	} copy];
+}
+
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:YES];
-	[self updateCheckinButtonState];
 }
 
 - (void)reloadMapHistory {
@@ -321,22 +345,6 @@
 	}else{
 		[[Geoloqi sharedInstance] stopLocationUpdates];
 	}
-	[self updateCheckinButtonState];
-}
-
-- (void)updateCheckinButtonState {
-	if([[Geoloqi sharedInstance] locationUpdatesState]) {
-		// Disable the "send now" button, it will be enabled when a new location point has been received
-		checkInButton.enabled = NO;
-	} else {
-		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
-		checkInButton.enabled = YES;
-	}
-}
-
-- (IBAction)checkInButtonWasTapped:(UIButton *)button {
-	// If passive location updates are off, get the user's location and send a single point
-	[[Geoloqi sharedInstance] singleLocationUpdate];
 }
 
 - (IBAction)shareButtonWasTapped:(UIButton *)button {
@@ -350,11 +358,11 @@
 	[line release];
 	[map release];
 	[controlBanner release];
-	[checkInButton release];
 	[trackingToggleSwitch release];
 	[anonymousBanner release];
 	[anonymousSignUpButton release];
 	[historyLoadedCallback release];
+	[notification release];
     [super dealloc];
 }
 
