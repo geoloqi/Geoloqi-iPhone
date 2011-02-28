@@ -13,6 +13,7 @@
 
 }
 
--(id)init;
+- (id)init;
+- (id)initWithWidth:(CGFloat)width;
 
 @end

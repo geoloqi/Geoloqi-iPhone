@@ -11,12 +11,15 @@
 
 @implementation BlueButton
 
+- (id)init {
+	return [self initWithWidth: 49.0];
+}
 
--(id)init {
+- (id)initWithWidth:(CGFloat)width {
 	if(self = [super init]) {
 		
 		// The default size for the save button is 49x30 pixels
-		self.frame = CGRectMake(0, 0, 49.0, 30.0);
+		self.frame = CGRectMake(0, 0, width, 30.0);
 		
 		// Center the text vertically and horizontally
 		self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
