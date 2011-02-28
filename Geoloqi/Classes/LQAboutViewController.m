@@ -32,7 +32,7 @@
     webView.delegate = self;
     webView.alpha = 0.0;
 	
-	NSString *url = [NSString stringWithFormat:@"%@/about/iphone", LQ_WEB_ROOT];
+	NSString *url = [NSString stringWithFormat:@"%@/about/iphone?geoloqi_version=%@", LQ_WEB_ROOT, [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
 	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 
