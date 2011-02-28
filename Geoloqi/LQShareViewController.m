@@ -10,20 +10,16 @@
 #import "CJSONDeserializer.h"
 #import "LQShareViewController.h"
 #import "SHKActivityIndicator.h"
-#import "LQShareMail.h"
-#import "LQShareSMS.h"
-#import "LQShareTwitter.h"
-#import "LQShareFacebook.h"
+#import "BlueButton.h"
+#import "LQShareViewController2.h"
 
 @implementation LQShareViewController
 
 @synthesize durations, durationMinutes;
 @synthesize shareDescriptionField, pickerView;
 @synthesize activityIndicator;
-@synthesize shareButtonPressed;
 @synthesize shareMinutes;
-@synthesize navigationController;
-@synthesize sharer;
+@synthesize navigationController, navigationItem, navigationBar;
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -36,29 +32,16 @@
 }
 
 
-- (LQShareMethod)stringToShareMethod:(NSString *)str {
-	LQShareMethod method;
-	if([self.shareButtonPressed isEqualToString:@"Email"]){
-		method = LQShareMethodEmail;
-	} else if([self.shareButtonPressed isEqualToString:@"SMS"]){
-		method = LQShareMethodSMS;
-	} else if([self.shareButtonPressed isEqualToString:@"Twitter"]){
-		method = LQShareMethodTwitter;
-	} else if([self.shareButtonPressed isEqualToString:@"Facebook"]){
-		method = LQShareMethodFacebook;
-	} else if([self.shareButtonPressed isEqualToString:@"Copy Link"]){
-		method = LQShareMethodCopy;
-	}
-	return method;
-}
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+    [super viewDidLoad];
 	
 	durations = [[NSMutableArray alloc] init];
 	durationMinutes = [[NSMutableArray alloc] init];
 	selectedMinutes = @"30";
 
+	[durations addObject:@"1 minute"];
+	[durationMinutes addObject:@"1"];
 	[durations addObject:@"10 minutes"];
 	[durationMinutes addObject:@"10"];
 	[durations addObject:@"20 minutes"];
@@ -89,15 +72,15 @@
 	[pickerView reloadAllComponents];
 	[pickerView selectRow:2 inComponent:0 animated:NO];
 	
-	[gAppDelegate makeLQButton:shareBtnEmail];
-	[gAppDelegate makeLQButton:shareBtnSMS];
-	[gAppDelegate makeLQButton:shareBtnTwitter];
-	[gAppDelegate makeLQButton:shareBtnFacebook];
-	[gAppDelegate makeLQButton:shareBtnCopy];
+	[gAppDelegate makeLQButton:shareBtn];
+	
+	BlueButton *blueShareButton = [[BlueButton alloc] initWithWidth:60.0];
+	[blueShareButton setTitle:@"Create" forState:UIControlStateNormal];
+	[blueShareButton addTarget:self action:@selector(tappedShare:) forControlEvents:UIControlEventTouchUpInside];
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:blueShareButton] autorelease];
+	[blueShareButton release];
 	
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
-		
-    [super viewDidLoad];
 }
 
 
@@ -163,7 +146,6 @@
 {
 	self.activityIndicator.alpha = 1.0f;
 	
-	self.shareButtonPressed = [[sender titleLabel] text];
 	self.shareMinutes = [NSNumber numberWithInt:[selectedMinutes intValue]];
 	
     [[Geoloqi sharedInstance] createLink:[shareDescriptionField text] 
@@ -191,17 +173,12 @@
 		
 		if ([[res objectForKey:@"shortlink"] isKindOfClass:[NSString class]] && [[res objectForKey:@"shortlink"] length])
 		{
-			NSLog(@"Shared link created %@", [res objectForKey:@"shortlink"]);
-			
-			// Create the item to share (in this example, a url)
 			NSURL *url = [NSURL URLWithString:[res objectForKey:@"shortlink"]];
-			// SHKItem *item = [SHKItem URL:url title:@"Heading out! Track me on Geoloqi!"];
 	
-			[self shareLink:url 
-						via:[self stringToShareMethod:self.shareButtonPressed]
-					minutes:self.shareMinutes
-				   canTweet:[[res objectForKey:@"can_tweet"] isEqualToNumber:[NSNumber numberWithInt:1]]
-				canFacebook:[[res objectForKey:@"can_facebook"] isEqualToNumber:[NSNumber numberWithInt:1]]];
+			LQShareViewController2 *nextViewController = [[[LQShareViewController2 alloc] initWithNibName:nil bundle:nil] autorelease];
+			[self presentModalViewController:nextViewController animated:YES];
+			
+			NSLog(@"Shared link created %@", [res objectForKey:@"shortlink"]);
 			
 			return;
 		}
@@ -209,46 +186,7 @@
 	} copy];
 }
 
-- (void)shareLink:(NSURL *)url 
-			  via:(LQShareMethod)method 
-		  minutes:(NSNumber *)minutes
-		 canTweet:(BOOL)canTweet
-	  canFacebook:(BOOL)canFacebook {
-	
-	NSString *message = self.shareDescriptionField.text;
-	
-	if([message length] == 0){
-		message = @"Heading out! Track me on Geoloqi!";
-	}
-	
-	switch(method){
-		case LQShareMethodEmail:
-			sharer = [[LQShareMail alloc] initWithController:self];
-			[sharer shareURL:url withMessage:message minutes:minutes];
-			break;
-		case LQShareMethodSMS:
-			sharer = [[LQShareSMS alloc] initWithController:self];
-			[sharer shareURL:url withMessage:message minutes:minutes];
-			break;
-		case LQShareMethodTwitter:
-			sharer = [[LQShareTwitter alloc] initWithController:self];
-			[sharer shareURL:url withMessage:message minutes:minutes canPost:canTweet];
-			break;
-		case LQShareMethodFacebook:
-			sharer = [[LQShareFacebook alloc] initWithController:self];
-			[sharer shareURL:url withMessage:message minutes:minutes canPost:canFacebook];
-			break;
-		case LQShareMethodCopy:
-			[[UIPasteboard generalPasteboard] setString:url.absoluteString];
-			// [[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Copied!")];
-			[LQShareService linkWasSent:@"Link Copied" minutes:minutes];
-			[self.parentViewController dismissModalViewControllerAnimated:YES];
-			break;
-		default:
-			
-			break;
-	}
-}
+
 
 - (IBAction)cancelWasTapped {
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
@@ -277,8 +215,6 @@
 
 
 - (void)dealloc {
-	[sharer release];
-	[shareButtonPressed release];
 	[durations release];
 	[durationMinutes release];
 	[selectedMinutes release];

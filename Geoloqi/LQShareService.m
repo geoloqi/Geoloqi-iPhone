@@ -60,8 +60,16 @@
 							 nil];
 	notification.alertBody = @"The shared link expired. Would you like to turn tracking off?";
 	notification.alertAction = @"Yes";
-	notification.fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:[_minutes intValue] * 60];
+	notification.fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:[_minutes intValue] ]; // * 60];
+	
+	// Schedule the notification
 	[[UIApplication sharedApplication] scheduleLocalNotification:notification];
+
+	// Add the notification to the list of current notifications so they can be cancelled when needed
+	NSLog(@"Adding notification to the list");
+	[[Geoloqi sharedInstance] addShutdownTimer:notification];
+
+	[notification release];
 }
 
 - (LQShareService *)initWithController:(UIViewController *)_controller {

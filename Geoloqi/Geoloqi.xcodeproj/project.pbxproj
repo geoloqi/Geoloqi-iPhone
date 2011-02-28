@@ -100,6 +100,8 @@
 		0F860B7B131AD68400E1B8D5 /* toolbar-locate-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F860B79131AD68400E1B8D5 /* toolbar-locate-button.png */; };
 		0F860B7C131AD68400E1B8D5 /* toolbar-locate-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F860B7A131AD68400E1B8D5 /* toolbar-locate-button@2x.png */; };
 		0F860BF0131B102100E1B8D5 /* LQNotificationBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F860BEF131B102100E1B8D5 /* LQNotificationBanner.m */; };
+		0F860DD9131B311D00E1B8D5 /* LQShareViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F860DD7131B311D00E1B8D5 /* LQShareViewController2.m */; };
+		0F860DDA131B311D00E1B8D5 /* LQShareViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F860DD8131B311D00E1B8D5 /* LQShareViewController2.xib */; };
 		0FA8E11F12CA923D00F65858 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E11E12CA923D00F65858 /* Default@2x.png */; };
 		0FA8E12312CA92BC00F65858 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E12212CA92BC00F65858 /* iTunesArtwork */; };
 		0FC5482512C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */; };
@@ -301,6 +303,9 @@
 		0F860B7A131AD68400E1B8D5 /* toolbar-locate-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-locate-button@2x.png"; sourceTree = "<group>"; };
 		0F860BEE131B102100E1B8D5 /* LQNotificationBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQNotificationBanner.h; sourceTree = "<group>"; };
 		0F860BEF131B102100E1B8D5 /* LQNotificationBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQNotificationBanner.m; sourceTree = "<group>"; };
+		0F860DD6131B311D00E1B8D5 /* LQShareViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQShareViewController2.h; sourceTree = "<group>"; };
+		0F860DD7131B311D00E1B8D5 /* LQShareViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQShareViewController2.m; sourceTree = "<group>"; };
+		0F860DD8131B311D00E1B8D5 /* LQShareViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQShareViewController2.xib; sourceTree = "<group>"; };
 		0FA8E11E12CA923D00F65858 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0FA8E12212CA92BC00F65858 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		0FC5482312C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteMapViewGestureRecognizer.h; sourceTree = "<group>"; };
@@ -489,6 +494,9 @@
 				0F0183C11296F4B3001508D9 /* LQShareViewController.xib */,
 				0F0183BF1296F4B3001508D9 /* LQShareViewController.h */,
 				0F0183C01296F4B3001508D9 /* LQShareViewController.m */,
+				0F860DD8131B311D00E1B8D5 /* LQShareViewController2.xib */,
+				0F860DD6131B311D00E1B8D5 /* LQShareViewController2.h */,
+				0F860DD7131B311D00E1B8D5 /* LQShareViewController2.m */,
 				0F0ABC2F12E273D8007792AA /* LQShareMail.h */,
 				0F0ABC3012E273D8007792AA /* LQShareMail.m */,
 				0F0ABC5C12E27785007792AA /* LQShareSMS.h */,
@@ -1085,6 +1093,7 @@
 				0F860A661319E07600E1B8D5 /* LQTwitterAuthViewController.xib in Resources */,
 				0F860B7B131AD68400E1B8D5 /* toolbar-locate-button.png in Resources */,
 				0F860B7C131AD68400E1B8D5 /* toolbar-locate-button@2x.png in Resources */,
+				0F860DDA131B311D00E1B8D5 /* LQShareViewController2.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1157,6 +1166,7 @@
 				0F0AC83C12E6B3AC007792AA /* GeonoteHelpViewController.m in Sources */,
 				0F860A651319E07600E1B8D5 /* LQTwitterAuthViewController.m in Sources */,
 				0F860BF0131B102100E1B8D5 /* LQNotificationBanner.m in Sources */,
+				0F860DD9131B311D00E1B8D5 /* LQShareViewController2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
