@@ -84,11 +84,20 @@
 	}
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	// Called when the user taps the banner, text or image
+	if(self.link != nil){
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", self.link]]];
+	}
+}
+
+
 - (void)dealloc {
 	[img release];
 	[text release];
 	[link release];
 	[callback release];
+	[lastUpdated release];
 	[super dealloc];
 }
 
