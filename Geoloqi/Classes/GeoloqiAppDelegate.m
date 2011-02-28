@@ -297,7 +297,7 @@ GeoloqiAppDelegate *gAppDelegate;
 }
 
 - (void)cancelShutdownNotifications {
-	// [[Geoloqi sharedInstance] cancelShutdownTimers];
+	[[Geoloqi sharedInstance] cancelShutdownTimers];
 }
 
 + (void)registerPresetDefaultsFromSettingsBundle {
