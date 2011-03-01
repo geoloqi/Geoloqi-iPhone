@@ -1,3 +1,4 @@
+/*
 //
 //  LQShareFacebook.h
 //  Geoloqi
@@ -12,8 +13,12 @@
 
 @interface LQShareFacebook : LQShareService <LQShareFacebookDelegate> {
 	LQShareFacebookViewController *shareView;
+	LQHTTPRequestCallback postedCallback;
 }
 
 @property (nonatomic, retain) LQShareFacebookViewController *shareView;
 
+- (LQHTTPRequestCallback)postedCallback;
+
 @end
+*/

@@ -1,3 +1,4 @@
+/*
 //
 //  LQShareTwitter.h
 //  Geoloqi
@@ -16,4 +17,7 @@
 
 @property (nonatomic, retain) LQShareTwitterViewController *shareView;
 
+// - (void)shareURL:(NSURL *)url withMessage:(NSString *)message minutes:(NSNumber *)_minutes canPost:(BOOL)canPost withCallback:(LQHTTPRequestCallback)callback;
+
 @end
+*/

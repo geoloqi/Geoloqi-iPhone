@@ -175,7 +175,12 @@
 		{
 			NSURL *url = [NSURL URLWithString:[res objectForKey:@"shortlink"]];
 	
-			LQShareViewController2 *nextViewController = [[[LQShareViewController2 alloc] initWithNibName:nil bundle:nil] autorelease];
+			LQShareViewController2 *nextViewController = [[[LQShareViewController2 alloc] initWithURL:url 
+																						   andMessage:shareDescriptionField.text
+																						  forDuration:[NSNumber numberWithInt:[selectedMinutes intValue]]
+																						   canTwitter:[[res objectForKey:@"can_tweet"] isEqualToNumber:[NSNumber numberWithInt:1]]
+																						  canFacebook:[[res objectForKey:@"can_facebook"] isEqualToNumber:[NSNumber numberWithInt:1]]]
+														   autorelease];
 			[self presentModalViewController:nextViewController animated:YES];
 			
 			NSLog(@"Shared link created %@", [res objectForKey:@"shortlink"]);

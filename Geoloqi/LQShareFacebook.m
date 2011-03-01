@@ -1,3 +1,4 @@
+/*
 //
 //  LQShareFacebook.m
 //  Geoloqi
@@ -17,14 +18,42 @@
 - (void)shareURL:(NSURL *)url withMessage:(NSString *)message minutes:(NSNumber *)_minutes canPost:(BOOL)canPost {
 	self.minutes = _minutes;
 	if(canPost) {
-		self.shareView = [[LQShareFacebookViewController alloc] initWithMessage:message andURL:[url absoluteString]];
-		self.shareView.delegate = self;
-		[self presentModalViewController:shareView];
+		self.activityIndicator.alpha = 1.0f;
+		self.sendButton.enabled = NO;
+		
+		// Try to post the update!
+		[[Geoloqi sharedInstance] postToFacebook:self.textView.text
+											 url:self.url
+										callback:self.postedCallback];
 	} else {
 		LQShareFacebookConnectViewController *facebookConnectController = [[LQShareFacebookConnectViewController alloc] init];
 		[self presentModalViewController:facebookConnectController];
 		[facebookConnectController release];
 	}
+}
+
+
+- (LQHTTPRequestCallback)postedCallback {
+	if (postedCallback) return postedCallback;
+	return postedCallback = [^(NSError *error, NSString *responseBody) {
+		
+		self.activityIndicator.alpha = 0.0f;
+		self.sendButton.enabled = YES;
+		
+		NSError *err = nil;
+		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:
+																					   NSUTF8StringEncoding]
+																				error:&err];
+		
+		if (!res || [res objectForKey:@"error"] != nil) {
+			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Facebook Error!"];
+			[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
+			[self.delegate facebookDidCancel];
+		}else{
+			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Posted!"];
+			[self.delegate facebookDidFinish];
+		}
+	} copy];
 }
 
 - (void)facebookDidFinish {
@@ -42,3 +71,4 @@
 }
 
 @end
+*/

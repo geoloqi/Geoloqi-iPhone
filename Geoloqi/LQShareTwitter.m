@@ -1,3 +1,4 @@
+/*
 //
 //  LQShareTwitter.m
 //  Geoloqi
@@ -14,13 +15,18 @@
 
 @synthesize shareView;
 
-- (void)shareURL:(NSURL *)url withMessage:(NSString *)message minutes:(NSNumber *)_minutes canPost:(BOOL)canPost {
+- (void)shareURL:(NSURL *)url withMessage:(NSString *)message minutes:(NSNumber *)_minutes canPost:(BOOL)canPost withCallback:(LQHTTPRequestCallback)callback {
 	self.minutes = _minutes;
 	if(canPost) {
 		NSString *body = [message stringByAppendingFormat:@" %@", [url absoluteString]];
-		self.shareView = [[LQShareTwitterViewController alloc] initWithMessage:body];
-		self.shareView.delegate = self;
-		[self presentModalViewController:shareView];
+
+		self.activityIndicator.alpha = 1.0f;
+		self.sendButton.enabled = NO;
+		
+		// Try to post the tweet!
+		[[Geoloqi sharedInstance] postToTwitter:self.textView.text
+									   callback:self.tweetPostedCallback];
+	
 	} else {
 		LQShareTwitterConnectViewController *twitterConnectController = [[LQShareTwitterConnectViewController alloc] init];
 		[self presentModalViewController:twitterConnectController];
@@ -43,3 +49,4 @@
 }
 
 @end
+*/

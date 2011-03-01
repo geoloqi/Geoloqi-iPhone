@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LQShareService.h"
+#import "Geoloqi.h"
 
 @interface LQShareViewController2 : UIViewController {
 	NSString *shareButtonPressed;
@@ -16,6 +17,10 @@
 	IBOutlet UIView *activityIndicator;
 	IBOutlet UITextView *textView;
 	IBOutlet UILabel *charCounter;
+	BOOL canFacebook;
+	BOOL canTwitter;
+	LQHTTPRequestCallback tweetPostedCallback;
+	LQHTTPRequestCallback facebookPostedCallback;
 }
 
 typedef enum {
@@ -28,16 +33,25 @@ typedef enum {
 
 @property (nonatomic, retain) IBOutlet UINavigationItem *navigationItem;
 @property (nonatomic, retain) NSString *shareButtonPressed;
+@property (nonatomic, retain) IBOutlet UIView *activityIndicator;
 @property (nonatomic, retain) LQShareService *sharer;
+@property (nonatomic, retain) NSURL *shareURL;
+@property (nonatomic, retain) NSString *shareMessage;
+@property (nonatomic, retain) NSNumber *shareMinutes;
+
+- (id)initWithURL:(NSURL *)url 
+	   andMessage:(NSString *)message 
+	  forDuration:(NSNumber *)minutes 
+	   canTwitter:(BOOL)twitter
+	  canFacebook:(BOOL)facebook;
+
+- (LQHTTPRequestCallback)tweetPostedCallback;
+- (LQHTTPRequestCallback)facebookPostedCallback;
 
 - (IBAction)backWasTapped;
 - (IBAction)doneWasTapped;
+- (IBAction)shareServiceButtonWasTapped:(id)sender;
 
-- (void)shareLink:(NSURL *)url 
-	  withMessage:(NSString *)message
-			  via:(LQShareMethod)method 
-		  minutes:(NSNumber *)minutes 
-		 canTweet:(BOOL)canTweet 
-	  canFacebook:(BOOL)canFacebook;
+- (void)shareLinkVia:(LQShareMethod)method;
 
 @end
