@@ -91,9 +91,9 @@
 	[self.controller presentModalViewController:_controller animated:YES];
 }
 
-- (void)shareControllerDidFinish {
+- (void)shareControllerDidFinish:(UIViewController *)_controller {
 	[[Geoloqi sharedInstance] startLocationUpdates];
-	[self.controller.parentViewController dismissModalViewControllerAnimated:YES];
+	[_controller dismissModalViewControllerAnimated:YES];
 }
 
 - (void)shareControllerDidCancel:(UIViewController *)_controller {

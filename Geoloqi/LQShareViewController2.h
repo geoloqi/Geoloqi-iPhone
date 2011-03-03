@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "LQShareService.h"
 #import "Geoloqi.h"
+#import "LQShareTwitterConnectViewController.h"
+#import "LQShareFacebookConnectViewController.h"
 
-@interface LQShareViewController2 : UIViewController {
+@interface LQShareViewController2 : UIViewController <LQShareTwitterConnectDelegate, LQShareFacebookConnectDelegate> {
 	NSString *shareButtonPressed;
 	LQShareService *sharer;
 	IBOutlet UIButton *shareBtnCopy, *shareBtnFacebook, *shareBtnSMS, *shareBtnEmail, *shareBtnTwitter;

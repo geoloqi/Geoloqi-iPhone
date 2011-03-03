@@ -14,6 +14,8 @@
 
 @synthesize webView;
 @synthesize cancelButton;
+@synthesize activityIndicator;
+@synthesize delegate;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -41,6 +43,22 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)w {
+	self.activityIndicator.alpha = 0.0;
+	NSLog(@"Finished loading web: %@", w.request.URL);
+	// Complete when the query starts with "finished"
+	if([w.request.URL.query hasPrefix:@"finished"]) {
+		if(self.delegate && [self.delegate respondsToSelector:@selector(userConnectedTwitter)]){
+			[self.delegate userConnectedTwitter];
+		}
+	}
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)w {     
+	self.activityIndicator.alpha = 1.0;
+}
 
 - (void)cancelWasTapped:(id)sender {
 	[self dismissModalViewControllerAnimated:YES];

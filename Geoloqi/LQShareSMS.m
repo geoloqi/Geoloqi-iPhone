@@ -60,7 +60,7 @@
             break;
         case MessageComposeResultSent:
 			[LQShareService linkWasSent:@"Sent" minutes:self.minutes];
-			[self shareControllerDidFinish];
+			[self shareControllerDidFinish:self.controller.parentViewController.parentViewController];
             break;
         case MessageComposeResultFailed:
 			[self shareControllerDidCancel:messageController];

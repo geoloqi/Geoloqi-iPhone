@@ -40,8 +40,6 @@
 	durationMinutes = [[NSMutableArray alloc] init];
 	selectedMinutes = @"30";
 
-	[durations addObject:@"1 minute"];
-	[durationMinutes addObject:@"1"];
 	[durations addObject:@"10 minutes"];
 	[durationMinutes addObject:@"10"];
 	[durations addObject:@"20 minutes"];

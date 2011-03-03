@@ -27,7 +27,7 @@
 
 - (void)presentModalViewController:(UIViewController *)_controller;
 
-- (void)shareControllerDidFinish;
+- (void)shareControllerDidFinish:(UIViewController *)_controller;
 
 - (void)shareControllerDidCancel:(UIViewController *)_controller;
 

@@ -112,7 +112,6 @@
 			break;
 		case LQShareMethodTwitter:
 			self.activityIndicator.alpha = 1.0f;
-			//self.sendButton.enabled = NO;
 
 			if(canTwitter) {
 				self.activityIndicator.alpha = 1.0f;
@@ -124,6 +123,8 @@
 				
 			} else {
 				LQShareTwitterConnectViewController *twitterConnectController = [[LQShareTwitterConnectViewController alloc] init];
+				// Give the view a pointer to the boolean here so it can update it when it finishes
+				twitterConnectController.delegate = self;
 				[self presentModalViewController:twitterConnectController animated:YES];
 				[twitterConnectController release];
 			}
@@ -143,6 +144,7 @@
 												callback:self.facebookPostedCallback];
 			} else {
 				LQShareFacebookConnectViewController *facebookConnectController = [[LQShareFacebookConnectViewController alloc] init];
+				facebookConnectController.delegate = self;
 				[self presentModalViewController:facebookConnectController animated:YES];
 				[facebookConnectController release];
 			}
@@ -151,7 +153,7 @@
 		case LQShareMethodCopy:
 			[[UIPasteboard generalPasteboard] setString:self.shareURL.absoluteString];
 			[LQShareService linkWasSent:@"Link Copied" minutes:self.shareMinutes];
-			[self.parentViewController dismissModalViewControllerAnimated:YES];
+			[self.parentViewController.parentViewController dismissModalViewControllerAnimated:YES];
 			break;
 		default:
 			
@@ -159,6 +161,13 @@
 	}
 }
 
+- (void)userConnectedTwitter {
+	canTwitter = YES;
+}
+
+- (void)userConnectedFacebook {
+	canFacebook = YES;
+}
 
 - (LQHTTPRequestCallback)tweetPostedCallback {
 	if (tweetPostedCallback) return tweetPostedCallback;
@@ -177,7 +186,7 @@
 			[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
 			[self.parentViewController dismissModalViewControllerAnimated:YES];
 		}else{
-			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Tweeted!"];
+//			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Tweeted!"];
 			[LQShareService linkWasSent:@"Posted to Twitter" minutes:self.shareMinutes];
 			[self.parentViewController.parentViewController dismissModalViewControllerAnimated:YES];
 		}
@@ -201,7 +210,7 @@
 			[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
 			[self.parentViewController dismissModalViewControllerAnimated:YES];
 		}else{
-			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Posted!"];
+//			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Posted!"];
 			[LQShareService linkWasSent:@"Posted to Facebook" minutes:self.shareMinutes];
 			[self.parentViewController.parentViewController dismissModalViewControllerAnimated:YES];
 		}
