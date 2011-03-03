@@ -87,6 +87,17 @@
 	return method;
 }
 
+/*
+ * Hide the keyboard when the user presses "Done". This also means it's impossible to type a newline into the box.
+ */
+- (BOOL)textView:(UITextView *)_textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+	if ([text isEqual:@"\n"]) {
+		[_textView resignFirstResponder];
+		return NO;
+	}
+	return YES;
+}
+
 - (IBAction)backWasTapped {
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
@@ -163,10 +174,19 @@
 
 - (void)userConnectedTwitter {
 	canTwitter = YES;
+	
+	// Tweet now! The modal windows will be closed after it succeeds.
+	[[Geoloqi sharedInstance] postToTwitter:textView.text
+								   callback:self.tweetPostedCallback];
 }
 
 - (void)userConnectedFacebook {
 	canFacebook = YES;
+
+	// Post to facebook now! The modal windows will be closed after it succeeds.
+	[[Geoloqi sharedInstance] postToFacebook:textView.text
+										 url:[self.shareURL absoluteString]
+									callback:self.facebookPostedCallback];
 }
 
 - (LQHTTPRequestCallback)tweetPostedCallback {
