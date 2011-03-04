@@ -10,6 +10,7 @@
 
 static NSString *const LQLocationUpdateManagerDidUpdateLocationNotification = @"LQLocationUpdateManagerDidUpdateLocationNotification";
 static NSString *const LQLocationUpdateManagerDidUpdateSingleLocationNotification = @"LQLocationUpdateManagerDidUpdateSingleLocationNotification";
+static NSString *const LQLocationUpdateManagerDidUpdateFriendLocationNotification = @"LQLocationUpdateManagerDidUpdateFriendLocationNotification";
 static NSString *const LQLocationUpdateManagerStartedSendingLocations = @"LQLocationUpdateManagerStartedSendingLocations";
 static NSString *const LQLocationUpdateManagerFinishedSendingLocations = @"LQLocationUpdateManagerFinishedSendingLocations";
 static NSString *const LQLocationUpdateManagerFinishedSendingSingleLocation = @"LQLocationUpdateManagerFinishedSendingSingleLocation";
@@ -69,6 +70,9 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)setDistanceFilterTo:(CLLocationDistance)distance;
 - (void)setTrackingFrequencyTo:(NSTimeInterval)frequency;
 - (void)setSendingFrequencyTo:(NSTimeInterval)frequency;
+
+- (void)startFriendUpdates;
+- (void)stopFriendUpdates;
 
 - (NSDate *)lastLocationDate;
 - (NSDate *)lastUpdateDate;

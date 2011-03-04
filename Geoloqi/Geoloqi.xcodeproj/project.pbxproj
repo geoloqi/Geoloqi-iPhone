@@ -117,6 +117,7 @@
 		0FC27494132159A800AA41BC /* welcomeTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC27490132159A800AA41BC /* welcomeTwitter@2x.png */; };
 		0FC2749D13215D3300AA41BC /* welcomeSignUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2749B13215D3300AA41BC /* welcomeSignUp.png */; };
 		0FC2749E13215D3300AA41BC /* welcomeSignUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2749C13215D3300AA41BC /* welcomeSignUp@2x.png */; };
+		0FC2771C132185E700AA41BC /* LQMapPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2771B132185E700AA41BC /* LQMapPinAnnotation.m */; };
 		0FC5482512C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */; };
 		0FC583B312CDB46700238518 /* BlueButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC583B212CDB46700238518 /* BlueButton.m */; };
 		0FC583CE12CDBAD700238518 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC583CC12CDBAD700238518 /* blueButton.png */; };
@@ -330,6 +331,8 @@
 		0FC27490132159A800AA41BC /* welcomeTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcomeTwitter@2x.png"; sourceTree = "<group>"; };
 		0FC2749B13215D3300AA41BC /* welcomeSignUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeSignUp.png; sourceTree = "<group>"; };
 		0FC2749C13215D3300AA41BC /* welcomeSignUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcomeSignUp@2x.png"; sourceTree = "<group>"; };
+		0FC2771A132185E700AA41BC /* LQMapPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMapPinAnnotation.h; sourceTree = "<group>"; };
+		0FC2771B132185E700AA41BC /* LQMapPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMapPinAnnotation.m; sourceTree = "<group>"; };
 		0FC5482312C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteMapViewGestureRecognizer.h; sourceTree = "<group>"; };
 		0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteMapViewGestureRecognizer.m; sourceTree = "<group>"; };
 		0FC583B112CDB46700238518 /* BlueButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueButton.h; sourceTree = "<group>"; };
@@ -922,6 +925,8 @@
 				0FC585C412D111C800238518 /* LQMapSignUpViewController.xib */,
 				0F860BEE131B102100E1B8D5 /* LQNotificationBanner.h */,
 				0F860BEF131B102100E1B8D5 /* LQNotificationBanner.m */,
+				0FC2771A132185E700AA41BC /* LQMapPinAnnotation.h */,
+				0FC2771B132185E700AA41BC /* LQMapPinAnnotation.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -1211,6 +1216,7 @@
 				0F860A651319E07600E1B8D5 /* LQTwitterAuthViewController.m in Sources */,
 				0F860BF0131B102100E1B8D5 /* LQNotificationBanner.m in Sources */,
 				0F860DD9131B311D00E1B8D5 /* LQShareViewController2.m in Sources */,
+				0FC2771C132185E700AA41BC /* LQMapPinAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

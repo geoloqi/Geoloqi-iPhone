@@ -14,6 +14,7 @@
 #import "ASIHTTPRequest.h"
 #import "CJSONDeserializer.h"
 #import "LQShareViewController.h"
+#import "LQMapPinAnnotation.h"
 
 @implementation LQMapViewController
 
@@ -86,6 +87,12 @@
 											 selector:@selector(singleLocationUpdated:)
 												 name:LQLocationUpdateManagerDidUpdateSingleLocationNotification
 											   object:nil];
+
+	// Observe the Geoloqi friend location manager for updates
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(friendLocationUpdated:)
+												 name:LQLocationUpdateManagerDidUpdateFriendLocationNotification
+											   object:nil];
 	
 	// Observe the map for location updates
 	[map.userLocation addObserver:self  
@@ -106,6 +113,8 @@
 	[self.notificationBanner refreshForLocation:self.map.userLocation.location];
 	
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
+	
+	[[Geoloqi sharedInstance] startFriendUpdates];
 	
 	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
 														 target:self
@@ -244,6 +253,20 @@
 	[self updateLocationOnMap:newLoc];
 }
 
+- (void)friendLocationUpdated:(NSNotification *)notification {
+
+	// Remove all previous annotations. This makes a pretty bad flickr, we'll have to figure something better out soon.
+	for (id annotation in map.annotations) {
+		[map removeAnnotation:annotation];
+	}
+
+	for(NSDictionary *point in [notification.userInfo objectForKey:@"friends"]){
+		NSLog(@"Point: %@", point);
+		
+		[map addAnnotation:[[LQMapPinAnnotation alloc] initWithDictionary:point]];
+	}
+}
+
 // When the map view receives its location, this method is called
 // This is separate from our internal location manager with the on/off switch
 - (void)observeValueForKeyPath:(NSString *)keyPath 
@@ -286,6 +309,10 @@
 	[viewRefreshTimer invalidate];
 	[viewRefreshTimer release];
 	viewRefreshTimer = nil;
+	[[Geoloqi sharedInstance] stopFriendUpdates];
+	for (id annotation in map.annotations) {
+		[map removeAnnotation:annotation];
+	}
 }
 
 - (void)viewDidUnload {
