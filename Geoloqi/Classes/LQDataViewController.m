@@ -586,6 +586,20 @@ enum {
 	// For testing the battery notifications in the simulator
 	// [[NSNotificationCenter defaultCenter] postNotificationName:UIDeviceBatteryLevelDidChangeNotification object:self];
 	
+	// Set a notification with a fraction of a second delay so they know the app didn't just crash
+	
+	UILocalNotification *notification = [[UILocalNotification alloc] init];
+	// TODO: This is from Apple's sample code. When would this not be set?
+	if (notification == nil)
+		return;
+	
+	notification.alertBody = @"You successfully logged out. Would you like to launch Geoloqi again?";
+	notification.alertAction = @"Yes";
+	notification.fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:0.3];
+	
+	// Schedule the notification
+	[[UIApplication sharedApplication] scheduleLocalNotification:notification];
+	
 	[[NSNotificationCenter defaultCenter] postNotificationName:LQAuthenticationLogoutNotification object:self];
 }
 
