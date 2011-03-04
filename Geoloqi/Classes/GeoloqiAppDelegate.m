@@ -29,6 +29,10 @@ GeoloqiAppDelegate *gAppDelegate;
     
 	gAppDelegate = self;
 	
+	self.lqBtnImg = [[UIImage imageNamed:@"LQButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+	self.lqBtnDisabledImg = [[UIImage imageNamed:@"LQButtonDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+	self.lqBtnLightDisabledImg = [[UIImage imageNamed:@"LQButtonLightDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
+	
 	pushHandler = [[LQPushHandler alloc] myInit];
 
 	[[Geoloqi sharedInstance] setUserAgentString:LQ_USER_AGENT];
@@ -93,10 +97,6 @@ GeoloqiAppDelegate *gAppDelegate;
 	
 	[[LQBatteryMonitor sharedInstance] start];
 	
-	self.lqBtnImg = [[UIImage imageNamed:@"LQButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
-	self.lqBtnDisabledImg = [[UIImage imageNamed:@"LQButtonDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
-	self.lqBtnLightDisabledImg = [[UIImage imageNamed:@"LQButtonLightDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
-
     return YES;
 }
 

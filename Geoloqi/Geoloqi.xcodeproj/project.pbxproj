@@ -104,6 +104,19 @@
 		0F860DDA131B311D00E1B8D5 /* LQShareViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F860DD8131B311D00E1B8D5 /* LQShareViewController2.xib */; };
 		0FA8E11F12CA923D00F65858 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E11E12CA923D00F65858 /* Default@2x.png */; };
 		0FA8E12312CA92BC00F65858 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E12212CA92BC00F65858 /* iTunesArtwork */; };
+		0FC273D51320625300AA41BC /* sign-in-with-twitter-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC273D41320625300AA41BC /* sign-in-with-twitter-dark.png */; };
+		0FC2746513208DA700AA41BC /* welcomeBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2746313208DA700AA41BC /* welcomeBkg.png */; };
+		0FC2746613208DA700AA41BC /* welcomeBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2746413208DA700AA41BC /* welcomeBkg@2x.png */; };
+		0FC274731320A65400AA41BC /* Welcome-Geoloqi-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC274711320A65400AA41BC /* Welcome-Geoloqi-Logo.png */; };
+		0FC274741320A65400AA41BC /* Welcome-Geoloqi-Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC274721320A65400AA41BC /* Welcome-Geoloqi-Logo@2x.png */; };
+		0FC27487132152D600AA41BC /* welcomeSignInBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC27485132152D600AA41BC /* welcomeSignInBtn.png */; };
+		0FC27488132152D600AA41BC /* welcomeSignInBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC27486132152D600AA41BC /* welcomeSignInBtn@2x.png */; };
+		0FC27491132159A800AA41BC /* welcomeAnonBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2748D132159A800AA41BC /* welcomeAnonBtn.png */; };
+		0FC27492132159A800AA41BC /* welcomeAnonBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2748E132159A800AA41BC /* welcomeAnonBtn@2x.png */; };
+		0FC27493132159A800AA41BC /* welcomeTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2748F132159A800AA41BC /* welcomeTwitter.png */; };
+		0FC27494132159A800AA41BC /* welcomeTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC27490132159A800AA41BC /* welcomeTwitter@2x.png */; };
+		0FC2749D13215D3300AA41BC /* welcomeSignUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2749B13215D3300AA41BC /* welcomeSignUp.png */; };
+		0FC2749E13215D3300AA41BC /* welcomeSignUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2749C13215D3300AA41BC /* welcomeSignUp@2x.png */; };
 		0FC5482512C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */; };
 		0FC583B312CDB46700238518 /* BlueButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC583B212CDB46700238518 /* BlueButton.m */; };
 		0FC583CE12CDBAD700238518 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC583CC12CDBAD700238518 /* blueButton.png */; };
@@ -177,10 +190,6 @@
 		DD91DF9211BF3F400097F6F5 /* LQMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD91DF9011BF3F400097F6F5 /* LQMapViewController.m */; };
 		DD91DF9311BF3F400097F6F5 /* LQMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD91DF9111BF3F400097F6F5 /* LQMapViewController.xib */; };
 		DD91E15E11BF4C1F0097F6F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */; };
-		DDBDE699126E7AB200B1FB60 /* welcome-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */; };
-		DDBDE69A126E7AB200B1FB60 /* welcome-top.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE696126E7AB200B1FB60 /* welcome-top.png */; };
-		DDBDE69B126E7AB200B1FB60 /* welcome-bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE697126E7AB200B1FB60 /* welcome-bottom@2x.png */; };
-		DDBDE69C126E7AB200B1FB60 /* welcome-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBDE698126E7AB200B1FB60 /* welcome-bottom.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -308,6 +317,19 @@
 		0F860DD8131B311D00E1B8D5 /* LQShareViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQShareViewController2.xib; sourceTree = "<group>"; };
 		0FA8E11E12CA923D00F65858 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0FA8E12212CA92BC00F65858 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		0FC273D41320625300AA41BC /* sign-in-with-twitter-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign-in-with-twitter-dark.png"; sourceTree = "<group>"; };
+		0FC2746313208DA700AA41BC /* welcomeBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeBkg.png; sourceTree = "<group>"; };
+		0FC2746413208DA700AA41BC /* welcomeBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcomeBkg@2x.png"; sourceTree = "<group>"; };
+		0FC274711320A65400AA41BC /* Welcome-Geoloqi-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome-Geoloqi-Logo.png"; sourceTree = "<group>"; };
+		0FC274721320A65400AA41BC /* Welcome-Geoloqi-Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome-Geoloqi-Logo@2x.png"; sourceTree = "<group>"; };
+		0FC27485132152D600AA41BC /* welcomeSignInBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeSignInBtn.png; sourceTree = "<group>"; };
+		0FC27486132152D600AA41BC /* welcomeSignInBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcomeSignInBtn@2x.png"; sourceTree = "<group>"; };
+		0FC2748D132159A800AA41BC /* welcomeAnonBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeAnonBtn.png; sourceTree = "<group>"; };
+		0FC2748E132159A800AA41BC /* welcomeAnonBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcomeAnonBtn@2x.png"; sourceTree = "<group>"; };
+		0FC2748F132159A800AA41BC /* welcomeTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeTwitter.png; sourceTree = "<group>"; };
+		0FC27490132159A800AA41BC /* welcomeTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcomeTwitter@2x.png"; sourceTree = "<group>"; };
+		0FC2749B13215D3300AA41BC /* welcomeSignUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeSignUp.png; sourceTree = "<group>"; };
+		0FC2749C13215D3300AA41BC /* welcomeSignUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcomeSignUp@2x.png"; sourceTree = "<group>"; };
 		0FC5482312C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeonoteMapViewGestureRecognizer.h; sourceTree = "<group>"; };
 		0FC5482412C7AEA200F81214 /* GeonoteMapViewGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeonoteMapViewGestureRecognizer.m; sourceTree = "<group>"; };
 		0FC583B112CDB46700238518 /* BlueButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueButton.h; sourceTree = "<group>"; };
@@ -422,10 +444,6 @@
 		DD91DF9111BF3F400097F6F5 /* LQMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQMapViewController.xib; sourceTree = "<group>"; };
 		DD91E15D11BF4C1F0097F6F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DDACF629125C24B7000511E5 /* LQConstants.template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQConstants.template.h; path = Classes/LQConstants.template.h; sourceTree = "<group>"; };
-		DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-top@2x.png"; sourceTree = "<group>"; };
-		DDBDE696126E7AB200B1FB60 /* welcome-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-top.png"; sourceTree = "<group>"; };
-		DDBDE697126E7AB200B1FB60 /* welcome-bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-bottom@2x.png"; sourceTree = "<group>"; };
-		DDBDE698126E7AB200B1FB60 /* welcome-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome-bottom.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +628,25 @@
 			name = PKHTTPCachedImage;
 			sourceTree = "<group>";
 		};
+		0FC274701320A62A00AA41BC /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				0FC274711320A65400AA41BC /* Welcome-Geoloqi-Logo.png */,
+				0FC274721320A65400AA41BC /* Welcome-Geoloqi-Logo@2x.png */,
+				0FC2748D132159A800AA41BC /* welcomeAnonBtn.png */,
+				0FC2748E132159A800AA41BC /* welcomeAnonBtn@2x.png */,
+				0FC2748F132159A800AA41BC /* welcomeTwitter.png */,
+				0FC27490132159A800AA41BC /* welcomeTwitter@2x.png */,
+				0FC2749B13215D3300AA41BC /* welcomeSignUp.png */,
+				0FC2749C13215D3300AA41BC /* welcomeSignUp@2x.png */,
+				0FC27485132152D600AA41BC /* welcomeSignInBtn.png */,
+				0FC27486132152D600AA41BC /* welcomeSignInBtn@2x.png */,
+				0FC2746313208DA700AA41BC /* welcomeBkg.png */,
+				0FC2746413208DA700AA41BC /* welcomeBkg@2x.png */,
+			);
+			name = Welcome;
+			sourceTree = "<group>";
+		};
 		0FC583DE12CDBC6D00238518 /* Blue Button */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +729,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0FC274701320A62A00AA41BC /* Welcome */,
 				0F0AC86E12E6BA71007792AA /* About */,
 				0F0AC42812E5F003007792AA /* LQButton */,
 				0F0E236712DFDE2A00EF1AC7 /* CustomUISwitch */,
@@ -721,6 +759,7 @@
 				49EB224C125D7F7100EDFAB1 /* small-btn.png */,
 				0F0AC54C12E60B80007792AA /* layerHeaderBkg.png */,
 				0F0AC54D12E60B80007792AA /* layerHeaderBkg@2x.png */,
+				0FC273D41320625300AA41BC /* sign-in-with-twitter-dark.png */,
 				0F0ABB0112E22469007792AA /* spinnerBkg.png */,
 				0F0ABB0212E22469007792AA /* spinnerBkg@2x.png */,
 				0F0ABB4912E246AD007792AA /* textboxBackground.png */,
@@ -732,10 +771,6 @@
 				0F4E20E112B48193001C6856 /* title-bar-logo@2x.png */,
 				0F860B79131AD68400E1B8D5 /* toolbar-locate-button.png */,
 				0F860B7A131AD68400E1B8D5 /* toolbar-locate-button@2x.png */,
-				DDBDE695126E7AB200B1FB60 /* welcome-top@2x.png */,
-				DDBDE696126E7AB200B1FB60 /* welcome-top.png */,
-				DDBDE697126E7AB200B1FB60 /* welcome-bottom@2x.png */,
-				DDBDE698126E7AB200B1FB60 /* welcome-bottom.png */,
 				0FA8E11E12CA923D00F65858 /* Default@2x.png */,
 				0F13106412C40D6700FBC2B5 /* Localizable.strings */,
 				0F7F330912CD5A2E0009CB1C /* Default.png */,
@@ -1016,10 +1051,6 @@
 				49EB2256125D7F7100EDFAB1 /* signin-btn.png in Resources */,
 				49EB2257125D7F7100EDFAB1 /* small-btn@2x.png in Resources */,
 				49EB2258125D7F7100EDFAB1 /* small-btn.png in Resources */,
-				DDBDE699126E7AB200B1FB60 /* welcome-top@2x.png in Resources */,
-				DDBDE69A126E7AB200B1FB60 /* welcome-top.png in Resources */,
-				DDBDE69B126E7AB200B1FB60 /* welcome-bottom@2x.png in Resources */,
-				DDBDE69C126E7AB200B1FB60 /* welcome-bottom.png in Resources */,
 				0FF3B50F128E375100958BCA /* ToolbarLocate.png in Resources */,
 				0F01830E1294E105001508D9 /* Settings.bundle in Resources */,
 				0F0183B21296ED3D001508D9 /* layers-icon.png in Resources */,
@@ -1094,6 +1125,19 @@
 				0F860B7B131AD68400E1B8D5 /* toolbar-locate-button.png in Resources */,
 				0F860B7C131AD68400E1B8D5 /* toolbar-locate-button@2x.png in Resources */,
 				0F860DDA131B311D00E1B8D5 /* LQShareViewController2.xib in Resources */,
+				0FC273D51320625300AA41BC /* sign-in-with-twitter-dark.png in Resources */,
+				0FC2746513208DA700AA41BC /* welcomeBkg.png in Resources */,
+				0FC2746613208DA700AA41BC /* welcomeBkg@2x.png in Resources */,
+				0FC274731320A65400AA41BC /* Welcome-Geoloqi-Logo.png in Resources */,
+				0FC274741320A65400AA41BC /* Welcome-Geoloqi-Logo@2x.png in Resources */,
+				0FC27487132152D600AA41BC /* welcomeSignInBtn.png in Resources */,
+				0FC27488132152D600AA41BC /* welcomeSignInBtn@2x.png in Resources */,
+				0FC27491132159A800AA41BC /* welcomeAnonBtn.png in Resources */,
+				0FC27492132159A800AA41BC /* welcomeAnonBtn@2x.png in Resources */,
+				0FC27493132159A800AA41BC /* welcomeTwitter.png in Resources */,
+				0FC27494132159A800AA41BC /* welcomeTwitter@2x.png in Resources */,
+				0FC2749D13215D3300AA41BC /* welcomeSignUp.png in Resources */,
+				0FC2749E13215D3300AA41BC /* welcomeSignUp@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

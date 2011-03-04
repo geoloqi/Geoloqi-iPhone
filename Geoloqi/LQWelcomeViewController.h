@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface LQWelcomeViewController : UIViewController {
-	
+@interface LQWelcomeViewController : UIViewController <UITextFieldDelegate> {
+
 }
 @property (nonatomic, retain) IBOutlet UIViewController *signUpViewController;
 @property (nonatomic, retain) IBOutlet UIViewController *logInViewController;
@@ -20,6 +20,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *signInButton;
 @property (nonatomic, retain) IBOutlet UIButton *useAnonymouslyButton;
 @property (nonatomic, retain) IBOutlet UIButton *twitterAuthButton;
+
+@property (nonatomic, retain) IBOutlet UITextField *emailAddressField;
 
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *anonymousSpinner;
 

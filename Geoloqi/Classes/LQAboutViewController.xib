@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
+			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -71,11 +71,11 @@
 							<object class="IBUINavigationItem" id="231133050">
 								<reference key="IBUINavigationBar" ref="694377045"/>
 								<string key="IBUITitle">About Geoloqi</string>
-								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="804391641">
+								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="804391641">
+									<string key="IBUITitle">Close</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="231133050"/>
-									<int key="IBUISystemItemIdentifier">0</int>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>

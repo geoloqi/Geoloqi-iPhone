@@ -16,6 +16,7 @@
 @synthesize signUpViewController, logInViewController, twitterAuthViewController;
 @synthesize signUpButton, signInButton, useAnonymouslyButton, twitterAuthButton;
 @synthesize anonymousSpinner;
+@synthesize emailAddressField;
 
 - (IBAction)signUp {
 	[GeoloqiAppDelegate userIsNotAnonymous];
@@ -48,12 +49,21 @@
 
 - (void)viewDidLoad;
 {
-	UIImage *stretImg = [[UIImage imageNamed:@"signin-btn.png"] stretchableImageWithLeftCapWidth:18.f topCapHeight:0.f];
-	UIImage *stretImgSm = [[UIImage imageNamed:@"small-btn.png"] stretchableImageWithLeftCapWidth:16.f topCapHeight:0.f];
-	[self.signUpButton setBackgroundImage:stretImg forState:UIControlStateNormal];
-	[self.useAnonymouslyButton setBackgroundImage:stretImg forState:UIControlStateNormal];
-	[self.signInButton setBackgroundImage:stretImgSm forState:UIControlStateNormal];
-	[self.twitterAuthButton setBackgroundImage:stretImg forState:UIControlStateNormal];
+	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"welcomeBkg.png"]]];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[textField resignFirstResponder];
+	return NO;
+}
+
+// Hide the keyboard when the background is tapped
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+	for (UITouch *touch in touches){
+		if (touch.view == self.view){
+			[self.emailAddressField resignFirstResponder];
+		}
+	}
 }
 
 #pragma mark -
