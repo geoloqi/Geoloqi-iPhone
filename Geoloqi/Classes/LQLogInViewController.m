@@ -16,8 +16,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	[emailField becomeFirstResponder];
 
+	if(gAppDelegate.signInEmailAddress != nil) {
+		self.emailField.text = gAppDelegate.signInEmailAddress;
+		[passwordField becomeFirstResponder];
+	} else {
+		[emailField becomeFirstResponder];
+	}		
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(authenticationDidFail:) 
 												 name:LQAuthenticationFailedNotification 
@@ -107,11 +113,6 @@
 																			  action:@selector(logInAction)] autorelease];
 	
 	self.navigationItem.rightBarButtonItem.enabled = [self isComplete];
-	
-	if(gAppDelegate.signInEmailAddress != nil) {
-		self.emailField.text = gAppDelegate.signInEmailAddress;
-		[self.passwordField becomeFirstResponder];
-	}
 	
 	self.title = NSLocalizedString(@"Log In", nil);
 }

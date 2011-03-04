@@ -60,7 +60,7 @@
 							 nil];
 	notification.alertBody = @"The shared link expired. Would you like to turn tracking off?";
 	notification.alertAction = @"Yes";
-	notification.fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:[_minutes intValue] ]; // * 60];
+	notification.fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:[_minutes intValue] * 60];
 	
 	// Schedule the notification
 	[[UIApplication sharedApplication] scheduleLocalNotification:notification];
