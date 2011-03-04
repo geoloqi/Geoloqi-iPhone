@@ -21,6 +21,7 @@ GeoloqiAppDelegate *gAppDelegate;
 @synthesize tabBarController;
 @synthesize pushHandler;
 @synthesize lqBtnImg, lqBtnDisabledImg, lqBtnLightDisabledImg;
+@synthesize signInEmailAddress;
 
 #pragma mark -
 #pragma mark Application lifecycle

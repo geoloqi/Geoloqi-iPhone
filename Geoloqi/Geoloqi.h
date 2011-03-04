@@ -52,6 +52,8 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)addShutdownTimer:(id)notification;
 - (void)cancelShutdownTimers;
 
+- (NSString *)lastErrorMessage;
+
 #pragma mark Layers
 
 - (void)layerAppList:(LQHTTPRequestCallback)callback;

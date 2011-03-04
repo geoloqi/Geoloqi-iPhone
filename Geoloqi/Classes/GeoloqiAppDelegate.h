@@ -23,6 +23,7 @@
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) LQPushHandler *pushHandler;
 @property (nonatomic, retain) UIImage *lqBtnImg, *lqBtnDisabledImg, *lqBtnLightDisabledImg;
+@property (nonatomic, retain) NSString *signInEmailAddress;
 
 + (void)userIsAnonymous;
 + (void)userIsNotAnonymous;

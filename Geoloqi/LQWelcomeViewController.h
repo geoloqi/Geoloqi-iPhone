@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface LQWelcomeViewController : UIViewController <UITextFieldDelegate> {
 
 }
@@ -22,13 +21,15 @@
 @property (nonatomic, retain) IBOutlet UIButton *twitterAuthButton;
 
 @property (nonatomic, retain) IBOutlet UITextField *emailAddressField;
-
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *anonymousSpinner;
+@property (nonatomic, retain) IBOutlet UILabel *errorMessageLabel;
+@property (nonatomic, retain) IBOutlet UIView *activityIndicator;
 
 - (IBAction)signUp;
 - (IBAction)useAnonymously;
 - (IBAction)logIn;
 - (IBAction)twitterAuth;
 - (IBAction)about;
+- (void)startLoading;
+- (void)stopLoading;
 
 @end

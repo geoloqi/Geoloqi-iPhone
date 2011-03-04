@@ -108,6 +108,11 @@
 	
 	self.navigationItem.rightBarButtonItem.enabled = [self isComplete];
 	
+	if(gAppDelegate.signInEmailAddress != nil) {
+		self.emailField.text = gAppDelegate.signInEmailAddress;
+		[self.passwordField becomeFirstResponder];
+	}
+	
 	self.title = NSLocalizedString(@"Log In", nil);
 }
 
@@ -118,7 +123,6 @@
 	self.activityIndicator.alpha = 0.0f;
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 }
-
 
 #pragma mark -
 #pragma mark Lifecycle
