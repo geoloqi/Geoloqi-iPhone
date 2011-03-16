@@ -18,9 +18,7 @@
 
 - (LQHTTPRequestCallback)loadLayersCallback {
 	if (loadLayersCallback) return loadLayersCallback;
-	NSLog(@"Making a new loadLayersCallback block");
 	return loadLayersCallback = [^(NSError *error, NSString *responseBody) {
-		NSLog(@"Layer list loaded");
 		
 		NSError *err = nil;
 		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:NSUTF8StringEncoding]
@@ -33,7 +31,7 @@
 		
 		if ([[res objectForKey:@"your_layers"] isKindOfClass:[NSArray class]])
 		{
-			NSLog(@"Found your layers: %@", [res objectForKey:@"your_layers"]);
+			// NSLog(@"Found your layers: %@", [res objectForKey:@"your_layers"]);
             
 			self.yourLayers = [res objectForKey:@"your_layers"];
 			self.featuredLayers= [res objectForKey:@"featured_layers"];

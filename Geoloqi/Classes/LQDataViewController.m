@@ -50,7 +50,7 @@ enum {
 @synthesize distanceFilterCell, distanceFilterLabel, distanceFilterSlider;
 @synthesize trackingFrequencyCell, trackingFrequencyLabel, trackingFrequencySlider;
 @synthesize sendingFrequencyCell, sendingFrequencyLabel, sendingFrequencySlider;
-@synthesize logoutCell, logoutButton;
+@synthesize logoutCell, logoutButton, usernameLabel;
 @synthesize aboutButton;
 
 - (void)viewDidLoad {
@@ -136,6 +136,8 @@ enum {
 	[self updatePreset];
 	
 	[self updateLabels];
+
+	self.usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
 
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(startedSendingLocations:)

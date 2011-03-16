@@ -95,6 +95,7 @@ NSString *const LQTrackingOnUserInfoKey;
 @property (nonatomic, retain) IBOutlet UILabel *sendingFrequencyLabel;
 @property (nonatomic, retain) IBOutlet LQMappedSlider *sendingFrequencySlider;
 
+@property (nonatomic, retain) IBOutlet UILabel *usernameLabel;
 @property (nonatomic, retain) IBOutlet UITableViewCell *logoutCell;
 @property (nonatomic, retain) IBOutlet UIButton *logoutButton;
 
