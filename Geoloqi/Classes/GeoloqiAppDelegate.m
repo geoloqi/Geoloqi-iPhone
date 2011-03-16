@@ -11,6 +11,7 @@
 #import "GeoloqiAppDelegate.h"
 #import "SHKActivityIndicator.h"
 #import "LQBatteryMonitor.h"
+#import "Reachability.h"
 
 GeoloqiAppDelegate *gAppDelegate;
 
@@ -250,8 +251,17 @@ GeoloqiAppDelegate *gAppDelegate;
 
 - (void)unknownAPIError:(NSNotificationCenter *)notification
 {
-	[[SHKActivityIndicator currentIndicator] displayCompleted:@"Network issues!"];
-	[[SHKActivityIndicator currentIndicator] setCenterMessage:@"☁"];
+	Reachability *reachability = [Reachability reachabilityWithHostName:@"api.geoloqi.com"];
+	if([reachability currentReachabilityStatus] > 0) {
+		// Can reach the server, so something is wrong
+		[[SHKActivityIndicator currentIndicator] displayCompleted:@"Network issues!"];
+		[[SHKActivityIndicator currentIndicator] setCenterMessage:@"☁"];
+ 	} else {
+		// Can't reach the server, probably in airplane mode
+		[[SHKActivityIndicator currentIndicator] displayCompleted:@"Can't find network!"];
+		[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✈"];
+	}
+	
 // 	[[Geoloqi sharedInstance] logOut];
 }
 
