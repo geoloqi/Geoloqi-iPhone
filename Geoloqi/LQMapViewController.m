@@ -13,7 +13,6 @@
 #import "LQMutablePolylineView.h"
 #import "ASIHTTPRequest.h"
 #import "CJSONDeserializer.h"
-#import "LQShareViewController.h"
 #import "LQMapPinAnnotation.h"
 
 @implementation LQMapViewController
@@ -23,6 +22,7 @@
 @synthesize anonymousBanner, anonymousSignUpButton;
 @synthesize notificationBanner;
 @synthesize signUpViewController;
+@synthesize shareViewController;
 @synthesize shareButton;
 
 /*
@@ -264,7 +264,7 @@
 		NSLog(@"Point: %@", point);
 		
 		[map addAnnotation:[[LQMapPinAnnotation alloc] initWithDictionary:point]];
-	}
+	}	
 }
 
 // When the map view receives its location, this method is called
@@ -353,8 +353,17 @@
 }
 
 - (IBAction)shareButtonWasTapped:(UIButton *)button {
-	LQShareViewController *shareView = [[LQShareViewController alloc] init];
-	[self presentModalViewController:shareView animated:YES];
+
+	NSLog(@"Retain count: %d", [self.shareViewController retainCount]);
+	[self presentModalViewController:self.shareViewController animated:YES];
+	NSLog(@"Retain count: %d", [self.shareViewController retainCount]);
+
+//	LQShareViewController *shareView = [[LQShareViewController alloc] init];
+//	NSLog(@"Retain count: %d", [shareView retainCount]);
+//	[self presentModalViewController:shareView animated:YES];
+//	NSLog(@"Retain count: %d", [shareView retainCount]);
+//	[shareView release];
+//	NSLog(@"Retain count: %d", [shareView retainCount]);
 }
 
 
