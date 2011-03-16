@@ -250,9 +250,9 @@ GeoloqiAppDelegate *gAppDelegate;
 
 - (void)unknownAPIError:(NSNotificationCenter *)notification
 {
-	[[SHKActivityIndicator currentIndicator] displayCompleted:@"There was an error!"];
-	[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
-	[[Geoloqi sharedInstance] logOut];
+	[[SHKActivityIndicator currentIndicator] displayCompleted:@"Network issues!"];
+	[[SHKActivityIndicator currentIndicator] setCenterMessage:@"☁"];
+// 	[[Geoloqi sharedInstance] logOut];
 }
 
 - (void)logOut {
