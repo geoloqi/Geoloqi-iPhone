@@ -31,6 +31,7 @@
 
 - (id)initWithLayer:(NSMutableDictionary *)_layer;
 - (IBAction)subscribeChanged:(id)sender;
+- (IBAction)didClickLayerIcon:(id)sender;
 - (LQHTTPRequestCallback)layerSubscribeCallback;
 
 @end

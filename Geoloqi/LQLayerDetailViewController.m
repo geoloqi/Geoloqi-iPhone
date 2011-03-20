@@ -25,6 +25,12 @@
 	return self;
 }
 
+- (void)loadWebView {
+	NSString *model = [[NSString stringWithFormat:@"%@+%@", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?layer_id=%@&oauth_token=%@&model=%@", [layer objectForKey:@"url"], [layer objectForKey:@"layer_id"], [[Geoloqi sharedInstance] accessToken], model]]];
+	[webView loadRequest:request];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -44,10 +50,12 @@
 	}
 	
 	[[PKHTTPCachedImage sharedInstance] setImageForView:layerImg withURL:[layer objectForKey:@"icon"]];
-	
-	NSString *model = [[NSString stringWithFormat:@"%@+%@", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?layer_id=%@&oauth_token=%@&model=%@", [layer objectForKey:@"url"], [layer objectForKey:@"layer_id"], [[Geoloqi sharedInstance] accessToken], model]]];
-	[webView loadRequest:request];
+
+	[self loadWebView];
+}
+
+- (IBAction)didClickLayerIcon:(id)sender {
+	[self loadWebView];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
