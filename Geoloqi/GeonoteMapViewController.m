@@ -64,6 +64,7 @@
 		[self startedDraggingMap];
 	};
 	[mapView addGestureRecognizer:tapInterceptor];
+	[tapInterceptor release];
 	
 	searchBar.showsCancelButton = YES;
 	

@@ -168,6 +168,7 @@ GeoloqiAppDelegate *gAppDelegate;
                                                         UAApplicationSecret] dataUsingEncoding: NSUTF8StringEncoding]]] forHTTPHeaderField:@"Authorization"];
     
     [[NSURLConnection connectionWithRequest:request delegate:self] start];
+	[request release];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

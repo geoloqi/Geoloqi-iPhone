@@ -56,6 +56,7 @@
 			self.link = nil;
 		}
 		
+		[lastUpdated release];
 		lastUpdated = [[NSDate alloc] init];
 
 		if(self.img != nil) {

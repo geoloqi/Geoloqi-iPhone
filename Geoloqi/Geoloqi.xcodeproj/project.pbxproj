@@ -774,9 +774,9 @@
 				0F4E20E112B48193001C6856 /* title-bar-logo@2x.png */,
 				0F860B79131AD68400E1B8D5 /* toolbar-locate-button.png */,
 				0F860B7A131AD68400E1B8D5 /* toolbar-locate-button@2x.png */,
+				0F7F330912CD5A2E0009CB1C /* Default.png */,
 				0FA8E11E12CA923D00F65858 /* Default@2x.png */,
 				0F13106412C40D6700FBC2B5 /* Localizable.strings */,
-				0F7F330912CD5A2E0009CB1C /* Default.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";

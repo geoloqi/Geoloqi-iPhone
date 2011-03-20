@@ -26,7 +26,8 @@
 }
 
 typedef enum {
-	LQShareMethodEmail = 0,
+	LQShareMethodUnknown = -1,
+	LQShareMethodEmail,
 	LQShareMethodSMS,
 	LQShareMethodTwitter,
 	LQShareMethodFacebook,

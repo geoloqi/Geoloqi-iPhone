@@ -38,7 +38,7 @@
 }
 
 - (MKMapRect)addCoordinate:(CLLocationCoordinate2D)coord {
-	NSLog(@"Adding coordinate %f,%f", coord.longitude, coord.latitude);
+	// NSLog(@"Adding coordinate %f,%f", coord.longitude, coord.latitude);
 	
 	if (![self lockForWriting]) return MKMapRectNull;
 	

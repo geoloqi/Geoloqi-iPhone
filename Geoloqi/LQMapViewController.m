@@ -5,7 +5,6 @@
 //  Created by Justin R. Miller on 6/8/10.
 //  Copyright 2010 Geoloqi.com. All rights reserved.
 //
-
 #import "Geoloqi.h"
 #import "LQMapViewController.h"
 #import "LQMapSignUpViewController.h"
@@ -22,7 +21,6 @@
 @synthesize anonymousBanner, anonymousSignUpButton;
 @synthesize notificationBanner;
 @synthesize signUpViewController;
-@synthesize shareViewController;
 @synthesize shareButton;
 
 /*
@@ -265,7 +263,7 @@
 	for(NSDictionary *point in [notification.userInfo objectForKey:@"friends"]){
 		NSLog(@"Point: %@", point);
 		
-		[map addAnnotation:[[LQMapPinAnnotation alloc] initWithDictionary:point]];
+		[map addAnnotation:[[[LQMapPinAnnotation alloc] initWithDictionary:point] autorelease]];
 	}	
 }
 
@@ -358,9 +356,9 @@
 
 - (IBAction)shareButtonWasTapped:(UIButton *)button {
 
-	NSLog(@"Retain count: %d", [self.shareViewController retainCount]);
-	[self presentModalViewController:self.shareViewController animated:YES];
-	NSLog(@"Retain count: %d", [self.shareViewController retainCount]);
+	LQShareViewController *shareView = [[LQShareViewController alloc] init];
+	[self presentModalViewController:shareView animated:YES];
+	[shareView release];
 
 //	LQShareViewController *shareView = [[LQShareViewController alloc] init];
 //	NSLog(@"Retain count: %d", [shareView retainCount]);

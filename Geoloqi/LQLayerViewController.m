@@ -217,10 +217,10 @@
 	 
 	 switch(indexPath.section) {
 		 case 0:
-			 layer = [[featuredLayers objectAtIndex:indexPath.row] mutableCopy];
+			 layer = [[[featuredLayers objectAtIndex:indexPath.row] mutableCopy] autorelease];
 			 break;
 		 case 1:
-			 layer = [[yourLayers objectAtIndex:indexPath.row] mutableCopy];
+			 layer = [[[yourLayers objectAtIndex:indexPath.row] mutableCopy] autorelease];
 			 break;
 		 default:
 			 layer = [NSMutableDictionary dictionary];

@@ -36,7 +36,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *anonymousSignUpButton;
 @property (nonatomic, retain) IBOutlet LQNotificationBanner *notificationBanner;
 @property (nonatomic, retain) IBOutlet UIViewController *signUpViewController;
-@property (nonatomic, retain) IBOutlet LQShareViewController *shareViewController;
 @property (nonatomic, retain) IBOutlet UIButton *shareButton;
 
 - (void)zoomMapToLocation:(CLLocation *)location;

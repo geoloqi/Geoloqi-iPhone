@@ -278,7 +278,7 @@ enum {
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
 	// Load the default slider values from the user preferences
 	
-	CGFloat df, tl, rl;
+	CGFloat df = 0, tl = 0, rl = 0;
 	
 	if (control.selectedSegmentIndex == kTrackingModeBatterySaver) {
 		NSLog(@"Setting to battery saver mode %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"]);
@@ -590,7 +590,7 @@ enum {
 	
 	// Set a notification with a fraction of a second delay so they know the app didn't just crash
 	
-	UILocalNotification *notification = [[UILocalNotification alloc] init];
+	UILocalNotification *notification = [[[UILocalNotification alloc] init] autorelease];
 	// TODO: This is from Apple's sample code. When would this not be set?
 	if (notification == nil)
 		return;

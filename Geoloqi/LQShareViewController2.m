@@ -72,7 +72,7 @@
 }
 
 - (LQShareMethod)stringToShareMethod:(NSString *)str {
-	LQShareMethod method;
+	LQShareMethod method = LQShareMethodUnknown;
 	if([str isEqualToString:@"Email"]){
 		method = LQShareMethodEmail;
 	} else if([str isEqualToString:@"SMS"]){
