@@ -255,9 +255,11 @@
 
 - (void)friendLocationUpdated:(NSNotification *)notification {
 
-	// Remove all previous annotations. This makes a pretty bad flickr, we'll have to figure something better out soon.
-	for (id annotation in map.annotations) {
-		[map removeAnnotation:annotation];
+	// Remove all previous annotations. This makes a pretty bad flicker, we'll have to figure something better out soon.
+	if(map.annotations) {
+		for (id annotation in [[map.annotations copy] autorelease]) {
+			[map removeAnnotation:annotation];
+		}
 	}
 
 	for(NSDictionary *point in [notification.userInfo objectForKey:@"friends"]){
@@ -310,8 +312,10 @@
 	[viewRefreshTimer release];
 	viewRefreshTimer = nil;
 	[[Geoloqi sharedInstance] stopFriendUpdates];
-	for (id annotation in map.annotations) {
-		[map removeAnnotation:annotation];
+	if(map.annotations) {
+		for (id annotation in [[map.annotations copy] autorelease]) {
+			[map removeAnnotation:annotation];
+		}
 	}
 }
 
