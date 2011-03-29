@@ -58,24 +58,60 @@
 	[self loadWebView];
 }
 
+/**
+ * Allow the web browser to run certain app commands by redirecting the window to a url like:
+ *   geoloqi-app:layer:subscribe   (flips the subscribe switch on)
+ *   geoloqi-app:layer:unsubscribe (flips the subscribe switch off)
+ *   geoloqi-app:tracker:start     (turn on tracking)
+ *   geoloqi-app:tracker:stop      (turn off tracking)
+ *   geoloqi-app:tracker:hires     (set to hi-res mode)
+ *   geoloqi-app:tracker:battery   (set to battery saver mode)
+ */
 - (BOOL)webView:(UIWebView *)w shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 	NSString *requestString = [[request URL] absoluteString];
 	NSArray *components = [requestString componentsSeparatedByString:@":"];
 
-	if ([components count] >= 2 && 
-		[(NSString *)[components objectAtIndex:0] isEqualToString:@"geoloqi-app"] &&
-		[(NSString *)[components objectAtIndex:1] isEqualToString:@"layer"]) 
-	{
-		NSString *msg;
-		if([[components objectAtIndex:2] isEqualToString:@"subscribed"]) {
-			msg = @"Activated!";
-			subscribeSwitch.on = YES;
-		} else {
-			msg = @"Deactivated";
-			subscribeSwitch.on = NO;
+	if ([components count] >= 2 && [(NSString *)[components objectAtIndex:0] isEqualToString:@"geoloqi-app"]) {
+		
+		if([(NSString *)[components objectAtIndex:1] isEqualToString:@"layer"]) {
+			NSString *msg;
+			if([[components objectAtIndex:2] isEqualToString:@"subscribed"]) {
+				msg = @"Activated!";
+				subscribeSwitch.on = YES;
+			} else {
+				msg = @"Deactivated";
+				subscribeSwitch.on = NO;
+			}
+			[[SHKActivityIndicator currentIndicator] displayCompleted:msg];
+			return NO;
+			
+		} else if([(NSString *)[components objectAtIndex:1] isEqualToString:@"tracker"]) {
+			if([[components objectAtIndex:2] isEqualToString:@"start"]) {
+				[[Geoloqi sharedInstance] startLocationUpdates];
+			} else if([[components objectAtIndex:2] isEqualToString:@"stop"]) {
+				[[Geoloqi sharedInstance] stopLocationUpdates];
+			} else if([[components objectAtIndex:2] isEqualToString:@"hires"]) {
+				CGFloat df = 0, tl = 0, rl = 0;
+				df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"] floatValue];
+				tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresTrackingLimit"] floatValue];
+				rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresRateLimit"] floatValue];
+				[[Geoloqi sharedInstance] setDistanceFilterTo:df];
+				[[Geoloqi sharedInstance] setTrackingFrequencyTo:tl];
+				[[Geoloqi sharedInstance] setSendingFrequencyTo:rl];
+				[[Geoloqi sharedInstance] startLocationUpdates];
+			} else if([[components objectAtIndex:2] isEqualToString:@"battery"]) {
+				CGFloat df = 0, tl = 0, rl = 0;
+				df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"] floatValue];
+				tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryTrackingLimit"] floatValue];
+				rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryRateLimit"] floatValue];
+				[[Geoloqi sharedInstance] setDistanceFilterTo:df];
+				[[Geoloqi sharedInstance] setTrackingFrequencyTo:tl];
+				[[Geoloqi sharedInstance] setSendingFrequencyTo:rl];
+				[[Geoloqi sharedInstance] startLocationUpdates];
+			}
+				
+			return NO;
 		}
-		[[SHKActivityIndicator currentIndicator] displayCompleted:msg];
-		return NO;
 	}
 	return YES;
 }
