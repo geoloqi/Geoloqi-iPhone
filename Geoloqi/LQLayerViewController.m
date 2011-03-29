@@ -56,6 +56,16 @@
 }
 */
 
+- (void)refreshLayerList {
+	// Cache the layer list for a while
+	if(lastRefresh == nil || [lastRefresh timeIntervalSinceNow] < -300) {
+		[self startLoading];
+		[self refresh];
+		lastRefresh = [[NSDate alloc] init];
+	}
+}	
+	
+
 - (void)viewDidLoad {
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
 	[super viewDidLoad];
@@ -63,17 +73,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	
-	// Cache the layer list for a while
-	if(lastRefresh == nil || [lastRefresh timeIntervalSinceNow] < -300) {
-		[self startLoading];
-		[self refresh];
-		lastRefresh = [[NSDate alloc] init];
-	}
+	[self refreshLayerList];
 }
 
+// Called by the PullRefresh view controller, should only start retrieving data
 - (void)refresh {
-    [[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];	
+	[[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];
 }
 
 
@@ -281,6 +286,9 @@
 			theArray = featuredLayers;
 			break;
 	}
+	
+	lastRefresh = nil;
+	[self refreshLayerList];
 	
 	for( NSMutableDictionary *iLayer in theArray )
 	{
