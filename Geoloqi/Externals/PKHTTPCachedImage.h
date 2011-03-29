@@ -14,4 +14,6 @@
 
 - (void)setImageForView:(UIImageView *)view withURL:(NSString *)url;
 
+@property (nonatomic, retain) NSMutableDictionary *cachedImages;
+
 @end
