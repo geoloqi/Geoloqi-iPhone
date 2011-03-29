@@ -58,7 +58,29 @@
 	[self loadWebView];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (BOOL)webView:(UIWebView *)w shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+	NSString *requestString = [[request URL] absoluteString];
+	NSArray *components = [requestString componentsSeparatedByString:@":"];
+
+	if ([components count] >= 2 && 
+		[(NSString *)[components objectAtIndex:0] isEqualToString:@"geoloqi-app"] &&
+		[(NSString *)[components objectAtIndex:1] isEqualToString:@"layer"]) 
+	{
+		NSString *msg;
+		if([[components objectAtIndex:2] isEqualToString:@"subscribed"]) {
+			msg = @"Activated!";
+			subscribeSwitch.on = YES;
+		} else {
+			msg = @"Deactivated";
+			subscribeSwitch.on = NO;
+		}
+		[[SHKActivityIndicator currentIndicator] displayCompleted:msg];
+		return NO;
+	}
+	return YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)w {
 	self.activityIndicator.alpha = 0.0;
 }
 
@@ -80,9 +102,13 @@
 	if([sender isOn]){
 		[layer setObject:@"1" forKey:@"subscribed"];
 		[[Geoloqi sharedInstance] subscribeToLayer:[layer objectForKey:@"layer_id"] callback:[self layerSubscribeCallback]];
+		[webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"if(typeof geoloqi_userDidSubscribeToLayer != \"undefined\") { "
+									"geoloqi_userDidSubscribeToLayer(\"%@\"); }", [layer objectForKey:@"layer_id"]]];
 	}else{
 		[layer setObject:@"0" forKey:@"subscribed"];
 		[[Geoloqi sharedInstance] unSubscribeFromLayer:[layer objectForKey:@"layer_id"] callback:[self layerSubscribeCallback]];
+		[webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"if(typeof geoloqi_userDidUnsubscribeFromLayer != \"undefined\") { "
+														 "geoloqi_userDidUnsubscribeFromLayer(\"%@\"); }", [layer objectForKey:@"layer_id"]]];
 	}
 	
     if( [self.delegate respondsToSelector: @selector( layerDetailViewControllerDidUpdateLayer: )] ){
