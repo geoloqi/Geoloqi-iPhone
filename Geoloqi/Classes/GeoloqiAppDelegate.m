@@ -148,7 +148,7 @@ GeoloqiAppDelegate *gAppDelegate;
 	}
 	
 	// Send the token to Geoloqi
-	[[Geoloqi sharedInstance] sendAPNDeviceToken:self.deviceToken callback:^(NSError *error, NSString *responseBody){
+	[[Geoloqi sharedInstance] sendAPNDeviceToken:self.deviceToken developmentMode:UAApplicationDevMode callback:^(NSError *error, NSString *responseBody){
 		//NSLog(@"Sent device token: %@", responseBody);
 	}];
 	

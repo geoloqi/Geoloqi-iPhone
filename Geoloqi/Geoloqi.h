@@ -42,7 +42,7 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 
 - (void)setUserAgentString:(NSString *)ua;
 
-- (void)sendAPNDeviceToken:(NSString *)deviceToken callback:(LQHTTPRequestCallback)callback;
+- (void)sendAPNDeviceToken:(NSString *)deviceToken developmentMode:(NSString *)devMode callback:(LQHTTPRequestCallback)callback;
 
 - (void)createGeonote:(NSString *)text latitude:(float)latitude longitude:(float)longitude radius:(float)radius callback:(LQHTTPRequestCallback)callback;
 
