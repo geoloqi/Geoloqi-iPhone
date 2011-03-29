@@ -13,7 +13,7 @@
 @implementation LQLayerViewController
 
 @synthesize layerCell;
-@synthesize featuredLayers, yourLayers;
+@synthesize featuredLayers, yourLayers, activeLayers, inactiveLayers;
 @synthesize selectedIndexPath;
 
 - (LQHTTPRequestCallback)loadLayersCallback {
@@ -29,12 +29,14 @@
 			return;
 		}
 		
-		if ([[res objectForKey:@"your_layers"] isKindOfClass:[NSArray class]])
+		if ([[res objectForKey:@"your"] isKindOfClass:[NSArray class]])
 		{
 			// NSLog(@"Found your layers: %@", [res objectForKey:@"your_layers"]);
             
-			self.yourLayers = [res objectForKey:@"your_layers"];
-			self.featuredLayers= [res objectForKey:@"featured_layers"];
+			self.yourLayers = [res objectForKey:@"your"];
+			self.featuredLayers = [res objectForKey:@"featured"];
+			self.inactiveLayers = [res objectForKey:@"inactive"];
+			self.activeLayers = [res objectForKey:@"active"];
 			[self.tableView reloadData];
 			[self stopLoading];
 			
@@ -79,7 +81,7 @@
 */
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 2;
+	return 4;
 }
 
 /*
@@ -101,9 +103,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case 0:
-			return [featuredLayers count];
+			return [activeLayers count];
 		case 1:
 			return [yourLayers count];
+		case 2:
+			return [inactiveLayers count];
+		case 3:
+			return [featuredLayers count];
 		default:
 			return 0;
 	}
@@ -112,9 +118,13 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
 		case 0:
-			return @"Featured Layers";
+			return @"Active Layers";
 		case 1:
 			return @"Your Layers";
+		case 2:
+			return @"Inactive Layers";
+		case 3:
+			return @"Featured Layers";
 	}
 	return @"";
 }
@@ -163,10 +173,16 @@
 	
 	switch(indexPath.section) {
 		case 0:
-            layer = [featuredLayers objectAtIndex:indexPath.row];
+            layer = [activeLayers objectAtIndex:indexPath.row];
             break;
 		case 1:
             layer = [yourLayers objectAtIndex:indexPath.row];
+            break;
+		case 2:
+            layer = [inactiveLayers objectAtIndex:indexPath.row];
+            break;
+		case 3:
+            layer = [featuredLayers objectAtIndex:indexPath.row];
             break;
 		default:
             layer = [NSDictionary dictionary];
@@ -217,10 +233,16 @@
 	 
 	 switch(indexPath.section) {
 		 case 0:
-			 layer = [[[featuredLayers objectAtIndex:indexPath.row] mutableCopy] autorelease];
+			 layer = [[[activeLayers objectAtIndex:indexPath.row] mutableCopy] autorelease];
 			 break;
 		 case 1:
 			 layer = [[[yourLayers objectAtIndex:indexPath.row] mutableCopy] autorelease];
+			 break;
+		 case 2:
+			 layer = [[[inactiveLayers objectAtIndex:indexPath.row] mutableCopy] autorelease];
+			 break;
+		 case 3:
+			 layer = [[[featuredLayers objectAtIndex:indexPath.row] mutableCopy] autorelease];
 			 break;
 		 default:
 			 layer = [NSMutableDictionary dictionary];
@@ -233,10 +255,19 @@
 	NSLog(@"%@", self.selectedIndexPath);
 	
 	NSArray *theArray = nil;
-	if(self.selectedIndexPath.section == 0){
-		theArray = featuredLayers;
-	}else{
-		theArray = yourLayers;
+	switch(self.selectedIndexPath.section){
+		case 0:
+			theArray = activeLayers;
+			break;
+		case 1:
+			theArray = yourLayers;
+			break;
+		case 2:
+			theArray = inactiveLayers;
+			break;
+		default:
+			theArray = featuredLayers;
+			break;
 	}
 	
 	for( NSMutableDictionary *iLayer in theArray )
@@ -267,6 +298,8 @@
 	[layerCell release];
 	[featuredLayers release];
 	[yourLayers release];
+	[activeLayers release];
+	[inactiveLayers release];
 	[loadLayersCallback release];
 	[selectedIndexPath release];
 

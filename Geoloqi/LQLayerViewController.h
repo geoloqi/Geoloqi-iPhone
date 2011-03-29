@@ -15,13 +15,13 @@
 
 @interface LQLayerViewController : PullRefreshTableViewController <LQLayerDetailViewControllerDelegate> {
 	IBOutlet LQLayerCellView *layerCell;
-	NSArray *featuredLayers, *yourLayers;
+	NSArray *featuredLayers, *yourLayers, *activeLayers, *inactiveLayers;
 	NSIndexPath *selectedIndexPath;
 	LQHTTPRequestCallback loadLayersCallback;
 }
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *layerCell;
-@property (nonatomic, retain) NSArray *featuredLayers, *yourLayers;
+@property (nonatomic, retain) NSArray *featuredLayers, *yourLayers, *activeLayers, *inactiveLayers;
 @property (nonatomic, retain) NSIndexPath *selectedIndexPath;
 
 - (NSMutableDictionary *) getLayerAtIndexPath:(NSIndexPath *)indexPath;
