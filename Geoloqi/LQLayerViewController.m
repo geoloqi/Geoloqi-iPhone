@@ -63,8 +63,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	[self startLoading];
-	[self refresh];
+	
+	// Cache the layer list for a while
+	if(lastRefresh == nil || [lastRefresh timeIntervalSinceNow] < -300) {
+		[self startLoading];
+		[self refresh];
+		lastRefresh = [[NSDate alloc] init];
+	}
 }
 
 - (void)refresh {
@@ -309,7 +314,7 @@
 	[inactiveLayers release];
 	[loadLayersCallback release];
 	[selectedIndexPath release];
-
+	[lastRefresh release];
     [super dealloc];
 }
 

@@ -16,6 +16,7 @@
 @interface LQLayerViewController : PullRefreshTableViewController <LQLayerDetailViewControllerDelegate> {
 	IBOutlet LQLayerCellView *layerCell;
 	NSArray *featuredLayers, *yourLayers, *activeLayers, *inactiveLayers;
+	NSDate *lastRefresh;
 	NSIndexPath *selectedIndexPath;
 	LQHTTPRequestCallback loadLayersCallback;
 }
