@@ -116,6 +116,10 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if([self tableView:tableView numberOfRowsInSection:section] == 0) {
+		return @"";
+	}
+	
 	switch (section) {
 		case 0:
 			return @"Active Layers";
@@ -125,6 +129,8 @@
 			return @"Inactive Layers";
 		case 3:
 			return @"Featured Layers";
+		default:
+			return @"";
 	}
 	return @"";
 }
@@ -134,7 +140,8 @@
  * the built in label, so you have to make a separate view for the header
  */
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if ([self tableView:tableView titleForHeaderInSection:section] != nil) {
+    if ([self tableView:tableView titleForHeaderInSection:section] != nil
+			&& ![[self tableView:tableView titleForHeaderInSection:section] isEqualToString:@""]) {
         return 36;
     }
     else {
@@ -145,7 +152,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
-    if (sectionTitle == nil) {
+    if (sectionTitle == nil && ![sectionTitle isEqualToString:@""]) {
         return nil;
     }
 	
