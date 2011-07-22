@@ -156,6 +156,9 @@
 	NSLog(@"---- Handling launch from push notification");
 	
 	NSDictionary *data = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+	if(data == nil)
+		return;
+		
 	NSString *type = [data valueForKeyPath:@"geoloqi.type"];
 
 	if([type isEqualToString:@"startPrompt"]){

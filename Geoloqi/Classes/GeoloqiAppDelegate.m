@@ -42,14 +42,15 @@ GeoloqiAppDelegate *gAppDelegate;
 	// IMPORTANT: Set up OAuth prior to making network calls to the geoloqi server.
     [[Geoloqi sharedInstance] setOauthClientID:LQ_OAUTH_CLIENT_ID secret:LQ_OAUTH_SECRET];
 
-	// Starts location updates if the last state of the app had updates turned on
-	[[Geoloqi sharedInstance] startOrStopMonitoringLocationIfNecessary];
-	
     // Override point for customization after application launch.
 	if (launchOptions) {
 		NSLog(@"Launched with options %@", launchOptions);
 	}
 	
+	// Starts location updates if the last state of the app had updates turned on
+	[[Geoloqi sharedInstance] startOrStopMonitoringLocationIfNecessary];
+	
+	// TODO: Investigate if this needs to be not done if restoring in background after signficant update
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
     
@@ -138,12 +139,8 @@ GeoloqiAppDelegate *gAppDelegate;
 	
 	NSLog(@"Device Token: %@", self.deviceToken);
 	
-//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Token" message:deviceToken delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-//	[alert show];
-//	[alert release];
-	
 	if ([application enabledRemoteNotificationTypes] == UIRemoteNotificationTypeNone) {
-		NSLog(@"Notifications are disabled for this application. Not registering with Urban Airship");
+		NSLog(@"Notifications are disabled for this application. Not registering.");
 		return;
 	}
 	
@@ -151,24 +148,6 @@ GeoloqiAppDelegate *gAppDelegate;
 	[[Geoloqi sharedInstance] sendAPNDeviceToken:self.deviceToken developmentMode:UAApplicationDevMode callback:^(NSError *error, NSString *responseBody){
 		//NSLog(@"Sent device token: %@", responseBody);
 	}];
-	
-	
-	// Send the token to urban airship
-    NSString *UAServer = @"https://go.urbanairship.com";
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@/", UAServer, @"/api/device_tokens/", self.deviceToken];
-    NSURL *url = [NSURL URLWithString:urlString];
-	
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    [request setHTTPMethod:@"PUT"];
-	 
-    // Authenticate to the server
-    [request addValue:[NSString stringWithFormat:@"Basic %@",
-                       [GeoloqiAppDelegate base64forData:[[NSString stringWithFormat:@"%@:%@",
-                                                        UAApplicationKey,
-                                                        UAApplicationSecret] dataUsingEncoding: NSUTF8StringEncoding]]] forHTTPHeaderField:@"Authorization"];
-    
-    [[NSURLConnection connectionWithRequest:request delegate:self] start];
-	[request release];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
