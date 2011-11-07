@@ -145,7 +145,7 @@ GeoloqiAppDelegate *gAppDelegate;
 	}
 	
 	// Send the token to Geoloqi
-	[[Geoloqi sharedInstance] sendAPNDeviceToken:self.deviceToken developmentMode:UAApplicationDevMode callback:^(NSError *error, NSString *responseBody){
+	[[Geoloqi sharedInstance] sendAPNDeviceToken:self.deviceToken developmentMode:@"0" callback:^(NSError *error, NSString *responseBody){
 		//NSLog(@"Sent device token: %@", responseBody);
 	}];
 }
@@ -316,7 +316,7 @@ GeoloqiAppDelegate *gAppDelegate;
             [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
         }
     }
-	
+	   // __dbhan: This is the actual place to put the NSUserdefault argument for setSendingMethod
 	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) {
 		[[Geoloqi sharedInstance] setDistanceFilterTo:[[defaultsToRegister objectForKey:@"batteryDistanceFilter"] doubleValue]];
 		[[Geoloqi sharedInstance] setTrackingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryTrackingLimit"] doubleValue]];

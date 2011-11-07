@@ -19,6 +19,10 @@ NSString *const LQTrackingOnUserInfoKey;
 	UITableViewCell *updateQueueCell;
 	IBOutlet UILabel *lastUpdateLabel;
 	IBOutlet UILabel *inQueueLabel;
+    UITableViewCell *realTimeTrackingCell;  // __dbhan: Table Cell realTimeTracking turns on/off (on = UDP; off = HTTP)
+    UILabel *realTimeTrackingLabel;         // __dbhan: Label inside the realTimeTracking Table cell. This can be read.
+    UISwitch* realTimeTrackingSwitch;       // __dbhan: The realTimeTrackingCell toggles states based on this switch
+
 	
 	UITableViewCell *coordsCell;
 	UILabel *latLabel;
@@ -80,6 +84,11 @@ NSString *const LQTrackingOnUserInfoKey;
 @property (nonatomic, retain) IBOutlet UITableViewCell *trackingToggleCell;
 @property (nonatomic, retain) IBOutlet UISwitch *trackingToggleSwitch;
 - (void)toggleTracking:(UISwitch *)sender;
+
+@property (nonatomic, retain) IBOutlet UITableViewCell *realTimeTrackingCell; // __dbhan: expose the table cell as a property
+@property (nonatomic, retain) IBOutlet UISwitch* realTimeTrackingSwitch;      //__dbhan: expose this switch as a property
+@property (nonatomic, readonly) UILabel *realTimeTrackingLabel;              //__dbhan: Mark this as a readonly field as this deos not change
+-(IBAction) toggleRealTimeTracking:(UISwitch *)sender;                            // __dbhan: 
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *distanceFilterCell;
 @property (nonatomic, retain) IBOutlet UILabel *distanceFilterLabel;

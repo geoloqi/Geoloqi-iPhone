@@ -52,13 +52,14 @@ enum {
 @synthesize sendingFrequencyCell, sendingFrequencyLabel, sendingFrequencySlider;
 @synthesize logoutCell, logoutButton, usernameLabel;
 @synthesize aboutButton;
+@synthesize realTimeTrackingCell, realTimeTrackingSwitch, realTimeTrackingLabel; //__dbhan: synthesize the three newly added fields to determine send method
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
 	[self.table setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
 	
-	// Load from defaults
+	// Load from defaultsLQMapped
 	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState];
 
 	// hide the spinner at first
@@ -275,6 +276,19 @@ enum {
 	[self updateButtonStates];
 }
 
+// __dbhan: Added this new function
+-(void)toggleRealTimeTracking:(UISwitch *)sender
+{
+    if(sender.on)
+    {
+        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP];
+    }
+    else
+    {
+        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP];
+    }
+}
+
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
 	// Load the default slider values from the user preferences
 	
@@ -452,7 +466,7 @@ enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case kSectionBasic:
-			return 3;
+			return 4;
 		case kSectionCoords:
 		//case kSectionTrackingMode:
 			return 1;
@@ -473,6 +487,7 @@ enum {
 				case 0: return trackingToggleCell;
 				case 1: return checkInCell;
 				case 2: return updateQueueCell;
+                case 3: return realTimeTrackingCell;
 				default: return nil;
 			}
 		case kSectionCoords:
@@ -580,6 +595,8 @@ enum {
 	
     return view;
 }
+
+// __dbhan: Checked all the functions till here ... no need to check below this line
 /********************************************************************************/
 
 #pragma mark -

@@ -24,6 +24,10 @@ static NSString *const LQAnonymousSignupSucceededNotification = @"LQAnonymousSig
 static NSString *const LQAnonymousSignupFailedNotification = @"LQAnonymousSignupFailedNotification";
 static NSString *const LQAPIUnknownErrorNotification = @"LQAPIUnknownErrorNotification";
 
+// __dhan: strings to set the sending method
+static NSString *const LQSendingMethodUDP = @"LQSendingMethodUDP";
+static NSString *const LQSendingMethodHTTP = @"LQSendingMethodHTTP";
+
 enum {
 	LQPresetBattery = 0,
 	LQPresetRealtime
@@ -70,6 +74,10 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)setDistanceFilterTo:(CLLocationDistance)distance;
 - (void)setTrackingFrequencyTo:(NSTimeInterval)frequency;
 - (void)setSendingFrequencyTo:(NSTimeInterval)frequency;
+- (void)setSendMethod;
+// __dbhan: This was added here
+- (void)setSendingMethodTo:(NSString *)sendingMethod;
+
 
 - (void)startFriendUpdates;
 - (void)stopFriendUpdates;

@@ -112,7 +112,7 @@
 	
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
 	
-	[[Geoloqi sharedInstance] startFriendUpdates];
+	// [[Geoloqi sharedInstance] startFriendUpdates];
 	
 	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
 														 target:self
