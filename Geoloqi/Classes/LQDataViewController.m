@@ -61,6 +61,9 @@ enum {
 	
 	// Load from defaultsLQMapped
 	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState];
+    
+    // __dbhan: Load from defaults
+    realTimeTrackingSwitch.on = [[Geoloqi sharedInstance] sendingMethodState];
 
 	// hide the spinner at first
 	sendingActivityIndicator.hidden = YES;
@@ -130,6 +133,9 @@ enum {
 	[super viewDidAppear:animated];
 
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
+    
+    //__dbhan: Added this code to optionally set on/off the real time tracking switch
+    [realTimeTrackingSwitch setOn:[[Geoloqi sharedInstance] sendingMethodState] animated:animated];
 
 	distanceFilterSlider.mappedValue = [[Geoloqi sharedInstance] distanceFilterDistance];
 	trackingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] trackingFrequency];

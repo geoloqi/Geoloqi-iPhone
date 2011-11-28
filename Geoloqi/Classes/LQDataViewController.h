@@ -19,8 +19,8 @@ NSString *const LQTrackingOnUserInfoKey;
 	UITableViewCell *updateQueueCell;
 	IBOutlet UILabel *lastUpdateLabel;
 	IBOutlet UILabel *inQueueLabel;
-    UITableViewCell *realTimeTrackingCell;  // __dbhan: Table Cell realTimeTracking turns on/off (on = UDP; off = HTTP)
-    UILabel *realTimeTrackingLabel;         // __dbhan: Label inside the realTimeTracking Table cell. This can be read.
+    UITableViewCell *realTimeTrackingCell;  // __dbhan: Table Cell realTimeTracking turns on/off (on = UDP; off = HTTP) We need this???
+    UILabel *realTimeTrackingLabel;         // __dbhan: Label inside the realTimeTracking Table cell. This can be read. We need this???
     UISwitch* realTimeTrackingSwitch;       // __dbhan: The realTimeTrackingCell toggles states based on this switch
 
 	

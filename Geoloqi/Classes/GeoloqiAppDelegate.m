@@ -97,9 +97,14 @@ GeoloqiAppDelegate *gAppDelegate;
 											 selector:@selector(cancelShutdownNotifications) 
 												 name:LQTrackingStoppedNotification
 											   object:nil];
-	
-	[[LQBatteryMonitor sharedInstance] start];
-	
+    //__dbhan:  Added the reachability notifications here as
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleNetworkChange:)
+                                                 name:kReachabilityChangedNotification 
+                                               object:nil];
+    socketReadReachability = [[Reachability reachabilityForInternetConnection] retain];
+    [socketReadReachability startNotifier];
+	[[LQBatteryMonitor sharedInstance] start];	//__dbhan till here..
     return YES;
 }
 
@@ -316,14 +321,17 @@ GeoloqiAppDelegate *gAppDelegate;
             [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
         }
     }
-	   // __dbhan: This is the actual place to put the NSUserdefault argument for setSendingMethod
+    
+    // __dbhan: This is the actual place to put the NSUserdefault argument for setSendingMethod
+    [defaultsToRegister setObject:@"NO" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
+    
 	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) {
 		[[Geoloqi sharedInstance] setDistanceFilterTo:[[defaultsToRegister objectForKey:@"batteryDistanceFilter"] doubleValue]];
 		[[Geoloqi sharedInstance] setTrackingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryTrackingLimit"] doubleValue]];
 		[[Geoloqi sharedInstance] setSendingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryRateLimit"] doubleValue]];
+        [[Geoloqi sharedInstance] setSendingMethod:NO]; //__dbhan => Check this out as to see why exactly this is needed????????
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"defaultValuesEnteredOnce"];
 	}
-	
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
     [defaultsToRegister release];
 }

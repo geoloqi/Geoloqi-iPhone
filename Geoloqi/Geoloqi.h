@@ -27,7 +27,7 @@ static NSString *const LQAPIUnknownErrorNotification = @"LQAPIUnknownErrorNotifi
 // __dhan: strings to set the sending method
 static NSString *const LQSendingMethodUDP = @"LQSendingMethodUDP";
 static NSString *const LQSendingMethodHTTP = @"LQSendingMethodHTTP";
-
+static NSString *const LQLocationUpdateManagerSendingMethodDefaultKey = @"LocationUpdateManagerSendingMethodDefaultKey";
 enum {
 	LQPresetBattery = 0,
 	LQPresetRealtime
@@ -77,7 +77,8 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)setSendMethod;
 // __dbhan: This was added here
 - (void)setSendingMethodTo:(NSString *)sendingMethod;
-
+// __dbhan: This was added here => Is the above needed or this one needed
+- (void)setSendingMethod:(BOOL)sendingMethodState; // __dbhan: If off = Http, if on = UDP
 
 - (void)startFriendUpdates;
 - (void)stopFriendUpdates;
@@ -87,10 +88,12 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (CLLocation *)currentSingleLocation;
 - (CLLocation *)currentLocation;
 - (BOOL)locationUpdatesState;
+- (BOOL)sendingMethodState;
 - (CLLocationDistance)distanceFilterDistance;
 - (NSTimeInterval)trackingFrequency;
 - (NSTimeInterval)sendingFrequency;
 - (NSUInteger)locationQueueCount;
+//__dbhan: Do I need to add a function that keeps a record of the state of the realTimeTrackingSwitch??????????????? Yes I think!!!1
 
 - (void)loadHistory:(NSDictionary *)params callback:(LQHTTPRequestCallback)callback;
 - (void)sendLocationData:(NSMutableArray *)points callback:(LQHTTPRequestCallback)callback;

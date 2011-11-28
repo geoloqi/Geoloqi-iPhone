@@ -7,97 +7,69 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342045811.419695"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
-         landmarkName = "deviceKey,serverURL"
-         landmarkType = "19">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342045811.419695"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "183"
-         endingLineNumber = "183"
-         landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/LQDataViewController.m"
-         timestampString = "341352814.260094"
+         timestampString = "343169008.799368"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "280"
-         endingLineNumber = "280"
+         startingLineNumber = "286"
+         endingLineNumber = "286"
          landmarkName = "-toggleRealTimeTracking:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "0"
          filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342045956.227246"
+         timestampString = "343344964.866726"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "361"
-         endingLineNumber = "361"
+         startingLineNumber = "364"
+         endingLineNumber = "364"
          landmarkName = "-processQueue"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "0"
          filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342045811.419695"
+         timestampString = "343344964.866726"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "148"
-         endingLineNumber = "148"
-         landmarkName = "-setSendingMethod:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342045956.227246"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "300"
-         endingLineNumber = "300"
+         startingLineNumber = "303"
+         endingLineNumber = "303"
          landmarkName = "-scheduleSending"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "0"
          filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342045956.227246"
+         timestampString = "343344964.866726"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "368"
-         endingLineNumber = "368"
+         startingLineNumber = "371"
+         endingLineNumber = "371"
+         landmarkName = "-sendViaHTTP"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
+         timestampString = "343344964.866726"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "423"
+         endingLineNumber = "423"
          landmarkName = "-sendViaHTTP"
          landmarkType = "5">
       </FileBreakpoint>
@@ -107,12 +79,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "0"
          filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342381485.443706"
+         timestampString = "344210231.549239"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "420"
-         endingLineNumber = "420"
-         landmarkName = "-sendViaHTTP"
+         startingLineNumber = "524"
+         endingLineNumber = "524"
+         landmarkName = "-locationUpdateCallback"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
+         timestampString = "344210231.549239"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "440"
+         endingLineNumber = "440"
+         landmarkName = "-sendViaUDP"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -121,11 +107,123 @@
          continueAfterRunningActions = "No"
          isPathRelative = "0"
          filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342381485.443706"
+         timestampString = "344210231.549239"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "645"
-         endingLineNumber = "645"
+         startingLineNumber = "470"
+         endingLineNumber = "470"
+         landmarkName = "-sendViaUDP"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
+         timestampString = "343169008.799368"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "70"
+         endingLineNumber = "70"
+         landmarkName = "-init"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/GeoloqiAppDelegate.m"
+         timestampString = "343080632.230187"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "299"
+         endingLineNumber = "299"
+         landmarkName = "+registerPresetDefaultsFromSettingsBundle"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/Geoloqi.m"
+         timestampString = "343165735.643815"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "237"
+         endingLineNumber = "237"
+         landmarkName = "-setSendingFrequencyTo:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/Geoloqi.m"
+         timestampString = "343348009.834251"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "248"
+         endingLineNumber = "248"
+         landmarkName = "-setSendingMethodTo:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
+         timestampString = "343344964.866726"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "115"
+         endingLineNumber = "115"
+         landmarkName = "-setLocationUpdatesOn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
+         timestampString = "343344964.866726"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
+         landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
+         timestampString = "344210231.549239"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "627"
+         endingLineNumber = "627"
+         landmarkName = "-locationFromData:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
+         timestampString = "344210231.549239"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "652"
+         endingLineNumber = "652"
          landmarkName = "-dataFromLocation:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -134,12 +232,54 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "0"
-         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342381485.443706"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/Geoloqi.m"
+         timestampString = "343348009.834251"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "520"
-         endingLineNumber = "520"
+         startingLineNumber = "261"
+         endingLineNumber = "261"
+         landmarkName = "-setSendingMethod:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
+         timestampString = "344210231.549239"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "699"
+         endingLineNumber = "699"
+         landmarkName = "-storeInDB:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
+         timestampString = "344210231.549239"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "430"
+         endingLineNumber = "430"
+         landmarkName = "-sendViaHTTP"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
+         timestampString = "344210398.254816"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "485"
+         endingLineNumber = "485"
          landmarkName = "-locationUpdateCallback"
          landmarkType = "5">
       </FileBreakpoint>
@@ -148,41 +288,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "0"
-         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342045811.419695"
+         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/Geoloqi.m"
+         timestampString = "344210341.881762"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "155"
-         endingLineNumber = "155"
-         landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Users/deepabhan/Documents/Github/Geoloqi-iPhone-Library/Classes/LQLocationUpdateManager.m"
-         timestampString = "342045811.419695"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "184"
-         endingLineNumber = "184"
-         landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Users/deepabhan/Documents/Github/MapAttack-iPhone/Classes/Database.m"
-         timestampString = "342386542.646519"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "81"
-         endingLineNumber = "81"
-         landmarkName = "-insertRecordIntoTableNamed:withField1:field1Value:andField2:field2Value:database:"
+         startingLineNumber = "339"
+         endingLineNumber = "339"
+         landmarkName = "-sendLocationData:callback:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

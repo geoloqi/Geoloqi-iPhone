@@ -9,12 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "LQPushHandler.h"
 
+//Forward declaration for the Geoloqisocket read/write clients
+@class GeoloqiSocketClient;
+@class GeoloqiReadClient;
+@class Reachability;
+
+
 @interface GeoloqiAppDelegate : NSObject <UIApplicationDelegate, UIAlertViewDelegate> {
     UIWindow *window;
 	IBOutlet UITabBarController *tabBarController;
 	NSString *deviceToken;
 	LQPushHandler *pushHandler;
 	UIImage *lqBtnImg, *lqBtnDisabledImg, *lqBtnLightDisabledImg;
+    Reachability *socketReadReachability;          // __dbhan: Do i need this
 }
 
 @property (nonatomic, retain) IBOutlet UIViewController *welcomeViewController;
