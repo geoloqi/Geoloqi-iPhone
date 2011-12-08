@@ -321,9 +321,10 @@ GeoloqiAppDelegate *gAppDelegate;
             [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
         }
     }
-    
     // __dbhan: This is the actual place to put the NSUserdefault argument for setSendingMethod
     [defaultsToRegister setObject:@"NO" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
+    [[Geoloqi sharedInstance] setSendingMethod:NO]; //__dbhan => turn the switch to YES = ON = UDP
+
     
 	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) {
 		[[Geoloqi sharedInstance] setDistanceFilterTo:[[defaultsToRegister objectForKey:@"batteryDistanceFilter"] doubleValue]];
@@ -332,6 +333,7 @@ GeoloqiAppDelegate *gAppDelegate;
         [[Geoloqi sharedInstance] setSendingMethod:NO]; //__dbhan => Check this out as to see why exactly this is needed????????
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"defaultValuesEnteredOnce"];
 	}
+    NSLog(@"defaultsToRegister is = %@", defaultsToRegister);
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
     [defaultsToRegister release];
 }

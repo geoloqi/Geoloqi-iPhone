@@ -17,7 +17,7 @@
 @implementation LQMapViewController
 
 @synthesize map;
-@synthesize controlBanner, trackingToggleSwitch, centerMapButton;
+@synthesize controlBanner, trackingToggleSwitch, centerMapButton;// __dbhan: Gotcha
 @synthesize anonymousBanner, anonymousSignUpButton;
 @synthesize notificationBanner;
 @synthesize signUpViewController;
@@ -53,7 +53,7 @@
 	[self.view addSubview:self.controlBanner];
 	[self.controlBanner setCenter:(CGPoint){160.0, 22.0}];
 	
-	trackingToggleSwitch = [[CustomUISwitch alloc] initWithImageNamed:@"switch_dark.png"
+	trackingToggleSwitch = [[CustomUISwitch alloc] initWithImageNamed:@"switch_dark.png" // __dbhan: Gotcha
 															 withOnImageNamed:@"switch_dark_on.png"
 															withOffImageNamed:@"switch_dark_off.png"];
 	[trackingToggleSwitch setCenter:(CGPoint){266.0, 22.0}];
@@ -110,7 +110,7 @@
 	
 	[self.notificationBanner refreshForLocation:self.map.userLocation.location];
 	
-	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
+	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated]; // __dbhan: Gotcha => This is where it is turned off ... but how does locationUpdatesState set it to off?
 	
 	// [[Geoloqi sharedInstance] startFriendUpdates];
 	

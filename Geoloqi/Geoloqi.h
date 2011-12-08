@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "Reachability.h"
 
 static NSString *const LQLocationUpdateManagerDidUpdateLocationNotification = @"LQLocationUpdateManagerDidUpdateLocationNotification";
 static NSString *const LQLocationUpdateManagerDidUpdateSingleLocationNotification = @"LQLocationUpdateManagerDidUpdateSingleLocationNotification";

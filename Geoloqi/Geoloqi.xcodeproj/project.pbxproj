@@ -12,7 +12,6 @@
 		0F0183C21296F4B3001508D9 /* LQShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0183C01296F4B3001508D9 /* LQShareViewController.m */; };
 		0F0183C31296F4B3001508D9 /* LQShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0183C11296F4B3001508D9 /* LQShareViewController.xib */; };
 		0F0184F41296FDDF001508D9 /* SHKActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0184AE1296FDDF001508D9 /* SHKActivityIndicator.m */; };
-		0F0184FB1296FDDF001508D9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0184BD1296FDDF001508D9 /* Reachability.m */; };
 		0F01850F1296FE0B001508D9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F01850E1296FE0B001508D9 /* MessageUI.framework */; };
 		0F0185111296FE0B001508D9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0185101296FE0B001508D9 /* Security.framework */; };
 		0F01853D12989664001508D9 /* 56-cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F01853C12989664001508D9 /* 56-cloud.png */; };
@@ -177,6 +176,7 @@
 		49EB2257125D7F7100EDFAB1 /* small-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EB224B125D7F7100EDFAB1 /* small-btn@2x.png */; };
 		49EB2258125D7F7100EDFAB1 /* small-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EB224C125D7F7100EDFAB1 /* small-btn.png */; };
 		A645401712A204240014F23C /* libGeoloqi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A645401612A204240014F23C /* libGeoloqi.a */; };
+		DA7B0F3B1488083C00887377 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7B0F3A1488083C00887377 /* Reachability.m */; };
 		DAAE1B9C144601FC003C6E42 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAE1B9B144601FC003C6E42 /* libsqlite3.dylib */; };
 		DAE9E4BA144648AB00D1610C /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE9E4B9144648AB00D1610C /* libz.1.2.5.dylib */; };
 		DD354F7611D666BA00EEF7BC /* GeonoteFriendPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354F7411D666BA00EEF7BC /* GeonoteFriendPickerController.m */; };
@@ -202,8 +202,6 @@
 		0F0183C11296F4B3001508D9 /* LQShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQShareViewController.xib; sourceTree = "<group>"; };
 		0F0184AD1296FDDF001508D9 /* SHKActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKActivityIndicator.h; sourceTree = "<group>"; };
 		0F0184AE1296FDDF001508D9 /* SHKActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKActivityIndicator.m; sourceTree = "<group>"; };
-		0F0184BC1296FDDF001508D9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		0F0184BD1296FDDF001508D9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0F01850E1296FE0B001508D9 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		0F0185101296FE0B001508D9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0F01853C12989664001508D9 /* 56-cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-cloud.png"; sourceTree = "<group>"; };
@@ -425,6 +423,8 @@
 		49EB224C125D7F7100EDFAB1 /* small-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-btn.png"; sourceTree = "<group>"; };
 		A61096CB12A1D2C600A92CA6 /* Geoloqi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geoloqi.h; sourceTree = "<group>"; };
 		A645401612A204240014F23C /* libGeoloqi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGeoloqi.a; sourceTree = "<group>"; };
+		DA7B0F391488083C00887377 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "../../../../MapAttack-iPhone/Reachability/Reachability.h"; sourceTree = "<group>"; };
+		DA7B0F3A1488083C00887377 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "../../../../MapAttack-iPhone/Reachability/Reachability.m"; sourceTree = "<group>"; };
 		DAAE1B971445FF27003C6E42 /* LQConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQConstants.h; path = Classes/LQConstants.h; sourceTree = "<group>"; };
 		DAAE1B9B144601FC003C6E42 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		DAE9E4B9144648AB00D1610C /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -569,8 +569,8 @@
 		0F0184BB1296FDDF001508D9 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				0F0184BC1296FDDF001508D9 /* Reachability.h */,
-				0F0184BD1296FDDF001508D9 /* Reachability.m */,
+				DA7B0F391488083C00887377 /* Reachability.h */,
+				DA7B0F3A1488083C00887377 /* Reachability.m */,
 			);
 			path = Reachability;
 			sourceTree = "<group>";
@@ -1196,7 +1196,6 @@
 				49EB2203125D7D8C00EDFAB1 /* CTableViewController.m in Sources */,
 				0F0183C21296F4B3001508D9 /* LQShareViewController.m in Sources */,
 				0F0184F41296FDDF001508D9 /* SHKActivityIndicator.m in Sources */,
-				0F0184FB1296FDDF001508D9 /* Reachability.m in Sources */,
 				0F018E97129CBF47001508D9 /* LQLayerViewController.m in Sources */,
 				0F018F4D129EC430001508D9 /* LQLayerCellView.m in Sources */,
 				0F019029129F423D001508D9 /* LQLayerDetailViewController.m in Sources */,
@@ -1224,6 +1223,7 @@
 				0F860BF0131B102100E1B8D5 /* LQNotificationBanner.m in Sources */,
 				0F860DD9131B311D00E1B8D5 /* LQShareViewController2.m in Sources */,
 				0FC2771C132185E700AA41BC /* LQMapPinAnnotation.m in Sources */,
+				DA7B0F3B1488083C00887377 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

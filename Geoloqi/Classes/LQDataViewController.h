@@ -82,7 +82,7 @@ NSString *const LQTrackingOnUserInfoKey;
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *trackingToggleCell;
-@property (nonatomic, retain) IBOutlet UISwitch *trackingToggleSwitch;
+@property (nonatomic, retain) IBOutlet UISwitch *trackingToggleSwitch;       // __dbhan: This switch turns the tracking  on/off
 - (void)toggleTracking:(UISwitch *)sender;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *realTimeTrackingCell; // __dbhan: expose the table cell as a property

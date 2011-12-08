@@ -46,7 +46,7 @@ enum {
 @synthesize checkInCell, checkInButton;
 @synthesize coordsCell, latLabel, longLabel, altLabel, spdLabel;
 @synthesize trackingModeCell, trackingModeSwitch;
-@synthesize trackingToggleCell, trackingToggleSwitch;
+@synthesize trackingToggleCell, trackingToggleSwitch; // __dbhan: Gotcha
 @synthesize distanceFilterCell, distanceFilterLabel, distanceFilterSlider;
 @synthesize trackingFrequencyCell, trackingFrequencyLabel, trackingFrequencySlider;
 @synthesize sendingFrequencyCell, sendingFrequencyLabel, sendingFrequencySlider;
@@ -60,7 +60,7 @@ enum {
 	[self.table setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
 	
 	// Load from defaultsLQMapped
-	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState];
+	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState]; //_dbhan: Gotcha!
     
     // __dbhan: Load from defaults
     realTimeTrackingSwitch.on = [[Geoloqi sharedInstance] sendingMethodState];
@@ -93,7 +93,7 @@ enum {
 	trackingToggleCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
 												reuseIdentifier:nil];
 	trackingToggleCell.textLabel.text = @"Location Tracking";
-	trackingToggleCell.accessoryView = trackingToggleSwitch;
+	trackingToggleCell.accessoryView = trackingToggleSwitch;                                  // __dbhan: Gotcha
 	trackingToggleCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 	checkInCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -132,7 +132,7 @@ enum {
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 
-	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
+	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];  //__dbhan. Gotcha!!!!!
     
     //__dbhan: Added this code to optionally set on/off the real time tracking switch
     [realTimeTrackingSwitch setOn:[[Geoloqi sharedInstance] sendingMethodState] animated:animated];
@@ -196,7 +196,7 @@ enum {
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
 	// Update the "Last point:" status text
-	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:YES];
+	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:YES];   // __dbhan: Gotcha
 	[self updateButtonStates];
 	[self updateLabels];
 }
@@ -702,7 +702,7 @@ enum {
 	[altLabel release];
 	[spdLabel release];
 	[trackingFrequencyLabel release];
-	[trackingToggleSwitch release];
+	[trackingToggleSwitch release]; // __dbhan: Gotcha
     [super dealloc];
 }
 
