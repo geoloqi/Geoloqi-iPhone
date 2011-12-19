@@ -21,7 +21,7 @@
 	NSString *deviceToken;
 	LQPushHandler *pushHandler;
 	UIImage *lqBtnImg, *lqBtnDisabledImg, *lqBtnLightDisabledImg;
-    Reachability *socketReadReachability;          // __dbhan: Do i need this
+    //Reachability *socketReadReachability;          // __dbhan: Do i need this => No ..
 }
 
 @property (nonatomic, retain) IBOutlet UIViewController *welcomeViewController;
