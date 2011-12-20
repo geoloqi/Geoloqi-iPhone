@@ -140,6 +140,7 @@
 	[[self shareDescriptionField] resignFirstResponder];
 }
 
+//__dbhan: This functon was changed ..
 - (IBAction)tappedShare:(id)sender
 {
 	self.activityIndicator.alpha = 1.0f;
@@ -149,6 +150,21 @@
     [[Geoloqi sharedInstance] createLink:[shareDescriptionField text] 
                                  minutes:[selectedMinutes intValue]
                                 callback:[self linkCreatedCallback]];
+    // __dbhan: Change this to go to the High res mode or the UDP mode .... needs a function probably....
+    // __dbhan: algorithm: set the send mode to udp
+    // __dbhan: These values will be retrieved in 
+    //          1. linkWasSent method in LQShareService.m
+    /*if (0) 
+    {
+        NSUserDefaults *defaults;
+        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan ;; This sets the shared library variable ...
+        [defaults setObject:@"YES" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
+        // __dbhan: Now set the setting to high res mode ;; The settings need to be distance_filter = 1m; tracking_limit = 1s ;; rate_limit = 0s
+        [defaults setFloat:1 forKey:@"hiresDistanceFilter"];
+        [defaults setFloat:1 forKey:@"hiresTrackingLimit"];
+        [defaults setFloat:0 forKey:@"hiresRateLimit"];
+        [defaults synchronize];
+    }   */ 
 }
 
 - (LQHTTPRequestCallback)linkCreatedCallback {

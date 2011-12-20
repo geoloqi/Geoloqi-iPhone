@@ -28,26 +28,12 @@
 	[alert show];
 	[alert release];
 
-	/* Set the tracker into hi-res mode */
+	//__dbhan: How will this function change ..
+    /* Set the tracker into hi-res mode */
 	CGFloat df, tl, rl;
 	
-    // __dbhan: Change this to go to the High res mode or the UDP mode .... needs a function probably....
-    // __dbhan: algorithm: set the send mode to udp
-    if (0) 
-    {
-        NSUserDefaults *defaults;
-        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan ;; This set the shared library variable ...
-        [defaults setObject:@"NO" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
-        // __dbhan: Now set the setting to high res mode ;; The settings need to be distance_filter = 1m; tracking_limit = 1s ;; rate_limit = 0s
-        [defaults setFloat:1 forKey:@"hiresDistanceFilter"];
-        [defaults setFloat:1 forKey:@"hiresTrackingLimit"];
-        [defaults setFloat:0 forKey:@"hiresRateLimit"];
-        [defaults synchronize];
-        NSLog(@"Hi-Res defaults saved");
-    }
+	// __dbhan: The hi-res values set in LQShareViewController.m are retrieved here and the values again to be used for data send
     
-	// __dbhan: Once the hi-res values have been set then retrieve the values again to be used for data send
-    NSLog(@"Setting to high res mode");
 	df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"] floatValue];
 	tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresTrackingLimit"] floatValue];
 	rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresRateLimit"] floatValue];
@@ -57,19 +43,20 @@
 	[[Geoloqi sharedInstance] setSendingFrequencyTo:rl];
 	/* * */
 
-	// Start the tracker
+	// and then start the tracker
 	[[Geoloqi sharedInstance] startLocationUpdates]; // __dbhan: Since we are in the hi-res mode .. we need to use startLocationUpdates to start using the GPS based location points
 
 // __dbhan: We do not need to use notification as when the link expires, we either go to the HTTP(Passive/battery safe mode) of to the custom mode.
 // __dbhan: If the user shuts off the app, the user anyway does not need to know that the tracking has been turned off. At this time it is a don't care
+//__dbhan/__aaronpk: ORIGINAL_NOTES from our discussion drop the notification and put it back into the passive mode 
+//                   or the cutome mode whichever state it was in  and get rid of the notification and cancellation ... 
+
 /*
 	// Create a notification that will prompt the user to turn off tracking after the elapsed time
 	UILocalNotification *notification = [[UILocalNotification alloc] init];
 	// TODO: This is from Apple's sample code. When would this not be set?
 	if (notification == nil)
 		return;
-//__dbhan/__aaronpk: ORIGINAL_NOTES from our discussion drop the notification and put it back into the passive mode 
-//                   or the cutome mode whichever state it was in  and get rid of the notification and cancellation ... 
 	notification.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
 							 @"Shared Link Expired", @"title",
 							 @"The shared link expired. Would you like to turn tracking off?", @"description",
@@ -78,10 +65,8 @@
 	notification.alertBody = @"The shared link expired. Would you like to turn tracking off?";
 	notification.alertAction = @"Yes";
 	notification.fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:[_minutes intValue] * 60];
-	
 	// Schedule the notification
 	[[UIApplication sharedApplication] scheduleLocalNotification:notification];
-
 	// Add the notification to the list of current notifications so they can be cancelled when needed
 	NSLog(@"Adding notification to the list");
 	[[Geoloqi sharedInstance] addShutdownTimer:notification];
