@@ -98,10 +98,10 @@ GeoloqiAppDelegate *gAppDelegate;
 												 name:LQTrackingStoppedNotification
 											   object:nil];
     //__dbhan:  Added the reachability notifications here as
-    [[NSNotificationCenter defaultCenter] addObserver:self
+    /*[[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleNetworkChange:)
                                                  name:kReachabilityChangedNotification 
-                                               object:nil];
+                                               object:nil]; */
 //__dbhan: Needed ?//socketReadReachability = [[Reachability reachabilityForInternetConnection] retain];
 //__dbhan: Needed ? [socketReadReachability startNotifier];
 	[[LQBatteryMonitor sharedInstance] start];	//__dbhan till here..
@@ -319,26 +319,34 @@ GeoloqiAppDelegate *gAppDelegate;
         NSString *key = [prefSpecification objectForKey:@"Key"];
         if(key) {
             [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+#if (VERBOSE)
+            NSLog(@"defaultsToRegister is = %@", defaultsToRegister);
+#endif
+
         }
     }
     // __dbhan: This is the actual place to put the NSUserdefault argument for setSendingMethod
-    [defaultsToRegister setObject:@"NO" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
-    
-    //__dbhan: The initial value of the tracking button is set to be = YES (by default tracking ON),
-    // initial send method = HTTP with significant locations only and when 
-    // the  send method is set to UDP then we will change to real time tracking 
-    // with distance filter of 1meter, tracking limit = 1second and rate_limit = 0seconds
-    [defaultsToRegister setValue: @"YES" forKey:LQLocationUpdateManagerToggleTrackingDefaultKey];    
-    
-    //[[Geoloqi sharedInstance] setSendingMethod:NO]; //__dbhan => turn the switch to YES = ON = UDP .. being done below
+    //[defaultsToRegister setValue: @"YES" forKey:LQLocationUpdateManagerToggleTrackingDefaultKey]; 
 
-	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) {
+    //__dbhan: Do we really need this as I have combined the user defaults and the variable set in location manager?
+    [defaultsToRegister setObject:@"NO" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
+    [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan  // start mode = Battery safe mode or passive mode      
+    [[Geoloqi sharedInstance] setLocationUpdatesOnTo:YES]; //__dbhan => Battery safe mode + location updates automatically on.
+    
+    //__dbhan: We set the distance filter/tracking limit/rate limit for the first time here. These should now be "N/A" as we willbe doing significant location changes and all of these become unimportant. So check value here and then once more in viewDidLoad in LQDataViewController
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) {
 		[[Geoloqi sharedInstance] setDistanceFilterTo:[[defaultsToRegister objectForKey:@"batteryDistanceFilter"] doubleValue]];
 		[[Geoloqi sharedInstance] setTrackingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryTrackingLimit"] doubleValue]];
 		[[Geoloqi sharedInstance] setSendingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryRateLimit"] doubleValue]];
-        [[Geoloqi sharedInstance] setSendingMethod:NO]; //__dbhan
-        [[Geoloqi sharedInstance] setLocationUpdatesOnTo:YES]; //__dbhan => This will turn on the location updates to default ON ..
+        //[[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan
+        //[[Geoloqi sharedInstance] setLocationUpdatesOnTo:YES]; //__dbhan => This will turn on the location updates to default ON ..
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"defaultValuesEnteredOnce"];
+#if (VERBOSE)
+        NSLog (@"The sending method is = %i", [[Geoloqi sharedInstance] sendingMethodState]);
+        NSLog (@"The distance filter is = %f", [[Geoloqi sharedInstance] distanceFilterDistance]);
+        NSLog (@"The tracking frequency is = %f", [[Geoloqi sharedInstance] trackingFrequency] );
+        NSLog (@"The sending frequency is =%f", [[Geoloqi sharedInstance] sendingFrequency]);
+#endif
 	}
     NSLog(@"defaultsToRegister is = %@", defaultsToRegister);
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];

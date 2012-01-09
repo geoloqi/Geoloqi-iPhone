@@ -52,7 +52,8 @@ enum {
 @synthesize sendingFrequencyCell, sendingFrequencyLabel, sendingFrequencySlider;
 @synthesize logoutCell, logoutButton, usernameLabel;
 @synthesize aboutButton;
-@synthesize realTimeTrackingCell, realTimeTrackingSwitch, realTimeTrackingLabel; //__dbhan: synthesize the three newly added fields to determine send method
+@synthesize trackingMode;
+//@synthesize realTimeTrackingCell, realTimeTrackingSwitch, realTimeTrackingLabel; //__dbhan: synthesize the three newly added fields to determine send method
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -63,8 +64,11 @@ enum {
 	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState]; //_dbhan: Gotcha!
     
     // __dbhan: Load from defaults
-    realTimeTrackingSwitch.on = [[Geoloqi sharedInstance] sendingMethodState];
-
+    //realTimeTrackingSwitch.on = [[Geoloqi sharedInstance] sendingMethodState];
+    
+    //__dbhan: So that whenever we start the app it always begins in Passive/HTTP/BatterySafe mode.
+    trackingModeSwitch.selectedSegmentIndex = kTrackingModeBatterySaver; //__dbhan: ok to set it?????
+    NSLog(@"The tracking mode is: %d", trackingModeSwitch.selectedSegmentIndex); // __dbhan
 	// hide the spinner at first
 	sendingActivityIndicator.hidden = YES;
 
@@ -73,7 +77,7 @@ enum {
 	NSDictionary *sliderMappings = [NSDictionary dictionaryWithContentsOfFile:
 									[[NSBundle mainBundle] pathForResource:@"SliderMappings"
 																	ofType:@"plist"]];
-	
+/*	//__dbhan: No longer need the distance filter or tracking frequency
 	distanceFilterSlider.mapping = [sliderMappings objectForKey:@"distance_filter"];
 	distanceFilterSlider.target = self;
 	distanceFilterSlider.action = @selector(changeDistanceFilter:);
@@ -83,6 +87,7 @@ enum {
 	trackingFrequencySlider.target = self;
 	trackingFrequencySlider.action = @selector(changeTrackingFrequency:);
 	trackingFrequencySlider.finishAction = @selector(trackingFrequencyWasChanged:);
+ */
 	
 	sendingFrequencySlider.mapping = [sliderMappings objectForKey:@"rate_limit"];
 	sendingFrequencySlider.target = self;
@@ -135,15 +140,14 @@ enum {
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];  //__dbhan. Gotcha!!!!!
     
     //__dbhan: Added this code to optionally set on/off the real time tracking switch
-    [realTimeTrackingSwitch setOn:[[Geoloqi sharedInstance] sendingMethodState] animated:animated];
+    //[realTimeTrackingSwitch setOn:[[Geoloqi sharedInstance] sendingMethodState] animated:animated];
+    distanceFilterSlider.mappedValue = [[Geoloqi sharedInstance] distanceFilterDistance];
+    trackingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] trackingFrequency];
+    sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
+   
 
-	distanceFilterSlider.mappedValue = [[Geoloqi sharedInstance] distanceFilterDistance];
-	trackingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] trackingFrequency];
-	sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
 	[self updatePreset];
-	
 	[self updateLabels];
-
 	self.usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
 
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -282,76 +286,99 @@ enum {
 	[self updateButtonStates];
 }
 
-// __dbhan: Added this new function
--(void)toggleRealTimeTracking:(UISwitch *)sender
-{
-    if(sender.on)
-    {
-        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP];
-    }
-    else
-    {
-        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP];
-    }
-}
-
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
 	// Load the default slider values from the user preferences
-	
-	CGFloat df = 0, tl = 0, rl = 0;
-	
-	if (control.selectedSegmentIndex == kTrackingModeBatterySaver) {
-		NSLog(@"Setting to battery saver mode %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"]);
-		df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"] floatValue];
-		tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryTrackingLimit"] floatValue];
-		rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"batteryRateLimit"] floatValue];
-	} else if (control.selectedSegmentIndex == kTrackingModeHiRes) {
+	CGFloat df = 0, tl = 0, rl = 0;  
+	if (control.selectedSegmentIndex == kTrackingModeBatterySaver) 
+    {
+		NSLog(@"Setting to battery saver mode");
+        NSNumber *tempTrackingMode = [[NSNumber alloc] initWithInt:LQBatterySaverMode];
+        self.trackingMode = tempTrackingMode;
+        [tempTrackingMode release];
+        //__dbhan: Last but not the least
+        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan
+        
+        //__dbhan: This is not done yet ...
+        NSString *dfstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"];
+		if(dfstr == nil) 
+        { df = -1.0;} 
+        
+		NSString *tlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryTrackingLimit"];
+		if(tlstr == nil) 
+        { tl = -1.0;} 
+        
+        NSString *rlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryRateLimit"];
+		if(rlstr == nil)  
+        { rl = -1.0;} 
+        else              
+        { rl = [rlstr floatValue];} 
+	} 
+    else if (control.selectedSegmentIndex == kTrackingModeHiRes)
+    {
 		NSLog(@"Setting to high res mode");
-		df = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"] floatValue];
-		tl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresTrackingLimit"] floatValue];
-		rl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"hiresRateLimit"] floatValue];
-	} else if (control.selectedSegmentIndex == kTrackingModeCustom) {
+        NSNumber *tempTrackingMode = [[NSNumber alloc] initWithInt:LQHiResMode];
+        self.trackingMode = tempTrackingMode;
+        [tempTrackingMode release];
+        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan
+        
+		NSString *dfstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"];
+		if(dfstr == nil) { df = 1.0;} 
+        
+		NSString *tlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"hiresTrackingLimit"];
+		if(tlstr == nil) { tl = 1.0;} 
+        
+        NSString *rlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"hiresRateLimit"];
+		if(rlstr == nil)  { rl = 0.0;} 
+        else              { rl = [rlstr floatValue];}  
+	} 
+    else if (control.selectedSegmentIndex == kTrackingModeCustom)
+    {
 		NSLog(@"Setting to custom mode");
+        
+        NSNumber *tempTrackingMode = [[NSNumber alloc] initWithInt:LQCustomMode];
+        self.trackingMode = tempTrackingMode;
+        [tempTrackingMode release];
+        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan and last but not the least ... set the sending method to ..
+        
 		NSString *dfstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customDistanceFilter"];
-		if(dfstr == nil) {
-			df = 2.0;
-		} else {
-			df = [dfstr floatValue];
-		}
-		NSString *tlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customTrackingLimit"];
-		if(tlstr == nil) {
-			tl = 10.0;
-		} else {
-			tl = [tlstr floatValue];
-		}
-		NSString *rlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customRateLimit"];
-		if(rlstr == nil) {
-			rl = 120.0;
-		} else {
-			rl = [rlstr floatValue];
-		}
-	}
+		if(dfstr == nil) { df = 1.0;} 
 
-	[distanceFilterSlider setMappedValue:df animated:YES];
-	[trackingFrequencySlider setMappedValue:tl animated:YES];
-	[sendingFrequencySlider setMappedValue:rl animated:YES];
-	
+		NSString *tlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customTrackingLimit"];
+		if(tlstr == nil) { tl = 1.0;} 
+		
+        NSString *rlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customRateLimit"];
+		if(rlstr == nil)  { rl = 30.0;} 
+        else              { rl = [rlstr floatValue]; }
+
+        [sendingFrequencySlider setMappedValue:rl animated:YES];
+	}
+	//[distanceFilterSlider setMappedValue:df animated:YES];    // __dbhan: no need to animate the sliders now
+	//[trackingFrequencySlider setMappedValue:tl animated:YES];
+
+#if (VERBOSE)
+    NSLog(@"The tracking mode is = %i", [trackingMode intValue]);
+    NSLog(@"The numbers are: %f, %f, %f", df, tl, rl);
+#endif
+    
+    [[Geoloqi sharedInstance] setDistanceFilterTo:df];         // __dbhan: And now set the df, tl, rl in shared instance.
+    [[Geoloqi sharedInstance] setTrackingFrequencyTo:tl];
+    [[Geoloqi sharedInstance] setSendingFrequencyTo:rl];
+    [self.table reloadData];                                   //__dbhan : Reload the table again, as we need to draw the rate limit slider.
 	[self updateLabels];
 	
-	[[Geoloqi sharedInstance] setDistanceFilterTo:df];
-	[[Geoloqi sharedInstance] setTrackingFrequencyTo:tl];
-	[[Geoloqi sharedInstance] setSendingFrequencyTo:rl];
 }
 
 - (void)saveCustomSliderPresets {
 	// Save the values of the sliders into the "custom" preset
-	[[NSUserDefaults standardUserDefaults] setDouble:self.distanceFilterSlider.mappedValue forKey:@"customDistanceFilter"];
-	[[NSUserDefaults standardUserDefaults] setDouble:self.trackingFrequencySlider.mappedValue forKey:@"customTrackingLimit"];
+	//[[NSUserDefaults standardUserDefaults] setDouble:self.distanceFilterSlider.mappedValue forKey:@"customDistanceFilter"];
+	//[[NSUserDefaults standardUserDefaults] setDouble:self.trackingFrequencySlider.mappedValue forKey:@"customTrackingLimit"];
+    
 	[[NSUserDefaults standardUserDefaults] setDouble:self.sendingFrequencySlider.mappedValue forKey:@"customRateLimit"];
 	
 	NSLog(@"Updating custom slider presets");
 }
 
+// __dbhan: These functions are no longer needed
 - (void)changeDistanceFilter:(LQMappedSlider *)sender {
 	[self updateLabels];
 }
@@ -371,6 +398,9 @@ enum {
 	[self updatePreset];
 	[self updateLabels];
 }
+
+//__dbhan: Till here
+
 - (void)changeSendingFrequency:(LQMappedSlider *)sender {
 	[self updateLabels];
 }
@@ -381,20 +411,23 @@ enum {
 	[self updateLabels];
 }
 
-- (void)updatePreset {
-	Geoloqi *g = [Geoloqi sharedInstance];
-	NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+//__dbhan: Updated this function for new logic
+- (void)updatePreset 
+{
+	//Geoloqi *g = [Geoloqi sharedInstance];
+	//NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 	
-	if ([g distanceFilterDistance] == [d doubleForKey:@"batteryDistanceFilter"] &&
-		[g trackingFrequency] == [d doubleForKey:@"batteryTrackingLimit"] &&
-		[g sendingFrequency] == [d doubleForKey:@"batteryRateLimit"]) {
+    if ([trackingMode intValue] == LQBatterySaverMode)
+    {
 		trackingModeSwitch.selectedSegmentIndex = kTrackingModeBatterySaver;
-	} else if ([g distanceFilterDistance] == [d doubleForKey:@"hiresDistanceFilter"] &&
-			   [g trackingFrequency] == [d doubleForKey:@"hiresTrackingLimit"] &&
-			   [g sendingFrequency] == [d doubleForKey:@"hiresRateLimit"]) {
+	}
+    else if ([trackingMode intValue] == LQHiResMode)
+    {
 		trackingModeSwitch.selectedSegmentIndex = kTrackingModeHiRes;
-	} else {
-		trackingModeSwitch.selectedSegmentIndex = kTrackingModeCustom;
+	} 
+    else 
+    {
+        trackingModeSwitch.selectedSegmentIndex = kTrackingModeCustom;
 	}
 }
 
@@ -472,12 +505,17 @@ enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case kSectionBasic:
-			return 4;
+			//return 4; //__dbhan
+            return 3;
 		case kSectionCoords:
 		//case kSectionTrackingMode:
 			return 1;
 		case kSectionAdvanced:
-			return 4;
+            NSLog(@"%d", [trackingMode intValue]);
+            if([trackingMode intValue] == LQCustomMode)
+                return 2;
+            else
+                return 1;
 		case kSectionFooter:
 			return 1;
 		default:
@@ -493,17 +531,20 @@ enum {
 				case 0: return trackingToggleCell;
 				case 1: return checkInCell;
 				case 2: return updateQueueCell;
-                case 3: return realTimeTrackingCell;
 				default: return nil;
 			}
 		case kSectionCoords:
 			return coordsCell;
 		case kSectionAdvanced:
 			switch (indexPath.row) {
-				case 0: return trackingModeCell;
-				case 1: return distanceFilterCell;
-				case 2: return trackingFrequencyCell;
-				case 3: return sendingFrequencyCell;
+                case 0: return trackingModeCell;
+                case 1:
+                    if([trackingMode intValue] == LQCustomMode)
+                    {
+                        return sendingFrequencyCell;
+                    }
+                    else return nil;
+
 				default: return nil;
 			}
 		case kSectionFooter:

@@ -9,60 +9,54 @@
 #import <UIKit/UIKit.h>
 #import "Geoloqi.h"
 
+
 NSString *const LQTrackingOnUserInfoKey;
 
 @class LQMappedSlider;
 
 @interface LQDataViewController : UIViewController {
 	UITableView *table;
-	
 	UITableViewCell *updateQueueCell;
 	IBOutlet UILabel *lastUpdateLabel;
 	IBOutlet UILabel *inQueueLabel;
     UITableViewCell *realTimeTrackingCell;  // __dbhan: Table Cell realTimeTracking turns on/off (on = UDP; off = HTTP) We need this???
     UILabel *realTimeTrackingLabel;         // __dbhan: Label inside the realTimeTracking Table cell. This can be read. We need this???
     UISwitch* realTimeTrackingSwitch;       // __dbhan: The realTimeTrackingCell toggles states based on this switch
-
-	
+    
 	UITableViewCell *coordsCell;
 	UILabel *latLabel;
 	UILabel *longLabel;
 	UILabel *altLabel;
 	UILabel *spdLabel;
-	
 	UITableViewCell *trackingToggleCell;
+    
 	UISwitch *trackingToggleSwitch;
-
 	UITableViewCell *trackingModeCell;
 	IBOutlet UISegmentedControl *trackingModeSwitch;
-
 	UITableViewCell *checkInCell;
 	IBOutlet UIButton *checkInButton;
-
 	UITableViewCell *trackingFrequencyCell;
+    
 	UILabel *trackingFrequencyLabel;
 	LQMappedSlider *trackingFrequencySlider;
-	
 	UITableViewCell *distanceFilterCell;
 	UILabel *distanceFilterLabel;
 	LQMappedSlider *distanceFilterSlider;
-	
 	UITableViewCell *sendingFrequencyCell;
+    
 	UILabel *sendingFrequencyLabel;
 	LQMappedSlider *sendingFrequencySlider;
-
 	IBOutlet UIButton *sendNowButton;
 	IBOutlet UIActivityIndicatorView *sendingActivityIndicator;
-	
 	IBOutlet UIButton *trackingButton;
-	
 	UITableViewCell *logoutCell;
+    
 	IBOutlet UIButton *logoutButton;
-	
 	IBOutlet UIButton *aboutButton;
-	
 	NSTimer *viewRefreshTimer;
+    NSNumber *trackingMode;
 }
+
 @property (nonatomic, retain) IBOutlet UITableView *table;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *updateQueueCell;
@@ -85,10 +79,10 @@ NSString *const LQTrackingOnUserInfoKey;
 @property (nonatomic, retain) IBOutlet UISwitch *trackingToggleSwitch;       // __dbhan: This switch turns the tracking  on/off
 - (void)toggleTracking:(UISwitch *)sender;
 
-@property (nonatomic, retain) IBOutlet UITableViewCell *realTimeTrackingCell; // __dbhan: expose the table cell as a property
-@property (nonatomic, retain) IBOutlet UISwitch* realTimeTrackingSwitch;      //__dbhan: expose this switch as a property
-@property (nonatomic, readonly) UILabel *realTimeTrackingLabel;              //__dbhan: Mark this as a readonly field as this deos not change
--(IBAction) toggleRealTimeTracking:(UISwitch *)sender;                            // __dbhan: 
+//@property (nonatomic, retain) IBOutlet UITableViewCell *realTimeTrackingCell; // __dbhan: expose the table cell as a property
+//@property (nonatomic, retain) IBOutlet UISwitch* realTimeTrackingSwitch;      //__dbhan: expose this switch as a property
+//@property (nonatomic, readonly) UILabel *realTimeTrackingLabel;              //__dbhan: Mark this as a readonly field as this deos not change
+@property (nonatomic, retain) NSNumber *trackingMode;                          // __dbhan:
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *distanceFilterCell;
 @property (nonatomic, retain) IBOutlet UILabel *distanceFilterLabel;

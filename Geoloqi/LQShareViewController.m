@@ -150,26 +150,49 @@
     [[Geoloqi sharedInstance] createLink:[shareDescriptionField text] 
                                  minutes:[selectedMinutes intValue]
                                 callback:[self linkCreatedCallback]];
-    // __dbhan: Change this to go to the High res mode or the UDP mode .... needs a function probably....
+    //__dbhan: First save the current state
+    //__dbhan: This piece of code is used to make sure that we retain the old state that we can recover back to
+    if(1)
+    {
+        if ([[Geoloqi sharedInstance] sendingMethodState] == TRUE)
+        {
+            [Geoloqi sharedInstance].recallSendingMethodState = LQSendingMethodUDP;
+        }
+        else
+        {
+            [Geoloqi sharedInstance].recallSendingMethodState = LQSendingMethodHTTP;
+        }
+        [Geoloqi sharedInstance].recallDistanceFilterDistance = [[Geoloqi sharedInstance] distanceFilterDistance];
+        [Geoloqi sharedInstance].recallTrackingFrequency = [[Geoloqi sharedInstance] trackingFrequency];
+        [Geoloqi sharedInstance].recallSendingFrequency = [[Geoloqi sharedInstance] sendingFrequency];
+    }
+    
+    // __dbhan: Then ,, Change this to go to the High res mode or the UDP mode .... needs a function probably....
     // __dbhan: algorithm: set the send mode to udp
     // __dbhan: These values will be retrieved in 
-    //          1. linkWasSent method in LQShareService.m
-    /*if (0) 
+    // __dbhan: linkWasSent method in LQShareService.m
+    
+    if(1)
     {
-        NSUserDefaults *defaults;
-        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan ;; This sets the shared library variable ...
-        [defaults setObject:@"YES" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
+        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan
+        [[Geoloqi sharedInstance] setSendingFrequencyTo:0]; //__dbhan
+        [[Geoloqi sharedInstance] setTrackingFrequencyTo:1]; //__dbhan
+        [[Geoloqi sharedInstance] setDistanceFilterTo:1]; //__dbhan
+        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan
+         
+        //NSUserDefaults *defaults;
+        //[defaults setObject:@"YES" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
         // __dbhan: Now set the setting to high res mode ;; The settings need to be distance_filter = 1m; tracking_limit = 1s ;; rate_limit = 0s
-        [defaults setFloat:1 forKey:@"hiresDistanceFilter"];
-        [defaults setFloat:1 forKey:@"hiresTrackingLimit"];
-        [defaults setFloat:0 forKey:@"hiresRateLimit"];
-        [defaults synchronize];
-    }   */ 
+        //[defaults setFloat:1 forKey:@"hiresDistanceFilter"];
+        //[defaults setFloat:1 forKey:@"hiresTrackingLimit"];
+        //[defaults setFloat:0 forKey:@"hiresRateLimit"];
+        //[defaults synchronize];
+    }
 }
 
 - (LQHTTPRequestCallback)linkCreatedCallback {
 	if (linkCreatedCallback) return linkCreatedCallback;
-	NSLog(@"Making a new linkCreatedCallback block");
+	NSLog(@"Making a new linkCreatedCallback blockf");
 	return linkCreatedCallback = [^(NSError *error, NSString *responseBody) {
 		NSLog(@"Link Created!");
 
