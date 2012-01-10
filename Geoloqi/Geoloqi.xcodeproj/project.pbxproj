@@ -94,6 +94,7 @@
 		0F7F330012CD500A0009CB1C /* layers-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7F32FF12CD500A0009CB1C /* layers-icon@2x.png */; };
 		0F7F330A12CD5A2E0009CB1C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7F330912CD5A2E0009CB1C /* Default.png */; };
 		0F7F331012CD5E390009CB1C /* title-bar-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7F330F12CD5E390009CB1C /* title-bar-logo.png */; };
+		0F83108114BCCF0100686904 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F83108014BCCF0100686904 /* Reachability.m */; };
 		0F860A651319E07600E1B8D5 /* LQTwitterAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F860A631319E07600E1B8D5 /* LQTwitterAuthViewController.m */; };
 		0F860A661319E07600E1B8D5 /* LQTwitterAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F860A641319E07600E1B8D5 /* LQTwitterAuthViewController.xib */; };
 		0F860B7B131AD68400E1B8D5 /* toolbar-locate-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F860B79131AD68400E1B8D5 /* toolbar-locate-button.png */; };
@@ -176,7 +177,6 @@
 		49EB2257125D7F7100EDFAB1 /* small-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EB224B125D7F7100EDFAB1 /* small-btn@2x.png */; };
 		49EB2258125D7F7100EDFAB1 /* small-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EB224C125D7F7100EDFAB1 /* small-btn.png */; };
 		A645401712A204240014F23C /* libGeoloqi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A645401612A204240014F23C /* libGeoloqi.a */; };
-		DA7B0F3B1488083C00887377 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7B0F3A1488083C00887377 /* Reachability.m */; };
 		DAAE1B9C144601FC003C6E42 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAE1B9B144601FC003C6E42 /* libsqlite3.dylib */; };
 		DAE9E4BA144648AB00D1610C /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE9E4B9144648AB00D1610C /* libz.1.2.5.dylib */; };
 		DD354F7611D666BA00EEF7BC /* GeonoteFriendPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354F7411D666BA00EEF7BC /* GeonoteFriendPickerController.m */; };
@@ -304,6 +304,8 @@
 		0F7F32FF12CD500A0009CB1C /* layers-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layers-icon@2x.png"; sourceTree = "<group>"; };
 		0F7F330912CD5A2E0009CB1C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0F7F330F12CD5E390009CB1C /* title-bar-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-bar-logo.png"; sourceTree = "<group>"; };
+		0F83107F14BCCF0100686904 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Externals/Reachability2.0/Reachability.h; sourceTree = SOURCE_ROOT; };
+		0F83108014BCCF0100686904 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Externals/Reachability2.0/Reachability.m; sourceTree = SOURCE_ROOT; };
 		0F860A621319E07600E1B8D5 /* LQTwitterAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQTwitterAuthViewController.h; sourceTree = "<group>"; };
 		0F860A631319E07600E1B8D5 /* LQTwitterAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQTwitterAuthViewController.m; sourceTree = "<group>"; };
 		0F860A641319E07600E1B8D5 /* LQTwitterAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LQTwitterAuthViewController.xib; sourceTree = "<group>"; };
@@ -423,8 +425,6 @@
 		49EB224C125D7F7100EDFAB1 /* small-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-btn.png"; sourceTree = "<group>"; };
 		A61096CB12A1D2C600A92CA6 /* Geoloqi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geoloqi.h; sourceTree = "<group>"; };
 		A645401612A204240014F23C /* libGeoloqi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGeoloqi.a; sourceTree = "<group>"; };
-		DA7B0F391488083C00887377 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "../../../../MapAttack-iPhone/Reachability/Reachability.h"; sourceTree = "<group>"; };
-		DA7B0F3A1488083C00887377 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "../../../../MapAttack-iPhone/Reachability/Reachability.m"; sourceTree = "<group>"; };
 		DAAE1B971445FF27003C6E42 /* LQConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQConstants.h; path = Classes/LQConstants.h; sourceTree = "<group>"; };
 		DAAE1B9B144601FC003C6E42 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		DAE9E4B9144648AB00D1610C /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -569,8 +569,8 @@
 		0F0184BB1296FDDF001508D9 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				DA7B0F391488083C00887377 /* Reachability.h */,
-				DA7B0F3A1488083C00887377 /* Reachability.m */,
+				0F83107F14BCCF0100686904 /* Reachability.h */,
+				0F83108014BCCF0100686904 /* Reachability.m */,
 			);
 			path = Reachability;
 			sourceTree = "<group>";
@@ -1223,7 +1223,7 @@
 				0F860BF0131B102100E1B8D5 /* LQNotificationBanner.m in Sources */,
 				0F860DD9131B311D00E1B8D5 /* LQShareViewController2.m in Sources */,
 				0FC2771C132185E700AA41BC /* LQMapPinAnnotation.m in Sources */,
-				DA7B0F3B1488083C00887377 /* Reachability.m in Sources */,
+				0F83108114BCCF0100686904 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
