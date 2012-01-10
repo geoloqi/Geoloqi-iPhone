@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "Reachability.h"
+#import "DebugLog.h"
+
 
 #define VERBOSE 1
 

@@ -432,7 +432,6 @@ enum {
 }
 
 - (void)updateLabels {
-	
 	CLLocationCoordinate2D coord;
 	CLLocation *loc;
 	BOOL hasLocation = NO;
@@ -450,7 +449,6 @@ enum {
 			hasLocation = YES;
 		}
 	}
-		
 	if (hasLocation) {
 		latLabel.text = [NSString stringWithFormat:@"%f", coord.latitude];
 		longLabel.text = [NSString stringWithFormat:@"%f", coord.longitude];
@@ -478,11 +476,10 @@ enum {
 	} else {
 		lastUpdateLabel.text = [NSString stringWithFormat:@"%.0fs ago", ago];
 	}
-	
-	NSUInteger pts = [[Geoloqi sharedInstance] locationQueueCount];
+	NSUInteger pts = [[Geoloqi sharedInstance] locationQueueCount]; //__dbhan: location points queue
 	inQueueLabel.text = [NSString stringWithFormat:@"%d point%@", pts, (pts == 1) ? @"" : @"s"];
-	
 }
+
 - (NSString *)formatSeconds:(NSTimeInterval)s {
 	if (s < 60) {
 		return [NSString stringWithFormat:@"%.0fs", s];

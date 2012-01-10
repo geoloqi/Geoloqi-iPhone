@@ -232,6 +232,7 @@ GeoloqiAppDelegate *gAppDelegate;
 	 registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
 										 UIRemoteNotificationTypeSound |
 										 UIRemoteNotificationTypeAlert)];
+//__dbhan: Add the device registeration code here ... Make a new call to setDevice call .... 
 }
 
 - (void)unknownAPIError:(NSNotificationCenter *)notification
@@ -296,7 +297,8 @@ GeoloqiAppDelegate *gAppDelegate;
 	[[Geoloqi sharedInstance] cancelShutdownTimers];
 }
 
-+ (void)registerPresetDefaultsFromSettingsBundle {
++ (void)registerPresetDefaultsFromSettingsBundle 
+{
 	
 //	if([[NSUserDefaults standardUserDefaults] objectForKey:@"batteryTrackingLimit"]) {
 //		NSLog(@"Slider presets are already saved");
@@ -306,7 +308,8 @@ GeoloqiAppDelegate *gAppDelegate;
 //	}
 	
     NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
-    if(!settingsBundle) {
+    if(!settingsBundle) 
+    {
         NSLog(@"Could not find Settings.bundle");
         return;
     }
@@ -315,41 +318,34 @@ GeoloqiAppDelegate *gAppDelegate;
     NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
 	
     NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
-    for(NSDictionary *prefSpecification in preferences) {
+    for(NSDictionary *prefSpecification in preferences) 
+    {
         NSString *key = [prefSpecification objectForKey:@"Key"];
-        if(key) {
+        if(key) 
+        {
             [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
-#if (VERBOSE)
-            NSLog(@"defaultsToRegister is = %@", defaultsToRegister);
-#endif
-
         }
     }
-    // __dbhan: This is the actual place to put the NSUserdefault argument for setSendingMethod
-    //[defaultsToRegister setValue: @"YES" forKey:LQLocationUpdateManagerToggleTrackingDefaultKey]; 
-
-    //__dbhan: Do we really need this as I have combined the user defaults and the variable set in location manager?
     [defaultsToRegister setObject:@"NO" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
     [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan  // start mode = Battery safe mode or passive mode      
     [[Geoloqi sharedInstance] setLocationUpdatesOnTo:YES]; //__dbhan => Battery safe mode + location updates automatically on.
-    
-    //__dbhan: We set the distance filter/tracking limit/rate limit for the first time here. These should now be "N/A" as we willbe doing significant location changes and all of these become unimportant. So check value here and then once more in viewDidLoad in LQDataViewController
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) {
+    if (1)
+    {
+        [[Geoloqi sharedInstance] setDistanceFilterTo:[[defaultsToRegister objectForKey:@"batteryDistanceFilter"] doubleValue]];
+		[[Geoloqi sharedInstance] setTrackingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryTrackingLimit"] doubleValue]];
+		[[Geoloqi sharedInstance] setSendingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryRateLimit"] doubleValue]];
+    }
+    /*if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) 
+    {
 		[[Geoloqi sharedInstance] setDistanceFilterTo:[[defaultsToRegister objectForKey:@"batteryDistanceFilter"] doubleValue]];
 		[[Geoloqi sharedInstance] setTrackingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryTrackingLimit"] doubleValue]];
 		[[Geoloqi sharedInstance] setSendingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryRateLimit"] doubleValue]];
-        //[[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan
-        //[[Geoloqi sharedInstance] setLocationUpdatesOnTo:YES]; //__dbhan => This will turn on the location updates to default ON ..
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"defaultValuesEnteredOnce"];
-#if (VERBOSE)
-        NSLog (@"The sending method is = %i", [[Geoloqi sharedInstance] sendingMethodState]);
-        NSLog (@"The distance filter is = %f", [[Geoloqi sharedInstance] distanceFilterDistance]);
-        NSLog (@"The tracking frequency is = %f", [[Geoloqi sharedInstance] trackingFrequency] );
-        NSLog (@"The sending frequency is =%f", [[Geoloqi sharedInstance] sendingFrequency]);
-#endif
-	}
-    NSLog(@"defaultsToRegister is = %@", defaultsToRegister);
+	}*/
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+#if (VERBOSE)
+    NSLog(@"defaultsToRegister is = %@", defaultsToRegister);
+#endif
     [defaultsToRegister release];
 }
 

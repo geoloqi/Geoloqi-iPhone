@@ -6,4 +6,5 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 	#import "GeoloqiAppDelegate.h"
+    #import "DebugLog.h"
 #endif

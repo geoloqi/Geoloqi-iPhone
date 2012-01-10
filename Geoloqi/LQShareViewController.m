@@ -162,31 +162,34 @@
         {
             [Geoloqi sharedInstance].recallSendingMethodState = LQSendingMethodHTTP;
         }
-        [Geoloqi sharedInstance].recallDistanceFilterDistance = [[Geoloqi sharedInstance] distanceFilterDistance];
+        [Geoloqi sharedInstance].recallDistanceFilterDistance = [[Geoloqi sharedInstance]distanceFilterDistance];
         [Geoloqi sharedInstance].recallTrackingFrequency = [[Geoloqi sharedInstance] trackingFrequency];
         [Geoloqi sharedInstance].recallSendingFrequency = [[Geoloqi sharedInstance] sendingFrequency];
+        
+        NSLog(@"DistanceFilter is %lf", [[Geoloqi sharedInstance] recallDistanceFilterDistance]);
     }
     
-    // __dbhan: Then ,, Change this to go to the High res mode or the UDP mode .... needs a function probably....
+    // __dbhan: Then change this to go to the High res mode or the UDP mode .... needs a function probably....
     // __dbhan: algorithm: set the send mode to udp
     // __dbhan: These values will be retrieved in 
     // __dbhan: linkWasSent method in LQShareService.m
     
     if(1)
     {
-        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan
+        if(0)
+        {
         [[Geoloqi sharedInstance] setSendingFrequencyTo:0]; //__dbhan
         [[Geoloqi sharedInstance] setTrackingFrequencyTo:1]; //__dbhan
         [[Geoloqi sharedInstance] setDistanceFilterTo:1]; //__dbhan
         [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan
-         
-        //NSUserDefaults *defaults;
-        //[defaults setObject:@"YES" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
-        // __dbhan: Now set the setting to high res mode ;; The settings need to be distance_filter = 1m; tracking_limit = 1s ;; rate_limit = 0s
-        //[defaults setFloat:1 forKey:@"hiresDistanceFilter"];
-        //[defaults setFloat:1 forKey:@"hiresTrackingLimit"];
-        //[defaults setFloat:0 forKey:@"hiresRateLimit"];
-        //[defaults synchronize];
+        }
+        if (1)
+        {
+            [[Geoloqi sharedInstance] setSendingFrequencyTo:[[NSUserDefaults standardUserDefaults] integerForKey:@"hiresRateLimit"]]; //__dbhan
+            [[Geoloqi sharedInstance] setTrackingFrequencyTo:[[NSUserDefaults standardUserDefaults] integerForKey:@"hiresTrackingLimit"]]; //__dbhan
+            [[Geoloqi sharedInstance] setDistanceFilterTo:[[NSUserDefaults standardUserDefaults] integerForKey:@"hiresDistanceFilter"]]; //__dbhan
+            [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan
+        }
     }
 }
 
