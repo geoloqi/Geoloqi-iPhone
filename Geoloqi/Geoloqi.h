@@ -35,6 +35,7 @@ static NSString *const LQSendingMethodHTTP = @"LQSendingMethodHTTP";
 static NSString *const LQLocationUpdateManagerSendingMethodDefaultKey = @"LocationUpdateManagerSendingMethodDefaultKey";
 static NSString *const LQLocationUpdateManagerToggleTrackingDefaultKey = @"LQLocationUpdateManagerToggleTrackingDefaultKey";
 static NSString *const LQLocationUpdateManagerUpdatesOnUserDefaultsKey = @"LQLocationUpdateManagerUpdatesOnUserDefaultskey";
+
 enum {
 	LQPresetBattery = 0,
 	LQPresetRealtime
@@ -86,6 +87,9 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)setSendingMethodTo:(NSString *)sendingMethod; // __dbhan: This was added here
 //- (void)setSendingMethod:(BOOL)sendingMethodState;    // __dbhan: If off = Http, if on = UDP => No longer needed
 - (void)setLocationUpdatesOnTo:(BOOL)value;           // __dbhan: default ON; ON = tracking, off = not tracking;;
+- (void)setTrackingModeTo:(int)trackingMode;
+- (int)trackingMode;
+
 - (void)startFriendUpdates;
 - (void)stopFriendUpdates;
 - (NSDate *)lastLocationDate;

@@ -67,7 +67,11 @@ enum {
     //realTimeTrackingSwitch.on = [[Geoloqi sharedInstance] sendingMethodState];
     
     //__dbhan: So that whenever we start the app it always begins in Passive/HTTP/BatterySafe mode.
-    trackingModeSwitch.selectedSegmentIndex = kTrackingModeBatterySaver; //__dbhan: ok to set it?????
+    //trackingModeSwitch.selectedSegmentIndex = kTrackingModeBatterySaver; //__dbhan: ok to set it?????
+
+	trackingMode = [[Geoloqi sharedInstance] trackingMode];
+	[self updatePreset];
+	
     NSLog(@"The tracking mode is: %d", trackingModeSwitch.selectedSegmentIndex); // __dbhan
 	// hide the spinner at first
 	sendingActivityIndicator.hidden = YES;
@@ -292,9 +296,7 @@ enum {
 	if (control.selectedSegmentIndex == kTrackingModeBatterySaver) 
     {
 		NSLog(@"Setting to battery saver mode");
-        NSNumber *tempTrackingMode = [[NSNumber alloc] initWithInt:LQBatterySaverMode];
-        self.trackingMode = tempTrackingMode;
-        [tempTrackingMode release];
+        self.trackingMode = LQBatterySaverMode;
         //__dbhan: Last but not the least
         [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan
         
@@ -316,9 +318,7 @@ enum {
     else if (control.selectedSegmentIndex == kTrackingModeHiRes)
     {
 		NSLog(@"Setting to high res mode");
-        NSNumber *tempTrackingMode = [[NSNumber alloc] initWithInt:LQHiResMode];
-        self.trackingMode = tempTrackingMode;
-        [tempTrackingMode release];
+        self.trackingMode = LQHiResMode;
         [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan
         
 		NSString *dfstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"];
@@ -335,9 +335,7 @@ enum {
     {
 		NSLog(@"Setting to custom mode");
         
-        NSNumber *tempTrackingMode = [[NSNumber alloc] initWithInt:LQCustomMode];
-        self.trackingMode = tempTrackingMode;
-        [tempTrackingMode release];
+        self.trackingMode = LQCustomMode;
         [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan and last but not the least ... set the sending method to ..
         
 		NSString *dfstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customDistanceFilter"];
@@ -356,10 +354,11 @@ enum {
 	//[trackingFrequencySlider setMappedValue:tl animated:YES];
 
 #if (VERBOSE)
-    NSLog(@"The tracking mode is = %i", [trackingMode intValue]);
+    NSLog(@"The tracking mode is = %i", trackingMode);
     NSLog(@"The numbers are: %f, %f, %f", df, tl, rl);
 #endif
-    
+
+	[[Geoloqi sharedInstance] setTrackingModeTo:self.trackingMode];
     [[Geoloqi sharedInstance] setDistanceFilterTo:df];         // __dbhan: And now set the df, tl, rl in shared instance.
     [[Geoloqi sharedInstance] setTrackingFrequencyTo:tl];
     [[Geoloqi sharedInstance] setSendingFrequencyTo:rl];
@@ -414,14 +413,11 @@ enum {
 //__dbhan: Updated this function for new logic
 - (void)updatePreset 
 {
-	//Geoloqi *g = [Geoloqi sharedInstance];
-	//NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-	
-    if ([trackingMode intValue] == LQBatterySaverMode)
+    if (trackingMode == LQBatterySaverMode)
     {
 		trackingModeSwitch.selectedSegmentIndex = kTrackingModeBatterySaver;
 	}
-    else if ([trackingMode intValue] == LQHiResMode)
+    else if (trackingMode == LQHiResMode)
     {
 		trackingModeSwitch.selectedSegmentIndex = kTrackingModeHiRes;
 	} 
@@ -508,8 +504,8 @@ enum {
 		//case kSectionTrackingMode:
 			return 1;
 		case kSectionAdvanced:
-            NSLog(@"%d", [trackingMode intValue]);
-            if([trackingMode intValue] == LQCustomMode)
+            NSLog(@"%d", trackingMode);
+            if(trackingMode == LQCustomMode)
                 return 2;
             else
                 return 1;
@@ -536,7 +532,7 @@ enum {
 			switch (indexPath.row) {
                 case 0: return trackingModeCell;
                 case 1:
-                    if([trackingMode intValue] == LQCustomMode)
+                    if(trackingMode == LQCustomMode)
                     {
                         return sendingFrequencyCell;
                     }

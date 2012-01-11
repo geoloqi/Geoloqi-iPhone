@@ -54,7 +54,7 @@ NSString *const LQTrackingOnUserInfoKey;
 	IBOutlet UIButton *logoutButton;
 	IBOutlet UIButton *aboutButton;
 	NSTimer *viewRefreshTimer;
-    NSNumber *trackingMode;
+    int trackingMode;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *table;
@@ -82,7 +82,7 @@ NSString *const LQTrackingOnUserInfoKey;
 //@property (nonatomic, retain) IBOutlet UITableViewCell *realTimeTrackingCell; // __dbhan: expose the table cell as a property
 //@property (nonatomic, retain) IBOutlet UISwitch* realTimeTrackingSwitch;      //__dbhan: expose this switch as a property
 //@property (nonatomic, readonly) UILabel *realTimeTrackingLabel;              //__dbhan: Mark this as a readonly field as this deos not change
-@property (nonatomic, retain) NSNumber *trackingMode;                          // __dbhan:
+@property (nonatomic, assign) int trackingMode;                          // __dbhan:
 
 @property (nonatomic, retain) IBOutlet UITableViewCell *distanceFilterCell;
 @property (nonatomic, retain) IBOutlet UILabel *distanceFilterLabel;
