@@ -235,6 +235,24 @@ GeoloqiAppDelegate *gAppDelegate;
 //__dbhan: Add the device registeration code here ... Make a new call to setDevice call .... 
 }
 
+
+- (void)sendAPNDeviceToken:(NSString *)deviceToken developmentMode:(NSString *)devMode callback:(LQHTTPRequestCallback)callback {
+    UIDevice *d = [UIDevice currentDevice];
+    
+    [self.authManager callAPIPath:@"account/set_apn_token"
+                           method:@"POST"
+               includeAccessToken:YES 
+                includeClientCred:NO
+                       parameters:[NSDictionary dictionaryWithObjectsAndKeys:
+                                   deviceToken, @"token",
+                                   d.uniqueIdentifier, @"device_id",
+                                   devMode, @"dev",
+                                   [NSString stringWithFormat:@"%@ %@", d.systemName, d.systemVersion], @"platform",
+                                   [self hardware], @"hardware",
+                                   nil]
+                         callback:callback];
+}
+
 - (void)unknownAPIError:(NSNotificationCenter *)notification
 {
 	Reachability *reachability = [Reachability reachabilityWithHostName:@"api.geoloqi.com"];

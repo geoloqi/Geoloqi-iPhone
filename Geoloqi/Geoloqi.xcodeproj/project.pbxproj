@@ -177,6 +177,7 @@
 		49EB2258125D7F7100EDFAB1 /* small-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EB224C125D7F7100EDFAB1 /* small-btn.png */; };
 		A645401712A204240014F23C /* libGeoloqi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A645401612A204240014F23C /* libGeoloqi.a */; };
 		DA7B0F3B1488083C00887377 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7B0F3A1488083C00887377 /* Reachability.m */; };
+		DA90C3A414BB7A800020441B /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = DA90C3A314BB7A800020441B /* DebugLog.m */; };
 		DAAE1B9C144601FC003C6E42 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAE1B9B144601FC003C6E42 /* libsqlite3.dylib */; };
 		DAE9E4BA144648AB00D1610C /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE9E4B9144648AB00D1610C /* libz.1.2.5.dylib */; };
 		DD354F7611D666BA00EEF7BC /* GeonoteFriendPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD354F7411D666BA00EEF7BC /* GeonoteFriendPickerController.m */; };
@@ -425,6 +426,8 @@
 		A645401612A204240014F23C /* libGeoloqi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGeoloqi.a; sourceTree = "<group>"; };
 		DA7B0F391488083C00887377 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "../../../../MapAttack-iPhone/Reachability/Reachability.h"; sourceTree = "<group>"; };
 		DA7B0F3A1488083C00887377 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "../../../../MapAttack-iPhone/Reachability/Reachability.m"; sourceTree = "<group>"; };
+		DA90C3A214BB7A800020441B /* DebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugLog.h; path = "../../MapAttack-iPhone/DebugLog.h"; sourceTree = "<group>"; };
+		DA90C3A314BB7A800020441B /* DebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DebugLog.m; path = "../../MapAttack-iPhone/DebugLog.m"; sourceTree = "<group>"; };
 		DAAE1B971445FF27003C6E42 /* LQConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LQConstants.h; path = Classes/LQConstants.h; sourceTree = "<group>"; };
 		DAAE1B9B144601FC003C6E42 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		DAE9E4B9144648AB00D1610C /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -707,6 +710,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				DA90C3A214BB7A800020441B /* DebugLog.h */,
+				DA90C3A314BB7A800020441B /* DebugLog.m */,
 				DAE9E4BC1446490F00D1610C /* fells_loop.gpx */,
 				DAE9E4B9144648AB00D1610C /* libz.1.2.5.dylib */,
 				DAAE1B9B144601FC003C6E42 /* libsqlite3.dylib */,
@@ -1224,6 +1229,7 @@
 				0F860DD9131B311D00E1B8D5 /* LQShareViewController2.m in Sources */,
 				0FC2771C132185E700AA41BC /* LQMapPinAnnotation.m in Sources */,
 				DA7B0F3B1488083C00887377 /* Reachability.m in Sources */,
+				DA90C3A414BB7A800020441B /* DebugLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
