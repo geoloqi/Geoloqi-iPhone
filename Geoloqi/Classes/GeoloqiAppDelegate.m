@@ -97,14 +97,7 @@ GeoloqiAppDelegate *gAppDelegate;
 											 selector:@selector(cancelShutdownNotifications) 
 												 name:LQTrackingStoppedNotification
 											   object:nil];
-    //__dbhan:  Added the reachability notifications here as
-    /*[[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleNetworkChange:)
-                                                 name:kReachabilityChangedNotification 
-                                               object:nil]; */
-//__dbhan: Needed ?//socketReadReachability = [[Reachability reachabilityForInternetConnection] retain];
-//__dbhan: Needed ? [socketReadReachability startNotifier];
-	[[LQBatteryMonitor sharedInstance] start];	//__dbhan till here..
+	[[LQBatteryMonitor sharedInstance] start];
     return YES;
 }
 
@@ -233,25 +226,12 @@ GeoloqiAppDelegate *gAppDelegate;
 										 UIRemoteNotificationTypeSound |
 										 UIRemoteNotificationTypeAlert)];
 //__dbhan: Add the device registeration code here ... Make a new call to setDevice call .... 
+	// Send the token to Geoloqi
+	[[Geoloqi sharedInstance] sendDeviceIdwithcallback:^(NSError *error, NSString *responseBody){
+		NSLog(@"Sent device ID: %@", responseBody);
+	}];
 }
 
-
-- (void)sendAPNDeviceToken:(NSString *)deviceToken developmentMode:(NSString *)devMode callback:(LQHTTPRequestCallback)callback {
-    UIDevice *d = [UIDevice currentDevice];
-    
-    [self.authManager callAPIPath:@"account/set_apn_token"
-                           method:@"POST"
-               includeAccessToken:YES 
-                includeClientCred:NO
-                       parameters:[NSDictionary dictionaryWithObjectsAndKeys:
-                                   deviceToken, @"token",
-                                   d.uniqueIdentifier, @"device_id",
-                                   devMode, @"dev",
-                                   [NSString stringWithFormat:@"%@ %@", d.systemName, d.systemVersion], @"platform",
-                                   [self hardware], @"hardware",
-                                   nil]
-                         callback:callback];
-}
 
 - (void)unknownAPIError:(NSNotificationCenter *)notification
 {
@@ -344,27 +324,38 @@ GeoloqiAppDelegate *gAppDelegate;
             [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
         }
     }
-    [defaultsToRegister setObject:@"NO" forKey:LQLocationUpdateManagerSendingMethodDefaultKey]; // __dbhan: NO = OFF = HTTP ;; YES = ON = UDP
-    [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan  // start mode = Battery safe mode or passive mode      
-    [[Geoloqi sharedInstance] setLocationUpdatesOnTo:YES]; //__dbhan => Battery safe mode + location updates automatically on.
-    if (1)
-    {
-        [[Geoloqi sharedInstance] setDistanceFilterTo:[[defaultsToRegister objectForKey:@"batteryDistanceFilter"] doubleValue]];
-		[[Geoloqi sharedInstance] setTrackingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryTrackingLimit"] doubleValue]];
-		[[Geoloqi sharedInstance] setSendingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryRateLimit"] doubleValue]];
-    }
-    /*if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) 
+    // __dbhan: Set the custom Tracking presets. They should ultimately go into the presets file.
+    [[NSUserDefaults standardUserDefaults] setDouble:1.0 forKey:@"customDistanceFilter"];
+    [[NSUserDefaults standardUserDefaults] setDouble:1.0 forKey:@"customTrackingLimit"];
+    [[NSUserDefaults standardUserDefaults] setDouble:1800.0 forKey:@"customRateLimit"];
+
+    //__dbhan: For the first time only the tracking mode should be passive(Battery).Otherwise it needs to be the last known state
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) 
     {
 		[[Geoloqi sharedInstance] setDistanceFilterTo:[[defaultsToRegister objectForKey:@"batteryDistanceFilter"] doubleValue]];
 		[[Geoloqi sharedInstance] setTrackingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryTrackingLimit"] doubleValue]];
 		[[Geoloqi sharedInstance] setSendingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryRateLimit"] doubleValue]];
+        [[Geoloqi sharedInstance] setTrackingModeTo:LQBatterySaverMode]; // __dbhan: Set the first init of the tracking mode to BatterySaver 
+        //[[Geoloqi sharedInstance] setLocationUpdatesOnTo:YES]; //__dbhan => Battery safe mode + location updates automatically on.
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"defaultValuesEnteredOnce"];
-	}*/
-    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
-#if (VERBOSE)
-    NSLog(@"defaultsToRegister is = %@", defaultsToRegister);
+	}
+    else
+    {
+        //__dbhan: and set the parameters accordingly as per the tracking mode ..
+        [[Geoloqi sharedInstance] setTrackingModeTo:[[NSUserDefaults standardUserDefaults]integerForKey:LQLocationUpdateManagerTrackingModeKey]];
+        [[Geoloqi sharedInstance] setTrackingPreset:[[Geoloqi sharedInstance] getTrackingMode]];
+        [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+    }
+    
+#if(VERBOSE) 
+    NSLog(@"The distance Filter is set to: %f", [[Geoloqi sharedInstance] distanceFilterDistance]);
+    NSLog(@"The tracking Frequency is set to: %f", [[Geoloqi sharedInstance] trackingFrequency]);
+    NSLog(@"The sending Frequency is set to: %f", [[Geoloqi sharedInstance] sendingFrequency]);
+    NSLog(@"The tracking mode is set to: %i", [[Geoloqi sharedInstance] getTrackingMode]);
+    NSLog(@"The defaults written in the register are: %@", defaultsToRegister);
 #endif
     [defaultsToRegister release];
+    [[Geoloqi sharedInstance] setLocationUpdatesOnTo:YES]; //__dbhan: The location updates should always be on by default
 }
 
 // From: http://www.cocoadev.com/index.pl?BaseSixtyFour

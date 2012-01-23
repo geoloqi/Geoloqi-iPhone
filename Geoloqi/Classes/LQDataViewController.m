@@ -62,50 +62,37 @@ enum {
 	
 	// Load from defaultsLQMapped
 	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState]; //_dbhan: Gotcha!
-    
-    // __dbhan: Load from defaults
-    //realTimeTrackingSwitch.on = [[Geoloqi sharedInstance] sendingMethodState];
-    
-    //__dbhan: So that whenever we start the app it always begins in Passive/HTTP/BatterySafe mode.
-    //trackingModeSwitch.selectedSegmentIndex = kTrackingModeBatterySaver; //__dbhan: ok to set it?????
-
-	trackingMode = [[Geoloqi sharedInstance] trackingMode];
+	trackingMode = [[Geoloqi sharedInstance] getTrackingMode];
+    trackingModeSwitch.selectedSegmentIndex = trackingMode; //__dbhan: ok to set it?????
 	[self updatePreset];
-	
+
+#if (VERBOSE)    
     NSLog(@"The tracking mode is: %d", trackingModeSwitch.selectedSegmentIndex); // __dbhan
-	// hide the spinner at first
+#endif
+	
+    // hide the spinner at first
 	sendingActivityIndicator.hidden = YES;
-
 	[self updateButtonStates];
-
 	NSDictionary *sliderMappings = [NSDictionary dictionaryWithContentsOfFile:
 									[[NSBundle mainBundle] pathForResource:@"SliderMappings"
 																	ofType:@"plist"]];
-/*	//__dbhan: No longer need the distance filter or tracking frequency
-	distanceFilterSlider.mapping = [sliderMappings objectForKey:@"distance_filter"];
-	distanceFilterSlider.target = self;
-	distanceFilterSlider.action = @selector(changeDistanceFilter:);
-	distanceFilterSlider.finishAction = @selector(distanceFilterWasChanged:);
-	
-	trackingFrequencySlider.mapping = [sliderMappings objectForKey:@"tracking_limit"];
-	trackingFrequencySlider.target = self;
-	trackingFrequencySlider.action = @selector(changeTrackingFrequency:);
-	trackingFrequencySlider.finishAction = @selector(trackingFrequencyWasChanged:);
- */
-	
-	sendingFrequencySlider.mapping = [sliderMappings objectForKey:@"rate_limit"];
+    sendingFrequencySlider.mapping = [sliderMappings objectForKey:@"rate_limit"];
 	sendingFrequencySlider.target = self;
 	sendingFrequencySlider.action = @selector(changeSendingFrequency:);
 	sendingFrequencySlider.finishAction = @selector(sendingFrequencyWasChanged:);
-	
-	// Set up cells
+    sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
+#if(VERBOSE)
+    NSLog(@"The sending Frequency is set to : %@", [[Geoloqi sharedInstance] sendingFrequency]);
+#endif
+
+    // Set up cells
 	trackingToggleCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
 												reuseIdentifier:nil];
 	trackingToggleCell.textLabel.text = @"Location Tracking";
 	trackingToggleCell.accessoryView = trackingToggleSwitch;                                  // __dbhan: Gotcha
 	trackingToggleCell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-	checkInCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+	
+    checkInCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
 										 reuseIdentifier:nil];
 	checkInCell.textLabel.text = @"Check In Once";
 	checkInCell.accessoryView = checkInButton;
@@ -142,16 +129,14 @@ enum {
 	[super viewDidAppear:animated];
 
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];  //__dbhan. Gotcha!!!!!
-    
-    //__dbhan: Added this code to optionally set on/off the real time tracking switch
-    //[realTimeTrackingSwitch setOn:[[Geoloqi sharedInstance] sendingMethodState] animated:animated];
-    distanceFilterSlider.mappedValue = [[Geoloqi sharedInstance] distanceFilterDistance];
-    trackingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] trackingFrequency];
+    trackingMode = [[Geoloqi sharedInstance] getTrackingMode];
+    trackingModeSwitch.selectedSegmentIndex = trackingMode;
     sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
-   
-
-	[self updatePreset];
+    NSLog(@"The sending frequency is:%f", [[Geoloqi sharedInstance] sendingFrequency]);
+    
+    [self updatePreset];
 	[self updateLabels];
+    
 	self.usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
 
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -162,7 +147,7 @@ enum {
 											 selector:@selector(finishedSendingLocations:)
 												 name:LQLocationUpdateManagerFinishedSendingLocations
 											   object:nil];
-	
+
 	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
 														target:self
 													  selector:@selector(viewRefreshTimerDidFire:)
@@ -201,10 +186,12 @@ enum {
 	}
 }
 
-
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
 	// Update the "Last point:" status text
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:YES];   // __dbhan: Gotcha
+    trackingMode = [[Geoloqi sharedInstance] getTrackingMode];
+    trackingModeSwitch.selectedSegmentIndex = trackingMode; //__dbhan: ok to set it?????
+    //[self.table reloadData];                 //__dbhan : Reload the table again, as we need to draw the rate limit slider.
 	[self updateButtonStates];
 	[self updateLabels];
 }
@@ -292,88 +279,40 @@ enum {
 
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
 	// Load the default slider values from the user preferences
-	CGFloat df = 0, tl = 0, rl = 0;  
+	CGFloat rl = 0;  
 	if (control.selectedSegmentIndex == kTrackingModeBatterySaver) 
     {
 		NSLog(@"Setting to battery saver mode");
         self.trackingMode = LQBatterySaverMode;
         //__dbhan: Last but not the least
-        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan
-        
-        //__dbhan: This is not done yet ...
-        NSString *dfstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryDistanceFilter"];
-		if(dfstr == nil) 
-        { df = -1.0;} 
-        
-		NSString *tlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryTrackingLimit"];
-		if(tlstr == nil) 
-        { tl = -1.0;} 
-        
-        NSString *rlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"batteryRateLimit"];
-		if(rlstr == nil)  
-        { rl = -1.0;} 
-        else              
-        { rl = [rlstr floatValue];} 
+        [[Geoloqi sharedInstance] setTrackingModeTo:LQBatterySaverMode];
+        [[Geoloqi sharedInstance] setTrackingPreset:LQBatterySaverMode];
 	} 
     else if (control.selectedSegmentIndex == kTrackingModeHiRes)
     {
 		NSLog(@"Setting to high res mode");
         self.trackingMode = LQHiResMode;
-        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan
-        
-		NSString *dfstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"hiresDistanceFilter"];
-		if(dfstr == nil) { df = 1.0;} 
-        
-		NSString *tlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"hiresTrackingLimit"];
-		if(tlstr == nil) { tl = 1.0;} 
-        
-        NSString *rlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"hiresRateLimit"];
-		if(rlstr == nil)  { rl = 0.0;} 
-        else              { rl = [rlstr floatValue];}  
+        [[Geoloqi sharedInstance] setTrackingModeTo:LQHiResMode]; // __dbhan:
+        [[Geoloqi sharedInstance] setTrackingPreset:LQHiResMode];
 	} 
     else if (control.selectedSegmentIndex == kTrackingModeCustom)
     {
 		NSLog(@"Setting to custom mode");
-        
         self.trackingMode = LQCustomMode;
-        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodHTTP]; //__dbhan and last but not the least ... set the sending method to ..
-        
-		NSString *dfstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customDistanceFilter"];
-		if(dfstr == nil) { df = 1.0;} 
-
-		NSString *tlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customTrackingLimit"];
-		if(tlstr == nil) { tl = 1.0;} 
-		
-        NSString *rlstr = [[NSUserDefaults standardUserDefaults] stringForKey:@"customRateLimit"];
-		if(rlstr == nil)  { rl = 30.0;} 
-        else              { rl = [rlstr floatValue]; }
-
-        [sendingFrequencySlider setMappedValue:rl animated:YES];
+        [[Geoloqi sharedInstance] setTrackingModeTo:LQCustomMode]; // __dbhan:
+        [[Geoloqi sharedInstance] setTrackingPreset:LQCustomMode];
+        [sendingFrequencySlider setMappedValue:rl animated:YES];         // __dbhan: set frequency slider and animate it..
 	}
-	//[distanceFilterSlider setMappedValue:df animated:YES];    // __dbhan: no need to animate the sliders now
-	//[trackingFrequencySlider setMappedValue:tl animated:YES];
-
-#if (VERBOSE)
-    NSLog(@"The tracking mode is = %i", trackingMode);
-    NSLog(@"The numbers are: %f, %f, %f", df, tl, rl);
-#endif
-
-	[[Geoloqi sharedInstance] setTrackingModeTo:self.trackingMode];
-    [[Geoloqi sharedInstance] setDistanceFilterTo:df];         // __dbhan: And now set the df, tl, rl in shared instance.
-    [[Geoloqi sharedInstance] setTrackingFrequencyTo:tl];
-    [[Geoloqi sharedInstance] setSendingFrequencyTo:rl];
     [self.table reloadData];                                   //__dbhan : Reload the table again, as we need to draw the rate limit slider.
-	[self updateLabels];
-	
+    [self updateLabels];
 }
 
 - (void)saveCustomSliderPresets {
 	// Save the values of the sliders into the "custom" preset
 	//[[NSUserDefaults standardUserDefaults] setDouble:self.distanceFilterSlider.mappedValue forKey:@"customDistanceFilter"];
 	//[[NSUserDefaults standardUserDefaults] setDouble:self.trackingFrequencySlider.mappedValue forKey:@"customTrackingLimit"];
-    
 	[[NSUserDefaults standardUserDefaults] setDouble:self.sendingFrequencySlider.mappedValue forKey:@"customRateLimit"];
-	
+	NSLog(@"%f", self.sendingFrequencySlider.mappedValue);
 	NSLog(@"Updating custom slider presets");
 }
 
@@ -472,7 +411,7 @@ enum {
 	} else {
 		lastUpdateLabel.text = [NSString stringWithFormat:@"%.0fs ago", ago];
 	}
-	NSUInteger pts = [[Geoloqi sharedInstance] locationQueueCount]; //__dbhan: location points queue
+	NSUInteger pts = [[Geoloqi sharedInstance] getLocationQueueCount]; //__dbhan: location points queue
 	inQueueLabel.text = [NSString stringWithFormat:@"%d point%@", pts, (pts == 1) ? @"" : @"s"];
 }
 
@@ -504,7 +443,6 @@ enum {
 		//case kSectionTrackingMode:
 			return 1;
 		case kSectionAdvanced:
-            NSLog(@"%d", trackingMode);
             if(trackingMode == LQCustomMode)
                 return 2;
             else
@@ -687,7 +625,7 @@ enum {
 	if([[Geoloqi sharedInstance] locationUpdatesState]) {
 		// Background location is on. Don't allow checkin, allow flushing the queue if there are points.
 
-		if ([[Geoloqi sharedInstance] locationQueueCount] > 0) {
+		if ([[Geoloqi sharedInstance] getLocationQueueCount] > 0) {
 			sendNowButton.enabled = YES;
 			//[sendNowButton setTitleColor:[UIColor colorWithRed:0.215 green:0.32 blue:0.508 alpha:1.0] forState:UIControlStateNormal];
 		} else {

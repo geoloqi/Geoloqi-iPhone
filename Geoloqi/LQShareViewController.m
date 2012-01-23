@@ -150,47 +150,18 @@
     [[Geoloqi sharedInstance] createLink:[shareDescriptionField text] 
                                  minutes:[selectedMinutes intValue]
                                 callback:[self linkCreatedCallback]];
-    //__dbhan: First save the current state
-    //__dbhan: This piece of code is used to make sure that we retain the old state that we can recover back to
-    if(1)
-    {
-        if ([[Geoloqi sharedInstance] sendingMethodState] == TRUE)
-        {
-            [Geoloqi sharedInstance].recallSendingMethodState = LQSendingMethodUDP;
-        }
-        else
-        {
-            [Geoloqi sharedInstance].recallSendingMethodState = LQSendingMethodHTTP;
-        }
-        [Geoloqi sharedInstance].recallDistanceFilterDistance = [[Geoloqi sharedInstance]distanceFilterDistance];
-        [Geoloqi sharedInstance].recallTrackingFrequency = [[Geoloqi sharedInstance] trackingFrequency];
-        [Geoloqi sharedInstance].recallSendingFrequency = [[Geoloqi sharedInstance] sendingFrequency];
+    //__dbhan:
+    [[Geoloqi sharedInstance] setRecallTrackingModeTo:[[Geoloqi sharedInstance] getTrackingMode]];
+    [[Geoloqi sharedInstance] setRecallDistanceFilterDistanceTo:[[Geoloqi sharedInstance] distanceFilterDistance]];
+    [[Geoloqi sharedInstance] setRecallSendingFrequencyTo:[[Geoloqi sharedInstance] sendingFrequency]];
+    [[Geoloqi sharedInstance] setRecallTrackingFrequencyTo:[[Geoloqi sharedInstance] trackingFrequency]];
         
-        NSLog(@"DistanceFilter is %lf", [[Geoloqi sharedInstance] recallDistanceFilterDistance]);
-    }
-    
-    // __dbhan: Then change this to go to the High res mode or the UDP mode .... needs a function probably....
-    // __dbhan: algorithm: set the send mode to udp
-    // __dbhan: These values will be retrieved in 
-    // __dbhan: linkWasSent method in LQShareService.m
-    
-    if(1)
-    {
-        if(0)
-        {
-        [[Geoloqi sharedInstance] setSendingFrequencyTo:0]; //__dbhan
-        [[Geoloqi sharedInstance] setTrackingFrequencyTo:1]; //__dbhan
-        [[Geoloqi sharedInstance] setDistanceFilterTo:1]; //__dbhan
-        [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan
-        }
-        if (1)
-        {
-            [[Geoloqi sharedInstance] setSendingFrequencyTo:[[NSUserDefaults standardUserDefaults] integerForKey:@"hiresRateLimit"]]; //__dbhan
-            [[Geoloqi sharedInstance] setTrackingFrequencyTo:[[NSUserDefaults standardUserDefaults] integerForKey:@"hiresTrackingLimit"]]; //__dbhan
-            [[Geoloqi sharedInstance] setDistanceFilterTo:[[NSUserDefaults standardUserDefaults] integerForKey:@"hiresDistanceFilter"]]; //__dbhan
-            [[Geoloqi sharedInstance] setSendingMethodTo:LQSendingMethodUDP]; //__dbhan
-        }
-    }
+    // __dbhan: Then change this to go to the High res mode or the UDP mode
+    // __dbhan: These values will be retrieved in linkWasSent method in LQShareService.m
+    [[Geoloqi sharedInstance] setSendingFrequencyTo:[[NSUserDefaults standardUserDefaults] integerForKey:@"hiresRateLimit"]]; //__dbhan
+    [[Geoloqi sharedInstance] setTrackingFrequencyTo:[[NSUserDefaults standardUserDefaults] integerForKey:@"hiresTrackingLimit"]]; //__dbhan
+    [[Geoloqi sharedInstance] setDistanceFilterTo:[[NSUserDefaults standardUserDefaults] integerForKey:@"hiresDistanceFilter"]]; //__dbhan
+    [[Geoloqi sharedInstance] setTrackingModeTo:LQHiResMode];
 }
 
 - (LQHTTPRequestCallback)linkCreatedCallback {
