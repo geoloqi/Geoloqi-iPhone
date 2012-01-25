@@ -37,8 +37,7 @@
 //__dbhan/__aaronpk: or the custom mode whichever state it was in  and get rid of the notification and cancellation ... 
 //__dbhan: So we add a notification to see when the timer expires and then get a notification which calls a function to then take further actions
     
-   //[NSTimer scheduledTimerWithTimeInterval:[_minutes intValue]*60
-    [NSTimer scheduledTimerWithTimeInterval:([_minutes intValue]*60) / 12
+    [NSTimer scheduledTimerWithTimeInterval:([_minutes intValue]*60)
                                      target:self
                                    selector:@selector(tripEndTimerDidFire:)
                                    userInfo:nil

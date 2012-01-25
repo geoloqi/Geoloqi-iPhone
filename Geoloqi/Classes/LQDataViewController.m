@@ -301,9 +301,9 @@ enum {
         self.trackingMode = LQCustomMode;
         [[Geoloqi sharedInstance] setTrackingModeTo:LQCustomMode]; // __dbhan:
         [[Geoloqi sharedInstance] setTrackingPreset:LQCustomMode];
-        [sendingFrequencySlider setMappedValue:rl animated:YES];         // __dbhan: set frequency slider and animate it..
+        [sendingFrequencySlider setMappedValue:[[Geoloqi sharedInstance] sendingFrequency] animated:YES];  // __dbhan: set frequency slider and animate it..
 	}
-    [self.table reloadData];                                   //__dbhan : Reload the table again, as we need to draw the rate limit slider.
+    [self.table reloadData];                                      //__dbhan : Reload the table again, as we need to draw the rate limit slider.
     [self updateLabels];
 }
 
@@ -344,6 +344,8 @@ enum {
 }
 - (void)sendingFrequencyWasChanged:(LQMappedSlider *)sender {
 	[[Geoloqi sharedInstance] setSendingFrequencyTo:sender.mappedValue];
+    [[NSUserDefaults standardUserDefaults] setDouble:sender.mappedValue forKey:@"customRateLimit"];
+    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 	[self saveCustomSliderPresets];
 	[self updatePreset];
 	[self updateLabels];

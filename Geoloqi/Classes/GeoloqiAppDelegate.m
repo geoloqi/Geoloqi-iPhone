@@ -40,7 +40,10 @@ GeoloqiAppDelegate *gAppDelegate;
 	[[Geoloqi sharedInstance] setUserAgentString:LQ_USER_AGENT];
 	
 	// IMPORTANT: Set up OAuth prior to making network calls to the geoloqi server.
+    NSLog(@"Setting the client ID and secret");
     [[Geoloqi sharedInstance] setOauthClientID:LQ_OAUTH_CLIENT_ID secret:LQ_OAUTH_SECRET];
+    [GeoloqiAppDelegate registerPresetDefaultsFromSettingsBundle]; //__dbhan: Moved it here from initialize function.
+
 
     // Override point for customization after application launch.
 	if (launchOptions) {
@@ -102,7 +105,7 @@ GeoloqiAppDelegate *gAppDelegate;
 }
 
 + (void)initialize {
-	[self registerPresetDefaultsFromSettingsBundle];
+	//[self registerPresetDefaultsFromSettingsBundle];
 }
 
 // A cheap way to quit the program after the "error" alert from an HTTP request pops up.
@@ -324,10 +327,12 @@ GeoloqiAppDelegate *gAppDelegate;
             [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
         }
     }
+
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+    
     // __dbhan: Set the custom Tracking presets. They should ultimately go into the presets file.
     [[NSUserDefaults standardUserDefaults] setDouble:1.0 forKey:@"customDistanceFilter"];
     [[NSUserDefaults standardUserDefaults] setDouble:1.0 forKey:@"customTrackingLimit"];
-    [[NSUserDefaults standardUserDefaults] setDouble:1800.0 forKey:@"customRateLimit"];
 
     //__dbhan: For the first time only the tracking mode should be passive(Battery).Otherwise it needs to be the last known state
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) 
@@ -336,7 +341,7 @@ GeoloqiAppDelegate *gAppDelegate;
 		[[Geoloqi sharedInstance] setTrackingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryTrackingLimit"] doubleValue]];
 		[[Geoloqi sharedInstance] setSendingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryRateLimit"] doubleValue]];
         [[Geoloqi sharedInstance] setTrackingModeTo:LQBatterySaverMode]; // __dbhan: Set the first init of the tracking mode to BatterySaver 
-        //[[Geoloqi sharedInstance] setLocationUpdatesOnTo:YES]; //__dbhan => Battery safe mode + location updates automatically on.
+        [[NSUserDefaults standardUserDefaults] setDouble:60.0 forKey:@"customRateLimit"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"defaultValuesEnteredOnce"];
 	}
     else
@@ -344,7 +349,9 @@ GeoloqiAppDelegate *gAppDelegate;
         //__dbhan: and set the parameters accordingly as per the tracking mode ..
         [[Geoloqi sharedInstance] setTrackingModeTo:[[NSUserDefaults standardUserDefaults]integerForKey:LQLocationUpdateManagerTrackingModeKey]];
         [[Geoloqi sharedInstance] setTrackingPreset:[[Geoloqi sharedInstance] getTrackingMode]];
-        [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+        //[[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+        //NSLog(@"the Standard user defaults are:");
+        //NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
     }
     
 #if(VERBOSE) 
