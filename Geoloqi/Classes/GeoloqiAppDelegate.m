@@ -349,9 +349,6 @@ GeoloqiAppDelegate *gAppDelegate;
         //__dbhan: and set the parameters accordingly as per the tracking mode ..
         [[Geoloqi sharedInstance] setTrackingModeTo:[[NSUserDefaults standardUserDefaults]integerForKey:LQLocationUpdateManagerTrackingModeKey]];
         [[Geoloqi sharedInstance] setTrackingPreset:[[Geoloqi sharedInstance] getTrackingMode]];
-        //[[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
-        //NSLog(@"the Standard user defaults are:");
-        //NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
     }
     
 #if(VERBOSE) 

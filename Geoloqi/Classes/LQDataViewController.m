@@ -345,7 +345,6 @@ enum {
 - (void)sendingFrequencyWasChanged:(LQMappedSlider *)sender {
 	[[Geoloqi sharedInstance] setSendingFrequencyTo:sender.mappedValue];
     [[NSUserDefaults standardUserDefaults] setDouble:sender.mappedValue forKey:@"customRateLimit"];
-    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 	[self saveCustomSliderPresets];
 	[self updatePreset];
 	[self updateLabels];
