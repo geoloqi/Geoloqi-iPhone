@@ -164,7 +164,7 @@
 		case LQShareMethodCopy:
 			[[UIPasteboard generalPasteboard] setString:self.shareURL.absoluteString];
 			[LQShareService linkWasSent:@"Link Copied" minutes:self.shareMinutes];
-			[self.parentViewController.parentViewController dismissModalViewControllerAnimated:YES];
+			[gAppDelegate.mapViewController dismissModalViewControllerAnimated:YES];
 			break;
 		default:
 			
@@ -204,11 +204,11 @@
 		if (!res || [res objectForKey:@"error"] != nil) {
 			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Twitter Error!"];
 			[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
-			[self.parentViewController dismissModalViewControllerAnimated:YES];
+			[gAppDelegate.mapViewController dismissModalViewControllerAnimated:YES];
 		}else{
 //			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Tweeted!"];
 			[LQShareService linkWasSent:@"Posted to Twitter" minutes:self.shareMinutes];
-			[self.parentViewController.parentViewController dismissModalViewControllerAnimated:YES];
+			[gAppDelegate.mapViewController dismissModalViewControllerAnimated:YES];
 		}
 	} copy];
 }
@@ -228,11 +228,11 @@
 		if (!res || [res objectForKey:@"error"] != nil) {
 			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Facebook Error!"];
 			[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
-			[self.parentViewController dismissModalViewControllerAnimated:YES];
+			[gAppDelegate.mapViewController dismissModalViewControllerAnimated:YES];
 		}else{
 //			[[SHKActivityIndicator currentIndicator] displayCompleted:@"Posted!"];
 			[LQShareService linkWasSent:@"Posted to Facebook" minutes:self.shareMinutes];
-			[self.parentViewController.parentViewController dismissModalViewControllerAnimated:YES];
+			[gAppDelegate.mapViewController dismissModalViewControllerAnimated:YES];
 		}
 	} copy];
 }

@@ -23,6 +23,7 @@ GeoloqiAppDelegate *gAppDelegate;
 @synthesize pushHandler;
 @synthesize lqBtnImg, lqBtnDisabledImg, lqBtnLightDisabledImg;
 @synthesize signInEmailAddress;
+@synthesize mapViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle

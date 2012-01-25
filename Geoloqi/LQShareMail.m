@@ -23,6 +23,7 @@
 		if([MFMailComposeViewController canSendMail]) {
 			MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
 			mailer.mailComposeDelegate = self;
+            NSLog(@"Opening mail view controller");
 			
 			[mailer setSubject:subject];
 			
@@ -51,24 +52,25 @@
 - (void)mailComposeController:(MFMailComposeViewController*)mailController
 		  didFinishWithResult:(MFMailComposeResult)result
 						error:(NSError*)error {
+    NSLog(@"mailComposeController:didFinishWithResult:");
     switch (result)
     {
         case MFMailComposeResultCancelled:
-			[self shareControllerDidCancel:mailController];
+			[self shareControllerDidCancel:gAppDelegate.mapViewController];
             break;
         case MFMailComposeResultSaved:
 			[LQShareService linkWasSent:@"Draft Saved" minutes:self.minutes];
-			[self shareControllerDidFinish:mailController.parentViewController];
+			[self shareControllerDidFinish:gAppDelegate.mapViewController];
             break;
         case MFMailComposeResultSent:
 			[LQShareService linkWasSent:@"Sent" minutes:self.minutes];
-			[self shareControllerDidFinish:self.controller.parentViewController.parentViewController];
+			[self shareControllerDidFinish:gAppDelegate.mapViewController];
             break;
         case MFMailComposeResultFailed:
-			[self shareControllerDidCancel:mailController];
+			[self shareControllerDidCancel:gAppDelegate.mapViewController];
             break;
         default:
-			[self shareControllerDidCancel:mailController];
+			[self shareControllerDidCancel:gAppDelegate.mapViewController];
             break;
     }
 }

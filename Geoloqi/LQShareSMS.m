@@ -56,17 +56,17 @@
     switch (result)
     {
         case MessageComposeResultCancelled:
-			[self shareControllerDidCancel:messageController];
+			[self shareControllerDidCancel:gAppDelegate.mapViewController];
             break;
         case MessageComposeResultSent:
 			[LQShareService linkWasSent:@"Sent" minutes:self.minutes];
-			[self shareControllerDidFinish:self.controller.parentViewController.parentViewController];
+			[self shareControllerDidFinish:gAppDelegate.mapViewController];
             break;
         case MessageComposeResultFailed:
-			[self shareControllerDidCancel:messageController];
+			[self shareControllerDidCancel:gAppDelegate.mapViewController];
             break;
         default:
-			[self shareControllerDidCancel:messageController];
+			[self shareControllerDidCancel:gAppDelegate.mapViewController];
             break;
     }
 }
