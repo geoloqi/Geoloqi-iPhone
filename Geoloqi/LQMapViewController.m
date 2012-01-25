@@ -356,6 +356,7 @@
 
 - (IBAction)shareButtonWasTapped:(UIButton *)button {
 
+    gAppDelegate.mapViewController = self;
 	LQShareViewController *shareView = [[LQShareViewController alloc] init];
 	[self presentModalViewController:shareView animated:YES];
 	[shareView release];

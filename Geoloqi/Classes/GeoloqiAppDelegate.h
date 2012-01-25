@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LQMapViewController.h"
 #import "LQPushHandler.h"
 
 //Forward declaration for the Geoloqisocket read/write clients
@@ -23,6 +24,8 @@
 	UIImage *lqBtnImg, *lqBtnDisabledImg, *lqBtnLightDisabledImg;
     //Reachability *socketReadReachability;          // __dbhan: Do i need this => No ..
 }
+
+@property (nonatomic, retain) LQMapViewController *mapViewController;  // keep a reference to the map view
 
 @property (nonatomic, retain) IBOutlet UIViewController *welcomeViewController;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
