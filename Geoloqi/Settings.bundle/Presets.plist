@@ -20,7 +20,7 @@
 			<key>Key</key>
 			<string>batteryDistanceFilter</string>
 			<key>DefaultValue</key>
-			<string>-1</string>
+			<string>5</string>
 			<key>Values</key>
 			<array>
 				<integer>0</integer>
@@ -88,7 +88,7 @@
 				<string>30 Minutes</string>
 			</array>
 			<key>DefaultValue</key>
-			<string>-1</string>
+			<string>5</string>
 			<key>KeyboardType</key>
 			<string>NumberPad</string>
 		</dict>
@@ -128,7 +128,7 @@
 				<string>30 Minutes</string>
 			</array>
 			<key>DefaultValue</key>
-			<string>-1</string>
+			<string>10</string>
 			<key>KeyboardType</key>
 			<string>NumberPad</string>
 		</dict>
@@ -253,7 +253,7 @@
 				<string>30 Minutes</string>
 			</array>
 			<key>DefaultValue</key>
-			<string>0</string>
+			<string>5</string>
 			<key>KeyboardType</key>
 			<string>NumberPad</string>
 		</dict>
