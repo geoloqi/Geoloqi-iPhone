@@ -86,12 +86,6 @@
 												 name:LQLocationUpdateManagerDidUpdateSingleLocationNotification
 											   object:nil];
 
-	// Observe the Geoloqi friend location manager for updates
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(friendLocationUpdated:)
-												 name:LQLocationUpdateManagerDidUpdateFriendLocationNotification
-											   object:nil];
-	
 	// Observe the map for location updates
 	[map.userLocation addObserver:self  
 					   forKeyPath:@"location"  
@@ -111,8 +105,6 @@
 	[self.notificationBanner refreshForLocation:self.map.userLocation.location];
 	
 	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated]; // __dbhan: Gotcha => This is where it is turned off ... but how does locationUpdatesState set it to off?
-	
-	// [[Geoloqi sharedInstance] startFriendUpdates];
 	
 	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
 														 target:self
@@ -251,22 +243,6 @@
 	[self updateLocationOnMap:newLoc];
 }
 
-- (void)friendLocationUpdated:(NSNotification *)notification {
-
-	// Remove all previous annotations. This makes a pretty bad flicker, we'll have to figure something better out soon.
-	if(map.annotations) {
-		for (id annotation in [[map.annotations copy] autorelease]) {
-			[map removeAnnotation:annotation];
-		}
-	}
-
-	for(NSDictionary *point in [notification.userInfo objectForKey:@"friends"]){
-		NSLog(@"Point: %@", point);
-		
-		[map addAnnotation:[[[LQMapPinAnnotation alloc] initWithDictionary:point] autorelease]];
-	}	
-}
-
 // When the map view receives its location, this method is called
 // This is separate from our internal location manager with the on/off switch
 - (void)observeValueForKeyPath:(NSString *)keyPath 
@@ -309,7 +285,6 @@
 	[viewRefreshTimer invalidate];
 	[viewRefreshTimer release];
 	viewRefreshTimer = nil;
-	[[Geoloqi sharedInstance] stopFriendUpdates];
 	if(map.annotations) {
 		for (id annotation in [[map.annotations copy] autorelease]) {
 			[map removeAnnotation:annotation];
