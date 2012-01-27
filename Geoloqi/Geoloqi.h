@@ -94,8 +94,6 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)setTrackingPreset:(int)trackingMode;         //__dbhan: Get the tracking mode presets
 
 
-- (void)startFriendUpdates;
-- (void)stopFriendUpdates;
 - (NSDate *)lastLocationDate;
 - (NSDate *)lastUpdateDate;
 - (CLLocation *)currentSingleLocation;
