@@ -79,7 +79,7 @@
 
 - (void)refreshForLocation:(CLLocation *)location {
 	// Cache the banner for 2 minutes
-	if(location != NULL) {
+	if(location != NULL && [[Geoloqi sharedInstance] accessToken]) {
 		if(self.lastLocation == nil || lastUpdated == nil || [lastUpdated timeIntervalSinceNow] < -120) {
 			[[Geoloqi sharedInstance] getBannerForLocation:location withCallback:[self callback]];
 			NSLog(@"Getting new banner");
