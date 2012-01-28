@@ -149,6 +149,7 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)postToTwitter:(NSString *)text callback:(LQHTTPRequestCallback)callback;
 
 #pragma mark -
+- (void)trackPushNotificationView:(NSDictionary *)params callback:(LQHTTPRequestCallback)callback;
 - (void)setOauthClientID:(NSString*)clientID secret:(NSString*)secret;
 - (void)setOauthAccessToken:(NSString *)accessToken;
 - (void)errorProcessingAPIRequest;

@@ -12,13 +12,18 @@
 
 @implementation LQPushHandler
 
-@synthesize lastAlertURL;
+@synthesize lastAlertURL, lastAlertToken;
 
 - (id)myInit {
 	self = [super init];
 	lastAlertURL = [[NSString alloc] init];
 	NSLog(@"Alloc url: %@", lastAlertURL);
 	return self;
+}
+
+- (void)setLastAlertToken:(NSString *)_lastAlertToken {
+    NSLog(@"Setting lastAlertToken: %@", _lastAlertToken);
+    lastAlertToken = [_lastAlertToken retain];
 }
 
 /**
@@ -82,6 +87,7 @@
 	} else {
 		if([userInfo valueForKeyPath:@"aps.alert.body"] != nil) {
 			UIAlertView *alert;
+            self.lastAlertToken = [userInfo valueForKeyPath:@"geoloqi.token"];
 			if([userInfo valueForKeyPath:@"geoloqi.link"] != nil) {
 				alert = [[UIAlertView alloc] initWithTitle:title 
 												   message:[userInfo valueForKeyPath:@"aps.alert.body"] 
@@ -98,11 +104,18 @@
 										 otherButtonTitles:@"Ok", nil];
 				self.lastAlertURL = nil;
 			}
+            // If the app is in the foreground, we want to display this as an alert. If in the background, do the action now.
 			if([application applicationState] == UIApplicationStateActive) {
 				[alert show];
 				[alert setTag:kLQPushAlertGeonote];
 			} else {
-				[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.lastAlertURL]];
+                if(self.lastAlertToken) {
+                    [self trackReadPushNotificationAtLocation:nil];
+                    [self startMonitoringLocationForPush];
+                }
+                if(self.lastAlertURL){
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.lastAlertURL]];
+                }
 			}
 			[alert release];
 		}	
@@ -148,6 +161,65 @@
 }
 */
 
+- (void)trackReadPushNotificationAtLocation:(CLLocation *)location {
+
+    if(bgTask) {
+        NSLog(@"Ending background task %d", bgTask);
+        [[UIApplication sharedApplication] endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }
+    bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        // Clean up any unfinished task business by marking where you.
+        // stopped or ending the task outright.
+        NSLog(@"Background task timed out %d", bgTask);
+        [[UIApplication sharedApplication] endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }];
+    NSLog(@"Beginning background task with id %d", bgTask);
+    
+    // Do the work associated with the task
+    NSDictionary *params;
+    
+    if(location != nil) {
+        NSLog(@"[Push tracking] Tracking push notification %@ location: %@", self.lastAlertToken, location);
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                  self.lastAlertToken, @"token",
+                  [NSString stringWithFormat:@"%f", location.coordinate.latitude], @"latitude",
+                  [NSString stringWithFormat:@"%f", location.coordinate.longitude], @"longitude",
+                  [NSString stringWithFormat:@"%f", location.horizontalAccuracy], @"accuracy",
+                  nil];
+    } else {
+        NSLog(@"[Push tracking] Tracking push notification %@", self.lastAlertToken);
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                  self.lastAlertToken, @"token", 
+                  nil];
+    }
+    
+    [[Geoloqi sharedInstance] trackPushNotificationView:params
+                                               callback:^(NSError *error, NSString *responseBody) {
+                                                   NSLog(@"Logged push read for token %@ accuracy: %@", self.lastAlertToken, [params objectForKey:@"accuracy"]);
+                                                   if([[params objectForKey:@"accuracy"] floatValue] < 200.0) {
+                                                       if(bgTask) {
+                                                           NSLog(@"Ending background task %d", bgTask);
+                                                           [[UIApplication sharedApplication] endBackgroundTask:bgTask];
+                                                           bgTask = UIBackgroundTaskInvalid;
+                                                       }
+                                                   }
+                                               }];
+        
+}
+
+- (void)startMonitoringLocationForPush {
+    if (!locationManager) {
+		locationManager = [[CLLocationManager alloc] init];
+		locationManager.distanceFilter = 0;
+        locationManager.desiredAccuracy = 30.0;
+		locationManager.delegate = self;
+	}
+	
+	[locationManager startUpdatingLocation];
+}
+
 /**
  * This is called when the app is launched from the button on a push notification
  */
@@ -160,6 +232,11 @@
 		return;
 		
 	NSString *type = [data valueForKeyPath:@"geoloqi.type"];
+
+    self.lastAlertToken = [data valueForKeyPath:@"geoloqi.token"];
+    
+    [self trackReadPushNotificationAtLocation:nil];
+    [self startMonitoringLocationForPush];
 
 	if([type isEqualToString:@"startPrompt"]){
 
@@ -186,8 +263,13 @@
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	NSLog(@"URL: %@", lastAlertURL);
+	NSLog(@"Tapped button on alert view! Token: %@ URL: %@", self.lastAlertToken, self.lastAlertURL);
 	
+    if(self.lastAlertToken) {
+        [self trackReadPushNotificationAtLocation:nil];
+        [self startMonitoringLocationForPush];
+    }
+    
 	switch([alertView tag]) {
 		case kLQPushAlertShutdown:
 			if(buttonIndex == 1){
@@ -210,11 +292,36 @@
 					[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.lastAlertURL]];
 				}
 			}
+            break;
 	}
 }
 
+#pragma mark LocationManager
+
+- (void)locationManager:(CLLocationManager *)manager
+	didUpdateToLocation:(CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation {
+	
+	// horizontalAccuracy is negative when the location is invalid
+	// http://developer.apple.com/library/ios/#documentation/CoreLocation/Reference/CLLocation_Class/CLLocation/CLLocation.html
+	if(newLocation.horizontalAccuracy >=0) {
+        NSLog(@"[Push tracking] Got location update! %@", newLocation);
+        
+        // Wait for a location better than 200m before stopping
+		if(newLocation.horizontalAccuracy < 200) {
+            [locationManager stopUpdatingLocation];
+        }
+        
+        [self trackReadPushNotificationAtLocation:newLocation];
+	}
+}
+
+#pragma mark -
+
 - (void)dealloc {
 	[lastAlertURL release];
+    [lastAlertToken release];
+    [locationManager release];
 	[super dealloc];
 }
 

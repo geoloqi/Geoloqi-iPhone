@@ -279,7 +279,6 @@ enum {
 
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
 	// Load the default slider values from the user preferences
-	CGFloat rl = 0;  
 	if (control.selectedSegmentIndex == kTrackingModeBatterySaver) 
     {
 		NSLog(@"Setting to battery saver mode");
