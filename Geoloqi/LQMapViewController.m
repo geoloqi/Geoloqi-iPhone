@@ -93,6 +93,18 @@
 						  context:NULL];
 }
 
+- (void)startViewRefreshTimer {
+	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
+														 target:self
+													   selector:@selector(viewRefreshTimerDidFire:)
+													   userInfo:nil
+														repeats:YES] retain];
+}
+
+- (void)updateTrackingSwitchState {
+	[trackingToggleSwitch setOn:([[Geoloqi sharedInstance] getTrackingMode]==LQHiResMode || [[Geoloqi sharedInstance] getTrackingMode]==LQCustomMode) animated:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
 	self.anonymousBanner.hidden = ![GeoloqiAppDelegate isUserAnonymous];
 	
@@ -104,17 +116,13 @@
 	
 	[self.notificationBanner refreshForLocation:self.map.userLocation.location];
 	
-	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated]; // __dbhan: Gotcha => This is where it is turned off ... but how does locationUpdatesState set it to off?
+	[self updateTrackingSwitchState];
 	
-	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
-														 target:self
-													   selector:@selector(viewRefreshTimerDidFire:)
-													   userInfo:nil
-														repeats:YES] retain];
+    [self startViewRefreshTimer];
 }
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
-	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:YES];
+    [self updateTrackingSwitchState];
 }
 
 - (void)reloadMapHistory {
@@ -322,11 +330,15 @@
 }
 
 - (void)toggleTracking:(UISwitch *)sender {
+	[viewRefreshTimer invalidate];
+	[viewRefreshTimer release];
+	viewRefreshTimer = nil;
 	if(sender.on){
-		[[Geoloqi sharedInstance] startLocationUpdates];
+		[[Geoloqi sharedInstance] setTrackingModeTo:LQHiResMode];
 	}else{
-		[[Geoloqi sharedInstance] stopLocationUpdates];
+		[[Geoloqi sharedInstance] setTrackingModeTo:LQBatterySaverMode];
 	}
+    [self startViewRefreshTimer];
 }
 
 - (IBAction)shareButtonWasTapped:(UIButton *)button {
