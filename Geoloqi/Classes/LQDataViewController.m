@@ -88,7 +88,7 @@ enum {
     // Set up cells
 	trackingToggleCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
 												reuseIdentifier:nil];
-	trackingToggleCell.textLabel.text = @"Stealth Mode";
+	trackingToggleCell.textLabel.text = @"Disable Location";
 	trackingToggleCell.accessoryView = trackingToggleSwitch;
 	trackingToggleCell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
