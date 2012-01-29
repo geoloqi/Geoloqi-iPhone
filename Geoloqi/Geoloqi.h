@@ -73,6 +73,8 @@ typedef void (^LQHTTPRequestCallback)(NSError *error, NSString *responseBody);
 - (void)getBannerForLocation:(CLLocation *)location withCallback:(LQHTTPRequestCallback)callback;
 - (void)addShutdownTimer:(id)notification;
 - (void)cancelShutdownTimers;
+- (void)appDidEnterBackground;
+- (void)appDidEnterForeground;
 
 #pragma mark Layers
 - (void)layerAppList:(LQHTTPRequestCallback)callback;

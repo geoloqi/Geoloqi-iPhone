@@ -125,6 +125,15 @@ enum {
 											   object:nil];
 
 }
+
+- (void)startViewRefreshTimer {
+	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
+                                                         target:self
+                                                       selector:@selector(viewRefreshTimerDidFire:)
+                                                       userInfo:nil
+                                                        repeats:YES] retain];    
+}
+
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 
@@ -147,12 +156,8 @@ enum {
 											 selector:@selector(finishedSendingLocations:)
 												 name:LQLocationUpdateManagerFinishedSendingLocations
 											   object:nil];
+    [self startViewRefreshTimer];
 
-	viewRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0
-														target:self
-													  selector:@selector(viewRefreshTimerDidFire:)
-													  userInfo:nil
-													   repeats:YES] retain];
 	[self viewRefreshTimerDidFire:nil];
 }
 
@@ -267,6 +272,9 @@ enum {
 #pragma mark Sliders
 
 - (void)toggleTracking:(UISwitch *)sender {
+	[viewRefreshTimer invalidate];
+	[viewRefreshTimer release];
+	viewRefreshTimer = nil;
 	if(sender.on){
 		[[Geoloqi sharedInstance] startLocationUpdates];
 		// Disable the "send now" button, it will be enabled when a new location point has been received
@@ -275,6 +283,7 @@ enum {
 		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
 	}
 	[self updateButtonStates];
+    [self startViewRefreshTimer];
 }
 
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
