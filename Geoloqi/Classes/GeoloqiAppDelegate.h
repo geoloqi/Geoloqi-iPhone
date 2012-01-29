@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LQMapViewController.h"
 #import "LQPushHandler.h"
+#import "BWQuincyManager.h"
 
 //Forward declaration for the Geoloqisocket read/write clients
 @class GeoloqiSocketClient;
@@ -16,7 +17,7 @@
 @class Reachability;
 
 
-@interface GeoloqiAppDelegate : NSObject <UIApplicationDelegate, UIAlertViewDelegate> {
+@interface GeoloqiAppDelegate : NSObject <UIApplicationDelegate, UIAlertViewDelegate, BWQuincyManagerDelegate> {
     UIWindow *window;
 	IBOutlet UITabBarController *tabBarController;
 	NSString *deviceToken;
