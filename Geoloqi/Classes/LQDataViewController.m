@@ -134,6 +134,12 @@ enum {
                                                         repeats:YES] retain];    
 }
 
+- (void)stopViewRefreshTimer {
+	[viewRefreshTimer invalidate];
+	[viewRefreshTimer release];
+	viewRefreshTimer = nil;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 
@@ -276,19 +282,18 @@ enum {
 #pragma mark Sliders
 
 - (void)toggleTracking:(UISwitch *)sender {
-	[viewRefreshTimer invalidate];
-	[viewRefreshTimer release];
-	viewRefreshTimer = nil;
+    [self stopViewRefreshTimer];
 	if(!sender.on){
 		[[Geoloqi sharedInstance] startLocationUpdates];
 	}else{
 		[[Geoloqi sharedInstance] stopLocationUpdates];
 	}
-    [self startViewRefreshTimer];
     [self viewRefreshTimerDidFire:nil];
+    [self startViewRefreshTimer];
 }
 
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
+    [self stopViewRefreshTimer];
 	// Load the default slider values from the user preferences
 	if (control.selectedSegmentIndex == kTrackingModeBatterySaver) 
     {
@@ -315,6 +320,7 @@ enum {
 	}
     [self.table reloadData];                                      //__dbhan : Reload the table again, as we need to draw the rate limit slider.
     [self viewRefreshTimerDidFire:nil];
+    [self startViewRefreshTimer];
 }
 
 - (void)saveCustomSliderPresets {
