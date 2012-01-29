@@ -102,7 +102,7 @@
 }
 
 - (void)updateTrackingSwitchState {
-	[trackingToggleSwitch setOn:([[Geoloqi sharedInstance] getTrackingMode]==LQHiResMode || [[Geoloqi sharedInstance] getTrackingMode]==LQCustomMode) animated:YES];
+	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] && ([[Geoloqi sharedInstance] getTrackingMode]==LQHiResMode || [[Geoloqi sharedInstance] getTrackingMode]==LQCustomMode) animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -335,8 +335,10 @@
 	viewRefreshTimer = nil;
 	if(sender.on){
 		[[Geoloqi sharedInstance] setTrackingModeTo:LQHiResMode];
+        [[Geoloqi sharedInstance] startLocationUpdates];
 	}else{
 		[[Geoloqi sharedInstance] setTrackingModeTo:LQBatterySaverMode];
+        [[Geoloqi sharedInstance] startLocationUpdates];
 	}
     [self startViewRefreshTimer];
 }

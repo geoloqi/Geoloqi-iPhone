@@ -61,7 +61,7 @@ enum {
 	[self.table setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundTexture.png"]]];
 	
 	// Load from defaultsLQMapped
-	trackingToggleSwitch.on = [[Geoloqi sharedInstance] locationUpdatesState]; //_dbhan: Gotcha!
+	trackingToggleSwitch.on = ![[Geoloqi sharedInstance] locationUpdatesState]; //_dbhan: Gotcha!
 	trackingMode = [[Geoloqi sharedInstance] getTrackingMode];
     trackingModeSwitch.selectedSegmentIndex = trackingMode; //__dbhan: ok to set it?????
 	[self updatePreset];
@@ -88,8 +88,8 @@ enum {
     // Set up cells
 	trackingToggleCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
 												reuseIdentifier:nil];
-	trackingToggleCell.textLabel.text = @"Location Tracking";
-	trackingToggleCell.accessoryView = trackingToggleSwitch;                                  // __dbhan: Gotcha
+	trackingToggleCell.textLabel.text = @"Stealth Mode";
+	trackingToggleCell.accessoryView = trackingToggleSwitch;
 	trackingToggleCell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
     checkInCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -137,14 +137,13 @@ enum {
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 
-	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:animated];  //__dbhan. Gotcha!!!!!
     trackingMode = [[Geoloqi sharedInstance] getTrackingMode];
-    trackingModeSwitch.selectedSegmentIndex = trackingMode;
+	[trackingToggleSwitch setOn:![[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
+    
     sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
     NSLog(@"The sending frequency is:%f", [[Geoloqi sharedInstance] sendingFrequency]);
     
     [self updatePreset];
-	[self updateLabels];
     
 	self.usernameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
 
@@ -159,6 +158,7 @@ enum {
     [self startViewRefreshTimer];
 
 	[self viewRefreshTimerDidFire:nil];
+    [table reloadData];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -193,9 +193,13 @@ enum {
 
 - (void)viewRefreshTimerDidFire:(NSTimer *)timer {
 	// Update the "Last point:" status text
-	[trackingToggleSwitch setOn:[[Geoloqi sharedInstance] locationUpdatesState] animated:YES];   // __dbhan: Gotcha
-    trackingMode = [[Geoloqi sharedInstance] getTrackingMode];
-    trackingModeSwitch.selectedSegmentIndex = trackingMode; //__dbhan: ok to set it?????
+	[trackingToggleSwitch setOn:![[Geoloqi sharedInstance] locationUpdatesState] animated:YES];   // __dbhan: Gotcha
+    if([[Geoloqi sharedInstance] locationUpdatesState] == FALSE) {
+        trackingModeSwitch.selectedSegmentIndex = UISegmentedControlNoSegment;
+    } else {
+        trackingMode = [[Geoloqi sharedInstance] getTrackingMode];
+        trackingModeSwitch.selectedSegmentIndex = trackingMode; //__dbhan: ok to set it?????
+    }
     //[self.table reloadData];                 //__dbhan : Reload the table again, as we need to draw the rate limit slider.
 	[self updateButtonStates];
 	[self updateLabels];
@@ -275,15 +279,13 @@ enum {
 	[viewRefreshTimer invalidate];
 	[viewRefreshTimer release];
 	viewRefreshTimer = nil;
-	if(sender.on){
+	if(!sender.on){
 		[[Geoloqi sharedInstance] startLocationUpdates];
-		// Disable the "send now" button, it will be enabled when a new location point has been received
 	}else{
 		[[Geoloqi sharedInstance] stopLocationUpdates];
-		// Enable the "send now" button since it will cause a single location point to be sent when tapped in this state
 	}
-	[self updateButtonStates];
     [self startViewRefreshTimer];
+    [self viewRefreshTimerDidFire:nil];
 }
 
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
@@ -312,7 +314,7 @@ enum {
         [sendingFrequencySlider setMappedValue:[[Geoloqi sharedInstance] sendingFrequency] animated:YES];  // __dbhan: set frequency slider and animate it..
 	}
     [self.table reloadData];                                      //__dbhan : Reload the table again, as we need to draw the rate limit slider.
-    [self updateLabels];
+    [self viewRefreshTimerDidFire:nil];
 }
 
 - (void)saveCustomSliderPresets {
@@ -446,16 +448,15 @@ enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case kSectionBasic:
-			//return 4; //__dbhan
-            return 3;
-		case kSectionCoords:
-		//case kSectionTrackingMode:
-			return 1;
-		case kSectionAdvanced:
             if(trackingMode == LQCustomMode)
                 return 2;
             else
                 return 1;
+		case kSectionCoords:
+		//case kSectionTrackingMode:
+			return 1;
+		case kSectionAdvanced:
+            return 2;
 		case kSectionFooter:
 			return 1;
 		default:
@@ -468,23 +469,21 @@ enum {
 	switch (indexPath.section) {
 		case kSectionBasic:
 			switch (indexPath.row) {
-				case 0: return trackingToggleCell;
-				case 1: return checkInCell;
-				case 2: return updateQueueCell;
+                case 0: return trackingModeCell;
+                case 1:
+                    if(trackingMode == LQCustomMode)
+                        return sendingFrequencyCell;
+                    else 
+                        return nil;
 				default: return nil;
 			}
 		case kSectionCoords:
 			return coordsCell;
 		case kSectionAdvanced:
 			switch (indexPath.row) {
-                case 0: return trackingModeCell;
-                case 1:
-                    if(trackingMode == LQCustomMode)
-                    {
-                        return sendingFrequencyCell;
-                    }
-                    else return nil;
-
+				case 0: return updateQueueCell;
+				case 1: return trackingToggleCell;
+				// case 1: return checkInCell;
 				default: return nil;
 			}
 		case kSectionFooter:
@@ -499,10 +498,10 @@ enum {
 	switch (indexPath.section) {
 		case kSectionBasic:
 			switch (indexPath.row) {
-				case 2:
-					return 52;
+				case 0:
+					return 56;
 				default:
-					return 48;
+					return 64;
 			}
 		case kSectionCoords:
 			return 40;
@@ -511,10 +510,12 @@ enum {
 		case kSectionAdvanced:
 			switch (indexPath.row) {
 				case 0:
-					return 56;
+					return 52;
 				default:
-					return 64;
+					return 48;
 			}
+		case kSectionFooter:
+			return 52;
 		default:
 			return 44;
 	}
@@ -524,11 +525,12 @@ enum {
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
 		case kSectionBasic:
+			return @"Tracking Mode";
 		case kSectionCoords:
 		//case kSectionTrackingMode:
 			return nil;
 		case kSectionAdvanced:
-			return @"Tracking Settings";
+			return nil;
 		default:
 			return nil;
 	}

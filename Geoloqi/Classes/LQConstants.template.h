@@ -6,7 +6,7 @@
 //
 
 // Geoloqi client credentials for talking to the API
-#define LQ_OAUTH_CLIENT_ID	@"geoloqi"
+#define LQ_OAUTH_CLIENT_ID	@""
 #define LQ_OAUTH_SECRET		@""
 
 #define LQ_PUSH_DEV_MODE    @"1"
