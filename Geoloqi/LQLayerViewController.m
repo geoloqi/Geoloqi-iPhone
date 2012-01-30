@@ -74,6 +74,7 @@
 	if (loadLayersCallback) return loadLayersCallback;
 	return loadLayersCallback = [^(NSError *error, NSString *responseBody) {
 		
+        lastRefresh = [[NSDate alloc] init];
         [self parseLayerJSON:responseBody];
         [self stopLoading];
         [self saveLayerListToDisk:responseBody];
@@ -82,8 +83,13 @@
 
 - (void)refreshLayerList {
     NSLog(@"refreshLayerList called");
-    [[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];
-    lastRefresh = [[NSDate alloc] init];
+    if(([self retrieveLayerListFromFile]) == nil) {
+        // This should only be hit the very first time they load the layer list.
+        // In that case, we want to show the loading thingy.
+        [self refresh];
+    } else {
+        [[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];
+    }
 }	
 
 - (void)loadLayerList {
@@ -91,7 +97,8 @@
     NSLog(@"loadLayerList called");
     if((layerList=[self retrieveLayerListFromFile]) == nil) {
         NSLog(@"Fetching new layer list");
-        [[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];
+        // The first time they load the list there will be no file. Make it look like they hit the "refresh" pulldown
+        [self refresh];
     } else {
         NSLog(@"Using cached layer list");
         [self parseLayerJSON:layerList];
@@ -107,13 +114,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     NSLog(@"Layer list view will appear");
-	[self loadLayerList];
-    [self.tableView reloadData];
+    if(lastRefresh == nil || [lastRefresh timeIntervalSinceNow] < -300) {
+        [self refreshLayerList];
+    } else {
+        [self loadLayerList];
+        [self.tableView reloadData];
+    }
 }
 
 // Called by the PullRefresh view controller, should only start retrieving data
 - (void)refresh {
-	[[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];
+	[self refreshLayerList];
 }
 
 
