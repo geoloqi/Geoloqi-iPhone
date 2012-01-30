@@ -99,11 +99,11 @@
 }
 
 - (IBAction)backWasTapped {
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+	[view_parentViewController(self) dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)doneWasTapped {
-	[self.parentViewController.parentViewController dismissModalViewControllerAnimated:YES];
+	[view_parentViewController(view_parentViewController(self)) dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)shareServiceButtonWasTapped:(id)sender {

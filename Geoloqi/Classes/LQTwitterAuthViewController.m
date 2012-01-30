@@ -50,7 +50,7 @@
 }
 
 - (IBAction)cancel {
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+	[view_parentViewController(self) dismissModalViewControllerAnimated:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)w {
@@ -74,7 +74,7 @@
 	self.activityIndicator.alpha = 0.0;
 	[[SHKActivityIndicator currentIndicator] displayCompleted:@"Login Failed!"];
 	[[SHKActivityIndicator currentIndicator] setCenterMessage:@"✕"];
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+	[view_parentViewController(self) dismissModalViewControllerAnimated:YES];
 }
 
 

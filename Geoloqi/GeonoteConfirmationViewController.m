@@ -31,7 +31,7 @@
 
 - (IBAction)dismiss:(id)sender
 {
-    UITabBarController *appTabBarController = ((UITabBarController *)self.parentViewController.parentViewController);
+    UITabBarController *appTabBarController = ((UITabBarController *)view_parentViewController(view_parentViewController(self)));
     UINavigationController *geonoteNavigationController = ((UINavigationController *)appTabBarController.selectedViewController);
     
     [geonoteNavigationController popToRootViewControllerAnimated:NO];

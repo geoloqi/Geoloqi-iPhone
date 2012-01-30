@@ -31,7 +31,7 @@
 }
 
 - (IBAction)cancel {
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+	[view_parentViewController(self) dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)logInAction {

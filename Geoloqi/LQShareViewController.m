@@ -205,7 +205,7 @@
 
 
 - (IBAction)cancelWasTapped {
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+	[view_parentViewController(self) dismissModalViewControllerAnimated:YES];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView 

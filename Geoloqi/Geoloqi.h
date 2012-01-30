@@ -5,6 +5,8 @@
  *  Copyright 2010 Geoloqi.com. All rights reserved.
  */
 
+#define view_parentViewController(_view_) (([_view_ parentViewController] != nil || ![_view_ respondsToSelector:@selector(presentingViewController)]) ? [_view_ parentViewController] : [_view_ presentingViewController])
+
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "Reachability.h"

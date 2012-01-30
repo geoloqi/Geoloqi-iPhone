@@ -103,7 +103,7 @@
 	
 		// Restore the Geonote tab to its original state showing the map
 		
-		UITabBarController *appTabBarController = ((UITabBarController *)self.parentViewController.parentViewController);
+		UITabBarController *appTabBarController = ((UITabBarController *)view_parentViewController(view_parentViewController(self)));
 		UINavigationController *geonoteNavigationController = ((UINavigationController *)appTabBarController.selectedViewController);
 		
 		[geonoteNavigationController popToRootViewControllerAnimated:YES];
