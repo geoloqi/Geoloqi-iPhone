@@ -144,7 +144,8 @@ enum {
 	[super viewDidAppear:animated];
 
     trackingMode = [[Geoloqi sharedInstance] getTrackingMode];
-	[trackingToggleSwitch setOn:![[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
+
+    [self updateTrackingModeAndToggleStates:animated];
     
     sendingFrequencySlider.mappedValue = [[Geoloqi sharedInstance] sendingFrequency];
     NSLog(@"The sending frequency is:%f", [[Geoloqi sharedInstance] sendingFrequency]);
@@ -197,15 +198,25 @@ enum {
 	}
 }
 
-- (void)viewRefreshTimerDidFire:(NSTimer *)timer {
-	// Update the "Last point:" status text
-	[trackingToggleSwitch setOn:![[Geoloqi sharedInstance] locationUpdatesState] animated:YES];   // __dbhan: Gotcha
+- (void)updateTrackingModeAndToggleStates:(BOOL)animated {
+    [trackingToggleSwitch setOn:![[Geoloqi sharedInstance] locationUpdatesState] animated:animated];
     if([[Geoloqi sharedInstance] locationUpdatesState] == FALSE) {
         trackingModeSwitch.selectedSegmentIndex = UISegmentedControlNoSegment;
     } else {
         trackingMode = [[Geoloqi sharedInstance] getTrackingMode];
         trackingModeSwitch.selectedSegmentIndex = trackingMode; //__dbhan: ok to set it?????
     }
+}
+
+- (void)viewRefreshTimerDidFire:(NSTimer *)timer {
+	// Update the "Last point:" status text
+	// [trackingToggleSwitch setOn:![[Geoloqi sharedInstance] locationUpdatesState] animated:YES];   // __dbhan: Gotcha
+//    if([[Geoloqi sharedInstance] locationUpdatesState] == FALSE) {
+//        trackingModeSwitch.selectedSegmentIndex = UISegmentedControlNoSegment;
+//    } else {
+//        trackingMode = [[Geoloqi sharedInstance] getTrackingMode];
+//        trackingModeSwitch.selectedSegmentIndex = trackingMode; //__dbhan: ok to set it?????
+//    }
     //[self.table reloadData];                 //__dbhan : Reload the table again, as we need to draw the rate limit slider.
 	[self updateButtonStates];
 	[self updateLabels];
@@ -282,6 +293,7 @@ enum {
 #pragma mark Sliders
 
 - (void)toggleTracking:(UISwitch *)sender {
+    NSLog(@"[Settings] toggleTracking:%@", (sender.on?@"on":@"off"));
     [self stopViewRefreshTimer];
 	if(!sender.on){
 		[[Geoloqi sharedInstance] startLocationUpdates];
@@ -290,6 +302,7 @@ enum {
 	}
     [self viewRefreshTimerDidFire:nil];
     [self startViewRefreshTimer];
+    [self updateTrackingModeAndToggleStates:YES];
 }
 
 - (IBAction)trackingModeWasChanged:(UISegmentedControl *)control {
@@ -321,6 +334,7 @@ enum {
     [self.table reloadData];                                      //__dbhan : Reload the table again, as we need to draw the rate limit slider.
     [self viewRefreshTimerDidFire:nil];
     [self startViewRefreshTimer];
+    [self updateTrackingModeAndToggleStates:YES];
 }
 
 - (void)saveCustomSliderPresets {
@@ -639,6 +653,7 @@ enum {
 }
 
 - (void)updateButtonStates {
+    return;
 	if([[Geoloqi sharedInstance] locationUpdatesState]) {
 		// Background location is on. Don't allow checkin, allow flushing the queue if there are points.
 

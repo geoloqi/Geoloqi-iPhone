@@ -112,6 +112,7 @@ NSString *const LQTrackingOnUserInfoKey;
 - (IBAction)checkInButtonWasTapped:(UIButton *)button;
 
 - (void)updateButtonStates;
+- (void)updateTrackingModeAndToggleStates:(BOOL)animated;
 
 - (void)startedSendingLocations:(NSNotification *)notification;
 - (void)finishedSendingLocations:(NSNotification *)notification;
