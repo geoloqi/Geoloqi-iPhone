@@ -16,54 +16,87 @@
 @synthesize featuredLayers, yourLayers, activeLayers, inactiveLayers;
 @synthesize selectedIndexPath;
 
+- (void)parseLayerJSON:(NSString *)data {
+    NSError *err = nil;
+    NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[data dataUsingEncoding:NSUTF8StringEncoding] error:&err];
+
+    if (!res || [res objectForKey:@"error"] != nil) {
+        NSLog(@"Error deserializing response (for layer list) \"%@\": %@", data, err);
+        return;
+    }
+    
+    if ([[res objectForKey:@"your"] isKindOfClass:[NSArray class]])
+    {
+        NSLog(@"Parsed layer list. Reloading table.");
+        self.yourLayers = [res objectForKey:@"your"];
+        self.featuredLayers = [res objectForKey:@"featured"];
+        self.inactiveLayers = [res objectForKey:@"inactive"];
+        self.activeLayers = [res objectForKey:@"active"];
+        [self.tableView reloadData];
+        
+        return;
+    }
+    else {
+        NSLog(@"Not the expected response");
+    }
+}
+
+- (void)saveLayerListToDisk:(NSString *)data
+{
+    NSArray       *myPathList        =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString      *myPath            =  [myPathList  objectAtIndex:0];
+    NSError       **err;
+
+    NSLog(@"Storing layer list to disk");
+    
+    myPath = [myPath stringByAppendingPathComponent:@"layers.json"];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:myPath])
+    [[NSFileManager defaultManager] createFileAtPath:myPath contents:nil attributes:nil];
+    [data writeToFile:myPath atomically:NO encoding:NSUTF8StringEncoding error:err];    
+}
+
+- (NSString *)retrieveLayerListFromFile
+{
+    NSArray       *myPathList        =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString      *myPath            =  [myPathList  objectAtIndex:0];
+    NSError       **err;
+    
+    NSLog(@"Retrieving layer list from disk");
+    
+    myPath = [myPath stringByAppendingPathComponent:@"layers.json"];
+    if([[NSFileManager defaultManager] fileExistsAtPath:myPath])
+        return [NSString stringWithContentsOfFile:myPath encoding:NSUTF8StringEncoding error:err];
+    else
+        return nil;
+}
+
 - (LQHTTPRequestCallback)loadLayersCallback {
 	if (loadLayersCallback) return loadLayersCallback;
 	return loadLayersCallback = [^(NSError *error, NSString *responseBody) {
 		
-		NSError *err = nil;
-		NSDictionary *res = [[CJSONDeserializer deserializer] deserializeAsDictionary:[responseBody dataUsingEncoding:NSUTF8StringEncoding]
-																						error:&err];
-		if (!res || [res objectForKey:@"error"] != nil) {
-			NSLog(@"Error deserializing response (for layer list) \"%@\": %@", responseBody, err);
-			// [[Geoloqi sharedInstance] errorProcessingAPIRequest];
-			return;
-		}
-		
-		if ([[res objectForKey:@"your"] isKindOfClass:[NSArray class]])
-		{
-			// NSLog(@"Found your layers: %@", [res objectForKey:@"your_layers"]);
-            
-			self.yourLayers = [res objectForKey:@"your"];
-			self.featuredLayers = [res objectForKey:@"featured"];
-			self.inactiveLayers = [res objectForKey:@"inactive"];
-			self.activeLayers = [res objectForKey:@"active"];
-			[self.tableView reloadData];
-			[self stopLoading];
-			
-			return;
-		}
-		else {
-			NSLog(@"Not the expected response");
-		}
+        [self parseLayerJSON:responseBody];
+        [self stopLoading];
+        [self saveLayerListToDisk:responseBody];
 	} copy];
 }
 
-/*
-- (void) loadView
-{
-	[super loadView];
-	layerTable = 
-}
-*/
-
 - (void)refreshLayerList {
-	// Cache the layer list for a while
-	if(lastRefresh == nil || [lastRefresh timeIntervalSinceNow] < -300) {
-		[self startLoading];
-		[self refresh];
-		lastRefresh = [[NSDate alloc] init];
-	}
+    NSLog(@"refreshLayerList called");
+    [[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];
+    lastRefresh = [[NSDate alloc] init];
 }	
+
+- (void)loadLayerList {
+    NSString *layerList;
+    NSLog(@"loadLayerList called");
+    if((layerList=[self retrieveLayerListFromFile]) == nil) {
+        NSLog(@"Fetching new layer list");
+        [[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];
+    } else {
+        NSLog(@"Using cached layer list");
+        [self parseLayerJSON:layerList];
+    }
+}
 	
 
 - (void)viewDidLoad {
@@ -73,7 +106,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	[self refreshLayerList];
+    NSLog(@"Layer list view will appear");
+	[self loadLayerList];
+    [self.tableView reloadData];
 }
 
 // Called by the PullRefresh view controller, should only start retrieving data

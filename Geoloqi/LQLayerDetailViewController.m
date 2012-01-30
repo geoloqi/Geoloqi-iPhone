@@ -146,10 +146,6 @@
 		[webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"if(typeof geoloqi_userDidUnsubscribeFromLayer != \"undefined\") { "
 														 "geoloqi_userDidUnsubscribeFromLayer(\"%@\"); }", [layer objectForKey:@"layer_id"]]];
 	}
-	
-    if( [self.delegate respondsToSelector: @selector( layerDetailViewControllerDidUpdateLayer: )] ){
-        [self.delegate layerDetailViewControllerDidUpdateLayer: self.layer];
-    }
 }
 
 - (LQHTTPRequestCallback)layerSubscribeCallback {
@@ -173,6 +169,10 @@
 		}else{
 			msg = @"Deactivated";
 		}
+        
+        if( [self.delegate respondsToSelector: @selector( layerDetailViewControllerDidUpdateLayer: )] ){
+            [self.delegate layerDetailViewControllerDidUpdateLayer: self.layer];
+        }
 		
 		[[SHKActivityIndicator currentIndicator] displayCompleted:msg];
 	} copy];
