@@ -83,13 +83,7 @@
 
 - (void)refreshLayerList {
     NSLog(@"refreshLayerList called");
-    if(([self retrieveLayerListFromFile]) == nil) {
-        // This should only be hit the very first time they load the layer list.
-        // In that case, we want to show the loading thingy.
-        [self refresh];
-    } else {
-        [[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];
-    }
+    [[Geoloqi sharedInstance] layerAppList:[self loadLayersCallback]];
 }	
 
 - (void)loadLayerList {
