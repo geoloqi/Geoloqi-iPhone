@@ -104,8 +104,6 @@
 		0F8DA17314D5FA60009B086C /* BWQuincyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8DA17114D5FA60009B086C /* BWQuincyManager.m */; };
 		0F8DA17414D5FA60009B086C /* Quincy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F8DA17214D5FA60009B086C /* Quincy.bundle */; };
 		0F8DA17614D5FAB4009B086C /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8DA17514D5FAB3009B086C /* CrashReporter.framework */; };
-		0FA33A0414D08EE400877A6D /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA33A0314D08EE400877A6D /* DebugLog.m */; };
-		0FA33A0714D08F5B00877A6D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA33A0614D08F5B00877A6D /* Reachability.m */; };
 		0FA8E11F12CA923D00F65858 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E11E12CA923D00F65858 /* Default@2x.png */; };
 		0FA8E12312CA92BC00F65858 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E12212CA92BC00F65858 /* iTunesArtwork */; };
 		0FC273D51320625300AA41BC /* sign-in-with-twitter-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC273D41320625300AA41BC /* sign-in-with-twitter-dark.png */; };
@@ -322,10 +320,8 @@
 		0F8DA17114D5FA60009B086C /* BWQuincyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWQuincyManager.m; path = QuincyKit/BWQuincyManager.m; sourceTree = "<group>"; };
 		0F8DA17214D5FA60009B086C /* Quincy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Quincy.bundle; path = QuincyKit/Quincy.bundle; sourceTree = "<group>"; };
 		0F8DA17514D5FAB3009B086C /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = Externals/QuincyKit/CrashReporter.framework; sourceTree = "<group>"; };
+		0F8DA17714D618A5009B086C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Reachability2.0/Reachability.h; sourceTree = "<group>"; };
 		0FA33A0214D08EE400877A6D /* DebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = "<group>"; };
-		0FA33A0314D08EE400877A6D /* DebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLog.m; sourceTree = "<group>"; };
-		0FA33A0514D08F5B00877A6D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Externals/Reachability2.0/Reachability.h; sourceTree = SOURCE_ROOT; };
-		0FA33A0614D08F5B00877A6D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Externals/Reachability2.0/Reachability.m; sourceTree = SOURCE_ROOT; };
 		0FA8E11E12CA923D00F65858 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0FA8E12212CA92BC00F65858 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		0FC273D41320625300AA41BC /* sign-in-with-twitter-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign-in-with-twitter-dark.png"; sourceTree = "<group>"; };
@@ -719,7 +715,6 @@
 			children = (
 				0F8DA17514D5FAB3009B086C /* CrashReporter.framework */,
 				0FA33A0214D08EE400877A6D /* DebugLog.h */,
-				0FA33A0314D08EE400877A6D /* DebugLog.m */,
 				DAE9E4B9144648AB00D1610C /* libz.1.2.5.dylib */,
 				DAAE1B9B144601FC003C6E42 /* libsqlite3.dylib */,
 				A645401612A204240014F23C /* libGeoloqi.a */,
@@ -821,9 +816,8 @@
 		49B68DB211B31641001CB3FA /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				0F8DA17714D618A5009B086C /* Reachability.h */,
 				0F8DA16F14D5FA50009B086C /* QuincyKit */,
-				0FA33A0514D08F5B00877A6D /* Reachability.h */,
-				0FA33A0614D08F5B00877A6D /* Reachability.m */,
 				0F130E2E12BEDD2F00FBC2B5 /* PKHTTPCachedImage */,
 				0F130BD512BE9ACD00FBC2B5 /* PullRefresh */,
 				49EB2200125D7D8C00EDFAB1 /* CTableViewController */,
@@ -1239,8 +1233,6 @@
 				0F860BF0131B102100E1B8D5 /* LQNotificationBanner.m in Sources */,
 				0F860DD9131B311D00E1B8D5 /* LQShareViewController2.m in Sources */,
 				0FC2771C132185E700AA41BC /* LQMapPinAnnotation.m in Sources */,
-				0FA33A0414D08EE400877A6D /* DebugLog.m in Sources */,
-				0FA33A0714D08F5B00877A6D /* Reachability.m in Sources */,
 				0F8DA17314D5FA60009B086C /* BWQuincyManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1280,6 +1272,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = Geoloqi;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = NO;
@@ -1305,6 +1298,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Geoloqi;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;

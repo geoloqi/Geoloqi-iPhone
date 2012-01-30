@@ -33,6 +33,7 @@ GeoloqiAppDelegate *gAppDelegate;
 	gAppDelegate = self;
 
 	[[BWQuincyManager sharedQuincyManager] setAppIdentifier:@"40c9981f370919e26f16a291ef804228"];
+    [[BWQuincyManager sharedQuincyManager] setDelegate:self];
     
 	self.lqBtnImg = [[UIImage imageNamed:@"LQButton.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
 	self.lqBtnDisabledImg = [[UIImage imageNamed:@"LQButtonDisabled.png"] stretchableImageWithLeftCapWidth:9.f topCapHeight:9.f];
