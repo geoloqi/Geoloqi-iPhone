@@ -14,7 +14,7 @@
 			<key>Key</key>
 			<string>Website</string>
 			<key>DefaultValue</key>
-			<string>http://geoloqi.com</string>
+			<string>geoloqi.com</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -34,7 +34,7 @@
 			<key>Key</key>
 			<string>Version</string>
 			<key>DefaultValue</key>
-			<string>20110126</string>
+			<string>20120223</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -60,7 +60,7 @@
 			<key>Key</key>
 			<string>AaronParecki</string>
 			<key>DefaultValue</key>
-			<string>http://aaron.pk</string>
+			<string>aaronparecki.com</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -70,7 +70,7 @@
 			<key>Key</key>
 			<string>AmberCase</string>
 			<key>DefaultValue</key>
-			<string>http://caseorganic.com</string>
+			<string>caseorganic.com</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -80,7 +80,7 @@
 			<key>Key</key>
 			<string>JustinMiller</string>
 			<key>DefaultValue</key>
-			<string>http://codesorcery.net</string>
+			<string>codesorcery.net</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -110,7 +110,7 @@
 			<key>Key</key>
 			<string>AndrewPouliot</string>
 			<key>DefaultValue</key>
-			<string>http://darknoon.com</string>
+			<string>darknoon.com</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -120,17 +120,7 @@
 			<key>Key</key>
 			<string>PMarkAnderson</string>
 			<key>DefaultValue</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>    </string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-			<key>Key</key>
-			<string>PMarkAndersonWeb</string>
-			<key>DefaultValue</key>
-			<string>http://spotmetrix.com</string>
+			<string>spotmetrix.com</string>
 		</dict>
 		<dict>
 			<key>Title</key>
