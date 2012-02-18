@@ -85,6 +85,8 @@ GeoloqiAppDelegate *gAppDelegate;
 		}
 		
 	}
+    
+    NSLog(@"Auto shutoff at %d%%", [[[NSUserDefaults standardUserDefaults] stringForKey:@"autoShutoffPercent"] intValue]);
 
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(unknownAPIError:) 
@@ -358,6 +360,12 @@ GeoloqiAppDelegate *gAppDelegate;
         //__dbhan: and set the parameters accordingly as per the tracking mode ..
         [[Geoloqi sharedInstance] setTrackingModeTo:[[NSUserDefaults standardUserDefaults]integerForKey:LQLocationUpdateManagerTrackingModeKey]];
         [[Geoloqi sharedInstance] setTrackingPreset:[[Geoloqi sharedInstance] getTrackingMode]];
+    }
+    
+    // Register default value for auto-shutoff
+    if([[NSUserDefaults standardUserDefaults] stringForKey:@"autoShutoffPercent"] == nil) {
+        [[NSUserDefaults standardUserDefaults] setInteger:20 forKey:@"autoShutoffPercent"];
+        NSLog(@"No default value for auto-shutoff, setting to 20 now.");
     }
     
 #if(VERBOSE) 

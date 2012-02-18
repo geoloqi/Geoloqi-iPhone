@@ -7,14 +7,44 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
-			<key>Title</key>
-			<string>API Endpoint</string>
 			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Auto shutoff when battery drops below</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Auto-Shutoff</string>
 			<key>Key</key>
-			<string>serverURL</string>
+			<string>autoShutoffPercent</string>
 			<key>DefaultValue</key>
-			<string>https://api.geoloqi.com/1/</string>
+			<integer>20</integer>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>5</integer>
+				<integer>10</integer>
+				<integer>15</integer>
+				<integer>20</integer>
+				<integer>25</integer>
+				<integer>30</integer>
+				<integer>40</integer>
+				<integer>50</integer>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>Disabled</string>
+				<string>5%</string>
+				<string>10%</string>
+				<string>15%</string>
+				<string>20%</string>
+				<string>25%</string>
+				<string>30%</string>
+				<string>40%</string>
+				<string>50%</string>
+			</array>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -29,16 +59,6 @@
 			<string>PSTitleValueSpecifier</string>
 			<key>Key</key>
 			<string>username</string>
-			<key>DefaultValue</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>Refresh Token</string>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
-			<key>Key</key>
-			<string>refreshToken</string>
 			<key>DefaultValue</key>
 			<string></string>
 		</dict>
