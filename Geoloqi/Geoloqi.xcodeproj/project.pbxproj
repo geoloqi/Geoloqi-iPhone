@@ -106,6 +106,22 @@
 		0F8DA17614D5FAB4009B086C /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8DA17514D5FAB3009B086C /* CrashReporter.framework */; };
 		0FA8E11F12CA923D00F65858 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E11E12CA923D00F65858 /* Default@2x.png */; };
 		0FA8E12312CA92BC00F65858 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0FA8E12212CA92BC00F65858 /* iTunesArtwork */; };
+		0FB6814914F19E76001D6E31 /* Beep 1.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6813E14F19E76001D6E31 /* Beep 1.aiff */; };
+		0FB6814A14F19E76001D6E31 /* Beep 2.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6813F14F19E76001D6E31 /* Beep 2.aiff */; };
+		0FB6814B14F19E76001D6E31 /* Bell 1.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6814014F19E76001D6E31 /* Bell 1.aiff */; };
+		0FB6814C14F19E76001D6E31 /* Bell 2.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6814114F19E76001D6E31 /* Bell 2.aiff */; };
+		0FB6814D14F19E76001D6E31 /* DJ Scratch.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6814214F19E76001D6E31 /* DJ Scratch.aiff */; };
+		0FB6814E14F19E76001D6E31 /* Electronic Signal.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6814314F19E76001D6E31 /* Electronic Signal.aiff */; };
+		0FB6814F14F19E76001D6E31 /* Laser.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6814414F19E76001D6E31 /* Laser.aiff */; };
+		0FB6815014F19E76001D6E31 /* Pop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6814514F19E76001D6E31 /* Pop.aiff */; };
+		0FB6815114F19E76001D6E31 /* Sonar Beep.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6814614F19E76001D6E31 /* Sonar Beep.aiff */; };
+		0FB6815214F19E76001D6E31 /* Stoof.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6814714F19E76001D6E31 /* Stoof.aiff */; };
+		0FB6815314F19E76001D6E31 /* Whip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6814814F19E76001D6E31 /* Whip.aiff */; };
+		0FB6815914F1A302001D6E31 /* Contact_Off.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6815414F1A302001D6E31 /* Contact_Off.m4a */; };
+		0FB6815A14F1A302001D6E31 /* Contact_On.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6815514F1A302001D6E31 /* Contact_On.m4a */; };
+		0FB6815B14F1A302001D6E31 /* Message_Received.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6815614F1A302001D6E31 /* Message_Received.m4a */; };
+		0FB6815C14F1A302001D6E31 /* Message_Sent.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6815714F1A302001D6E31 /* Message_Sent.m4a */; };
+		0FB6815D14F1A302001D6E31 /* New_Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6815814F1A302001D6E31 /* New_Message.m4a */; };
 		0FC273D51320625300AA41BC /* sign-in-with-twitter-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC273D41320625300AA41BC /* sign-in-with-twitter-dark.png */; };
 		0FC2746513208DA700AA41BC /* welcomeBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2746313208DA700AA41BC /* welcomeBkg.png */; };
 		0FC2746613208DA700AA41BC /* welcomeBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2746413208DA700AA41BC /* welcomeBkg@2x.png */; };
@@ -324,6 +340,22 @@
 		0FA33A0214D08EE400877A6D /* DebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = "<group>"; };
 		0FA8E11E12CA923D00F65858 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0FA8E12212CA92BC00F65858 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		0FB6813E14F19E76001D6E31 /* Beep 1.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = "Beep 1.aiff"; path = "Sounds/Beep 1.aiff"; sourceTree = "<group>"; };
+		0FB6813F14F19E76001D6E31 /* Beep 2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = "Beep 2.aiff"; path = "Sounds/Beep 2.aiff"; sourceTree = "<group>"; };
+		0FB6814014F19E76001D6E31 /* Bell 1.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = "Bell 1.aiff"; path = "Sounds/Bell 1.aiff"; sourceTree = "<group>"; };
+		0FB6814114F19E76001D6E31 /* Bell 2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = "Bell 2.aiff"; path = "Sounds/Bell 2.aiff"; sourceTree = "<group>"; };
+		0FB6814214F19E76001D6E31 /* DJ Scratch.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = "DJ Scratch.aiff"; path = "Sounds/DJ Scratch.aiff"; sourceTree = "<group>"; };
+		0FB6814314F19E76001D6E31 /* Electronic Signal.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = "Electronic Signal.aiff"; path = "Sounds/Electronic Signal.aiff"; sourceTree = "<group>"; };
+		0FB6814414F19E76001D6E31 /* Laser.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = Laser.aiff; path = Sounds/Laser.aiff; sourceTree = "<group>"; };
+		0FB6814514F19E76001D6E31 /* Pop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = Pop.aiff; path = Sounds/Pop.aiff; sourceTree = "<group>"; };
+		0FB6814614F19E76001D6E31 /* Sonar Beep.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = "Sonar Beep.aiff"; path = "Sounds/Sonar Beep.aiff"; sourceTree = "<group>"; };
+		0FB6814714F19E76001D6E31 /* Stoof.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = Stoof.aiff; path = Sounds/Stoof.aiff; sourceTree = "<group>"; };
+		0FB6814814F19E76001D6E31 /* Whip.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = Whip.aiff; path = Sounds/Whip.aiff; sourceTree = "<group>"; };
+		0FB6815414F1A302001D6E31 /* Contact_Off.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Contact_Off.m4a; path = Sounds/Contact_Off.m4a; sourceTree = "<group>"; };
+		0FB6815514F1A302001D6E31 /* Contact_On.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Contact_On.m4a; path = Sounds/Contact_On.m4a; sourceTree = "<group>"; };
+		0FB6815614F1A302001D6E31 /* Message_Received.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Message_Received.m4a; path = Sounds/Message_Received.m4a; sourceTree = "<group>"; };
+		0FB6815714F1A302001D6E31 /* Message_Sent.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Message_Sent.m4a; path = Sounds/Message_Sent.m4a; sourceTree = "<group>"; };
+		0FB6815814F1A302001D6E31 /* New_Message.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = New_Message.m4a; path = Sounds/New_Message.m4a; sourceTree = "<group>"; };
 		0FC273D41320625300AA41BC /* sign-in-with-twitter-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign-in-with-twitter-dark.png"; sourceTree = "<group>"; };
 		0FC2746313208DA700AA41BC /* welcomeBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeBkg.png; sourceTree = "<group>"; };
 		0FC2746413208DA700AA41BC /* welcomeBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcomeBkg@2x.png"; sourceTree = "<group>"; };
@@ -641,6 +673,29 @@
 			name = QuincyKit;
 			sourceTree = "<group>";
 		};
+		0FB6813D14F19E68001D6E31 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				0FB6815414F1A302001D6E31 /* Contact_Off.m4a */,
+				0FB6815514F1A302001D6E31 /* Contact_On.m4a */,
+				0FB6815614F1A302001D6E31 /* Message_Received.m4a */,
+				0FB6815714F1A302001D6E31 /* Message_Sent.m4a */,
+				0FB6815814F1A302001D6E31 /* New_Message.m4a */,
+				0FB6813E14F19E76001D6E31 /* Beep 1.aiff */,
+				0FB6813F14F19E76001D6E31 /* Beep 2.aiff */,
+				0FB6814014F19E76001D6E31 /* Bell 1.aiff */,
+				0FB6814114F19E76001D6E31 /* Bell 2.aiff */,
+				0FB6814214F19E76001D6E31 /* DJ Scratch.aiff */,
+				0FB6814314F19E76001D6E31 /* Electronic Signal.aiff */,
+				0FB6814414F19E76001D6E31 /* Laser.aiff */,
+				0FB6814514F19E76001D6E31 /* Pop.aiff */,
+				0FB6814614F19E76001D6E31 /* Sonar Beep.aiff */,
+				0FB6814714F19E76001D6E31 /* Stoof.aiff */,
+				0FB6814814F19E76001D6E31 /* Whip.aiff */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		0FC274701320A62A00AA41BC /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +801,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0FB6813D14F19E68001D6E31 /* Sounds */,
 				0FC274701320A62A00AA41BC /* Welcome */,
 				0F0AC86E12E6BA71007792AA /* About */,
 				0F0AC42812E5F003007792AA /* LQButton */,
@@ -1160,6 +1216,22 @@
 				0FC2749D13215D3300AA41BC /* welcomeSignUp.png in Resources */,
 				0FC2749E13215D3300AA41BC /* welcomeSignUp@2x.png in Resources */,
 				0F8DA17414D5FA60009B086C /* Quincy.bundle in Resources */,
+				0FB6814914F19E76001D6E31 /* Beep 1.aiff in Resources */,
+				0FB6814A14F19E76001D6E31 /* Beep 2.aiff in Resources */,
+				0FB6814B14F19E76001D6E31 /* Bell 1.aiff in Resources */,
+				0FB6814C14F19E76001D6E31 /* Bell 2.aiff in Resources */,
+				0FB6814D14F19E76001D6E31 /* DJ Scratch.aiff in Resources */,
+				0FB6814E14F19E76001D6E31 /* Electronic Signal.aiff in Resources */,
+				0FB6814F14F19E76001D6E31 /* Laser.aiff in Resources */,
+				0FB6815014F19E76001D6E31 /* Pop.aiff in Resources */,
+				0FB6815114F19E76001D6E31 /* Sonar Beep.aiff in Resources */,
+				0FB6815214F19E76001D6E31 /* Stoof.aiff in Resources */,
+				0FB6815314F19E76001D6E31 /* Whip.aiff in Resources */,
+				0FB6815914F1A302001D6E31 /* Contact_Off.m4a in Resources */,
+				0FB6815A14F1A302001D6E31 /* Contact_On.m4a in Resources */,
+				0FB6815B14F1A302001D6E31 /* Message_Received.m4a in Resources */,
+				0FB6815C14F1A302001D6E31 /* Message_Sent.m4a in Resources */,
+				0FB6815D14F1A302001D6E31 /* New_Message.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

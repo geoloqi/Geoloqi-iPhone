@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/GeoloqiAppDelegate.m"
-         timestampString = "349576347.767403"
+         timestampString = "351216505.17415"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "235"
-         endingLineNumber = "235"
+         startingLineNumber = "237"
+         endingLineNumber = "237"
          landmarkName = "-authenticationDidSucceed:"
          landmarkType = "5">
       </FileBreakpoint>
