@@ -341,10 +341,6 @@ GeoloqiAppDelegate *gAppDelegate;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
     
-    // __dbhan: Set the custom Tracking presets. They should ultimately go into the presets file.
-    [[NSUserDefaults standardUserDefaults] setDouble:1.0 forKey:@"customDistanceFilter"];
-    [[NSUserDefaults standardUserDefaults] setDouble:1.0 forKey:@"customTrackingLimit"];
-
     //__dbhan: For the first time only the tracking mode should be passive(Battery).Otherwise it needs to be the last known state
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"defaultValuesEnteredOnce"]) 
     {
@@ -352,7 +348,10 @@ GeoloqiAppDelegate *gAppDelegate;
 		[[Geoloqi sharedInstance] setTrackingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryTrackingLimit"] doubleValue]];
 		[[Geoloqi sharedInstance] setSendingFrequencyTo:[[defaultsToRegister objectForKey:@"batteryRateLimit"] doubleValue]];
         [[Geoloqi sharedInstance] setTrackingModeTo:LQBatterySaverMode]; // __dbhan: Set the first init of the tracking mode to BatterySaver 
+        // __dbhan: Set the custom Tracking presets. They should ultimately go into the presets file.
         [[NSUserDefaults standardUserDefaults] setDouble:60.0 forKey:@"customRateLimit"];
+        [[NSUserDefaults standardUserDefaults] setDouble:1.0 forKey:@"customDistanceFilter"];
+        [[NSUserDefaults standardUserDefaults] setDouble:1.0 forKey:@"customTrackingLimit"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"defaultValuesEnteredOnce"];
 	}
     else

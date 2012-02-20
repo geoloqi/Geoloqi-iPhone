@@ -122,6 +122,11 @@
 		0FB6815B14F1A302001D6E31 /* Message_Received.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6815614F1A302001D6E31 /* Message_Received.m4a */; };
 		0FB6815C14F1A302001D6E31 /* Message_Sent.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6815714F1A302001D6E31 /* Message_Sent.m4a */; };
 		0FB6815D14F1A302001D6E31 /* New_Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6815814F1A302001D6E31 /* New_Message.m4a */; };
+		0FB6816D14F1E7F1001D6E31 /* buzz_up.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6816814F1E7F1001D6E31 /* buzz_up.caf */; };
+		0FB6816E14F1E7F1001D6E31 /* pinball.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6816914F1E7F1001D6E31 /* pinball.wav */; };
+		0FB6816F14F1E7F1001D6E31 /* pop6.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6816A14F1E7F1001D6E31 /* pop6.caf */; };
+		0FB6817014F1E7F1001D6E31 /* twiddle_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6816B14F1E7F1001D6E31 /* twiddle_down.wav */; };
+		0FB6817114F1E7F1001D6E31 /* Whip2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6816C14F1E7F1001D6E31 /* Whip2.caf */; };
 		0FC273D51320625300AA41BC /* sign-in-with-twitter-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC273D41320625300AA41BC /* sign-in-with-twitter-dark.png */; };
 		0FC2746513208DA700AA41BC /* welcomeBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2746313208DA700AA41BC /* welcomeBkg.png */; };
 		0FC2746613208DA700AA41BC /* welcomeBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2746413208DA700AA41BC /* welcomeBkg@2x.png */; };
@@ -356,6 +361,11 @@
 		0FB6815614F1A302001D6E31 /* Message_Received.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Message_Received.m4a; path = Sounds/Message_Received.m4a; sourceTree = "<group>"; };
 		0FB6815714F1A302001D6E31 /* Message_Sent.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Message_Sent.m4a; path = Sounds/Message_Sent.m4a; sourceTree = "<group>"; };
 		0FB6815814F1A302001D6E31 /* New_Message.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = New_Message.m4a; path = Sounds/New_Message.m4a; sourceTree = "<group>"; };
+		0FB6816814F1E7F1001D6E31 /* buzz_up.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = buzz_up.caf; path = Sounds/buzz_up.caf; sourceTree = "<group>"; };
+		0FB6816914F1E7F1001D6E31 /* pinball.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pinball.wav; path = Sounds/pinball.wav; sourceTree = "<group>"; };
+		0FB6816A14F1E7F1001D6E31 /* pop6.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = pop6.caf; path = Sounds/pop6.caf; sourceTree = "<group>"; };
+		0FB6816B14F1E7F1001D6E31 /* twiddle_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = twiddle_down.wav; path = Sounds/twiddle_down.wav; sourceTree = "<group>"; };
+		0FB6816C14F1E7F1001D6E31 /* Whip2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Whip2.caf; path = Sounds/Whip2.caf; sourceTree = "<group>"; };
 		0FC273D41320625300AA41BC /* sign-in-with-twitter-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign-in-with-twitter-dark.png"; sourceTree = "<group>"; };
 		0FC2746313208DA700AA41BC /* welcomeBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeBkg.png; sourceTree = "<group>"; };
 		0FC2746413208DA700AA41BC /* welcomeBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcomeBkg@2x.png"; sourceTree = "<group>"; };
@@ -676,6 +686,11 @@
 		0FB6813D14F19E68001D6E31 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				0FB6816814F1E7F1001D6E31 /* buzz_up.caf */,
+				0FB6816914F1E7F1001D6E31 /* pinball.wav */,
+				0FB6816A14F1E7F1001D6E31 /* pop6.caf */,
+				0FB6816B14F1E7F1001D6E31 /* twiddle_down.wav */,
+				0FB6816C14F1E7F1001D6E31 /* Whip2.caf */,
 				0FB6815414F1A302001D6E31 /* Contact_Off.m4a */,
 				0FB6815514F1A302001D6E31 /* Contact_On.m4a */,
 				0FB6815614F1A302001D6E31 /* Message_Received.m4a */,
@@ -1232,6 +1247,11 @@
 				0FB6815B14F1A302001D6E31 /* Message_Received.m4a in Resources */,
 				0FB6815C14F1A302001D6E31 /* Message_Sent.m4a in Resources */,
 				0FB6815D14F1A302001D6E31 /* New_Message.m4a in Resources */,
+				0FB6816D14F1E7F1001D6E31 /* buzz_up.caf in Resources */,
+				0FB6816E14F1E7F1001D6E31 /* pinball.wav in Resources */,
+				0FB6816F14F1E7F1001D6E31 /* pop6.caf in Resources */,
+				0FB6817014F1E7F1001D6E31 /* twiddle_down.wav in Resources */,
+				0FB6817114F1E7F1001D6E31 /* Whip2.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

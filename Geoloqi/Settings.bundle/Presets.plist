@@ -20,7 +20,7 @@
 			<key>Key</key>
 			<string>batteryDistanceFilter</string>
 			<key>DefaultValue</key>
-			<integer>5</integer>
+			<integer>1000</integer>
 			<key>Values</key>
 			<array>
 				<integer>0</integer>
@@ -34,6 +34,9 @@
 				<integer>50</integer>
 				<integer>100</integer>
 				<integer>200</integer>
+				<integer>500</integer>
+				<integer>1000</integer>
+				<integer>2000</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -48,6 +51,9 @@
 				<string>50 Meters</string>
 				<string>100 Meters</string>
 				<string>200 Meters</string>
+				<string>500 Meters</string>
+				<string>1km</string>
+				<string>2km</string>
 			</array>
 			<key>KeyboardType</key>
 			<string>NumberPad</string>
